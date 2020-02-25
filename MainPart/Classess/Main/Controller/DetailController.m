@@ -51,6 +51,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 @property (nonatomic, strong) UIBarButtonItem *favor;
 @property (nonatomic, strong) UICollectionView *collectionview;
 @property (nonatomic, strong) QMUIModalPresentationViewController *detailInfoCon;
+@property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
 @end
 
 @implementation DetailController
@@ -93,7 +94,6 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
   [self generateRootView];
-  [self.navigationController.navigationBar setAlpha:0];
   [self.segControl setAlpha:0];
 }
 
@@ -119,7 +119,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"";
+  self.title = @"CNM";
 }
 
 #pragma mark - QMUITableViewDelegate,QMUITableviewDataSource
@@ -348,31 +348,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - GenerateEntityDelegate
 - (void)generateRootView {
-  self.tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-  self.tableView.delegate = self;
-  self.tableView.dataSource = self;
-  self.tableView.contentMode = UIViewContentModeScaleAspectFill;
-  self.tableView.clipsToBounds = YES;
-  self.tableView.estimatedRowHeight = ITEMCELLHEIGHT;
-  self.tableView.estimatedSectionHeaderHeight = ITEMCELLHEIGHT;
-  self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-  [self.tableView registerClass:ItemBasicInfoCell.class forCellReuseIdentifier:ITEMBASICINFOCELL];
-  [self.tableView registerClass:RemarkCell.class forCellReuseIdentifier:REMARKCELL];
-  [self.tableView registerClass:RemarkScoreCell.class forCellReuseIdentifier:REMARKSCORECELL];
-  [self.tableView registerClass:RoomCell.class forCellReuseIdentifier:ROOMTCELL];
-  self.tableView.qmui_cacheCellHeightByKeyAutomatically = YES;
-  self.banner = [[BannerZoomView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, BannerHeight)];
-  self.banner.datas = self.imageList;
-  self.banner.self_delegate = self;
-  self.banner.clipsToBounds = YES;
-  [self.banner loadData];
-  self.tableView.tableHeaderView = self.banner;
-  
   addView(self.view, self.tableView);
   addView(self.view, self.segControl);
   
+  [self navBarAlp];
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.top.right.equalTo(self.view);
+    make.top.left.right.equalTo(self.view);
+    //    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
     make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
   }];
   
@@ -397,8 +379,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   if (scrollView != self.tableView) return;
   CGPoint point = scrollView.contentOffset;
-  [self.navigationController.navigationBar.qmui_backgroundView
-   setAlpha:point.y / NavigationContentTop];
+  //  [self.navigationController.navigationBar.qmui_backgroundView
+  //   setAlpha:point.y / NavigationContentTop];
   //  [UIView performWithoutAnimation:^{
   [self.segControl setAlpha:point.y / NavigationContentTop];
   if (point.y > NavigationContentTop) {
@@ -525,5 +507,105 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         forCellWithReuseIdentifier:DETAILINFOPARTCELL];
   }
   return _collectionview;
+}
+
+- (QMUITableView *)tableView {
+  if (!_tableView) {
+    _tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.contentMode = UIViewContentModeScaleAspectFill;
+    _tableView.clipsToBounds = YES;
+    _tableView.estimatedRowHeight = ITEMCELLHEIGHT;
+    _tableView.estimatedSectionHeaderHeight = ITEMCELLHEIGHT;
+    _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    [_tableView registerClass:ItemBasicInfoCell.class forCellReuseIdentifier:ITEMBASICINFOCELL];
+    [_tableView registerClass:RemarkCell.class forCellReuseIdentifier:REMARKCELL];
+    [_tableView registerClass:RemarkScoreCell.class forCellReuseIdentifier:REMARKSCORECELL];
+    [_tableView registerClass:RoomCell.class forCellReuseIdentifier:ROOMTCELL];
+    _tableView.qmui_cacheCellHeightByKeyAutomatically = YES;
+    _banner = [[BannerZoomView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, BannerHeight)];
+    _banner.datas = self.imageList;
+    _banner.self_delegate = self;
+    _banner.clipsToBounds = YES;
+    [self.banner loadData];
+    _tableView.tableHeaderView = self.banner;
+  }
+  return _tableView;
+}
+
+#pragma mark - navigation bar alpha
+- (void)navBarAlp {
+  self.navigationAnimator = [[QMUINavigationBarScrollingAnimator alloc] init];
+  self.navigationAnimator.scrollView = self.tableView; // 指定要关联的 scrollView
+  self.navigationAnimator.offsetYToStartAnimation =
+  0;                                                // 设置滚动的起点，值即表示在默认停靠的位置往下滚动多少距离后即触发动画，默认是 0
+  self.navigationAnimator.distanceToStopAnimation = 88; // 设置从起点开始滚动多长的距离达到终点
+  
+  // 有两种方式更改 navigationBar 的样式，一种是利用 animator 为每个属性提供的单独
+  // block，直接返回这个属性在特定 progress 下的样式即可，另一种是直接用 animationBlock，Demo
+  // 这里使用第一种。 若使用第二种，则第一种会失效。 若希望同时使用两种，则请在 animationBlock
+  // 里手动获取各个属性对应的 block 的返回值并设置到 navigationBar 上。
+  self.navigationAnimator.backgroundImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarBackgroundImage qmui_imageWithAlpha:progress];
+  };
+  self.navigationAnimator.shadowImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarShadowImage qmui_imageWithAlpha:progress];
+  };
+  //  self.navigationAnimator.tintColorBlock =
+  //  ^UIColor *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+  //    return [UIColor qmui_colorFromColor:UIColorBlack toColor:NavBarTintColor progress:progress];
+  //  };
+  self.navigationAnimator.titleViewTintColorBlock = self.navigationAnimator.tintColorBlock;
+  //  self.navigationAnimator.statusbarStyleBlock =
+  //  ^UIStatusBarStyle(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+  //    //    return progress < .25 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+  //    return UIStatusBarStyleLightContent;
+  //  };
+}
+
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//  // 需要手动调用 navigationAnimator.statusbarStyleBlock 来告诉系统状态栏的变化
+//  if (self.navigationAnimator) {
+//    return self.navigationAnimator.statusbarStyleBlock(self.navigationAnimator,
+//                                                       self.navigationAnimator.progress);
+//  }
+//  return [super preferredStatusBarStyle];
+//}
+
+// 建议配合 QMUINavigationControllerAppearanceDelegate 控制不同界面切换时的 navigationBar
+// 样式，否则需自己在 viewWillAppear:、viewWillDisappear: 里控制
+
+#pragma mark - <QMUINavigationControllerAppearanceDelegate>
+
+- (UIImage *)navigationBarBackgroundImage {
+  return self.navigationAnimator.backgroundImageBlock(self.navigationAnimator,
+                                                      self.navigationAnimator.progress);
+}
+
+- (UIImage *)navigationBarShadowImage {
+  return self.navigationAnimator.shadowImageBlock(self.navigationAnimator,
+                                                  self.navigationAnimator.progress);
+}
+
+//- (UIColor *)navigationBarTintColor {
+//  return self.navigationAnimator.tintColorBlock(self.navigationAnimator,
+//                                                self.navigationAnimator.progress);
+//}
+//
+//- (UIColor *)titleViewTintColor {
+//  return [self navigationBarTintColor];
+//}
+
+#pragma mark - <QMUICustomNavigationBarTransitionDelegate>
+
+// 为了展示接口的使用，QMUI Demo 没有打开配置表的
+// AutomaticCustomNavigationBarTransitionStyle，因此当 navigationBar
+// 样式与默认样式不同时，需要手动在 customNavigationBarTransitionKey
+// 里返回一个与其他界面不相同的值，这样才能使用自定义的 navigationBar 转场样式
+- (NSString *)customNavigationBarTransitionKey {
+  return self.navigationAnimator.progress >= 1 ? nil : @"progress";
 }
 @end

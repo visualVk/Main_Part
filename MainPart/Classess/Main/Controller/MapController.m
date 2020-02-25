@@ -251,6 +251,22 @@ UIScrollViewDelegate> {
       [weakSelf.wayScrollView
        setContentOffset:CGPointMake(_viewWidth * index, weakSelf.wayScrollView.contentOffset.y)
        animated:YES];
+      [weakSelf clear];
+      if (index == 0) {
+        currtentType = MANaviAnnotationTypeWalking;
+        [weakSelf presentCurrentCourse:MANaviAnnotationTypeWalking
+                          currentIndex:weakSelf.currentCourse];
+      }
+      if (index == 1) {
+        currtentType = MANaviAnnotationTypeBus;
+        [weakSelf presentCurrentCourse:MANaviAnnotationTypeBus
+                          currentIndex:weakSelf.busCurrentCourse];
+      }
+      if (index == 2 || index == 3) {
+        currtentType = MANaviAnnotationTypeDrive;
+        [weakSelf presentCurrentCourse:MANaviAnnotationTypeDrive
+                          currentIndex:weakSelf.carCurrentCourse];
+      }
     }];
   }
   return _waySegCon;
@@ -603,5 +619,9 @@ updatingLocation:(BOOL)updatingLocation {
   [self.taxiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.equalTo(self.wayScrollView).offset(3 * DEVICE_WIDTH);
   }];
+}
+
+- (void)clear {
+  [self.naviRoute removeFromMapView];
 }
 @end

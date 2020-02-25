@@ -157,7 +157,7 @@
     /** 构造第二列数据 */
     NSArray *line2 = @[@"0 - 10 元",@"10-20 元",@"20-50 元",@"50-100 元",@"100 - 1000元",@"1000 - 10000 元",@"10000-100000 元",@"100000-500000 元",@"500000-1000000 元",@"1000000以上"];
     NSMutableArray *dataArray2 = [NSMutableArray array];
-    for (NSInteger index = 0 ; index < 1; index++) {
+    for (NSInteger index = 0 ; index < 5; index++) {
         GHDropMenuModel *dropMenuModel = [[GHDropMenuModel alloc]init];
         dropMenuModel.title = [line2 by_ObjectAtIndex:index];
         dropMenuModel.waterFallTags = line2;

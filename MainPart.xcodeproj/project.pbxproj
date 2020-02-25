@@ -27,6 +27,7 @@
 		A7739FB72405191B00EF7664 /* GHDropMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739FA32405191B00EF7664 /* GHDropMenuModel.m */; };
 		A7739FB82405191B00EF7664 /* GHDropMenuFilterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739FA52405191B00EF7664 /* GHDropMenuFilterSectionHeader.m */; };
 		A7739FB92405191B00EF7664 /* GHCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739FA82405191B00EF7664 /* GHCustomAlertView.m */; };
+		A7739FBC2405531600EF7664 /* ReMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739FBB2405531600EF7664 /* ReMenuView.m */; };
 		A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0B72403BDA4008E740A /* DateUtils.m */; };
 		A7C4F0BC2403CF69008E740A /* PopController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BB2403CF69008E740A /* PopController.m */; };
 		A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */; };
@@ -151,6 +152,8 @@
 		A7739FA72405191B00EF7664 /* GHDropMenuFilterSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHDropMenuFilterSectionHeader.h; sourceTree = "<group>"; };
 		A7739FA82405191B00EF7664 /* GHCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHCustomAlertView.m; sourceTree = "<group>"; };
 		A7739FA92405191B00EF7664 /* GHDropMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHDropMenu.h; sourceTree = "<group>"; };
+		A7739FBA2405531600EF7664 /* ReMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReMenuView.h; sourceTree = "<group>"; };
+		A7739FBB2405531600EF7664 /* ReMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReMenuView.m; sourceTree = "<group>"; };
 		A7C4F0B62403BDA4008E740A /* DateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		A7C4F0B72403BDA4008E740A /* DateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		A7C4F0BA2403CF69008E740A /* PopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopController.h; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 			children = (
 				A7739F8124050A4700EF7664 /* SearchItemCell.h */,
 				A7739F8224050A4700EF7664 /* SearchItemCell.m */,
+				A7739FBA2405531600EF7664 /* ReMenuView.h */,
+				A7739FBB2405531600EF7664 /* ReMenuView.m */,
 			);
 			path = SearchListPage;
 			sourceTree = "<group>";
@@ -635,32 +640,32 @@
 		A7C778AC2402562D003EBCE0 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				A7C778AD2402562D003EBCE0 /* TYCyclePagerViewCell.m */,
-				A7C778AE2402562D003EBCE0 /* FooterEmptyView.h */,
-				A7C778AF2402562D003EBCE0 /* TicketCell.m */,
-				A7C778B02402562D003EBCE0 /* HotCell.h */,
-				A7C778B12402562D003EBCE0 /* CustomSectionCell.m */,
-				A7C778B22402562D003EBCE0 /* TitleCell.m */,
-				A7C778B32402562D003EBCE0 /* ImageAndLabelCell.m */,
-				A7C778B42402562D003EBCE0 /* HotHeaderView.m */,
-				A7C778B52402562D003EBCE0 /* BannerView.m */,
-				A7C778B62402562D003EBCE0 /* BannerCell.m */,
-				A7C778B72402562D003EBCE0 /* SelectionCell.m */,
-				A7C778B82402562D003EBCE0 /* ImageReFreshHeader.m */,
-				A7C778B92402562D003EBCE0 /* SearchView.m */,
-				A7C778BA2402562D003EBCE0 /* HotCell.m */,
-				A7C778BB2402562D003EBCE0 /* FooterEmptyView.m */,
-				A7C778BC2402562D003EBCE0 /* TicketCell.h */,
-				A7C778BD2402562D003EBCE0 /* TYCyclePagerViewCell.h */,
-				A7C778BE2402562D003EBCE0 /* TitleCell.h */,
-				A7C778BF2402562E003EBCE0 /* CustomSectionCell.h */,
-				A7C778C02402562E003EBCE0 /* BannerView.h */,
-				A7C778C12402562E003EBCE0 /* HotHeaderView.h */,
-				A7C778C22402562E003EBCE0 /* ImageAndLabelCell.h */,
-				A7C778C32402562E003EBCE0 /* SearchView.h */,
-				A7C778C42402562E003EBCE0 /* ImageReFreshHeader.h */,
-				A7C778C52402562E003EBCE0 /* SelectionCell.h */,
 				A7C778C62402562E003EBCE0 /* BannerCell.h */,
+				A7C778B62402562D003EBCE0 /* BannerCell.m */,
+				A7C778C02402562E003EBCE0 /* BannerView.h */,
+				A7C778B52402562D003EBCE0 /* BannerView.m */,
+				A7C778BF2402562E003EBCE0 /* CustomSectionCell.h */,
+				A7C778B12402562D003EBCE0 /* CustomSectionCell.m */,
+				A7C778AE2402562D003EBCE0 /* FooterEmptyView.h */,
+				A7C778BB2402562D003EBCE0 /* FooterEmptyView.m */,
+				A7C778B02402562D003EBCE0 /* HotCell.h */,
+				A7C778BA2402562D003EBCE0 /* HotCell.m */,
+				A7C778C12402562E003EBCE0 /* HotHeaderView.h */,
+				A7C778B42402562D003EBCE0 /* HotHeaderView.m */,
+				A7C778C22402562E003EBCE0 /* ImageAndLabelCell.h */,
+				A7C778B32402562D003EBCE0 /* ImageAndLabelCell.m */,
+				A7C778C42402562E003EBCE0 /* ImageReFreshHeader.h */,
+				A7C778B82402562D003EBCE0 /* ImageReFreshHeader.m */,
+				A7C778C32402562E003EBCE0 /* SearchView.h */,
+				A7C778B92402562D003EBCE0 /* SearchView.m */,
+				A7C778C52402562E003EBCE0 /* SelectionCell.h */,
+				A7C778B72402562D003EBCE0 /* SelectionCell.m */,
+				A7C778BC2402562D003EBCE0 /* TicketCell.h */,
+				A7C778AF2402562D003EBCE0 /* TicketCell.m */,
+				A7C778BE2402562D003EBCE0 /* TitleCell.h */,
+				A7C778B22402562D003EBCE0 /* TitleCell.m */,
+				A7C778BD2402562D003EBCE0 /* TYCyclePagerViewCell.h */,
+				A7C778AD2402562D003EBCE0 /* TYCyclePagerViewCell.m */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -1063,6 +1068,7 @@
 				A7C7796024027D49003EBCE0 /* MATraceReplayOverlay.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,
 				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
+				A7739FBC2405531600EF7664 /* ReMenuView.m in Sources */,
 				A7C779232402562E003EBCE0 /* FooterEmptyView.m in Sources */,
 				A7739FAC2405191B00EF7664 /* NSArray+Bounds.m in Sources */,
 				A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */,

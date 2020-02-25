@@ -30,27 +30,27 @@
 }
 
 - (void)generateRootView {
-  UIView *superview                    = self.contentView;
-  self.imageview                       = [UIImageView new];
-  self.imageview.contentMode           = QMUIImageResizingModeScaleAspectFill;
-  self.bottomView                      = [UIImageView new];
-  self.bottomView.contentMode          = QMUIImageResizingModeScaleAspectFill;
-  self.bottomView.image                = UIImageMake(@"pink_gradient");
-  self.bottomView.backgroundColor      = UIColor.qd_backgroundColor;
-  self.title                           = [UILabel new];
-  self.title.font                      = UIFontBoldMake(TITLEFONTSIZE);
-  self.title.text                      = @"温州万达";
-  self.title.textColor                 = UIColor.qd_backgroundColor;
-  self.placeholder                     = [QMUILabel new];
-  self.placeholder.contentEdgeInsets   = UIEdgeInsetsMake(2, 2, 2, 2);
-  self.placeholder.font                = UIFontMake(TITLEPLACE);
-  self.placeholder.text                = @"舒适的温州 ";
-  self.placeholder.textColor           = DEFAULTPINK;
-  self.placeholder.backgroundColor     = UIColor.qd_backgroundColor;
-  self.placeholder.layer.cornerRadius  = BOTTOMHEIGHT / 20;
+  UIView *superview = self.contentView;
+  self.imageview = [UIImageView new];
+  self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
+  self.bottomView = [UIImageView new];
+  self.bottomView.contentMode = QMUIImageResizingModeScaleAspectFill;
+  self.bottomView.image = UIImageMake(@"pink_gradient");
+  self.bottomView.backgroundColor = UIColor.qd_backgroundColor;
+  self.title = [UILabel new];
+  self.title.font = UIFontBoldMake(TITLEFONTSIZE);
+  self.title.text = @"温州万达";
+  self.title.textColor = UIColor.qd_backgroundColor;
+  self.placeholder = [QMUILabel new];
+  self.placeholder.contentEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
+  self.placeholder.font = UIFontMake(TITLEPLACE);
+  self.placeholder.text = @"舒适的温州 ";
+  self.placeholder.textColor = DEFAULTPINK;
+  self.placeholder.backgroundColor = UIColor.qd_backgroundColor;
+  self.placeholder.layer.cornerRadius = BOTTOMHEIGHT / 20;
   self.placeholder.layer.masksToBounds = YES;
   
-  superview.mas_key      = @"superview";
+  superview.mas_key = @"superview";
   self.imageview.mas_key = @"imageview";
   addView(superview, self.imageview);
   self.bottomView.mas_key = @"bottomView";
@@ -141,9 +141,9 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
 
 - (void)generateRootView {
   self.userInteractionEnabled = true;
-  self.selectionStyle         = UITableViewCellSelectionStyleNone;
-  UIView *superview           = self.contentView;
-  self.backgroundColor        = UIColor.clearColor;
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
+  UIView *superview = self.contentView;
+  self.backgroundColor = UIColor.clearColor;
   addView(self.contentView, self.collectionview);
   UIWindow *window = UIApplication.sharedApplication.delegate.window;
   QMUILogInfo(@"window", @"top:%f,bottom:%f", window.safeAreaInsets.top,
@@ -159,17 +159,17 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
 #pragma mark - 懒加载 collection view
 - (UICollectionView *)collectionview {
   if (!_collectionview) {
-    WSLWaterFlowLayout *layout   = [[WSLWaterFlowLayout alloc] init];
-    layout.delegate              = self;
-    layout.flowLayoutStyle       = WSLWaterFlowVerticalEqualWidth;
+    WSLWaterFlowLayout *layout = [[WSLWaterFlowLayout alloc] init];
+    layout.delegate = self;
+    layout.flowLayoutStyle = WSLWaterFlowVerticalEqualWidth;
     _collectionview.scrollsToTop = YES;
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionview.scrollEnabled                = false;
+    _collectionview.scrollEnabled = false;
     _collectionview.showsVerticalScrollIndicator = false;
-    _collectionview.backgroundColor              = UIColor.qd_backgroundColor;
-    _collectionview.delegate                     = self;
-    _collectionview.dataSource                   = self;
+    _collectionview.backgroundColor = UIColor.qd_backgroundColor;
+    _collectionview.delegate = self;
+    _collectionview.dataSource = self;
     [_collectionview registerClass:[HotHeaderView class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:HEADERVIEW];
@@ -216,19 +216,19 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  NSInteger row     = indexPath.row;
+  NSInteger row = indexPath.row;
   if (section == 0) {
     HotContentCell *hcCell = [collectionView dequeueReusableCellWithReuseIdentifier:HOTCONTENTCELL
                                                                        forIndexPath:indexPath];
     hcCell.imageview.image = UIImageMake(@"launch_background");
     
-    hcCell.contentView.layer.cornerRadius  = BORDERRADIUS;
-    hcCell.contentView.layer.borderColor   = [UIColor clearColor].CGColor;
+    hcCell.contentView.layer.cornerRadius = BORDERRADIUS;
+    hcCell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
     hcCell.contentView.layer.masksToBounds = YES;
     
-    hcCell.layer.shadowColor   = UIColor.qd_mainTextColor.CGColor;
-    hcCell.layer.shadowOffset  = CGSizeMake(0, 1);
-    hcCell.layer.shadowRadius  = BORDERRADIUS;
+    hcCell.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
+    hcCell.layer.shadowOffset = CGSizeMake(0, 1);
+    hcCell.layer.shadowRadius = BORDERRADIUS;
     hcCell.layer.shadowOpacity = 0.25f;
     hcCell.layer.masksToBounds = NO;
     hcCell.layer.shadowPath =
@@ -278,7 +278,7 @@ sizeForHeaderViewInSection:(NSInteger)section {
 
 - (CGSize)waterFlowLayout:(WSLWaterFlowLayout *)waterFlowLayout
    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  NSInteger row     = indexPath.row;
+  NSInteger row = indexPath.row;
   NSInteger section = indexPath.section;
   //  if (section == 0) { return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 20); }
   switch (row % 3) {
@@ -345,9 +345,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)acceptMsgOfBottomView:(NSNotification *)notification {
   NSDictionary *userInfo = notification.userInfo;
-  NSNumber *result       = userInfo[@"flag"];
+  NSNumber *result = userInfo[@"flag"];
   if (result.boolValue) {
-    self.tableview.scrollEnabled      = YES;
+    self.tableview.scrollEnabled = YES;
     self.collectionview.scrollEnabled = NO;
     [self.collectionview setContentOffset:CGPointMake(0, 0) animated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"topnotification"

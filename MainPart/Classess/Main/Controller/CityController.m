@@ -305,4 +305,8 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
   }
   return _collectionview;
 }
+
+- (NSString *)customNavigationBarTransitionKey {
+  return @"CityController";
+}
 @end

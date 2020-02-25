@@ -48,6 +48,7 @@ QMUINavigationControllerDelegate> {
 @property (nonatomic, assign) CGFloat totHeight;
 @property (nonatomic, assign) Boolean okFlag;
 @property (nonatomic, assign) CGPoint curContentOffset;
+@property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
 
 @end
 
@@ -56,15 +57,15 @@ QMUINavigationControllerDelegate> {
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
-  self.okFlag     = true;
+  self.okFlag = true;
   self.searchView = [SearchView new];
-  self.keywords   = @[
+  self.keywords = @[
     @"Helps", @"Maintain", @"Liver", @"Health", @"Function", @"Supports", @"Healthy", @"Fat",
     @"Metabolism", @"Nuturally"
   ];
   self.searchResultsKeywords = [[NSMutableArray alloc] init];
-  self.statusBarStyle        = [super preferredStatusBarStyle];
-  self.imageList             = @[
+  self.statusBarStyle = [super preferredStatusBarStyle];
+  self.imageList = @[
     @"icon_moreOperation_shareChat", @"icon_moreOperation_shareChat",
     @"icon_moreOperation_shareChat", @"icon_moreOperation_shareChat"
   ];
@@ -81,13 +82,13 @@ QMUINavigationControllerDelegate> {
   [self generateRootView];
   
   self.mySearchController.hidesNavigationBarDuringPresentation = NO;
-  self.bottomBtn                                               = [QMUIButton new];
+  self.bottomBtn = [QMUIButton new];
   [self.bottomBtn setTitle:@"xxx" forState:UIControlStateNormal];
   self.bottomBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
-  self.bottomBtn.titleLabel.font   = UIFontBoldMake(16);
+  self.bottomBtn.titleLabel.font = UIFontBoldMake(16);
   [self.bottomBtn setTitleColor:UIColor.qd_backgroundColor forState:normal];
   [self.bottomBtn setImage:UIImageMake(@"bottom_arrow") forState:UIControlStateNormal];
-  self.bottomBtn.imagePosition   = QMUIButtonImagePositionRight;
+  self.bottomBtn.imagePosition = QMUIButtonImagePositionRight;
   __weak __typeof(self) weakSelf = self;
   [self.bottomBtn addTarget:self
                      action:[self selectorBlock:^(id _Nonnull args) {
@@ -95,13 +96,13 @@ QMUINavigationControllerDelegate> {
     weakSelf.definesPresentationContext = NO;
     [weakSelf.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
     CityController *cCon = [[CityController alloc] init];
-    cCon.cityBlock       = ^(NSString *cityName) {
+    cCon.cityBlock = ^(NSString *cityName) {
       dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.bottomBtn setTitle:cityName forState:UIControlStateNormal];
         [self.bottomBtn sizeToFit];
-        weakSelf.cityBarBtn  = NavLeftItemMake(weakSelf.bottomBtn);
+        weakSelf.cityBarBtn = NavLeftItemMake(weakSelf.bottomBtn);
         UIBarButtonItem *tmp = weakSelf.navigationItem.leftBarButtonItems[0];
-        tmp                  = weakSelf.cityBarBtn;
+        tmp = weakSelf.cityBarBtn;
       });
     };
     [weakSelf.navigationController pushViewController:cCon animated:YES];
@@ -151,10 +152,6 @@ QMUINavigationControllerDelegate> {
   [super setupNavigationItems];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-  return self.statusBarStyle;
-}
-
 #pragma mark - <QMUITableViewDataSource,QMUITableViewDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -185,20 +182,20 @@ QMUINavigationControllerDelegate> {
     } else if (indexPath.row == 3) {
       QMUITableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-      cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
       cell.backgroundColor = UIColor.clearColor;
       return cell;
     } else if (indexPath.row == 4) {
       HotCell *hCell =
       [tableView dequeueReusableCellWithIdentifier:@"hotcell" forIndexPath:indexPath];
-      hCell.tableview        = self.tableview;
+      hCell.tableview = self.tableview;
       self.hotCollectionview = hCell.collectionview;
       return hCell;
     }
   } else {
     QMUITableViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    NSString *keyword                           = self.searchResultsKeywords[indexPath.row];
+    NSString *keyword = self.searchResultsKeywords[indexPath.row];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:keyword
                                                    attributes:@{NSForegroundColorAttributeName : TableViewCellTitleLabelColor}];
@@ -222,7 +219,7 @@ QMUINavigationControllerDelegate> {
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   if (tableView == self.tableview) {
     BannerView *banner = [BannerView new];
-    banner.datas       = self.imageList;
+    banner.datas = self.imageList;
     [banner loadData];
     return banner;
   }
@@ -278,7 +275,7 @@ updateResultsForSearchString:(NSString *)searchString {
     self.statusBarStyle = UIStatusBarStyleDefault;
   }
   self.navigationItem.leftBarButtonItems = @[ NavLeftItemMake(self.mySearchController.searchBar) ];
-  UIImage *image                         = UIImageMake(@"white_background");
+  UIImage *image = UIImageMake(@"white_background");
   [self.navigationController.navigationBar setBackgroundImage:image
                                                 forBarMetrics:UIBarMetricsDefault];
   [self.bottomBtn setTitleColor:UIColor.qd_mainTextColor forState:UIControlStateNormal];
@@ -287,9 +284,9 @@ updateResultsForSearchString:(NSString *)searchString {
 
 - (void)willDismissSearchController:(QMUISearchController *)searchController {
   self.statusBarStyle = [super preferredStatusBarStyle];
-  UIImage *image      = [UIImageMake(@"navigationbar_background")
-                         resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1)
-                         resizingMode:UIImageResizingModeStretch];
+  UIImage *image = [UIImageMake(@"navigationbar_background")
+                    resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1)
+                    resizingMode:UIImageResizingModeStretch];
   [self.navigationController.navigationBar setBackgroundImage:image
                                                 forBarMetrics:UIBarMetricsDefault];
   [self.bottomBtn setTitleColor:UIColor.qd_backgroundColor forState:UIControlStateNormal];
@@ -302,24 +299,24 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)generateRootView {
   [self.navigationController.navigationBar.qmui_backgroundContentView setAlpha:0];
   self.mySearchController = [[QMUISearchController alloc] initWithContentsViewController:self];
-  self.mySearchController.searchResultsDelegate                = self;
-  self.mySearchController.launchView                           = self.searchView;
+  self.mySearchController.searchResultsDelegate = self;
+  self.mySearchController.launchView = self.searchView;
   self.mySearchController.searchBar.qmui_usedAsTableHeaderView = YES;
-  self.mySearchController.active                               = NO;
+  self.mySearchController.active = NO;
   self.mySearchController.tableView.tableHeaderView =
   [[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, NavigationContentTop)];
   [self.mySearchController.tableView registerClass:[QMUITableViewCell class]
                             forCellReuseIdentifier:@"cell"];
   [self.mySearchController.searchBar setValue:@"取消" forKey:@"cancelButtonText"];
   self.tableview = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-  self.tableview.estimatedRowHeight                     = 1;
-  self.tableview.dataSource                             = self;
-  self.tableview.delegate                               = self;
-  self.tableview.showsVerticalScrollIndicator           = NO;
+  self.tableview.estimatedRowHeight = 1;
+  self.tableview.dataSource = self;
+  self.tableview.delegate = self;
+  self.tableview.showsVerticalScrollIndicator = NO;
   self.tableview.qmui_cacheCellHeightByKeyAutomatically = YES;
-  self.tableview.scrollEnabled                          = YES;
-  self.tableview.separatorStyle                         = UITableViewCellSelectionStyleNone;
-  self.tableview.backgroundColor                        = UIColorMakeWithHex(@"#fbfaf5");
+  self.tableview.scrollEnabled = YES;
+  self.tableview.separatorStyle = UITableViewCellSelectionStyleNone;
+  self.tableview.backgroundColor = UIColorMakeWithHex(@"#fbfaf5");
   //  self.tableview.backgroundColor = UIColor.lightGrayColor;
   [self.tableview registerClass:[QMUITableViewCell class] forCellReuseIdentifier:@"cell"];
   [self.tableview registerClass:[BannerCell class] forCellReuseIdentifier:@"bannercell"];
@@ -333,6 +330,7 @@ updateResultsForSearchString:(NSString *)searchString {
                                                name:TOPNOTIFICATION
                                              object:nil];
   isEnableScroll = true;
+  [self navBarAlp];
   @weakify(self);
   ImageReFreshHeader *imageHeader = [ImageReFreshHeader headerWithRefreshingBlock:^{
     @strongify(self);
@@ -359,29 +357,19 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
 - (void)acceptMsgOfTopView:(NSNotification *)notification {
   if (self.okFlag) {
     NSDictionary *userInfo = notification.userInfo;
-    NSNumber *result       = userInfo[@"flag"];
+    NSNumber *result = userInfo[@"flag"];
     if (!result.boolValue) {
       self.hotCollectionview.scrollEnabled = YES;
-      self.tableview.scrollEnabled         = NO;
+      self.tableview.scrollEnabled = NO;
       self.curContentOffset =
       CGPointMake(self.tableview.contentOffset.x, self.tableview.contentOffset.y - OFFSETY);
-//      [UIView animateWithDuration:1
-//                            delay:0
-//                          options:UIViewAnimationOptionBeginFromCurrentState
-//                       animations:^{
-//
-//      }
-//                       completion:^(BOOL finished){
-//
-//      }];
-      [self.tableview
-       setContentOffset:CGPointMake(0, self.totHeight - NavigationContentTop)
-       animated:NO];
+      [self.tableview setContentOffset:CGPointMake(0, self.totHeight - NavigationContentTop)
+                              animated:NO];
       self.okFlag = false;
     }
   } else {
     NSDictionary *userInfo = notification.userInfo;
-    NSNumber *result       = userInfo[@"flag"];
+    NSNumber *result = userInfo[@"flag"];
     if (result.boolValue) {
       self.okFlag = true;
       [self.tableview setContentOffset:self.curContentOffset animated:YES];
@@ -424,8 +412,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
   AMLocationUtils.sharedInstance.GeoCode = ^(AMapLocationReGeocode *_Nonnull reGeoCode) {
     @strongify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
-      NSString *cityReg         = reGeoCode.city;
-      NSString *regex           = @"^.*市$";
+      NSString *cityReg = reGeoCode.city;
+      NSString *regex = @"^.*市$";
       NSPredicate *cityValidate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
       if ([cityValidate evaluateWithObject:cityReg]) {
         cityReg = [cityReg substringWithRange:NSMakeRange(0, cityReg.length - 1)];
@@ -433,9 +421,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
       self.bottomBtn.titleLabel.text = cityReg;
       [self.bottomBtn setTitle:cityReg forState:UIControlStateNormal];
       [self.bottomBtn sizeToFit];
-      self.cityBarBtn      = NavLeftItemMake(self.bottomBtn);
+      self.cityBarBtn = NavLeftItemMake(self.bottomBtn);
       UIBarButtonItem *tmp = self.navigationItem.leftBarButtonItems[0];
-      tmp                  = self.cityBarBtn;
+      tmp = self.cityBarBtn;
       [AMLocationUtils stopReGeo];
     });
   };
@@ -443,5 +431,69 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
 }
 - (void)dealloc {
   [AMLocationUtils stopReGeo];
+}
+
+#pragma mark - navigation bar alpha
+- (void)navBarAlp {
+  self.navigationAnimator = [[QMUINavigationBarScrollingAnimator alloc] init];
+  self.navigationAnimator.scrollView = self.tableview; // 指定要关联的 scrollView
+  self.navigationAnimator.offsetYToStartAnimation =
+  0;                                                // 设置滚动的起点，值即表示在默认停靠的位置往下滚动多少距离后即触发动画，默认是 0
+  self.navigationAnimator.distanceToStopAnimation = 88; // 设置从起点开始滚动多长的距离达到终点
+  
+  // 有两种方式更改 navigationBar 的样式，一种是利用 animator 为每个属性提供的单独
+  // block，直接返回这个属性在特定 progress 下的样式即可，另一种是直接用 animationBlock，Demo
+  // 这里使用第一种。 若使用第二种，则第一种会失效。 若希望同时使用两种，则请在 animationBlock
+  // 里手动获取各个属性对应的 block 的返回值并设置到 navigationBar 上。
+  self.navigationAnimator.backgroundImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarBackgroundImage qmui_imageWithAlpha:progress];
+  };
+  self.navigationAnimator.shadowImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarShadowImage qmui_imageWithAlpha:progress];
+  };
+  self.navigationAnimator.tintColorBlock =
+  ^UIColor *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [UIColor qmui_colorFromColor:UIColorBlack toColor:NavBarTintColor progress:progress];
+  };
+  self.navigationAnimator.titleViewTintColorBlock = self.navigationAnimator.tintColorBlock;
+  self.navigationAnimator.statusbarStyleBlock =
+  ^UIStatusBarStyle(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return progress < .25 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+  };
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  // 需要手动调用 navigationAnimator.statusbarStyleBlock 来告诉系统状态栏的变化
+  if (self.navigationAnimator) {
+    return self.navigationAnimator.statusbarStyleBlock(self.navigationAnimator,
+                                                       self.navigationAnimator.progress);
+  }
+  return [super preferredStatusBarStyle];
+}
+
+// 建议配合 QMUINavigationControllerAppearanceDelegate 控制不同界面切换时的 navigationBar
+// 样式，否则需自己在 viewWillAppear:、viewWillDisappear: 里控制
+
+#pragma mark - <QMUINavigationControllerAppearanceDelegate>
+
+- (UIImage *)navigationBarBackgroundImage {
+  return self.navigationAnimator.backgroundImageBlock(self.navigationAnimator,
+                                                      self.navigationAnimator.progress);
+}
+
+- (UIImage *)navigationBarShadowImage {
+  return self.navigationAnimator.shadowImageBlock(self.navigationAnimator,
+                                                  self.navigationAnimator.progress);
+}
+
+- (UIColor *)navigationBarTintColor {
+  return self.navigationAnimator.tintColorBlock(self.navigationAnimator,
+                                                self.navigationAnimator.progress);
+}
+
+- (UIColor *)titleViewTintColor {
+  return [self navigationBarTintColor];
 }
 @end

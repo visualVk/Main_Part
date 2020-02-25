@@ -138,6 +138,8 @@
     _desPrice.layer.borderColor = UIColor.clearColor.CGColor;
     _desPrice.layer.cornerRadius = 5;
     _desPrice.layer.masksToBounds = YES;
+    _desPrice.highlightedBackgroundColor = nil;
+    _desPrice.highlightedTextColor = nil;
   }
   return _desPrice;
 }
@@ -170,6 +172,8 @@
   label.text = content;
   label.font = UIFontMake(12);
   label.textColor = UIColor.qmui_randomColor;
+  label.highlightedTextColor = nil;
+  label.highlightedBackgroundColor = nil;
   return label;
 }
 @end

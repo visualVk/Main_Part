@@ -28,14 +28,14 @@
 }
 
 - (void)generateRootView {
-  UIView *superview          = self.contentView;
-  self.imageview             = [UIImageView new];
-  self.imageview.image       = UIImageMake(@"selection");
+  UIView *superview = self.contentView;
+  self.imageview = [UIImageView new];
+  self.imageview.image = UIImageMake(@"selection");
   self.imageview.contentMode = QMUIImageResizingModeScaleAspectFit;
-  self.label                 = [UILabel new];
-  self.label.font            = UIFontMake(15);
-  self.label.text            = @"精选";
-  self.label.textColor       = UIColor.qd_mainTextColor;
+  self.label = [UILabel new];
+  self.label.font = UIFontMake(15);
+  self.label.text = @"精选";
+  self.label.textColor = UIColor.qd_mainTextColor;
   
   addView(superview, self.imageview);
   addView(superview, self.label);
@@ -57,6 +57,7 @@
 #import "FooterEmptyView.h"
 #import "HorizontalWithVerticalSectionLayout.h"
 #import "NSObject+BlockSEL.h"
+#import "SearchListController.h"
 #import "TitleCell.h"
 #define TITLEITEMCELL @"titleitemcell"
 #define HOTITEMCELL @"hotitemcell"
@@ -76,6 +77,7 @@
 @interface HotHeaderView () <UICollectionViewDelegate, UICollectionViewDataSource,
 GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSArray<HotModel *> *picArr;
+@property (nonatomic, strong) UIViewController *parentController;
 @end
 
 @implementation HotHeaderView
@@ -83,18 +85,18 @@ GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     HotModel *selection = [[HotModel alloc] init];
-    selection.title     = @"精选";
+    selection.title = @"精选";
     selection.imagename = @"selection";
-    HotModel *scene     = [HotModel new];
-    scene.title         = @"景点";
-    scene.imagename     = @"scene";
-    HotModel *food      = [HotModel new];
-    food.title          = @"饮食";
-    food.imagename      = @"food";
-    HotModel *hotel     = [HotModel new];
-    hotel.title         = @"酒店";
-    hotel.imagename     = @"hotel";
-    self.picArr         = @[ selection, scene, food, hotel ];
+    HotModel *scene = [HotModel new];
+    scene.title = @"景点";
+    scene.imagename = @"scene";
+    HotModel *food = [HotModel new];
+    food.title = @"饮食";
+    food.imagename = @"food";
+    HotModel *hotel = [HotModel new];
+    hotel.title = @"酒店";
+    hotel.imagename = @"hotel";
+    self.picArr = @[ selection, scene, food, hotel ];
     [self generateRootView];
   }
   return self;
@@ -122,14 +124,14 @@ GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
     QMUICollectionViewPagingLayout *layout = [[QMUICollectionViewPagingLayout alloc]
                                               initWithStyle:QMUICollectionViewPagingLayoutStyleDefault];
     layout.sectionHeadersPinToVisibleBounds = YES;
-    layout.scrollDirection                  = UICollectionViewScrollDirectionVertical;
-    layout.itemSize                         = CGSizeMake(ITEMWIDTH, ITEMWIDTH);
-    layout.minimumLineSpacing               = 0;
-    layout.minimumInteritemSpacing          = 0;
-    layout.sectionInset                     = UIEdgeInsetsMake(SPACE, 0, 0, 0);
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.itemSize = CGSizeMake(ITEMWIDTH, ITEMWIDTH);
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    layout.sectionInset = UIEdgeInsetsMake(SPACE, 0, 0, 0);
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionview.scrollEnabled   = false;
+    _collectionview.scrollEnabled = false;
     _collectionview.backgroundColor = UIColor.clearColor;
     [_collectionview registerClass:[TitleCell class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -139,7 +141,7 @@ GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
                withReuseIdentifier:HOTHEADERFOOTCELL];
     [_collectionview registerClass:[HotItemCell class] forCellWithReuseIdentifier:HOTITEMCELL];
     _collectionview.dataSource = self;
-    _collectionview.delegate   = self;
+    _collectionview.delegate = self;
   }
   return _collectionview;
 }
@@ -161,12 +163,12 @@ GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  NSInteger row     = indexPath.row;
+  NSInteger row = indexPath.row;
   if (section == 0) {
     HotItemCell *hiCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:HOTITEMCELL forIndexPath:indexPath];
     hiCell.imageview.image = UIImageMake(self.picArr[row].imagename);
-    hiCell.label.text      = self.picArr[row].title;
+    hiCell.label.text = self.picArr[row].title;
     return hiCell;
   }
   
@@ -183,8 +185,8 @@ GenerateEntityDelegate, UICollectionViewDelegateFlowLayout>
                                                             withReuseIdentifier:TITLEITEMCELL
                                                                    forIndexPath:indexPath];
       tCell.moreBtn.hidden = YES;
-      tCell.title.font     = UIFontBoldMake(18);
-      tCell.title.text     = @"热门推荐";
+      tCell.title.font = UIFontBoldMake(18);
+      tCell.title.text = @"热门推荐";
       return tCell;
     } else {
       FooterEmptyView *footView =
@@ -207,5 +209,8 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   QMUILogInfo(@"hot header view", @"click(sec = %li, row = %li)", indexPath.section, indexPath.row);
+  if (!self.parentController) { self.parentController = self.qmui_viewController; }
+  SearchListController *slCon = [SearchListController new];
+  [self.parentController.navigationController pushViewController:slCon animated:YES];
 }
 @end

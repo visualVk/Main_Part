@@ -12,6 +12,7 @@
 #import "ListController.h"
 #import "MainController.h"
 #import "RecommondController.h"
+#import "SearchListController.h"
 
 @interface MainTabController () {
   NSArray *navArr;
@@ -31,10 +32,19 @@
                                               image:UIImageMake(@"icon_tabbar_uikit")
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
                                                 tag:0];
-  CityController *city = [CityController new];
+  //  CityController *city = [CityController new];
+  //  QMUINavigationController *nav2 =
+  //  [[QMUINavigationController alloc] initWithRootViewController:city];
+  //  city.hidesBottomBarWhenPushed = false;
+  //  nav2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页"
+  //                                              image:UIImageMake(@"icon_tabbar_uikit")
+  //                                      selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
+  //                                                tag:1];
+  
+  SearchListController *search = [SearchListController new];
   QMUINavigationController *nav2 =
-  [[QMUINavigationController alloc] initWithRootViewController:city];
-  city.hidesBottomBarWhenPushed = false;
+  [[QMUINavigationController alloc] initWithRootViewController:search];
+  search.hidesBottomBarWhenPushed = false;
   nav2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页"
                                               image:UIImageMake(@"icon_tabbar_uikit")
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
@@ -67,7 +77,7 @@
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
                                                 tag:4];
   self.viewControllers = @[ nav1, nav2, nav3, nav4, nav5 ];
-  self.selectedIndex = 4;
+  self.selectedIndex = 1;
 }
 
 - (QMUINavigationController *)generateRootNavWithControllerName:(NSString *)name

@@ -7,11 +7,23 @@
 //
 
 #import "SearchListController.h"
+#import "MarkUtils.h"
+#import "NSObject+BlockSEL.h"
+#import "SearchItemCell.h"
+#import <DOPDropDownMenu.h>
+#import <HMSegmentedControl.h>
+#import <JHChainableAnimator.h>
+#define ITEMSERACHCELL @"itemsearchcell"
 #define ITEMCELLHEIGHT DEVICE_HEIGHT / 5;
 
-@interface SearchListController () <GenerateEntityDelegate>
+@interface SearchListController () <GenerateEntityDelegate, QMUITableViewDelegate,
+QMUITableViewDataSource>
 @property (nonatomic, strong) QMUISearchController *mySearchController;
+@property (nonatomic, strong) HMSegmentedControl *segController;
 @property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
+@property (nonatomic, strong) UIView *showView;
+@property (nonatomic, strong) UIView *monView;
+
 @property (nonatomic, strong) NSArray *hotelList;
 @end
 
@@ -20,6 +32,7 @@
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  self.hotelList = @[ @"", @"", @"", @"" ];
 }
 
 - (void)initSubviews {
@@ -30,6 +43,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
+  [self generateRootView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,14 +73,20 @@
 
 #pragma mark - GenerateRooViewDelegate
 - (void)generateRootView {
+  addView(self.view, self.segController);
+  addView(self.view, self.tableView);
   
-  self.tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+  [self.segController mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+    make.left.right.equalTo(self.view);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 20);
+  }];
   
-  self.navigationAnimator = [[QMUINavigationBarScrollingAnimator alloc] init];
-  self.navigationAnimator.scrollView = self.tableView; // 指定要关联的 scrollView
-  self.navigationAnimator.offsetYToStartAnimation =
-  30;                                               // 设置滚动的起点，值即表示在默认停靠的位置往下滚动多少距离后即触发动画，默认是 0
-  self.navigationAnimator.distanceToStopAnimation = 64; // 设置从起点开始滚动多长的距离达到终点
+  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.segController.mas_bottom);
+    make.left.right.equalTo(self.view);
+    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+  }];
 }
 
 #pragma mark - QMUITablviewDataSource,QMUITableViewDelegate
@@ -84,6 +104,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSInteger section = indexPath.section;
+  if (section == 0) {
+    SearchItemCell *siCell =
+    [tableView dequeueReusableCellWithIdentifier:ITEMSERACHCELL forIndexPath:indexPath];
+    return siCell;
+  }
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
   if (!cell) {
@@ -95,5 +121,43 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+  return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+  return 0;
+}
+
+#pragma mark - Lazy init
+- (HMSegmentedControl *)segController {
+  if (!_segController) {
+    NSArray *titles = @[ @"测试1", @"测试2", @"测试3", @"测试4" ];
+    UIImage *image = UIImageMake(@"more_bottom");
+    NSArray *images = @[ image, image, image, image ];
+    _segController = [[HMSegmentedControl alloc] initWithSectionImages:images
+                                                 sectionSelectedImages:images
+                                                     titlesForSections:titles];
+    _segController.imagePosition = HMSegmentedControlImagePositionRightOfText;
+    _segController.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _segController.selectionIndicatorHeight = 0;
+    _segController.type = HMSegmentedControlTypeTextImages;
+    __weak __typeof(self) weakSelf = self;
+    _segController.selectedSegmentIndex = 3;
+    _segController.indexChangeBlock = ^(NSInteger index) {};
+  }
+  return _segController;
+}
+
+- (UITableView *)tableView {
+  if (!_tableView) {
+    _tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    [_tableView registerClass:SearchItemCell.class forCellReuseIdentifier:ITEMSERACHCELL];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+  }
+  return _tableView;
 }
 @end

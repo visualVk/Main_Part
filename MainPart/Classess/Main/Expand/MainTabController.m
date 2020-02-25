@@ -67,7 +67,7 @@
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
                                                 tag:4];
   self.viewControllers = @[ nav1, nav2, nav3, nav4, nav5 ];
-  self.selectedIndex = 3;
+  self.selectedIndex = 4;
 }
 
 - (QMUINavigationController *)generateRootNavWithControllerName:(NSString *)name

@@ -7,6 +7,7 @@
 //
 
 #import "ItemBasicInfoCell.h"
+#import "MapController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
 
@@ -226,7 +227,17 @@
 }
 
 - (UIView *)addressView {
-  if (!_addressView) { _addressView = [UIView new]; }
+  if (!_addressView) {
+    _addressView = [UIView new];
+    _addressView.userInteractionEnabled = YES;
+    __weak __typeof(self) weakSelf = self;
+    UITapGestureRecognizer *go2MapCon =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:[self selectorBlock:^(id _Nonnullsargs) {
+      if (weakSelf.go2MapCon) { weakSelf.go2MapCon(); }
+    }]];
+    [_addressView addGestureRecognizer:go2MapCon];
+  }
   return _addressView;
 }
 

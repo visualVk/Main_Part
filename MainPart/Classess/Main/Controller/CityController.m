@@ -6,10 +6,6 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 #import "CityController.h"
-#import <AMapFoundationKit/AMapFoundationKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
-#import <JQCollectionViewAlignLayout/JQCollectionViewAlignLayout.h>
-#import <MJRefresh/MJRefresh.h>
 #import "AMLocationUtils.h"
 #import "CityHeaderView.h"
 #import "CollectionIndexView.h"
@@ -17,6 +13,10 @@
 #import "GridCityCell.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <JQCollectionViewAlignLayout/JQCollectionViewAlignLayout.h>
+#import <MJRefresh/MJRefresh.h>
 #define EVERCITYCELL @"evercitycell"
 #define HOTCITYCELL @"hotcitycell"
 #define CITYCELL @"citycell"
@@ -36,10 +36,10 @@ AMapLocationManagerDelegate>
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 @property (nonatomic, assign) BOOL initialScrollDone;
 @property (nonatomic, strong) NSIndexPath *scrollIndexPath;
+@property (nonatomic, strong) NSMutableArray *queue;
 @end
 
 @implementation CityController
-
 - (void)didInitialize {
   self.cityList = @[ @"温州", @"xxx", @"bbb" ];
   NSMutableArray *arr = [NSMutableArray arrayWithArray:@[ @"定位", @"热门", @"必玩" ]];
@@ -47,6 +47,7 @@ AMapLocationManagerDelegate>
     [arr addObject:[NSString stringWithFormat:@"%c", (char)('a' + i)]];
   }
   self.cityNameList = arr;
+  self.queue = [[NSMutableArray alloc] initWithCapacity:6];
   [super didInitialize];
   // init 时做的事情请写在这里
 }
@@ -194,6 +195,12 @@ updateResultsForSearchString:(NSString *)searchString {
   return header;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath {
+  [self.queue addObject:indexPath];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
@@ -206,6 +213,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger row;
   if (self.cityBlock) { self.cityBlock(self.cityList[section]); }
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+willDisplaySupplementaryView:(UICollectionReusableView *)view
+        forElementKind:(NSString *)elementKind
+           atIndexPath:(NSIndexPath *)indexPath {
+  
+  [self.indexView changeIndexColoeWithIndex:indexPath.section];
+}
+
+- (id<NSCopying>)qmui_tableView:(UITableView *)tableView
+      cacheKeyForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return indexPath;
 }
 #pragma mark - generate root view
 - (void)generateRootView {
@@ -265,7 +285,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     layout.sectionFootersPinToVisibleBounds = YES;
     layout.sectionHeadersPinToVisibleBounds = YES;
-    layout.estimatedItemSize = CGSizeMake(50, 50);
+    layout.estimatedItemSize = CGSizeMake(DEVICE_WIDTH, 50);
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _collectionview.backgroundColor = UIColor.clearColor;

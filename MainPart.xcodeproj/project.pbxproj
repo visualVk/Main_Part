@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5D7FDFD25E38BBD5B43E8277 /* libPods-MainPart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50872913ABC62ADD2630F4E4 /* libPods-MainPart.a */; };
+		A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739F7A2404DAFE00EF7664 /* RoomCell.m */; };
+		A7739F7F2404ECEA00EF7664 /* SearchListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739F7E2404ECEA00EF7664 /* SearchListController.m */; };
+		A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0B72403BDA4008E740A /* DateUtils.m */; };
+		A7C4F0BC2403CF69008E740A /* PopController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BB2403CF69008E740A /* PopController.m */; };
+		A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */; };
+		A7C4F0C22403D5BB008E740A /* DetailInfoPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */; };
+		A7C4F0C52403F29F008E740A /* Pop2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0C42403F29F008E740A /* Pop2Controller.m */; };
 		A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C778642402515B003EBCE0 /* Assets.xcassets */; };
 		A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C778662402515B003EBCE0 /* LaunchScreen.storyboard */; };
 		A7C7786B2402515B003EBCE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7786A2402515B003EBCE0 /* main.m */; };
@@ -67,11 +74,41 @@
 		A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C778FD2402562E003EBCE0 /* UIImageEffects.m */; };
 		A7C779372402562E003EBCE0 /* QDCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C778FE2402562E003EBCE0 /* QDCommonUI.m */; };
 		A7C7793B2402580C003EBCE0 /* NSObject+BlockSEL.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C779392402580C003EBCE0 /* NSObject+BlockSEL.m */; };
+		A7C7794424025F54003EBCE0 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794324025F54003EBCE0 /* MapController.m */; };
+		A7C7794824027C09003EBCE0 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794624027C08003EBCE0 /* MANaviRoute.m */; };
+		A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794A24027CF4003EBCE0 /* MANaviAnnotation.m */; };
+		A7C7795224027D10003EBCE0 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794C24027D0F003EBCE0 /* MANaviPolyline.m */; };
+		A7C7795324027D10003EBCE0 /* MABusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794D24027D0F003EBCE0 /* MABusStopAnnotation.m */; };
+		A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7794F24027D0F003EBCE0 /* LineDashPolyline.m */; };
+		A7C7795F24027D49003EBCE0 /* TraceReplayOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7795824027D49003EBCE0 /* TraceReplayOverlayViewController.m */; };
+		A7C7796024027D49003EBCE0 /* MATraceReplayOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7795924027D49003EBCE0 /* MATraceReplayOverlay.m */; };
+		A7C7796124027D49003EBCE0 /* CustomMAMultiPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7795C24027D49003EBCE0 /* CustomMAMultiPolyline.m */; };
+		A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7795D24027D49003EBCE0 /* MATraceReplayOverlayRender.m */; };
+		A7C7797424027E17003EBCE0 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7796624027E16003EBCE0 /* CommonUtility.m */; };
+		A7C7797524027E17003EBCE0 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7796A24027E16003EBCE0 /* NSLayoutConstraint+PureLayout.m */; };
+		A7C7797624027E17003EBCE0 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7796D24027E16003EBCE0 /* ALView+PureLayout.m */; };
+		A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */; };
+		A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */; };
+		A7C7797924027E17003EBCE0 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797324027E16003EBCE0 /* UIView+Toast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50872913ABC62ADD2630F4E4 /* libPods-MainPart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MainPart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D83017C8755E10886CB181A /* Pods-MainPart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainPart.release.xcconfig"; path = "Target Support Files/Pods-MainPart/Pods-MainPart.release.xcconfig"; sourceTree = "<group>"; };
+		A7739F792404DAFE00EF7664 /* RoomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCell.h; sourceTree = "<group>"; };
+		A7739F7A2404DAFE00EF7664 /* RoomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCell.m; sourceTree = "<group>"; };
+		A7739F7D2404ECEA00EF7664 /* SearchListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchListController.h; sourceTree = "<group>"; };
+		A7739F7E2404ECEA00EF7664 /* SearchListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchListController.m; sourceTree = "<group>"; };
+		A7C4F0B62403BDA4008E740A /* DateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
+		A7C4F0B72403BDA4008E740A /* DateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		A7C4F0BA2403CF69008E740A /* PopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopController.h; sourceTree = "<group>"; };
+		A7C4F0BB2403CF69008E740A /* PopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopController.m; sourceTree = "<group>"; };
+		A7C4F0BD2403D59F008E740A /* DetailHeaderPartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailHeaderPartCell.h; sourceTree = "<group>"; };
+		A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailHeaderPartCell.m; sourceTree = "<group>"; };
+		A7C4F0C02403D5BB008E740A /* DetailInfoPartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailInfoPartCell.h; sourceTree = "<group>"; };
+		A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailInfoPartCell.m; sourceTree = "<group>"; };
+		A7C4F0C32403F29F008E740A /* Pop2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pop2Controller.h; sourceTree = "<group>"; };
+		A7C4F0C42403F29F008E740A /* Pop2Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pop2Controller.m; sourceTree = "<group>"; };
 		A7C7785524025159003EBCE0 /* MainPart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainPart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C778642402515B003EBCE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7C778672402515B003EBCE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -196,6 +233,42 @@
 		A7C779002402562E003EBCE0 /* DictUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictUtils.h; sourceTree = "<group>"; };
 		A7C779392402580C003EBCE0 /* NSObject+BlockSEL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockSEL.m"; sourceTree = "<group>"; };
 		A7C7793A2402580C003EBCE0 /* NSObject+BlockSEL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockSEL.h"; sourceTree = "<group>"; };
+		A7C7794224025F54003EBCE0 /* MapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		A7C7794324025F54003EBCE0 /* MapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
+		A7C7794624027C08003EBCE0 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
+		A7C7794724027C08003EBCE0 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		A7C7794924027CF4003EBCE0 /* MANaviAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviAnnotation.h; sourceTree = "<group>"; };
+		A7C7794A24027CF4003EBCE0 /* MANaviAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviAnnotation.m; sourceTree = "<group>"; };
+		A7C7794C24027D0F003EBCE0 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
+		A7C7794D24027D0F003EBCE0 /* MABusStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MABusStopAnnotation.m; sourceTree = "<group>"; };
+		A7C7794E24027D0F003EBCE0 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
+		A7C7794F24027D0F003EBCE0 /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		A7C7795024027D10003EBCE0 /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		A7C7795124027D10003EBCE0 /* MABusStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MABusStopAnnotation.h; sourceTree = "<group>"; };
+		A7C7795624027D49003EBCE0 /* CustomMAMultiPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMAMultiPolyline.h; sourceTree = "<group>"; };
+		A7C7795724027D49003EBCE0 /* MATraceReplayOverlay+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MATraceReplayOverlay+Addition.h"; sourceTree = "<group>"; };
+		A7C7795824027D49003EBCE0 /* TraceReplayOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceReplayOverlayViewController.m; sourceTree = "<group>"; };
+		A7C7795924027D49003EBCE0 /* MATraceReplayOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MATraceReplayOverlay.m; sourceTree = "<group>"; };
+		A7C7795A24027D49003EBCE0 /* MATraceReplayOverlayRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MATraceReplayOverlayRender.h; sourceTree = "<group>"; };
+		A7C7795B24027D49003EBCE0 /* TraceReplayOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceReplayOverlayViewController.h; sourceTree = "<group>"; };
+		A7C7795C24027D49003EBCE0 /* CustomMAMultiPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMAMultiPolyline.m; sourceTree = "<group>"; };
+		A7C7795D24027D49003EBCE0 /* MATraceReplayOverlayRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MATraceReplayOverlayRender.m; sourceTree = "<group>"; };
+		A7C7795E24027D49003EBCE0 /* MATraceReplayOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MATraceReplayOverlay.h; sourceTree = "<group>"; };
+		A7C7796424027E16003EBCE0 /* ErrorInfoUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorInfoUtility.h; sourceTree = "<group>"; };
+		A7C7796524027E16003EBCE0 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		A7C7796624027E16003EBCE0 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		A7C7796824027E16003EBCE0 /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
+		A7C7796924027E16003EBCE0 /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		A7C7796A24027E16003EBCE0 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		A7C7796B24027E16003EBCE0 /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		A7C7796C24027E16003EBCE0 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		A7C7796D24027E16003EBCE0 /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		A7C7796E24027E16003EBCE0 /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		A7C7796F24027E16003EBCE0 /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorInfoUtility.m; sourceTree = "<group>"; };
+		A7C7797224027E16003EBCE0 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		A7C7797324027E16003EBCE0 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		C3501E496233602CE81E3ADE /* Pods-MainPart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainPart.debug.xcconfig"; path = "Target Support Files/Pods-MainPart/Pods-MainPart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,10 +368,10 @@
 		A7C778742402562D003EBCE0 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
-				A7C778752402562D003EBCE0 /* CollectionIndexView.m */,
-				A7C778762402562D003EBCE0 /* MainTabController.m */,
 				A7C778772402562D003EBCE0 /* CollectionIndexView.h */,
+				A7C778752402562D003EBCE0 /* CollectionIndexView.m */,
 				A7C778782402562D003EBCE0 /* MainTabController.h */,
+				A7C778762402562D003EBCE0 /* MainTabController.m */,
 			);
 			path = Expand;
 			sourceTree = "<group>";
@@ -306,6 +379,9 @@
 		A7C778792402562D003EBCE0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A7C7796324027E16003EBCE0 /* MAMapUtils */,
+				A7C4F0B62403BDA4008E740A /* DateUtils.h */,
+				A7C4F0B72403BDA4008E740A /* DateUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -313,20 +389,23 @@
 		A7C7787A2402562D003EBCE0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A7C7787B2402562D003EBCE0 /* DetailController.m */,
-				A7C7787C2402562D003EBCE0 /* MainController.m */,
-				A7C7787D2402562D003EBCE0 /* RecommondController.h */,
-				A7C7787E2402562D003EBCE0 /* ListController.m */,
-				A7C7787F2402562D003EBCE0 /* ImageCollectionController.h */,
-				A7C778802402562D003EBCE0 /* trash */,
 				A7C778832402562D003EBCE0 /* CityController.h */,
-				A7C778842402562D003EBCE0 /* swift */,
-				A7C778852402562D003EBCE0 /* MainController.h */,
-				A7C778862402562D003EBCE0 /* DetailController.h */,
-				A7C778872402562D003EBCE0 /* RecommondController.m */,
 				A7C778882402562D003EBCE0 /* CityController.m */,
+				A7C778862402562D003EBCE0 /* DetailController.h */,
+				A7C7787B2402562D003EBCE0 /* DetailController.m */,
+				A7C7787F2402562D003EBCE0 /* ImageCollectionController.h */,
 				A7C778892402562D003EBCE0 /* ImageCollectionController.m */,
 				A7C7788A2402562D003EBCE0 /* ListController.h */,
+				A7C7787E2402562D003EBCE0 /* ListController.m */,
+				A7C778852402562D003EBCE0 /* MainController.h */,
+				A7C7787C2402562D003EBCE0 /* MainController.m */,
+				A7C7794224025F54003EBCE0 /* MapController.h */,
+				A7C7794324025F54003EBCE0 /* MapController.m */,
+				A7C7787D2402562D003EBCE0 /* RecommondController.h */,
+				A7C778872402562D003EBCE0 /* RecommondController.m */,
+				A7C778802402562D003EBCE0 /* trash */,
+				A7739F7D2404ECEA00EF7664 /* SearchListController.h */,
+				A7739F7E2404ECEA00EF7664 /* SearchListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -334,17 +413,14 @@
 		A7C778802402562D003EBCE0 /* trash */ = {
 			isa = PBXGroup;
 			children = (
+				A7C4F0BA2403CF69008E740A /* PopController.h */,
+				A7C4F0BB2403CF69008E740A /* PopController.m */,
+				A7C4F0C32403F29F008E740A /* Pop2Controller.h */,
+				A7C4F0C42403F29F008E740A /* Pop2Controller.m */,
 				A7C778812402562D003EBCE0 /* HorizontalWithVerticalSectionLayout.h */,
 				A7C778822402562D003EBCE0 /* HorizontalWithVerticalSectionLayout.m */,
 			);
 			path = trash;
-			sourceTree = "<group>";
-		};
-		A7C778842402562D003EBCE0 /* swift */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = swift;
 			sourceTree = "<group>";
 		};
 		A7C7788B2402562D003EBCE0 /* Headers */ = {
@@ -358,6 +434,7 @@
 		A7C7788D2402562D003EBCE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7C7794524027BFC003EBCE0 /* MapModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,20 +534,26 @@
 		A7C778C72402562E003EBCE0 /* DetailPage */ = {
 			isa = PBXGroup;
 			children = (
-				A7C778C82402562E003EBCE0 /* RemarkCell.h */,
-				A7C778C92402562E003EBCE0 /* RemarkScoreCell.h */,
+				A7C778D42402562E003EBCE0 /* BannerZoomView.h */,
 				A7C778CA2402562E003EBCE0 /* BannerZoomView.m */,
 				A7C778CB2402562E003EBCE0 /* FacilityCell.h */,
-				A7C778CC2402562E003EBCE0 /* SectionFoldView.h */,
-				A7C778CD2402562E003EBCE0 /* ItemBasicInfoCell.h */,
-				A7C778CE2402562E003EBCE0 /* ItemSectionView.m */,
-				A7C778CF2402562E003EBCE0 /* RemarkCell.m */,
-				A7C778D02402562E003EBCE0 /* RemarkScoreCell.m */,
-				A7C778D12402562E003EBCE0 /* ItemBasicInfoCell.m */,
 				A7C778D22402562E003EBCE0 /* FacilityCell.m */,
-				A7C778D32402562E003EBCE0 /* SectionFoldView.m */,
-				A7C778D42402562E003EBCE0 /* BannerZoomView.h */,
+				A7C778CD2402562E003EBCE0 /* ItemBasicInfoCell.h */,
+				A7C778D12402562E003EBCE0 /* ItemBasicInfoCell.m */,
 				A7C778D52402562E003EBCE0 /* ItemSectionView.h */,
+				A7C778CE2402562E003EBCE0 /* ItemSectionView.m */,
+				A7C778C82402562E003EBCE0 /* RemarkCell.h */,
+				A7C778CF2402562E003EBCE0 /* RemarkCell.m */,
+				A7C778C92402562E003EBCE0 /* RemarkScoreCell.h */,
+				A7C778D02402562E003EBCE0 /* RemarkScoreCell.m */,
+				A7C778CC2402562E003EBCE0 /* SectionFoldView.h */,
+				A7C778D32402562E003EBCE0 /* SectionFoldView.m */,
+				A7C4F0BD2403D59F008E740A /* DetailHeaderPartCell.h */,
+				A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */,
+				A7C4F0C02403D5BB008E740A /* DetailInfoPartCell.h */,
+				A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */,
+				A7739F792404DAFE00EF7664 /* RoomCell.h */,
+				A7739F7A2404DAFE00EF7664 /* RoomCell.m */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -592,6 +675,70 @@
 			path = Expand;
 			sourceTree = "<group>";
 		};
+		A7C7794524027BFC003EBCE0 /* MapModel */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7795524027D49003EBCE0 /* traceReplay */,
+				A7C7795024027D10003EBCE0 /* LineDashPolyline.h */,
+				A7C7794F24027D0F003EBCE0 /* LineDashPolyline.m */,
+				A7C7795124027D10003EBCE0 /* MABusStopAnnotation.h */,
+				A7C7794D24027D0F003EBCE0 /* MABusStopAnnotation.m */,
+				A7C7794E24027D0F003EBCE0 /* MANaviPolyline.h */,
+				A7C7794C24027D0F003EBCE0 /* MANaviPolyline.m */,
+				A7C7794924027CF4003EBCE0 /* MANaviAnnotation.h */,
+				A7C7794A24027CF4003EBCE0 /* MANaviAnnotation.m */,
+				A7C7794724027C08003EBCE0 /* MANaviRoute.h */,
+				A7C7794624027C08003EBCE0 /* MANaviRoute.m */,
+			);
+			path = MapModel;
+			sourceTree = "<group>";
+		};
+		A7C7795524027D49003EBCE0 /* traceReplay */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7795624027D49003EBCE0 /* CustomMAMultiPolyline.h */,
+				A7C7795724027D49003EBCE0 /* MATraceReplayOverlay+Addition.h */,
+				A7C7795824027D49003EBCE0 /* TraceReplayOverlayViewController.m */,
+				A7C7795924027D49003EBCE0 /* MATraceReplayOverlay.m */,
+				A7C7795A24027D49003EBCE0 /* MATraceReplayOverlayRender.h */,
+				A7C7795B24027D49003EBCE0 /* TraceReplayOverlayViewController.h */,
+				A7C7795C24027D49003EBCE0 /* CustomMAMultiPolyline.m */,
+				A7C7795D24027D49003EBCE0 /* MATraceReplayOverlayRender.m */,
+				A7C7795E24027D49003EBCE0 /* MATraceReplayOverlay.h */,
+			);
+			path = traceReplay;
+			sourceTree = "<group>";
+		};
+		A7C7796324027E16003EBCE0 /* MAMapUtils */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7796424027E16003EBCE0 /* ErrorInfoUtility.h */,
+				A7C7796524027E16003EBCE0 /* UIView+Toast.h */,
+				A7C7796624027E16003EBCE0 /* CommonUtility.m */,
+				A7C7796724027E16003EBCE0 /* PureLayout */,
+				A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */,
+				A7C7797224027E16003EBCE0 /* CommonUtility.h */,
+				A7C7797324027E16003EBCE0 /* UIView+Toast.m */,
+			);
+			path = MAMapUtils;
+			sourceTree = "<group>";
+		};
+		A7C7796724027E16003EBCE0 /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7796824027E16003EBCE0 /* PureLayoutDefines.h */,
+				A7C7796924027E16003EBCE0 /* ALView+PureLayout.h */,
+				A7C7796A24027E16003EBCE0 /* NSLayoutConstraint+PureLayout.m */,
+				A7C7796B24027E16003EBCE0 /* NSArray+PureLayout.h */,
+				A7C7796C24027E16003EBCE0 /* NSLayoutConstraint+PureLayout.h */,
+				A7C7796D24027E16003EBCE0 /* ALView+PureLayout.m */,
+				A7C7796E24027E16003EBCE0 /* PureLayout+Internal.h */,
+				A7C7796F24027E16003EBCE0 /* PureLayout.h */,
+				A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */,
+			);
+			path = PureLayout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -708,56 +855,79 @@
 				A7C7791B2402562E003EBCE0 /* ImageAndLabelCell.m in Sources */,
 				A7C779142402562E003EBCE0 /* SpotHeader.m in Sources */,
 				A7C779352402562E003EBCE0 /* QDUIHelper.m in Sources */,
+				A7C7797624027E17003EBCE0 /* ALView+PureLayout.m in Sources */,
 				A7C7790E2402562E003EBCE0 /* SpotFoldCell.m in Sources */,
+				A7C7796124027D49003EBCE0 /* CustomMAMultiPolyline.m in Sources */,
 				A7C779072402562E003EBCE0 /* RecommondController.m in Sources */,
 				A7C779212402562E003EBCE0 /* SearchView.m in Sources */,
 				A7C779122402562E003EBCE0 /* YXFlipView.m in Sources */,
 				A7C779192402562E003EBCE0 /* CustomSectionCell.m in Sources */,
 				A7C779202402562E003EBCE0 /* ImageReFreshHeader.m in Sources */,
+				A7C4F0BC2403CF69008E740A /* PopController.m in Sources */,
 				A7C7792A2402562E003EBCE0 /* SectionFoldView.m in Sources */,
+				A7C7797924027E17003EBCE0 /* UIView+Toast.m in Sources */,
 				A7C7792C2402562E003EBCE0 /* ViewController.m in Sources */,
 				A7C779292402562E003EBCE0 /* FacilityCell.m in Sources */,
 				A7C7792D2402562E003EBCE0 /* SceneDelegate.m in Sources */,
 				A7C779342402562E003EBCE0 /* QMUIConfigurationTemplate.m in Sources */,
 				A7C779032402562E003EBCE0 /* DetailController.m in Sources */,
+				A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */,
 				A7C779102402562E003EBCE0 /* UIView+snap.m in Sources */,
 				A7C7791D2402562E003EBCE0 /* BannerView.m in Sources */,
+				A7C7795324027D10003EBCE0 /* MABusStopAnnotation.m in Sources */,
+				A7739F7F2404ECEA00EF7664 /* SearchListController.m in Sources */,
 				A7C779022402562E003EBCE0 /* MainTabController.m in Sources */,
 				A7C7786B2402515B003EBCE0 /* main.m in Sources */,
 				A7C7793B2402580C003EBCE0 /* NSObject+BlockSEL.m in Sources */,
+				A7C7794824027C09003EBCE0 /* MANaviRoute.m in Sources */,
 				A7C779172402562E003EBCE0 /* TYCyclePagerViewCell.m in Sources */,
 				A7C779132402562E003EBCE0 /* SpotCell.m in Sources */,
 				A7C7791E2402562E003EBCE0 /* BannerCell.m in Sources */,
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
 				A7C7790B2402562E003EBCE0 /* CommonCell.m in Sources */,
+				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A7C779302402562E003EBCE0 /* RequestUtils.m in Sources */,
 				A7C7791F2402562E003EBCE0 /* SelectionCell.m in Sources */,
+				A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */,
+				A7C7794424025F54003EBCE0 /* MapController.m in Sources */,
 				A7C779372402562E003EBCE0 /* QDCommonUI.m in Sources */,
 				A7C7790A2402562E003EBCE0 /* GridCityCell.m in Sources */,
 				A7C7792B2402562E003EBCE0 /* WSLWaterFlowLayout.m in Sources */,
+				A7C7795F24027D49003EBCE0 /* TraceReplayOverlayViewController.m in Sources */,
 				A7C779112402562E003EBCE0 /* YXFlipCell.m in Sources */,
 				A7C7790D2402562E003EBCE0 /* RotationHeaderView.m in Sources */,
 				A7C779052402562E003EBCE0 /* ListController.m in Sources */,
+				A7C7795224027D10003EBCE0 /* MANaviPolyline.m in Sources */,
+				A7C7797524027E17003EBCE0 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				A7C779162402562E003EBCE0 /* BannerViewSpot.m in Sources */,
+				A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */,
 				A7C7791C2402562E003EBCE0 /* HotHeaderView.m in Sources */,
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
 				A7C779322402562E003EBCE0 /* DictUtils.m in Sources */,
 				A7C779272402562E003EBCE0 /* RemarkScoreCell.m in Sources */,
+				A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */,
 				A7C779282402562E003EBCE0 /* ItemBasicInfoCell.m in Sources */,
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
 				A7C779042402562E003EBCE0 /* MainController.m in Sources */,
 				A7C779242402562E003EBCE0 /* BannerZoomView.m in Sources */,
 				A7C779092402562E003EBCE0 /* ImageCollectionController.m in Sources */,
+				A7C4F0C22403D5BB008E740A /* DetailInfoPartCell.m in Sources */,
 				A7C779222402562E003EBCE0 /* HotCell.m in Sources */,
+				A7C7796024027D49003EBCE0 /* MATraceReplayOverlay.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,
+				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
 				A7C779232402562E003EBCE0 /* FooterEmptyView.m in Sources */,
+				A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
+				A7C4F0C52403F29F008E740A /* Pop2Controller.m in Sources */,
 				A7C779252402562E003EBCE0 /* ItemSectionView.m in Sources */,
 				A7C779312402562E003EBCE0 /* ImageUtils.m in Sources */,
+				A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */,
 				A7C779152402562E003EBCE0 /* RotationImageCell.m in Sources */,
 				A7C779012402562E003EBCE0 /* CollectionIndexView.m in Sources */,
 				A7C7790C2402562E003EBCE0 /* CityHeaderView.m in Sources */,
+				A7C7797424027E17003EBCE0 /* CommonUtility.m in Sources */,
 				A7C7790F2402562E003EBCE0 /* SpotRotationView.m in Sources */,
 				A7C7791A2402562E003EBCE0 /* TitleCell.m in Sources */,
 				A7C779332402562E003EBCE0 /* QDThemeManager.m in Sources */,

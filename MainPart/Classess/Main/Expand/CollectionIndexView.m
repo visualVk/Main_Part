@@ -70,7 +70,7 @@
       _direction = BDKCollectionIndexViewDirectionVertical;
     
     _currentIndex = 0;
-    _endPadding   = 2;
+    _endPadding = 2;
     
     _panner = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [self addGestureRecognizer:_panner];
@@ -90,34 +90,47 @@
   switch (_direction) {
     case BDKCollectionIndexViewDirectionHorizontal:
       _theDimension = CGRectGetHeight(self.frame);
-      maxLength     = CGRectGetWidth(self.frame) - (self.endPadding * 2);
+      maxLength = CGRectGetWidth(self.frame) - (self.endPadding * 2);
       break;
     case BDKCollectionIndexViewDirectionVertical:
       _theDimension = CGRectGetWidth(self.frame);
-      maxLength     = CGRectGetHeight(self.frame) - (self.endPadding * 2);
+      maxLength = CGRectGetHeight(self.frame) - (self.endPadding * 2);
       break;
   }
   
-  self.touchStatusView.frame              = CGRectInset(self.bounds, 2, 2);
+  self.touchStatusView.frame = CGRectInset(self.bounds, 2, 2);
   self.touchStatusView.layer.cornerRadius = floorf(self.theDimension / 2.75);
   
   CGFloat cumulativeLength = self.endPadding;
-  CGSize labelSize         = CGSizeMake(self.theDimension, self.theDimension);
+  CGSize labelSize = CGSizeMake(self.theDimension, self.theDimension);
   
   CGFloat otherDimension = floorf(maxLength / self.indexLabels.count);
   for (UILabel *label in self.indexLabels) {
     switch (self.direction) {
       case BDKCollectionIndexViewDirectionHorizontal:
         labelSize.width = otherDimension;
-        label.frame     = (CGRect){{cumulativeLength, 0}, labelSize};
+        label.frame = (CGRect){{cumulativeLength, 0}, labelSize};
         cumulativeLength += CGRectGetWidth(label.frame);
         break;
       case BDKCollectionIndexViewDirectionVertical:
         labelSize.height = otherDimension;
-        label.frame      = (CGRect){{0, cumulativeLength}, labelSize};
+        label.frame = (CGRect){{0, cumulativeLength}, labelSize};
         cumulativeLength += CGRectGetHeight(label.frame);
         break;
     }
+  }
+}
+
+- (void)changeIndexColoeWithIndex:(NSInteger)index {
+  UILabel *aimView = self.indexLabels[index];
+  for (UILabel *view in self.indexLabels) {
+    if (aimView == view) {
+      view.textColor = UIColor.qd_mainTextColor;
+      view.backgroundColor = UIColor.qd_tintColor;
+      continue;
+    }
+    view.textColor = UIColor.qd_placeholderColor;
+    view.backgroundColor = UIColor.clearColor;
   }
 }
 
@@ -157,12 +170,12 @@
 - (void)buildIndexLabels {
   NSMutableArray *workingLabels = [NSMutableArray arrayWithCapacity:self.indexTitles.count];
   for (NSString *indexTitle in self.indexTitles) {
-    UILabel *label        = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text            = indexTitle;
-    label.font            = UIFontMake(14);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = indexTitle;
+    label.font = UIFontMake(14);
     label.backgroundColor = [UIColor clearColor];
-    label.textColor       = UIColor.qd_placeholderColor;
-    label.textAlignment   = NSTextAlignmentCenter;
+    label.textColor = UIColor.qd_placeholderColor;
+    label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:label];
     [workingLabels addObject:label];
   }
@@ -188,7 +201,7 @@
 }
 
 - (void)setBackgroundVisibility:(BOOL)flag {
-  CGFloat alpha                        = flag ? 0.25 : 0;
+  CGFloat alpha = flag ? 0.25 : 0;
   self.touchStatusView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
 }
 

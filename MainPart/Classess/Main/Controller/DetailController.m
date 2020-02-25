@@ -8,26 +8,38 @@
 
 #import "DetailController.h"
 #import "BannerZoomView.h"
+#import "DetailHeaderPartCell.h"
+#import "DetailInfoPartCell.h"
 #import "FacilityCell.h"
 #import "ItemBasicInfoCell.h"
+#import "MapController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "Pop2Controller.h"
+#import "PopController.h"
 #import "RemarkCell.h"
 #import "RemarkScoreCell.h"
+#import "RoomCell.h"
 #import "SectionFoldView.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
+#import <JQCollectionViewAlignLayout.h>
 #define ITEMBASICINFOCELL @"itembasicinfocell"
 #define ITEMHEADER @"itemheader"
 #define REMARKCELL @"remarkcell"
+#define ROOMTCELL @"roomcell"
+#define DETAILINFOPARTCELL @"detailinfopartcell"
 #define REMARKSCORECELL @"remarkscorecell"
+#define DETAILHEADERCELL @"detailheadercell"
 #define SEGHEIGHT DEVICE_HEIGHT / 20
 #define ITEMCELLHEIGHT DEVICE_HEIGHT / 8 + 10
 #define BannerHeight DEVICE_HEIGHT / 3
 #define REMARKSCOREHEIGHT DEVICE_HEIGHT / 6
+#define COLLECTIONHEIGHT DEVICE_HEIGHT * 5 / 6
 
 @interface DetailController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource, SDCycleScrollViewDelegate,
-BannerZoomDelegate> {
+BannerZoomDelegate, UICollectionViewDelegate,
+UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   BOOL _didScolled;
 }
 @property (nonatomic, strong) HMSegmentedControl *segControl;
@@ -37,6 +49,8 @@ BannerZoomDelegate> {
 @property (nonatomic, strong) BannerZoomView *banner;
 @property (nonatomic, strong) NSMutableArray *cellHs;
 @property (nonatomic, strong) UIBarButtonItem *favor;
+@property (nonatomic, strong) UICollectionView *collectionview;
+@property (nonatomic, strong) QMUIModalPresentationViewController *detailInfoCon;
 @end
 
 @implementation DetailController
@@ -190,6 +204,11 @@ BannerZoomDelegate> {
     if (row == 0) {
       ItemBasicInfoCell *ibiCell =
       [tableView dequeueReusableCellWithIdentifier:ITEMBASICINFOCELL forIndexPath:indexPath];
+      __weak __typeof(self) weakSelf = self;
+      ibiCell.go2MapCon = ^{
+        MapController *map = [MapController new];
+        [weakSelf.navigationController pushViewController:map animated:YES];
+      };
       return ibiCell;
     }
     if (row == 1) {
@@ -205,6 +224,11 @@ BannerZoomDelegate> {
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       return cell;
     }
+  }
+  if (section > 0 && section < self.roomList.count + 1) {
+    RoomCell *rcell =
+    [tableView dequeueReusableCellWithIdentifier:ROOMTCELL forIndexPath:indexPath];
+    return rcell;
   }
   if (section == self.roomList.count + 1) {
     FacilityCell *cell = [FacilityCell testCellWithTableView:tableView];
@@ -283,6 +307,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
       [tableView endUpdates];
     }];
   }
+  if (section > 0 && section < self.roomList.count) {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    QMUIModalPresentationViewController *modalViewController =
+    [[QMUIModalPresentationViewController alloc] init];
+    modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
+    modalViewController.contentView = self.collectionview;
+    modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+    __weak __typeof(self) weakSelf = self;
+    modalViewController.layoutBlock =
+    ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
+      weakSelf.collectionview.qmui_frameApplyTransform = CGRectSetXY(
+                                                                     weakSelf.collectionview.frame,
+                                                                     CGFloatGetCenter(CGRectGetWidth(containerBounds),
+                                                                                      CGRectGetWidth(weakSelf.collectionview.frame)),
+                                                                     CGRectGetHeight(containerBounds) - CGRectGetHeight(weakSelf.collectionview.frame));
+    };
+    [modalViewController showWithAnimated:YES completion:^(BOOL finished){}];
+  }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -317,6 +359,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   [self.tableView registerClass:ItemBasicInfoCell.class forCellReuseIdentifier:ITEMBASICINFOCELL];
   [self.tableView registerClass:RemarkCell.class forCellReuseIdentifier:REMARKCELL];
   [self.tableView registerClass:RemarkScoreCell.class forCellReuseIdentifier:REMARKSCORECELL];
+  [self.tableView registerClass:RoomCell.class forCellReuseIdentifier:ROOMTCELL];
   self.tableView.qmui_cacheCellHeightByKeyAutomatically = YES;
   self.banner = [[BannerZoomView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, BannerHeight)];
   self.banner.datas = self.imageList;
@@ -352,6 +395,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  if (scrollView != self.tableView) return;
   CGPoint point = scrollView.contentOffset;
   [self.navigationController.navigationBar.qmui_backgroundView
    setAlpha:point.y / NavigationContentTop];
@@ -384,6 +428,54 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   //  }];
 }
 
+#pragma mark - UICollectionViewDelegate
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+  return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+  return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+  NSInteger section = indexPath.section;
+  if (section == 0) {
+    UICollectionViewCell *cell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:DETAILHEADERCELL
+                                              forIndexPath:indexPath];
+    
+    return cell;
+  }
+  if (section == 1) {
+    DetailInfoPartCell *cell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:DETAILINFOPARTCELL
+                                              forIndexPath:indexPath];
+    
+    return cell;
+  }
+  return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  NSInteger section = indexPath.section;
+  switch (section) {
+    case 0:
+      return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 2);
+    case 1:
+      return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 3);
+  }
+  return CGSizeMake(0, 0);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  QMUILogInfo(@"Detail controller", @"click(%li,%li)", indexPath.section, indexPath.row);
+}
+
 #pragma mark - Lazy init
 - (HMSegmentedControl *)segControl {
   if (!_segControl) {
@@ -414,5 +506,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     _segControl.tag = 1;
   }
   return _segControl;
+}
+
+- (UICollectionView *)collectionview {
+  if (!_collectionview) {
+    JQCollectionViewAlignLayout *layout = [[JQCollectionViewAlignLayout alloc] init];
+    layout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+    _collectionview =
+    [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, COLLECTIONHEIGHT)
+                       collectionViewLayout:layout];
+    _collectionview.backgroundColor = UIColor.qd_customBackgroundColor;
+    _collectionview.scrollEnabled = YES;
+    _collectionview.delegate = self;
+    _collectionview.dataSource = self;
+    [_collectionview registerClass:DetailHeaderPartCell.class
+        forCellWithReuseIdentifier:DETAILHEADERCELL];
+    [_collectionview registerClass:DetailInfoPartCell.class
+        forCellWithReuseIdentifier:DETAILINFOPARTCELL];
+  }
+  return _collectionview;
 }
 @end

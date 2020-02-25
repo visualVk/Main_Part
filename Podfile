@@ -30,6 +30,9 @@ target 'MainPart' do
   # pod 'QMUIKit',:modular_headers => true
   # pod 'Masonry',:modular_headers => true
   # pod 'SAMKeychain',:modular_headers => true
+  pod 'DOPDropDownMenu-Enhanced', '~> 1.0.0'
+  pod 'SJAttributesFactory'
+  pod 'BTTransition', :path => './'
   pod 'JHChainableAnimations', '~> 3.0.1'
   pod 'TYAttributedLabel', '~> 2.6.2'
   pod 'HMSegmentedControl'

@@ -21,20 +21,22 @@ PODS:
     - AMapFoundation (~> 1.6.1)
   - AMapSearch (7.1.0):
     - AMapFoundation (~> 1.4)
-  - BRPickerView (2.5.3):
-    - BRPickerView/AddressPickerView (= 2.5.3)
-    - BRPickerView/Base (= 2.5.3)
-    - BRPickerView/DatePickerView (= 2.5.3)
-    - BRPickerView/StringPickerView (= 2.5.3)
-  - BRPickerView/AddressPickerView (2.5.3):
+  - BRPickerView (2.5.5):
+    - BRPickerView/AddressPickerView (= 2.5.5)
+    - BRPickerView/Base (= 2.5.5)
+    - BRPickerView/DatePickerView (= 2.5.5)
+    - BRPickerView/StringPickerView (= 2.5.5)
+  - BRPickerView/AddressPickerView (2.5.5):
     - BRPickerView/Base
-  - BRPickerView/Base (2.5.3)
-  - BRPickerView/DatePickerView (2.5.3):
+  - BRPickerView/Base (2.5.5)
+  - BRPickerView/DatePickerView (2.5.5):
     - BRPickerView/Base
-  - BRPickerView/StringPickerView (2.5.3):
+  - BRPickerView/StringPickerView (2.5.5):
     - BRPickerView/Base
+  - BTTransition (0.1.2)
   - DDCardView (1.0.1):
     - SDWebImage
+  - DOPDropDownMenu-Enhanced (1.0.0)
   - HMSegmentedControl (1.5.5)
   - JHChainableAnimations (3.0.1)
   - JQCollectionViewAlignLayout (0.1.5)
@@ -339,6 +341,11 @@ PODS:
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
   - SDWebImage/Core (5.5.2)
+  - SJAttributesFactory (2.1.1):
+    - SJAttributesFactory/Deprecated (= 2.1.1)
+    - SJAttributesFactory/UIKitText (= 2.1.1)
+  - SJAttributesFactory/Deprecated (2.1.1)
+  - SJAttributesFactory/UIKitText (2.1.1)
   - TYAttributedLabel (2.6.6)
   - TYCyclePagerView (1.2.0)
   - WMDragView (1.0.1)
@@ -351,7 +358,9 @@ DEPENDENCIES:
   - AMapLocation
   - AMapSearch
   - BRPickerView
+  - BTTransition (from `./`)
   - DDCardView
+  - DOPDropDownMenu-Enhanced (~> 1.0.0)
   - HMSegmentedControl
   - JHChainableAnimations (~> 3.0.1)
   - JQCollectionViewAlignLayout
@@ -364,6 +373,7 @@ DEPENDENCIES:
   - SAMKeychain
   - SDCycleScrollView (>= 1.80)
   - SDWebImage (~> 5.0)
+  - SJAttributesFactory
   - TYAttributedLabel (~> 2.6.2)
   - TYCyclePagerView
   - WMDragView
@@ -378,6 +388,7 @@ SPEC REPOS:
     - AMapSearch
     - BRPickerView
     - DDCardView
+    - DOPDropDownMenu-Enhanced
     - HMSegmentedControl
     - JHChainableAnimations
     - JQCollectionViewAlignLayout
@@ -390,10 +401,15 @@ SPEC REPOS:
     - SAMKeychain
     - SDCycleScrollView
     - SDWebImage
+    - SJAttributesFactory
     - TYAttributedLabel
     - TYCyclePagerView
     - WMDragView
     - WMZBanner
+
+EXTERNAL SOURCES:
+  BTTransition:
+    :path: "./"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -401,8 +417,10 @@ SPEC CHECKSUMS:
   AMapFoundation: 672dc3a4759cb733f447c1e1b020f7ba2729f4ab
   AMapLocation: b4162db67f813508a14ee7e05c7ee4073785221d
   AMapSearch: 6bd6d361c5eb00110e0bffa4acf88b7bb9f7e059
-  BRPickerView: c23447ce60d40a4109eb6c93b0cec3a96bf1726c
+  BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
+  BTTransition: 1800692555cca4a98b7d3c1956d73a7a07539376
   DDCardView: 21ada5efeac292fdfd3812fa7f82625e0e85aefa
+  DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   JHChainableAnimations: 0237489ed063f0ec5b351f5c7bb26c1891517074
   JQCollectionViewAlignLayout: d44142c09e6ba96cc874ac5014ff64accb8995ce
@@ -415,11 +433,12 @@ SPEC CHECKSUMS:
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  SJAttributesFactory: 16cd39e6c0e538933db05ddc06d23c8608b13216
   TYAttributedLabel: cb8fc910d97eb5224936d4f692a78e042af691b2
   TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
   WMDragView: 18f2c5d18c350ea4b0ac1cc64066abfe5caea443
   WMZBanner: fb8f5905097d76d54bf780087b3f131071bfe773
 
-PODFILE CHECKSUM: c139d5253a86348605ecd1389957e233b4041e13
+PODFILE CHECKSUM: 78d72e6c38967bb8194b75f6473fc06355c0d73c
 
 COCOAPODS: 1.8.4

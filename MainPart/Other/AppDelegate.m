@@ -10,6 +10,7 @@
 #import "AMLocationUtils.h"
 #import "MainTabController.h"
 #import "QMUIConfigurationTemplate.h"
+#define AMLOCATIONAPPID @"b794a47f8cc58d7845b3b16566172528"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,8 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
   [self configurateQmuiTheme];
-  [AMLocationUtils sharedInstance];
+  //  [AMLocationUtils sharedInstance];
+  [AMapServices sharedServices].apiKey = AMLOCATIONAPPID;
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
   self.window.backgroundColor = UIColor.qd_backgroundColor;
   self.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;

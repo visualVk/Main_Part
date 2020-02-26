@@ -8,16 +8,16 @@
 
 #import "SpotCell.h"
 #import "MarkUtils.h"
+#import <SJAttributesFactory.h>
 #define SMALLFONT 13
 @interface SpotCell () <GenerateEntityDelegate>
-@property (nonatomic, strong) UIImageView *startImage;
-@property (nonatomic, strong) UIImageView *spotImage;
-@property (nonatomic, strong) QMUILabel *spotNameLB;
-@property (nonatomic, strong) QMUILabel *spotTagLB;
-@property (nonatomic, strong) QMUILabel *remarkLB;
-@property (nonatomic, strong) QMUILabel *scoreLB;
-@property (nonatomic, strong) QMUILabel *locLB;
-@property (nonatomic, strong) QMUILabel *priceLB;
+@property (nonatomic, strong) UIImageView *spotMark;
+@property (nonatomic, strong) UILabel *spotTitle;
+@property (nonatomic, strong) UIImageView *favor;
+@property (nonatomic, strong) UIView *spotImg;
+@property (nonatomic, strong) UILabel *favorNum;
+@property (nonatomic, strong) UILabel *recommond;
+@property (nonatomic, strong) UILabel *numRank;
 @end
 
 @implementation SpotCell
@@ -25,6 +25,7 @@
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
+  self.datas = @[ @"pink_gradient", @"pink_gradient", @"pink_gradient" ];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self generateRootView];
 }
@@ -41,141 +42,161 @@
 #pragma mark - GenerateEntityDelegate
 - (void)generateRootView {
   UIView *superview = self.contentView;
-  addView(superview, self.startImage);
-  addView(superview, self.spotImage);
-  addView(superview, self.spotNameLB);
-  addView(superview, self.spotTagLB);
-  addView(superview, self.remarkLB);
-  addView(superview, self.scoreLB);
-  addView(superview, self.locLB);
-  addView(superview, self.priceLB);
+  addView(superview, self.spotMark);
+  addView(superview, self.spotTitle);
+  addView(superview, self.spotImg);
+  addView(superview, self.favor);
+  addView(superview, self.recommond);
+  addView(self.spotMark, self.numRank);
   
-  [self.spotImage mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.top.equalTo(superview).offset(0.5 * SPACE);
-    make.bottom.equalTo(superview).offset(-0.5 * SPACE);
-    make.width.equalTo(superview).multipliedBy(0.25);
-    make.height.equalTo(self.spotImage.mas_width);
+  [self.spotMark
+   mas_makeConstraints:^(MASConstraintMaker *make) { make.top.left.equalTo(superview); }];
+  
+  CGSize titleSize = [self.spotTitle sizeThatFits:CGSizeMake(DEVICE_WIDTH, MAXFLOAT)];
+  [self.spotTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(superview);
+    make.left.equalTo(self.spotMark.mas_right).with.inset(0.5 * SPACE);
+    make.right.equalTo(superview).with.inset(0.5 * SPACE);
+    make.height.mas_equalTo(titleSize.height);
   }];
   
-  [self.spotNameLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.spotImage);
-    make.left.equalTo(self.spotImage.mas_right).offset(0.5 * SPACE);
+  [self.spotImg mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.right.left.equalTo(superview).with.inset(0.5 * SPACE);
+    make.top.equalTo(self.spotTitle.mas_bottom).with.inset(0.5 * SPACE);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 6);
   }];
   
-  [self.startImage mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.spotNameLB.mas_right).offset(0.5 * SPACE);
-    make.centerY.equalTo(self.spotNameLB.mas_centerY);
-    make.height.width.equalTo(@20);
+  [self.recommond mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.right.left.equalTo(self.spotImg);
+    make.top.equalTo(self.spotImg.mas_bottom).with.inset(0.5 * SPACE);
+    make.bottom.equalTo(superview).with.inset(2 * SPACE);
   }];
   
-  [self.spotTagLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.spotNameLB.mas_bottom).offset(0.5 * SPACE);
-    make.left.equalTo(self.spotNameLB);
+  [self.favor mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.equalTo(self.spotTitle);
+    make.right.equalTo(self.spotImg).with.inset(0.5 * SPACE);
   }];
   
-  [self.remarkLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.spotTagLB.mas_bottom).offset(0.25 * SPACE);
-    make.left.equalTo(self.spotTagLB);
-    make.bottom.lessThanOrEqualTo(self.locLB.mas_top);
-  }];
-  
-  [self.locLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.remarkLB);
-    make.bottom.equalTo(self.scoreLB);
-  }];
-  
-  [self.scoreLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.right.equalTo(self.priceLB);
-    make.top.equalTo(self.spotImage);
-  }];
-  
-  [self.priceLB mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.right.bottom.equalTo(superview).offset(-0.5 * SPACE);
+  [self.numRank mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.equalTo(self.spotMark);
+    make.centerX.equalTo(self.spotMark).offset(-0.5 * SPACE);
   }];
 }
 
-- (UIImageView *)startImage {
-  if (!_startImage) {
-    _startImage = [UIImageView new];
-    _startImage.image = UIImageMake(@"pink_gradient");
-    _startImage.contentMode = QMUIImageResizingModeScaleAspectFill;
-    _startImage.layer.cornerRadius = 2.5f;
-    _startImage.layer.masksToBounds = YES;
-    _startImage.clipsToBounds = YES;
+- (UIImageView *)spotMark {
+  if (!_spotMark) {
+    _spotMark = [UIImageView new];
+    _spotMark.image = UIImageMake(@"spot_mark");
   }
-  return _startImage;
+  return _spotMark;
 }
 
-- (UIImageView *)spotImage {
-  if (!_spotImage) {
-    _spotImage = [UIImageView new];
-    _spotImage.contentMode = QMUIImageResizingModeScaleAspectFill;
-    _spotImage.image = UIImageMake(@"navigationbar_background");
-    _spotImage.layer.cornerRadius = 5;
-    _spotImage.layer.borderColor = UIColor.clearColor.CGColor;
-    _spotImage.layer.masksToBounds = YES;
-    _spotImage.clipsToBounds = YES;
+- (UILabel *)spotTitle {
+  if (!_spotTitle) {
+    _spotTitle = [UILabel new];
+    _spotTitle.numberOfLines = 0;
+    _spotTitle.attributedText = [SpotCell generateSpotTitle:@{
+      @"title" : @"九寨沟",
+      @"country" : @"中国",
+      @"city" : @"阿坝"
+    }];
   }
-  return _spotImage;
+  return _spotTitle;
 }
 
-- (QMUILabel *)spotNameLB {
-  if (!_spotNameLB) {
-    _spotNameLB = [QMUILabel new];
-    _spotNameLB.text = @"五马街";
-    _spotNameLB.textColor = UIColor.qd_mainTextColor;
-    _spotNameLB.font = UIFontBoldMake(18);
+- (UIView *)spotImg {
+  if (!_spotImg) {
+    _spotImg = [UIView new];
+    _spotImg.layer.cornerRadius = 10;
+    _spotImg.layer.borderColor = UIColor.clearColor.CGColor;
+    _spotImg.layer.masksToBounds = YES;
+    UIImageView *bigImg = [UIImageView new];
+    bigImg.image = UIImageMake(self.datas[0]);
+    bigImg.contentMode = QMUIImageResizingModeScaleAspectFill;
+    UIImageView *smImg1 = [UIImageView new];
+    smImg1.image = UIImageMake(self.datas[1]);
+    smImg1.contentMode = QMUIImageResizingModeScaleAspectFill;
+    UIImageView *smImg2 = [UIImageView new];
+    smImg2.image = UIImageMake(self.datas[2]);
+    smImg2.contentMode = QMUIImageResizingModeScaleAspectFill;
+    addView(_spotImg, bigImg);
+    addView(_spotImg, smImg1);
+    addView(_spotImg, smImg2);
+    [bigImg mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.top.equalTo(_spotImg);
+      make.width.equalTo(_spotImg).multipliedBy(3.0 / 5);
+      make.bottom.equalTo(_spotImg);
+    }];
+    [smImg1 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(bigImg.mas_right).with.inset(0.5 * SPACE);
+      make.right.top.equalTo(_spotImg);
+      make.height.equalTo(bigImg).multipliedBy(0.5).offset(-0.25 * SPACE);
+    }];
+    [smImg2 mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.right.equalTo(smImg1);
+      make.top.equalTo(smImg1.mas_bottom).with.inset(0.5 * SPACE);
+      make.bottom.lessThanOrEqualTo(bigImg);
+    }];
   }
-  return _spotNameLB;
+  return _spotImg;
 }
 
-- (QMUILabel *)spotTagLB {
-  if (!_spotTagLB) {
-    _spotTagLB = [QMUILabel new];
-    _spotTagLB.text = @"小吃众多";
-    _spotTagLB.textColor = UIColor.qmui_randomColor;
-    _spotTagLB.font = UIFontBoldMake(14);
+- (UIImageView *)favor {
+  if (!_favor) {
+    _favor = [UIImageView new];
+    _favor.image = UIImageMake(@"favor");
   }
-  return _spotTagLB;
+  return _favor;
 }
 
-- (QMUILabel *)remarkLB {
-  if (!_remarkLB) {
-    _remarkLB = [QMUILabel new];
-    _remarkLB.text = @"100条评论";
-    _remarkLB.textColor = UIColor.qd_placeholderColor;
-    _remarkLB.font = UIFontBoldMake(SMALLFONT);
+- (UILabel *)recommond {
+  if (!_recommond) {
+    _recommond = [UILabel new];
+    _recommond.numberOfLines = 0;
+    _recommond.attributedText = [SpotCell generateRecommond:@{
+      @"advice" : @"xxxkfajksldjkalsjdlak"
+    }];
   }
-  return _remarkLB;
+  return _recommond;
 }
 
-- (QMUILabel *)scoreLB {
-  if (!_scoreLB) {
-    _scoreLB = [QMUILabel new];
-    _scoreLB.text = @"5.2分";
-    _scoreLB.textColor = UIColor.qmui_randomColor;
-    _scoreLB.font = UIFontBoldMake(25);
+- (UILabel *)numRank {
+  if (!_numRank) {
+    _numRank = [UILabel new];
+    _numRank.text = @"1";
+    _numRank.textColor = UIColor.qd_backgroundColor;
+    _numRank.font = UIFontBoldMake(18);
   }
-  return _scoreLB;
+  return _numRank;
 }
 
-- (QMUILabel *)locLB {
-  if (!_locLB) {
-    _locLB = [QMUILabel new];
-    _locLB.text = @"xxxxxxxxxxxxxxx";
-    _locLB.textColor = UIColor.qd_placeholderColor;
-    _locLB.font = UIFontBoldMake(SMALLFONT);
-  }
-  return _locLB;
++ (NSAttributedString *)generateRecommond:(NSDictionary *)recDic {
+  NSAttributedString *str =
+  [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.textColor(UIColor.qd_mainTextColor);
+    make.append(@"推荐理由:").font(UIFontBoldMake(14));
+    make.append(recDic[@"advice"]).font(UIFontMake(14));
+  }];
+  return str;
 }
 
-- (QMUILabel *)priceLB {
-  if (!_priceLB) {
-    _priceLB = [QMUILabel new];
-    _priceLB.font = UIFontBoldMake(21);
-    _priceLB.text = @"价格：999";
-    _priceLB.textColor = UIColor.qmui_randomColor;
-  }
-  return _priceLB;
++ (NSAttributedString *)generateSpotTitle:(NSDictionary *)titleDic {
+  NSAttributedString *str =
+  [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.lineSpacing(5);
+    make.append(@"spotname\t").textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(22));
+    make.appendImage(^(id<SJUTImageAttachment> _Nonnull make) {
+      make.image = UIImageMake(@"right-arrow-fill");
+    })
+    .baseLineOffset(-3);
+    make.append(@"\n");
+    make.appendImage(
+                     ^(id<SJUTImageAttachment> _Nonnull make) { make.image = UIImageMake(@"spot_locate"); });
+    make.append(@"country·city").textColor(UIColor.qd_placeholderColor).font(UIFontMake(14));
+    make.regex(@"\\bspotname\\b").replaceWithString(titleDic[@"title"]);
+    make.regex(@"country").replaceWithString(titleDic[@"country"]);
+    make.regex(@"city").replaceWithString(titleDic[@"city"]);
+  }];
+  return str;
 }
 @end

@@ -1,0 +1,54 @@
+[
+  {
+    "title" : "景点",
+    "imageList" : [
+      "pink_gradient",
+      "pink_gradient"
+    ],
+    "hintList" : [
+      "滑雪圣地",
+      "攀爬圣地"
+    ],
+    "labelList" : [
+      "探索历史",
+      "亲近大自然",
+      "城市公园",
+      "近郊周边游"
+    ]
+  },
+  {
+    "title" : "美食",
+    "imageList" : [
+      "pink_gradient",
+      "pink_gradient"
+    ],
+    "hintList" : [
+      "美食林精选",
+      "美食人气"
+    ],
+    "labelList" : [
+      "当地特色餐厅",
+      "夜生活",
+      "好友聚会餐厅",
+      "精选下午茶"
+    ]
+  },
+  {
+    "title" : "小众推荐",
+    "imageList" : [
+      "pink_gradient",
+      "pink_gradient"
+    ],
+    "hintList" : [
+      "玻璃栈道",
+      "创意建筑"
+    ],
+    "labelList" : [
+      "小众景点",
+      "彩色小镇",
+      "海外小众地",
+      "观日出日落",
+      "国内小众地"
+    ]
+  }
+]

@@ -7,9 +7,9 @@
 //
 
 #import "TicketCell.h"
-#import <JQCollectionViewAlignLayout/JQCollectionViewAlignLayout.h>
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import <JQCollectionViewAlignLayout/JQCollectionViewAlignLayout.h>
 #pragma mark - ticket content
 
 @interface TicketContentCell : UICollectionViewCell
@@ -35,11 +35,11 @@
   self.imageview = [UIImageView new];
   //  self.imageview.image       = UIImageMake(@"profile_background");
   self.imageview.backgroundColor = UIColor.blackColor;
-  self.imageview.contentMode     = QMUIImageResizingModeScaleAspectFill;
-  self.title                     = [UILabel new];
-  self.title.textColor           = UIColor.qd_backgroundColor;
-  self.title.font                = UIFontMake(14);
-  self.title.text                = @"xxx";
+  self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
+  self.title = [UILabel new];
+  self.title.textColor = UIColor.qd_backgroundColor;
+  self.title.font = UIFontMake(14);
+  self.title.text = @"xxx";
   
   addView(superview, self.imageview);
   addView(superview, self.title);
@@ -57,7 +57,7 @@
 
 - (UIImageView *)hotImage {
   if (!_hotImage) {
-    _hotImage             = [UIImageView new];
+    _hotImage = [UIImageView new];
     _hotImage.contentMode = QMUIImageResizingModeScaleAspectFill;
     addView(self.contentView, _hotImage);
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -87,15 +87,15 @@
 }
 
 - (void)generateRootView {
-  self.backgroundColor        = UIColor.clearColor;
-  self.topLB                  = [UILabel new];
-  self.topLB.font             = UIFontBoldMake(15);
-  self.topLB.text             = @"111";
-  self.topLB.textAlignment    = NSTextAlignmentCenter;
-  self.bottomLB               = [UILabel new];
-  self.bottomLB.font          = UIFontMake(14);
-  self.bottomLB.text          = @"222";
-  self.bottomLB.textColor     = UIColor.qd_placeholderColor;
+  self.backgroundColor = UIColor.clearColor;
+  self.topLB = [UILabel new];
+  self.topLB.font = UIFontBoldMake(15);
+  self.topLB.text = @"111";
+  self.topLB.textAlignment = NSTextAlignmentCenter;
+  self.bottomLB = [UILabel new];
+  self.bottomLB.font = UIFontMake(14);
+  self.bottomLB.text = @"222";
+  self.bottomLB.textColor = UIColor.qd_placeholderColor;
   self.bottomLB.textAlignment = NSTextAlignmentCenter;
   
   addView(self.contentView, self.topLB);
@@ -115,6 +115,8 @@
 @end
 
 #pragma mark - ticket cell
+#import "LinkageController.h"
+#import "ListController.h"
 #import "TitleCell.h"
 #define TITLECELL @"titlecell"
 #define TICKETCELL @"ticketcell"
@@ -135,6 +137,7 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
 //@property (nonatomic, strong) UILabel *title;
 //@property (nonatomic, strong) QMUIButton *moreBtn;
 @property (nonatomic, strong) UICollectionView *collectionview;
+@property (nonatomic, strong) UIViewController *parentController;
 @end
 
 @implementation TicketCell
@@ -155,10 +158,10 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
 }
 
 - (void)generateRootView {
-  self.backgroundColor        = UIColor.clearColor;
-  UIView *superview           = self.contentView;
-  superview.autoresizingMask  = UIViewAutoresizingFlexibleHeight;
-  superview.mas_key           = @"superview";
+  self.backgroundColor = UIColor.clearColor;
+  UIView *superview = self.contentView;
+  superview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+  superview.mas_key = @"superview";
   self.collectionview.mas_key = @"collection view";
   addView(superview, self.collectionview);
   
@@ -176,32 +179,32 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
   
   self.collectionview.layer.cornerRadius = cellH / 50;
   
-  self.collectionview.layer.shadowOffset  = CGSizeMake(0, 1);
-  self.collectionview.layer.shadowColor   = UIColor.qd_mainTextColor.CGColor;
-  self.collectionview.layer.shadowRadius  = 5;
+  self.collectionview.layer.shadowOffset = CGSizeMake(0, 1);
+  self.collectionview.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
+  self.collectionview.layer.shadowRadius = 5;
   self.collectionview.layer.shadowOpacity = 0.25;
-  self.collectionview.clipsToBounds       = false;
+  self.collectionview.clipsToBounds = false;
   self.collectionview.layer.masksToBounds = false;
 }
 
 - (UICollectionView *)collectionview {
   if (!_collectionview) {
     JQCollectionViewAlignLayout *layout = [[JQCollectionViewAlignLayout alloc] init];
-    layout.itemsHorizontalAlignment     = JQCollectionViewItemsHorizontalAlignmentLeft;
-    layout.itemsVerticalAlignment       = JQCollectionViewItemsVerticalAlignmentCenter;
-    layout.itemsDirection               = JQCollectionViewItemsDirectionLTR;
-    layout.sectionInset                 = UIEdgeInsetsMake(0, 0, 2, 0);
-    layout.minimumLineSpacing           = 2;
-    layout.minimumInteritemSpacing      = 2;
+    layout.itemsHorizontalAlignment = JQCollectionViewItemsHorizontalAlignmentLeft;
+    layout.itemsVerticalAlignment = JQCollectionViewItemsVerticalAlignmentCenter;
+    layout.itemsDirection = JQCollectionViewItemsDirectionLTR;
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 2, 0);
+    layout.minimumLineSpacing = 2;
+    layout.minimumInteritemSpacing = 2;
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionview.scrollEnabled   = false;
+    _collectionview.scrollEnabled = false;
     _collectionview.backgroundColor = UIColor.qd_backgroundColor;
     [_collectionview registerClass:[TicketContentCell class] forCellWithReuseIdentifier:TICKETCELL];
     [_collectionview registerClass:[TextTopBottom class] forCellWithReuseIdentifier:TEXTCELL];
     [_collectionview registerClass:[TitleCell class] forCellWithReuseIdentifier:TITLECELL];
     _collectionview.dataSource = self;
-    _collectionview.delegate   = self;
+    _collectionview.delegate = self;
   }
   return _collectionview;
 }
@@ -266,6 +269,14 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   QMUILogInfo(@"collection view", @"click-(section:%li,row:%li)", indexPath.section, indexPath.row);
+  if (!self.parentController) { self.parentController = [self qmui_viewController]; }
+  UIViewController *con = nil;
+  if (indexPath.section == 0) {
+    con = [LinkageController new];
+  } else {
+    con = [ListController new];
+  }
+  [self.parentController.navigationController pushViewController:con animated:YES];
 }
 
 - (void)reloadData {

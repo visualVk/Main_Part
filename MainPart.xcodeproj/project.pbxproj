@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		5D7FDFD25E38BBD5B43E8277 /* libPods-MainPart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50872913ABC62ADD2630F4E4 /* libPods-MainPart.a */; };
+		A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */; };
+		A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */; };
+		A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C792406C23700FF5CAE /* LeftCell.m */; };
+		A7084C8E2406C23700FF5CAE /* SingularCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C7A2406C23700FF5CAE /* SingularCell.m */; };
+		A7084C8F2406C23700FF5CAE /* EvenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C7B2406C23700FF5CAE /* EvenCell.m */; };
+		A7084C902406C23700FF5CAE /* LinkageFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C7E2406C23700FF5CAE /* LinkageFooter.m */; };
+		A7084C912406C23700FF5CAE /* LinkageTestJson.json in Resources */ = {isa = PBXBuildFile; fileRef = A7084C812406C23700FF5CAE /* LinkageTestJson.json */; };
+		A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A7084C822406C23700FF5CAE /* LinkageListJSON.json */; };
+		A7084C932406C23700FF5CAE /* LinkageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C862406C23700FF5CAE /* LinkageModel.m */; };
+		A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C872406C23700FF5CAE /* LinkageListModel.m */; };
+		A7084C952406C23700FF5CAE /* LinkageMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C892406C23700FF5CAE /* LinkageMenuView.m */; };
+		A7084C982406C27900FF5CAE /* LinkageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C972406C27900FF5CAE /* LinkageController.m */; };
 		A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739F7A2404DAFE00EF7664 /* RoomCell.m */; };
 		A7739F7F2404ECEA00EF7664 /* SearchListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739F7E2404ECEA00EF7664 /* SearchListController.m */; };
 		A7739F8324050A4700EF7664 /* SearchItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7739F8224050A4700EF7664 /* SearchItemCell.m */; };
@@ -113,6 +125,29 @@
 /* Begin PBXFileReference section */
 		50872913ABC62ADD2630F4E4 /* libPods-MainPart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MainPart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D83017C8755E10886CB181A /* Pods-MainPart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainPart.release.xcconfig"; path = "Target Support Files/Pods-MainPart/Pods-MainPart.release.xcconfig"; sourceTree = "<group>"; };
+		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
+		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
+		A7084C742406C23700FF5CAE /* LinkageMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageMenuProtocol.h; sourceTree = "<group>"; };
+		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
+		A7084C772406C23700FF5CAE /* EvenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvenCell.h; sourceTree = "<group>"; };
+		A7084C782406C23700FF5CAE /* LinkageFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageFooter.h; sourceTree = "<group>"; };
+		A7084C792406C23700FF5CAE /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
+		A7084C7A2406C23700FF5CAE /* SingularCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingularCell.m; sourceTree = "<group>"; };
+		A7084C7B2406C23700FF5CAE /* EvenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvenCell.m; sourceTree = "<group>"; };
+		A7084C7C2406C23700FF5CAE /* LinkageTitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageTitleHeader.h; sourceTree = "<group>"; };
+		A7084C7D2406C23700FF5CAE /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
+		A7084C7E2406C23700FF5CAE /* LinkageFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageFooter.m; sourceTree = "<group>"; };
+		A7084C7F2406C23700FF5CAE /* SingularCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularCell.h; sourceTree = "<group>"; };
+		A7084C812406C23700FF5CAE /* LinkageTestJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LinkageTestJson.json; sourceTree = "<group>"; };
+		A7084C822406C23700FF5CAE /* LinkageListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LinkageListJSON.json; sourceTree = "<group>"; };
+		A7084C842406C23700FF5CAE /* LinkageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageListModel.h; sourceTree = "<group>"; };
+		A7084C852406C23700FF5CAE /* LinkageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageModel.h; sourceTree = "<group>"; };
+		A7084C862406C23700FF5CAE /* LinkageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageModel.m; sourceTree = "<group>"; };
+		A7084C872406C23700FF5CAE /* LinkageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageListModel.m; sourceTree = "<group>"; };
+		A7084C892406C23700FF5CAE /* LinkageMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageMenuView.m; sourceTree = "<group>"; };
+		A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageMenuView.h; sourceTree = "<group>"; };
+		A7084C962406C27900FF5CAE /* LinkageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageController.h; sourceTree = "<group>"; };
+		A7084C972406C27900FF5CAE /* LinkageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageController.m; sourceTree = "<group>"; };
 		A7739F792404DAFE00EF7664 /* RoomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCell.h; sourceTree = "<group>"; };
 		A7739F7A2404DAFE00EF7664 /* RoomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCell.m; sourceTree = "<group>"; };
 		A7739F7D2404ECEA00EF7664 /* SearchListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchListController.h; sourceTree = "<group>"; };
@@ -356,6 +391,82 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C702406C23700FF5CAE /* Expand */,
+				A7084C732406C23700FF5CAE /* Protocol */,
+				A7084C752406C23700FF5CAE /* Cell */,
+				A7084C802406C23700FF5CAE /* Json */,
+				A7084C832406C23700FF5CAE /* Model */,
+				A7084C882406C23700FF5CAE /* View */,
+			);
+			path = LinkageMenuVIew;
+			sourceTree = "<group>";
+		};
+		A7084C702406C23700FF5CAE /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */,
+				A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		A7084C732406C23700FF5CAE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C742406C23700FF5CAE /* LinkageMenuProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A7084C752406C23700FF5CAE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */,
+				A7084C772406C23700FF5CAE /* EvenCell.h */,
+				A7084C782406C23700FF5CAE /* LinkageFooter.h */,
+				A7084C792406C23700FF5CAE /* LeftCell.m */,
+				A7084C7A2406C23700FF5CAE /* SingularCell.m */,
+				A7084C7B2406C23700FF5CAE /* EvenCell.m */,
+				A7084C7C2406C23700FF5CAE /* LinkageTitleHeader.h */,
+				A7084C7D2406C23700FF5CAE /* LeftCell.h */,
+				A7084C7E2406C23700FF5CAE /* LinkageFooter.m */,
+				A7084C7F2406C23700FF5CAE /* SingularCell.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A7084C802406C23700FF5CAE /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C812406C23700FF5CAE /* LinkageTestJson.json */,
+				A7084C822406C23700FF5CAE /* LinkageListJSON.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		A7084C832406C23700FF5CAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C842406C23700FF5CAE /* LinkageListModel.h */,
+				A7084C852406C23700FF5CAE /* LinkageModel.h */,
+				A7084C862406C23700FF5CAE /* LinkageModel.m */,
+				A7084C872406C23700FF5CAE /* LinkageListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7084C882406C23700FF5CAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7084C892406C23700FF5CAE /* LinkageMenuView.m */,
+				A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A7739F8024050A2900EF7664 /* SearchListPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +655,8 @@
 				A7C778802402562D003EBCE0 /* trash */,
 				A7739F7D2404ECEA00EF7664 /* SearchListController.h */,
 				A7739F7E2404ECEA00EF7664 /* SearchListController.m */,
+				A7084C962406C27900FF5CAE /* LinkageController.h */,
+				A7084C972406C27900FF5CAE /* LinkageController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -605,21 +718,21 @@
 		A7C778962402562D003EBCE0 /* SpotPage */ = {
 			isa = PBXGroup;
 			children = (
-				A7C778972402562D003EBCE0 /* SpotHeader.h */,
-				A7C778982402562D003EBCE0 /* SpotCell.h */,
-				A7C778992402562D003EBCE0 /* SpotRotationView.h */,
-				A7C7789A2402562D003EBCE0 /* SpotFoldCell.h */,
 				A7C7789B2402562D003EBCE0 /* BannerViewSpot.h */,
+				A7C778AB2402562D003EBCE0 /* BannerViewSpot.m */,
+				A7C778AA2402562D003EBCE0 /* RotationHeaderView.h */,
 				A7C7789C2402562D003EBCE0 /* RotationHeaderView.m */,
 				A7C7789D2402562D003EBCE0 /* RotationImageCell.h */,
+				A7C778A92402562D003EBCE0 /* RotationImageCell.m */,
+				A7C778982402562D003EBCE0 /* SpotCell.h */,
+				A7C778A72402562D003EBCE0 /* SpotCell.m */,
+				A7C7789A2402562D003EBCE0 /* SpotFoldCell.h */,
 				A7C7789E2402562D003EBCE0 /* SpotFoldCell.m */,
+				A7C778972402562D003EBCE0 /* SpotHeader.h */,
+				A7C778A82402562D003EBCE0 /* SpotHeader.m */,
+				A7C778992402562D003EBCE0 /* SpotRotationView.h */,
 				A7C7789F2402562D003EBCE0 /* SpotRotationView.m */,
 				A7C778A02402562D003EBCE0 /* YXFlipCell */,
-				A7C778A72402562D003EBCE0 /* SpotCell.m */,
-				A7C778A82402562D003EBCE0 /* SpotHeader.m */,
-				A7C778A92402562D003EBCE0 /* RotationImageCell.m */,
-				A7C778AA2402562D003EBCE0 /* RotationHeaderView.h */,
-				A7C778AB2402562D003EBCE0 /* BannerViewSpot.m */,
 			);
 			path = SpotPage;
 			sourceTree = "<group>";
@@ -700,6 +813,7 @@
 		A7C778D62402562E003EBCE0 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */,
 				A7739F842405191A00EF7664 /* GHDropMenu */,
 			);
 			path = Vendor;
@@ -938,6 +1052,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7084C912406C23700FF5CAE /* LinkageTestJson.json in Resources */,
+				A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */,
 				A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */,
 				A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */,
 			);
@@ -992,6 +1108,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */,
 				A7739FAE2405191B00EF7664 /* NSString+Size.m in Sources */,
 				A7C7791B2402562E003EBCE0 /* ImageAndLabelCell.m in Sources */,
 				A7C779142402562E003EBCE0 /* SpotHeader.m in Sources */,
@@ -1019,6 +1136,7 @@
 				A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */,
 				A7C779102402562E003EBCE0 /* UIView+snap.m in Sources */,
 				A7C7791D2402562E003EBCE0 /* BannerView.m in Sources */,
+				A7084C902406C23700FF5CAE /* LinkageFooter.m in Sources */,
 				A7C7795324027D10003EBCE0 /* MABusStopAnnotation.m in Sources */,
 				A7739FB62405191B00EF7664 /* GHDropMenuTitleItem.m in Sources */,
 				A7739F7F2404ECEA00EF7664 /* SearchListController.m in Sources */,
@@ -1037,6 +1155,9 @@
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A7C779302402562E003EBCE0 /* RequestUtils.m in Sources */,
 				A7C7791F2402562E003EBCE0 /* SelectionCell.m in Sources */,
+				A7084C8E2406C23700FF5CAE /* SingularCell.m in Sources */,
+				A7084C932406C23700FF5CAE /* LinkageModel.m in Sources */,
+				A7084C982406C27900FF5CAE /* LinkageController.m in Sources */,
 				A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */,
 				A7C7794424025F54003EBCE0 /* MapController.m in Sources */,
 				A7C779372402562E003EBCE0 /* QDCommonUI.m in Sources */,
@@ -1051,6 +1172,7 @@
 				A7C7797524027E17003EBCE0 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				A7C779162402562E003EBCE0 /* BannerViewSpot.m in Sources */,
 				A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */,
+				A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */,
 				A7C7791C2402562E003EBCE0 /* HotHeaderView.m in Sources */,
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
 				A7C779322402562E003EBCE0 /* DictUtils.m in Sources */,
@@ -1061,11 +1183,14 @@
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
 				A7C779042402562E003EBCE0 /* MainController.m in Sources */,
 				A7C779242402562E003EBCE0 /* BannerZoomView.m in Sources */,
+				A7084C8F2406C23700FF5CAE /* EvenCell.m in Sources */,
 				A7739FB42405191B00EF7664 /* GHDropMenuFilterTagItem.m in Sources */,
 				A7C779092402562E003EBCE0 /* ImageCollectionController.m in Sources */,
 				A7C4F0C22403D5BB008E740A /* DetailInfoPartCell.m in Sources */,
+				A7084C952406C23700FF5CAE /* LinkageMenuView.m in Sources */,
 				A7C779222402562E003EBCE0 /* HotCell.m in Sources */,
 				A7C7796024027D49003EBCE0 /* MATraceReplayOverlay.m in Sources */,
+				A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,
 				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
 				A7739FBC2405531600EF7664 /* ReMenuView.m in Sources */,
@@ -1080,6 +1205,7 @@
 				A7C779152402562E003EBCE0 /* RotationImageCell.m in Sources */,
 				A7739FB22405191B00EF7664 /* GHDropMenuWaterFallCell.m in Sources */,
 				A7C779012402562E003EBCE0 /* CollectionIndexView.m in Sources */,
+				A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */,
 				A7739FB12405191B00EF7664 /* GHDropMenuFilterSingleInputItem.m in Sources */,
 				A7739FB82405191B00EF7664 /* GHDropMenuFilterSectionHeader.m in Sources */,
 				A7739FB32405191B00EF7664 /* GHDropMenuFilterTimeChoseItem.m in Sources */,

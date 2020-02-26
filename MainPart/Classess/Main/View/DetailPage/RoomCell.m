@@ -98,7 +98,8 @@
       make.append(@"详情").textColor(UIColor.qd_mainTextColor);
       make.appendImage(^(id<SJUTImageAttachment> _Nonnull make) {
         make.image = UIImageMake(@"right_arrow_small");
-      });
+      })
+      .baseLineOffset(-3);
     }];
     _title.attributedText = str;
   }

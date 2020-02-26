@@ -24,6 +24,7 @@
 QMUITableViewDataSource, QMUISearchControllerDelegate> {
   CGFloat curAlpha;
 }
+@property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
 @property (nonatomic, strong) NSArray *bannerImageList;
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *cellHs;
@@ -48,12 +49,11 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  self.definesPresentationContext = YES;
+  //  self.definesPresentationContext = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -70,17 +70,11 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.mySearchController.hidesNavigationBarDuringPresentation = false;
-  self.navigationItem.leftBarButtonItem = NavLeftItemMake(self.mySearchController.searchBar);
-  self.navigationItem.leftItemsSupplementBackButton = YES;
-  self.definesPresentationContext = NO;
+  //  self.mySearchController.hidesNavigationBarDuringPresentation = false;
+  //  self.navigationItem.leftBarButtonItem = NavLeftItemMake(self.mySearchController.searchBar);
+  //  self.navigationItem.leftItemsSupplementBackButton = YES;
+  //  self.definesPresentationContext = NO;
   //  self.title = @"<##>";
-}
-
-#pragma mark - QMUINavigationController Delegate
-- (UIImage *)navigationBarBackgroundImage {
-  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
-  return UIImageMake(@"navigationbar_background");
 }
 
 #pragma mark - <QMUITableViewDataSource, QMUITableViewDelegate>
@@ -180,32 +174,32 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   if (self.tableView != scrollView) return;
   CGPoint point = scrollView.contentOffset;
-  [self.navigationController.navigationBar.qmui_backgroundView
-   setAlpha:point.y / NavigationContentTop];
+  //  [self.navigationController.navigationBar.qmui_backgroundView
+  //   setAlpha:point.y / NavigationContentTop];
 }
 
-#pragma mark - UISearchBar Delegate
-- (void)searchController:(QMUISearchController *)searchController
-updateResultsForSearchString:(NSString *)searchString {
-  NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:15];
-  [self.mySearchController.tableView reloadData];
-  //  self.collectionview.hidden = YES;
-}
-
-- (void)willDismissSearchController:(QMUISearchController *)searchController {
-  //  self.tableview.hidden = YES;
-  //  self.collectionview.hidden = NO;
-  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:curAlpha];
-}
-
-- (void)willPresentSearchController:(QMUISearchController *)searchController {
-  curAlpha = self.navigationController.navigationBar.qmui_backgroundView.alpha;
-  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
-}
-
-- (void)didPresentSearchController:(QMUISearchController *)searchController {
-  //  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
-}
+//#pragma mark - UISearchBar Delegate
+//- (void)searchController:(QMUISearchController *)searchController
+// updateResultsForSearchString:(NSString *)searchString {
+//  NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:15];
+//  [self.mySearchController.tableView reloadData];
+//  //  self.collectionview.hidden = YES;
+//}
+//
+//- (void)willDismissSearchController:(QMUISearchController *)searchController {
+//  //  self.tableview.hidden = YES;
+//  //  self.collectionview.hidden = NO;
+//  //  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:curAlpha];
+//}
+//
+//- (void)willPresentSearchController:(QMUISearchController *)searchController {
+//  //  curAlpha = self.navigationController.navigationBar.qmui_backgroundView.alpha;
+//  //  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
+//}
+//
+//- (void)didPresentSearchController:(QMUISearchController *)searchController {
+//  //  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:1];
+//}
 
 #pragma mark - GenerateRootViewDelegate
 
@@ -222,6 +216,7 @@ updateResultsForSearchString:(NSString *)searchString {
                             forCellReuseIdentifier:@"cell"];
   self.mySearchController.tableView.estimatedRowHeight = 44;
   self.tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   self.tableView.showsVerticalScrollIndicator = false;
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
@@ -234,6 +229,7 @@ updateResultsForSearchString:(NSString *)searchString {
   banner.datas = self.bannerImageList;
   [banner loadData];
   self.tableView.tableHeaderView = banner;
+  [self navBarAlp];
   addView(self.view, self.tableView);
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.left.right.equalTo(self.view);
@@ -244,5 +240,72 @@ updateResultsForSearchString:(NSString *)searchString {
   //  for (int i = 0; i < 100; i++) {
   //    [self.cellHs addObject:[NSNumber numberWithFloat:[SpotFoldCell cellCloseH]]];
   //  }
+}
+
+#pragma mark - navigation bar alpha
+- (void)navBarAlp {
+  self.navigationAnimator = [[QMUINavigationBarScrollingAnimator alloc] init];
+  self.navigationAnimator.scrollView = self.tableView;
+  self.navigationAnimator.offsetYToStartAnimation = 0;
+  self.navigationAnimator.distanceToStopAnimation = 88;
+  
+  self.navigationAnimator.backgroundImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarBackgroundImage qmui_imageWithAlpha:progress];
+  };
+  self.navigationAnimator.shadowImageBlock =
+  ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [NavBarShadowImage qmui_imageWithAlpha:progress];
+  };
+  /**
+   当背景非蓝色时启用
+   */
+  self.navigationAnimator.tintColorBlock =
+  ^UIColor *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    return [UIColor qmui_colorFromColor:UIColor.qd_backgroundColor
+                                toColor:NavBarTintColor
+                               progress:progress];
+  };
+  self.navigationAnimator.titleViewTintColorBlock = self.navigationAnimator.tintColorBlock;
+  self.navigationAnimator.statusbarStyleBlock =
+  ^UIStatusBarStyle(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    //    return progress < .25 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+    return UIStatusBarStyleLightContent;
+  };
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  if (self.navigationAnimator) {
+    return self.navigationAnimator.statusbarStyleBlock(self.navigationAnimator,
+                                                       self.navigationAnimator.progress);
+  }
+  return [super preferredStatusBarStyle];
+}
+
+#pragma mark - <QMUINavigationControllerAppearanceDelegate>
+
+- (UIImage *)navigationBarBackgroundImage {
+  return self.navigationAnimator.backgroundImageBlock(self.navigationAnimator,
+                                                      self.navigationAnimator.progress);
+}
+
+- (UIImage *)navigationBarShadowImage {
+  return self.navigationAnimator.shadowImageBlock(self.navigationAnimator,
+                                                  self.navigationAnimator.progress);
+}
+
+//- (UIColor *)navigationBarTintColor {
+//  return self.navigationAnimator.tintColorBlock(self.navigationAnimator,
+//                                                self.navigationAnimator.progress);
+//}
+//
+//- (UIColor *)titleViewTintColor {
+//  return [self navigationBarTintColor];
+//}
+
+#pragma mark - <QMUICustomNavigationBarTransitionDelegate>
+//转场效果
+- (NSString *)customNavigationBarTransitionKey {
+  return self.navigationAnimator.progress >= 1 ? nil : @"List";
 }
 @end

@@ -55,4 +55,9 @@ target 'MainPart' do
   pod 'QMUIKit'
   pod 'Masonry'
   pod 'SAMKeychain'
+  pod 'ZZCircleProgress'
+  pod 'LBXScan/LBXNative','~> 2.3'
+  pod 'LBXScan/LBXZXing','~> 2.3'
+  pod 'LBXScan/LBXZBar','~> 2.3'
+  pod 'LBXScan/UI','~> 2.3'
 end

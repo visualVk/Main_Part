@@ -8,6 +8,7 @@
 
 #import "LeftCell.h"
 #import "MarkUtils.h"
+#import <SJAttributesFactory.h>
 
 @interface LeftCell ()
 @end
@@ -32,9 +33,27 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  NSString *text = self.label.text;
   if ([self isSelected]) {
-    self.label.font = UIFontBoldMake(18);
+    //    self.label.font = UIFontBoldMake(18);
+    NSAttributedString *str =
+    [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.font(UIFontBoldMake(18))
+      .textColor(UIColor.qmui_randomColor)
+      .shadow(^(NSShadow *_Nonnull make) {
+        make.shadowOffset = CGSizeMake(1, 1);
+        make.shadowColor = UIColor.qd_mainTextColor;
+        make.shadowBlurRadius = 0.5;
+      });
+      make.append(text).underLine(^(id<SJUTDecoration> _Nonnull make) {
+        make.style = NSUnderlinePatternSolid | NSUnderlineStyleThick;
+        make.color = UIColor.qmui_randomColor;
+      });
+    }];
+    self.label.attributedText = str;
   } else {
+    self.label.attributedText = nil;
+    self.label.text = text;
     self.label.font = UIFontMake(16);
     self.label.qmui_borderWidth = 0;
   }
@@ -50,7 +69,7 @@
     _label = [UILabel new];
     _label.font = UIFontMake(16);
     _label.text = @"默认";
-    //    _label.textAlignment = ;
+    _label.textColor = UIColor.qd_placeholderColor;
   }
   return _label;
 }
@@ -58,12 +77,4 @@
 - (void)setSelectedBackgroundView:(UIView *)selectedBackgroundView {
   [super setSelectedBackgroundView:selectedBackgroundView];
 }
-
-//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-//  if (highlighted) {
-//    self.label.font = UIFontBoldMake(18);
-//  } else {
-//    self.label.font = UIFontMake(16);
-//  }
-//}
 @end

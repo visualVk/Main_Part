@@ -139,13 +139,20 @@ JQCollectionViewAlignLayoutDelegate> {
   return 44;
 }
 
+/// 设置左侧标题
+/// @param tableView <#tableView description#>
+/// @param indexPath <#indexPath description#>
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   LeftCell *cell = [tableView dequeueReusableCellWithIdentifier:LEFTCELL forIndexPath:indexPath];
-  cell.label.text = self.datas[indexPath.row].title;
+    cell.label.text = self.datas[indexPath.row].title;
+//  [cell loadTitle:self.datas[indexPath.row].title];
   return cell;
 }
 
+/// 根据collectionview 的layoutAttribute计算contentOffset
+/// @param tableView <#tableView description#>
+/// @param indexPath <#indexPath description#>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   /// 开始不移动
   if (self.isBegin) {
@@ -195,6 +202,9 @@ JQCollectionViewAlignLayoutDelegate> {
   return self.datas.count;
 }
 
+/// 返回每section内的item数（image.count+label.count）
+/// @param collectionView <#collectionView description#>
+/// @param section <#section description#>
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
   return self.datas[section].imageList.count + self.datas[section].labelList.count;
@@ -205,8 +215,9 @@ JQCollectionViewAlignLayoutDelegate> {
   
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
+  NSInteger curImageTot = self.datas[section].imageList.count;
   LinkageModel *model = self.datas[section];
-  if (row < 2) {
+  if (row < curImageTot) {
     SingularCell *sCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:SINGULARCELL forIndexPath:indexPath];
     /// todo: webimage加载
@@ -216,7 +227,7 @@ JQCollectionViewAlignLayoutDelegate> {
   }
   EvenCell *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:EVENCELL forIndexPath:indexPath];
-  cell.title.text = self.datas[section].labelList[row - 2];
+  cell.title.text = self.datas[section].labelList[row - curImageTot];
   return cell;
 }
 
@@ -224,7 +235,8 @@ JQCollectionViewAlignLayoutDelegate> {
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger row = indexPath.row;
-  if (row < 2) {
+  NSInteger curImageTot = self.datas[indexPath.section].imageList.count;
+  if (row < curImageTot) {
     return CGSizeMake((CGRectGetWidth(self.collectionView.frame) - 30) / 2,
                       (CGRectGetWidth(self.collectionView.frame) - 30) / 2);
   }
@@ -247,10 +259,10 @@ JQCollectionViewAlignLayoutDelegate> {
                                             forIndexPath:indexPath];
   return footer;
 }
-- (void)collectionView:(UICollectionView *)collectionView
-  didEndDisplayingCell:(UICollectionViewCell *)cell
-    forItemAtIndexPath:(NSIndexPath *)indexPath {
-}
+//- (void)collectionView:(UICollectionView *)collectionView
+//  didEndDisplayingCell:(UICollectionViewCell *)cell
+//    forItemAtIndexPath:(NSIndexPath *)indexPath {
+//}
 
 /// 当collection footer即将消失切换对应的tableview cell
 /// @param collectionView <#collectionView description#>

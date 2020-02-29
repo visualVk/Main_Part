@@ -115,9 +115,6 @@ QMUINavigationControllerDelegate> {
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  //  [self.navigationController.navigationBar.qmui_backgroundView setAlpha:0];
-  [self.navigationController.navigationBar.qmui_backgroundView
-   setAlpha:self.tableview.contentOffset.y / NavigationContentTop];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -297,7 +294,7 @@ updateResultsForSearchString:(NSString *)searchString {
 
 #pragma mark - 生成布局
 - (void)generateRootView {
-  [self.navigationController.navigationBar.qmui_backgroundContentView setAlpha:0];
+  //  [self.navigationController.navigationBar.qmui_backgroundContentView setAlpha:0];
   self.mySearchController = [[QMUISearchController alloc] initWithContentsViewController:self];
   self.mySearchController.searchResultsDelegate = self;
   self.mySearchController.launchView = self.searchView;
@@ -397,8 +394,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
                                                         @"flag" : @(false)
                                                       }];
   }
-  [self.navigationController.navigationBar.qmui_backgroundView
-   setAlpha:(point.y) / NavigationBarHeight];
+  //  [self.navigationController.navigationBar.qmui_backgroundView
+  //   setAlpha:(point.y) / NavigationBarHeight];
 }
 
 #pragma mark - QMUINavigationController Delegate
@@ -458,20 +455,20 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
     return [UIColor qmui_colorFromColor:UIColorBlack toColor:NavBarTintColor progress:progress];
   };
   self.navigationAnimator.titleViewTintColorBlock = self.navigationAnimator.tintColorBlock;
-  self.navigationAnimator.statusbarStyleBlock =
-  ^UIStatusBarStyle(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
-    return progress < .25 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
-  };
+  //  self.navigationAnimator.statusbarStyleBlock =
+  //  ^UIStatusBarStyle(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+  //    return progress < .25 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+  //  };
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-  // 需要手动调用 navigationAnimator.statusbarStyleBlock 来告诉系统状态栏的变化
-  if (self.navigationAnimator) {
-    return self.navigationAnimator.statusbarStyleBlock(self.navigationAnimator,
-                                                       self.navigationAnimator.progress);
-  }
-  return [super preferredStatusBarStyle];
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//  // 需要手动调用 navigationAnimator.statusbarStyleBlock 来告诉系统状态栏的变化
+//  if (self.navigationAnimator) {
+//    return self.navigationAnimator.statusbarStyleBlock(self.navigationAnimator,
+//                                                       self.navigationAnimator.progress);
+//  }
+//  return [super preferredStatusBarStyle];
+//}
 
 // 建议配合 QMUINavigationControllerAppearanceDelegate 控制不同界面切换时的 navigationBar
 // 样式，否则需自己在 viewWillAppear:、viewWillDisappear: 里控制

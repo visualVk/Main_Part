@@ -41,6 +41,16 @@ PODS:
   - JHChainableAnimations (3.0.1)
   - JQCollectionViewAlignLayout (0.1.5)
   - JTCalendar (2.2.5)
+  - LBXScan/LBXNative (2.3):
+    - LBXScan/Types (~> 2.2)
+  - LBXScan/LBXZBar (2.3):
+    - LBXScan/Types (~> 2.2)
+    - ZBarSDK (~> 1.3.1)
+  - LBXScan/LBXZXing (2.3):
+    - LBXScan/Types (~> 2.2)
+  - LBXScan/Types (2.3)
+  - LBXScan/UI (2.3):
+    - LBXScan/Types (~> 2.2)
   - Masonry (1.1.0)
   - MJExtension (3.2.1)
   - MJRefresh (3.3.1)
@@ -351,6 +361,8 @@ PODS:
   - WMDragView (1.0.1)
   - WMZBanner (1.1.0):
     - SDWebImage
+  - ZBarSDK (1.3.1)
+  - ZZCircleProgress (0.3.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -365,6 +377,10 @@ DEPENDENCIES:
   - JHChainableAnimations (~> 3.0.1)
   - JQCollectionViewAlignLayout
   - JTCalendar (~> 2.0)
+  - LBXScan/LBXNative (~> 2.3)
+  - LBXScan/LBXZBar (~> 2.3)
+  - LBXScan/LBXZXing (~> 2.3)
+  - LBXScan/UI (~> 2.3)
   - Masonry
   - MJExtension
   - MJRefresh
@@ -378,6 +394,7 @@ DEPENDENCIES:
   - TYCyclePagerView
   - WMDragView
   - WMZBanner
+  - ZZCircleProgress
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -393,6 +410,7 @@ SPEC REPOS:
     - JHChainableAnimations
     - JQCollectionViewAlignLayout
     - JTCalendar
+    - LBXScan
     - Masonry
     - MJExtension
     - MJRefresh
@@ -406,6 +424,8 @@ SPEC REPOS:
     - TYCyclePagerView
     - WMDragView
     - WMZBanner
+    - ZBarSDK
+    - ZZCircleProgress
 
 EXTERNAL SOURCES:
   BTTransition:
@@ -425,6 +445,7 @@ SPEC CHECKSUMS:
   JHChainableAnimations: 0237489ed063f0ec5b351f5c7bb26c1891517074
   JQCollectionViewAlignLayout: d44142c09e6ba96cc874ac5014ff64accb8995ce
   JTCalendar: 4056fd48735e1148b487acad35d72faea2387b25
+  LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
@@ -438,7 +459,9 @@ SPEC CHECKSUMS:
   TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
   WMDragView: 18f2c5d18c350ea4b0ac1cc64066abfe5caea443
   WMZBanner: fb8f5905097d76d54bf780087b3f131071bfe773
+  ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
+  ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 78d72e6c38967bb8194b75f6473fc06355c0d73c
+PODFILE CHECKSUM: 1a518917ec67c9fd62b1931eab762f40f8b14315
 
 COCOAPODS: 1.8.4

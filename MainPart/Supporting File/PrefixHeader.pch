@@ -17,6 +17,10 @@
 #define TITLEFONTSIZE 16
 #define TITLEPLACE 15
 #define TITLELITE 14
+#define LBXScan_Define_Native
+#define LBXScan_Define_ZXing
+#define LBXScan_Define_ZBar
+#define LBXScan_Define_UI
 #import <JHChainableAnimations/JHChainableAnimations.h>
 #import "ImageUtils.h"
 #import "GenerateEntityDelegate.h"
@@ -27,7 +31,7 @@
 #import "RequestUtils.h"
 #import <QMUIKit/QMUIKit.h>
 #import <SAMKeychain/SAMKeychain.h>
-//#import <ArcSoftFaceEngine/ArcSoftFaceEngine.h>
+#import <ArcSoftFaceEngine/ArcSoftFaceEngine.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <Masonry.h>
 #import "QDCommonUI.h"

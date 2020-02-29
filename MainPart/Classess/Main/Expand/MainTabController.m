@@ -11,6 +11,7 @@
 #import "DetailController.h"
 #import "ListController.h"
 #import "MainController.h"
+#import "MineController.h"
 #import "RecommondController.h"
 #import "SearchListController.h"
 
@@ -68,16 +69,24 @@
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
                                                 tag:3];
   
-  DetailController *detail = [DetailController new];
+  //  DetailController *detail = [DetailController new];
+  //  QMUINavigationController *nav5 =
+  //  [[QMUINavigationController alloc] initWithRootViewController:detail];
+  //  detail.hidesBottomBarWhenPushed = false;
+  //  nav5.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页"
+  //                                              image:UIImageMake(@"icon_tabbar_uikit")
+  //                                      selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
+  //                                                tag:4];
+  MineController *mine = [MineController new];
   QMUINavigationController *nav5 =
-  [[QMUINavigationController alloc] initWithRootViewController:detail];
-  detail.hidesBottomBarWhenPushed = false;
-  nav5.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页"
+  [[QMUINavigationController alloc] initWithRootViewController:mine];
+  mine.hidesBottomBarWhenPushed = false;
+  nav5.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我的"
                                               image:UIImageMake(@"icon_tabbar_uikit")
                                       selectedImage:UIImageMake(@"icon_tabbar_uikit_selected")
                                                 tag:4];
   self.viewControllers = @[ nav1, nav2, nav3, nav4, nav5 ];
-  self.selectedIndex = 1;
+  self.selectedIndex = 4;
 }
 
 - (QMUINavigationController *)generateRootNavWithControllerName:(NSString *)name

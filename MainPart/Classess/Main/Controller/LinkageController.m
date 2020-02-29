@@ -82,4 +82,20 @@
   }
   return _linkageMenu;
 }
+
+#pragma mark - <QMUINavigationControllerAppearanceDelegate>
+
+- (UIImage *)navigationBarBackgroundImage {
+  return NavBarBackgroundImage;
+}
+
+- (UIImage *)navigationBarShadowImage {
+  return NavBarShadowImage;
+}
+
+#pragma mark - <QMUICustomNavigationBarTransitionDelegate>
+//转场效果
+- (NSString *)customNavigationBarTransitionKey {
+  return @"LinkageController";
+}
 @end

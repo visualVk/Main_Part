@@ -1,0 +1,20 @@
+{
+  "order" : [
+    {
+      "image" : "order",
+      "title" : "全部订单"
+    },
+    {
+      "image" : "non_payment",
+      "title" : "待付款"
+    },
+    {
+      "image" : "future",
+      "title" : "为出行"
+    },
+    {
+      "image" : "remark",
+      "title" : "待点评"
+    }
+  ]
+}

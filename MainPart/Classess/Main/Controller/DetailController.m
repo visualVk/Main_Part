@@ -34,7 +34,7 @@
 #define ITEMCELLHEIGHT DEVICE_HEIGHT / 8 + 10
 #define BannerHeight DEVICE_HEIGHT / 3
 #define REMARKSCOREHEIGHT DEVICE_HEIGHT / 6
-#define COLLECTIONHEIGHT DEVICE_HEIGHT * 5 / 6
+#define COLLECTIONHEIGHT DEVICE_HEIGHT * 4 / 6
 
 @interface DetailController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource, SDCycleScrollViewDelegate,
@@ -43,6 +43,8 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   BOOL _didScolled;
 }
 @property (nonatomic, strong) HMSegmentedControl *segControl;
+@property (nonatomic, strong) UIView *presentView;
+@property(nonatomic, strong) UIView *presentBar;
 @property (nonatomic, strong) NSArray *imageList;
 @property (nonatomic, strong) NSArray *roomList;
 @property (nonatomic, strong) NSMutableDictionary *openDic;
@@ -284,7 +286,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 didEndDisplayingCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
-
+#pragma mark - QMUITableView DidSelectRowIndexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
@@ -307,21 +309,22 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
       [tableView endUpdates];
     }];
   }
-  if (section > 0 && section < self.roomList.count) {
+  if (section > 0 && section <= self.roomList.count) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QMUIModalPresentationViewController *modalViewController =
     [[QMUIModalPresentationViewController alloc] init];
     modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
-    modalViewController.contentView = self.collectionview;
+    //    modalViewController.contentView = self.collectionview;
+    modalViewController.contentView = self.presentView;
     modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     __weak __typeof(self) weakSelf = self;
     modalViewController.layoutBlock =
     ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
-      weakSelf.collectionview.qmui_frameApplyTransform = CGRectSetXY(
-                                                                     weakSelf.collectionview.frame,
-                                                                     CGFloatGetCenter(CGRectGetWidth(containerBounds),
-                                                                                      CGRectGetWidth(weakSelf.collectionview.frame)),
-                                                                     CGRectGetHeight(containerBounds) - CGRectGetHeight(weakSelf.collectionview.bounds));
+      weakSelf.presentView.qmui_frameApplyTransform = CGRectSetXY(
+                                                                  weakSelf.presentView.frame,
+                                                                  CGFloatGetCenter(CGRectGetWidth(containerBounds),
+                                                                                   CGRectGetWidth(weakSelf.presentView.frame)),
+                                                                  CGRectGetHeight(containerBounds) - CGRectGetHeight(weakSelf.presentView.bounds));
     };
     [modalViewController showWithAnimated:YES completion:^(BOOL finished){}];
   }
@@ -493,7 +496,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (UICollectionView *)collectionview {
   if (!_collectionview) {
     JQCollectionViewAlignLayout *layout = [[JQCollectionViewAlignLayout alloc] init];
-    layout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 5, 0);
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, COLLECTIONHEIGHT)
                        collectionViewLayout:layout];
@@ -532,6 +535,27 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _tableView.tableHeaderView = self.banner;
   }
   return _tableView;
+}
+
+- (UIView *)presentView {
+  if (!_presentView) {
+    _presentView = [UIView new];
+    UIView *view = [UIView new];
+    view.backgroundColor = UIColor.qmui_randomColor;
+    addView(_presentView, self.collectionview);
+    addView(_presentView, view);
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(self.collectionview.mas_bottom);
+      make.left.right.equalTo(_presentView);
+      make.height.mas_equalTo(55);
+    }];
+    
+    [_presentView mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.right.top.equalTo(self.collectionview);
+      make.bottom.equalTo(view);
+    }];
+  }
+  return _presentView;
 }
 
 #pragma mark - navigation bar alpha

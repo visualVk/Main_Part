@@ -30,6 +30,7 @@ target 'MainPart' do
   # pod 'QMUIKit',:modular_headers => true
   # pod 'Masonry',:modular_headers => true
   # pod 'SAMKeychain',:modular_headers => true
+  pod 'DRCellSlideGestureRecognizer'
   pod 'DOPDropDownMenu-Enhanced', '~> 1.0.0'
   pod 'SJAttributesFactory'
   pod 'BTTransition', :path => './'
@@ -60,4 +61,6 @@ target 'MainPart' do
   pod 'LBXScan/LBXZXing','~> 2.3'
   pod 'LBXScan/LBXZBar','~> 2.3'
   pod 'LBXScan/UI','~> 2.3'
+  pod 'CSXMarkView'
+  pod 'AAChartKit', :git => 'https://github.com/AAChartModel/AAChartKit.git'
 end

@@ -27,14 +27,18 @@
 }
 
 - (void)generateRootView {
-  UIView *superview          = self.contentView;
-  self.imageview             = [UIImageView new];
-  self.imageview.image       = UIImageMake(@"icon_grid_toast");
-  self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
-  self.label                 = [UILabel new];
-  self.label.font            = UIFontBoldMake(16);
-  self.label.text            = @"all";
-  self.label.textColor       = UIColor.qmui_randomColor;
+  UIView *superview = self.contentView;
+  if (!self.imageview) {
+    self.imageview = [UIImageView new];
+    self.imageview.image = UIImageMake(@"icon_grid_toast");
+    self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
+  }
+  if (!self.label) {
+    self.label = [UILabel new];
+    self.label.font = UIFontBoldMake(16);
+    self.label.text = @"all";
+    self.label.textColor = UIColor.qmui_randomColor;
+  }
   
   addView(self.contentView, self.imageview);
   addView(self.contentView, self.label);

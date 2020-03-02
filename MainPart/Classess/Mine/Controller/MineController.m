@@ -168,20 +168,26 @@ QMUITableViewDataSource> {
 
 #pragma mark - QMUITableViewDelegate,QMUITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 5;
+  return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  if (section == 2) { return 3; }
   return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
+  NSInteger row = indexPath.row;
   if (section == 0) return ORDERCELLHEIGHT;
   if (section == 1) return TOOLCELLHEIGHT;
-  if (section == 2) { return STATUSHEIGHT; }
-  if (section == 3) { return STATUSHEIGHT; }
-  if (section == 4) { return self.powerList.count / 2 * ORDERCELLHEIGHT; }
+  if (section == 2) {
+    if (row == 0) { return STATUSHEIGHT; }
+    if (row == 1) return STATUSHEIGHT;
+    if (row == 2) return self.powerList.count / 2 * ORDERCELLHEIGHT;
+  }
+  //  if (section == 3) { return STATUSHEIGHT; }
+  //  if (section == 4) { return self.powerList.count / 2 * ORDERCELLHEIGHT; }
   return 44;
 }
 
@@ -199,22 +205,36 @@ QMUITableViewDataSource> {
     return tCell;
   }
   if (section == 2) {
-    ProfileStatusCell *psCell =
-    [tableView dequeueReusableCellWithIdentifier:STATUESCELL forIndexPath:indexPath];
-    return psCell;
+    if (row == 0) {
+      ProfileStatusCell *psCell =
+      [tableView dequeueReusableCellWithIdentifier:STATUESCELL forIndexPath:indexPath];
+      return psCell;
+    }
+    if (row == 1) {
+      MineActivityBannerCell *mabCell =
+      [tableView dequeueReusableCellWithIdentifier:MINEACTIVITYCELL forIndexPath:indexPath];
+      return mabCell;
+    }
+    if (row == 2) {
+      PowerCell *pCell =
+      [tableView dequeueReusableCellWithIdentifier:POWERCELL forIndexPath:indexPath];
+      pCell.datas = self.powerList;
+      [pCell.powerView reloadData];
+      return pCell;
+    }
   }
-  if (section == 3) {
-    MineActivityBannerCell *mabCell =
-    [tableView dequeueReusableCellWithIdentifier:MINEACTIVITYCELL forIndexPath:indexPath];
-    return mabCell;
-  }
-  if (section == 4) {
-    PowerCell *pCell =
-    [tableView dequeueReusableCellWithIdentifier:POWERCELL forIndexPath:indexPath];
-    pCell.datas = self.powerList;
-    [pCell.powerView reloadData];
-    return pCell;
-  }
+  //  if (section == 3) {
+  //    MineActivityBannerCell *mabCell =
+  //    [tableView dequeueReusableCellWithIdentifier:MINEACTIVITYCELL forIndexPath:indexPath];
+  //    return mabCell;
+  //  }
+  //  if (section == 4) {
+  //    PowerCell *pCell =
+  //    [tableView dequeueReusableCellWithIdentifier:POWERCELL forIndexPath:indexPath];
+  //    pCell.datas = self.powerList;
+  //    [pCell.powerView reloadData];
+  //    return pCell;
+  //  }
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
   if (!cell) {

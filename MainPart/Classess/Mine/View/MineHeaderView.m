@@ -7,7 +7,11 @@
 //
 
 #import "MineHeaderView.h"
+#import "DiscountController.h"
+#import "FavorController.h"
+#import "HistoryController.h"
 #import "MarkUtils.h"
+#import "MileageController.h"
 #import "NSObject+BlockSEL.h"
 #import <SJAttributesFactory.h>
 const NSInteger TAGBEGIN = 1000;
@@ -16,6 +20,7 @@ const NSInteger TAGBEGIN = 1000;
 @property (nonatomic, strong) UILabel *name;
 @property (nonatomic, strong) QMUIFloatLayoutView *tagFlowView;
 @property (nonatomic, strong) QMUIGridView *gridView;
+@property (nonatomic, strong) QMUICommonViewController *parentController;
 @end
 
 @implementation MineHeaderView
@@ -26,11 +31,11 @@ const NSInteger TAGBEGIN = 1000;
       @{ @"number" : [NSNumber numberWithInt:1],
          @"title" : @"我的收藏" },
       @{ @"number" : [NSNumber numberWithInt:2],
-         @"title" : @"我的收藏" },
+         @"title" : @"浏览历史" },
       @{ @"number" : [NSNumber numberWithInt:3],
-         @"title" : @"我的收藏" },
+         @"title" : @"旅行记录" },
       @{ @"number" : [NSNumber numberWithInt:4],
-         @"title" : @"我的收藏" }
+         @"title" : @"优惠券" }
     ];
     //    self.backgroundColor = UIColor.systemBlueColor;
     [self generateRootView];
@@ -99,6 +104,15 @@ const NSInteger TAGBEGIN = 1000;
 
 - (void)gridClick:(UIGestureRecognizer *)gesture {
   UILabel *label = gesture.qmui_targetView;
+  UIViewController *con = nil;
+  if (!self.parentController) { self.parentController = [self qmui_viewController]; }
+  if ([label.text containsString:@"我的收藏"]) { con = [FavorController new]; }
+  if ([label.text containsString:@"浏览历史"]) { con = [HistoryController new]; }
+  if ([label.text containsString:@"优惠券"]) { con = [DiscountController new]; }
+  if ([label.text containsString:@"旅行记录"]) { con = [MileageController new]; }
+  [self.parentController.navigationController qmui_pushViewController:con
+                                                             animated:YES
+                                                           completion:nil];
   QMUILogInfo(@"mine header view", @"grid:%@", label.text);
 }
 

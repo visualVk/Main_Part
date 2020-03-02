@@ -9,6 +9,9 @@
 #import "FavorController.h"
 #import "GHDropMenu.h"
 #import "GHDropMenuModel.h"
+#import "MarkUtils.h"
+#import "MineFavorCell.h"
+#define FAVORCELL @"favorcell"
 #define CELLHEIGHT DEVICE_HEIGHT / 8
 @interface FavorController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource, GHDropMenuDelegate>
@@ -31,6 +34,7 @@ QMUITableViewDataSource, GHDropMenuDelegate>
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
+  [self generateRootView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,14 +62,27 @@ QMUITableViewDataSource, GHDropMenuDelegate>
   self.title = @"我的收藏";
 }
 
+- (void)dealloc {
+  [self.dropMenu closeMenu];
+}
+
 #pragma mark - GenerateEntityDelegate
 - (void)generateRootView {
+  addView(self.view, self.tableView);
+  addView(self.view, self.dropMenu);
+  
+  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.dropMenu.mas_bottom);
+    make.left.right.equalTo(self.view);
+    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+  }];
 }
 
 #pragma mark - Lazy Init
 - (QMUITableView *)tableView {
   if (!_tableView) {
     _tableView = [QMUITableView new];
+    [_tableView registerClass:MineFavorCell.class forCellReuseIdentifier:FAVORCELL];
     _tableView.delegate = self;
     _tableView.dataSource = self;
   }
@@ -106,8 +123,12 @@ QMUITableViewDataSource, GHDropMenuDelegate>
   return CELLHEIGHT;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 44;
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//  return 22;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+  return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -116,13 +137,16 @@ QMUITableViewDataSource, GHDropMenuDelegate>
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  static NSString *identifier = @"cell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-  if (!cell) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                  reuseIdentifier:identifier];
-  }
-  return cell;
+  MineFavorCell *hotelCell =
+  [tableView dequeueReusableCellWithIdentifier:FAVORCELL forIndexPath:indexPath];
+  return hotelCell;
+  //  static NSString *identifier = @"cell";
+  //  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+  //  if (!cell) {
+  //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+  //                                  reuseIdentifier:identifier];
+  //  }
+  //  return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

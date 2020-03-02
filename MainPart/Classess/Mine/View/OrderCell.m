@@ -8,12 +8,15 @@
 
 #import "OrderCell.h"
 #import "MarkUtils.h"
+#import "NSDictionary+LoadJson.h"
 #import "NSObject+BlockSEL.h"
+#import "OrderController.h"
 #import "SimpleImageTitleView.h"
 #import <SJAttributesFactory.h>
-
+const NSInteger ORDERINDEX = 30000;
 @interface OrderCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) QMUIGridView *orderGridView;
+@property (nonatomic, strong) UIViewController *parentController;
 @end
 
 @implementation OrderCell
@@ -21,16 +24,17 @@
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
-  self.datas = @[
-    @{ @"image" : @"check_selected",
-       @"title" : @"全部订单" },
-    @{ @"image" : @"check_selected",
-       @"title" : @"未付款" },
-    @{ @"image" : @"check_selected",
-       @"title" : @"爆炸" },
-    @{ @"image" : @"check_selected",
-       @"title" : @"就是艺术" }
-  ];
+  //  self.datas = @[
+  //    @{ @"image" : @"check_selected",
+  //       @"title" : @"全部订单" },
+  //    @{ @"image" : @"check_selected",
+  //       @"title" : @"未付款" },
+  //    @{ @"image" : @"check_selected",
+  //       @"title" : @"爆炸" },
+  //    @{ @"image" : @"check_selected",
+  //       @"title" : @"就是艺术" }
+  //  ];
+  self.datas = [NSDictionary readLocalFileWithName:@"OrderModelListJSON"][@"order"];
   [self generateRootView];
 }
 
@@ -66,6 +70,7 @@
     SimpleImageTitleView *view = nil;
     for (int i = 0; i < 4; i++) {
       view = [OrderCell generateOrderGird:self.datas[i]];
+      view.tag = ORDERINDEX + i;
       [self addTap:view];
       [_orderGridView addSubview:view];
     }
@@ -81,6 +86,25 @@
 
 - (void)gridClick:(UITapGestureRecognizer *)gesture {
   SimpleImageTitleView *view = gesture.qmui_targetView;
+  if (!self.parentController) { self.parentController = [self qmui_viewController]; }
+  UIViewController *desCon = nil;
+  switch (view.tag - ORDERINDEX) {
+    case 0:
+      desCon = [[OrderController alloc] initWithOrderType:AllOrder];
+      break;
+    case 1:
+      desCon = [[OrderController alloc] initWithOrderType:NonPaymentOrder];
+      break;
+    case 2:
+      desCon = [[OrderController alloc] initWithOrderType:FutureOrder];
+      break;
+    case 3:
+      desCon = [[OrderController alloc] initWithOrderType:RemarkOrder];
+      break;
+    default:
+      break;
+  }
+  [self.parentController.navigationController pushViewController:desCon animated:YES];
   QMUILogInfo(@"order cell", @"click:%@", view.title.text);
 }
 

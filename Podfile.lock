@@ -1,4 +1,5 @@
 PODS:
+  - AAChartKit (4.0.0)
   - AFNetworking (3.2.1):
     - AFNetworking/NSURLSession (= 3.2.1)
     - AFNetworking/Reachability (= 3.2.1)
@@ -34,6 +35,7 @@ PODS:
   - BRPickerView/StringPickerView (2.5.5):
     - BRPickerView/Base
   - BTTransition (0.1.2)
+  - CSXMarkView (0.0.7)
   - DDCardView (1.0.1):
     - SDWebImage
   - DOPDropDownMenu-Enhanced (1.0.0)
@@ -365,12 +367,14 @@ PODS:
   - ZZCircleProgress (0.3.1)
 
 DEPENDENCIES:
+  - AAChartKit (from `https://github.com/AAChartModel/AAChartKit.git`)
   - AFNetworking (~> 3.0)
   - AMap3DMap
   - AMapLocation
   - AMapSearch
   - BRPickerView
   - BTTransition (from `./`)
+  - CSXMarkView
   - DDCardView
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
   - HMSegmentedControl
@@ -404,6 +408,7 @@ SPEC REPOS:
     - AMapLocation
     - AMapSearch
     - BRPickerView
+    - CSXMarkView
     - DDCardView
     - DOPDropDownMenu-Enhanced
     - HMSegmentedControl
@@ -428,10 +433,18 @@ SPEC REPOS:
     - ZZCircleProgress
 
 EXTERNAL SOURCES:
+  AAChartKit:
+    :git: https://github.com/AAChartModel/AAChartKit.git
   BTTransition:
     :path: "./"
 
+CHECKOUT OPTIONS:
+  AAChartKit:
+    :commit: 107f3251b1628262b77fae066aec5ea6c0bda06f
+    :git: https://github.com/AAChartModel/AAChartKit.git
+
 SPEC CHECKSUMS:
+  AAChartKit: a62caf524117fcf19e7c8b4f10acbf58dcb08359
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AMap3DMap: be13191194c9aeb29a67d9d3e9a797588fb329aa
   AMapFoundation: 672dc3a4759cb733f447c1e1b020f7ba2729f4ab
@@ -439,6 +452,7 @@ SPEC CHECKSUMS:
   AMapSearch: 6bd6d361c5eb00110e0bffa4acf88b7bb9f7e059
   BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
   BTTransition: 1800692555cca4a98b7d3c1956d73a7a07539376
+  CSXMarkView: be699e407253299738b88bfc180d16aefd8bb685
   DDCardView: 21ada5efeac292fdfd3812fa7f82625e0e85aefa
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
@@ -462,6 +476,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 1a518917ec67c9fd62b1931eab762f40f8b14315
+PODFILE CHECKSUM: 0c98166245d11c94adee2ad4e0227c8926b80ecd
 
 COCOAPODS: 1.8.4

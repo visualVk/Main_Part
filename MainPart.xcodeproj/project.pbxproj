@@ -49,6 +49,33 @@
 		A7084C982406C27900FF5CAE /* LinkageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C972406C27900FF5CAE /* LinkageController.m */; };
 		A738B08A240A1B6800705AF2 /* FavorController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B089240A1B6800705AF2 /* FavorController.m */; };
 		A738B08D240A1E0200705AF2 /* MineFavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B08C240A1E0200705AF2 /* MineFavorCell.m */; };
+		A738B090240A2D6700705AF2 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B08F240A2D6700705AF2 /* HistoryController.m */; };
+		A738B097240A2DAC00705AF2 /* MineHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B096240A2DAC00705AF2 /* MineHistoryCell.m */; };
+		A738B09A240A3CC900705AF2 /* DiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B099240A3CC900705AF2 /* DiscountController.m */; };
+		A738B09E240A3E8200705AF2 /* MineDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B09D240A3E8200705AF2 /* MineDiscountCell.m */; };
+		A738B0A1240A63AB00705AF2 /* MileageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B0A0240A63AB00705AF2 /* MileageController.m */; };
+		A738B0A5240A653C00705AF2 /* MineMeliedgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B0A4240A653C00705AF2 /* MineMeliedgeCell.m */; };
+		A738B282240A782400705AF2 /* MineOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B281240A782400705AF2 /* MineOutCell.m */; };
+		A738B286240A932300705AF2 /* ChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B285240A932300705AF2 /* ChartCell.m */; };
+		A73D6557240B645800F94792 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6554240B645800F94792 /* Tool.m */; };
+		A73D6558240B645800F94792 /* ToolList.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6556240B645800F94792 /* ToolList.m */; };
+		A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A73D655A240B658E00F94792 /* MineToolModelJSON.json */; };
+		A73D655F240B6B2400F94792 /* IDCardInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D655E240B6B2400F94792 /* IDCardInfoCell.m */; };
+		A73D6562240B705D00F94792 /* MineInfoButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6561240B705D00F94792 /* MineInfoButtonCell.m */; };
+		A73D6565240B71BD00F94792 /* MineInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6564240B71BD00F94792 /* MineInfoController.m */; };
+		A73D656B240B7E2100F94792 /* Info.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6567240B7E2000F94792 /* Info.m */; };
+		A73D656C240B7E2100F94792 /* InfoList.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6568240B7E2000F94792 /* InfoList.m */; };
+		A73D656D240B7E2100F94792 /* ProfileInfoListModelJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A73D6569240B7E2000F94792 /* ProfileInfoListModelJSON.json */; };
+		A73D6570240B877400F94792 /* EditInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D656F240B877400F94792 /* EditInfoCell.m */; };
+		A73D6573240B8AD500F94792 /* EditPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6572240B8AD500F94792 /* EditPickerCell.m */; };
+		A73D6576240B8F5A00F94792 /* MineInfoEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6575240B8F5A00F94792 /* MineInfoEditController.m */; };
+		A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6578240B98CA00F94792 /* VIPQRCodeController.m */; };
+		A73D657D240BAE0600F94792 /* MineTouristHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D657C240BAE0600F94792 /* MineTouristHeaderView.m */; };
+		A73D6580240BB6CE00F94792 /* MineTouristController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D657F240BB6CE00F94792 /* MineTouristController.m */; };
+		A73D6583240BDEC000F94792 /* RepertoireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6582240BDEC000F94792 /* RepertoireCell.m */; };
+		A73D6589240BE60E00F94792 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6584240BE60D00F94792 /* Log.m */; };
+		A73D658A240BE60E00F94792 /* LogList.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6585240BE60E00F94792 /* LogList.m */; };
+		A73D658B240BE60E00F94792 /* LogModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A73D6586240BE60E00F94792 /* LogModelListJSON.json */; };
 		A772A98A240785CD00B8FC52 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A989240785CD00B8FC52 /* MineController.m */; };
 		A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A98C2407877C00B8FC52 /* MineHeaderView.m */; };
 		A772A9932407A99700B8FC52 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A9922407A99700B8FC52 /* OrderCell.m */; };
@@ -161,6 +188,10 @@
 		A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */; };
 		A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */; };
 		A7C7797924027E17003EBCE0 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797324027E16003EBCE0 /* UIView+Toast.m */; };
+		A7FA6D8F240C95E3003982DA /* OrderModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A7FA6D8B240C95E2003982DA /* OrderModelListJSON.json */; };
+		A7FA6D94240C97E6003982DA /* OrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D93240C97E6003982DA /* OrderController.m */; };
+		A7FA6D98240C9843003982DA /* MineOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D97240C9843003982DA /* MineOrderCell.m */; };
+		A7FA6D9B240CD13E003982DA /* DetailPresentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -256,6 +287,57 @@
 		A738B089240A1B6800705AF2 /* FavorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorController.m; sourceTree = "<group>"; };
 		A738B08B240A1E0200705AF2 /* MineFavorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFavorCell.h; sourceTree = "<group>"; };
 		A738B08C240A1E0200705AF2 /* MineFavorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFavorCell.m; sourceTree = "<group>"; };
+		A738B08E240A2D6700705AF2 /* HistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
+		A738B08F240A2D6700705AF2 /* HistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
+		A738B095240A2DAC00705AF2 /* MineHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHistoryCell.h; sourceTree = "<group>"; };
+		A738B096240A2DAC00705AF2 /* MineHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHistoryCell.m; sourceTree = "<group>"; };
+		A738B098240A3CC900705AF2 /* DiscountController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountController.h; sourceTree = "<group>"; };
+		A738B099240A3CC900705AF2 /* DiscountController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountController.m; sourceTree = "<group>"; };
+		A738B09C240A3E8200705AF2 /* MineDiscountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineDiscountCell.h; sourceTree = "<group>"; };
+		A738B09D240A3E8200705AF2 /* MineDiscountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineDiscountCell.m; sourceTree = "<group>"; };
+		A738B09F240A63AB00705AF2 /* MileageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MileageController.h; sourceTree = "<group>"; };
+		A738B0A0240A63AB00705AF2 /* MileageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MileageController.m; sourceTree = "<group>"; };
+		A738B0A3240A653C00705AF2 /* MineMeliedgeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMeliedgeCell.h; sourceTree = "<group>"; };
+		A738B0A4240A653C00705AF2 /* MineMeliedgeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMeliedgeCell.m; sourceTree = "<group>"; };
+		A738B280240A782400705AF2 /* MineOutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineOutCell.h; sourceTree = "<group>"; };
+		A738B281240A782400705AF2 /* MineOutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineOutCell.m; sourceTree = "<group>"; };
+		A738B284240A932300705AF2 /* ChartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartCell.h; sourceTree = "<group>"; };
+		A738B285240A932300705AF2 /* ChartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartCell.m; sourceTree = "<group>"; };
+		A73D6553240B645800F94792 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		A73D6554240B645800F94792 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		A73D6555240B645800F94792 /* ToolList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolList.h; sourceTree = "<group>"; };
+		A73D6556240B645800F94792 /* ToolList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolList.m; sourceTree = "<group>"; };
+		A73D655A240B658E00F94792 /* MineToolModelJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MineToolModelJSON.json; sourceTree = "<group>"; };
+		A73D655D240B6B2400F94792 /* IDCardInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCardInfoCell.h; sourceTree = "<group>"; };
+		A73D655E240B6B2400F94792 /* IDCardInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDCardInfoCell.m; sourceTree = "<group>"; };
+		A73D6560240B705D00F94792 /* MineInfoButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineInfoButtonCell.h; sourceTree = "<group>"; };
+		A73D6561240B705D00F94792 /* MineInfoButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineInfoButtonCell.m; sourceTree = "<group>"; };
+		A73D6563240B71BD00F94792 /* MineInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineInfoController.h; sourceTree = "<group>"; };
+		A73D6564240B71BD00F94792 /* MineInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineInfoController.m; sourceTree = "<group>"; };
+		A73D6566240B7E2000F94792 /* InfoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoList.h; sourceTree = "<group>"; };
+		A73D6567240B7E2000F94792 /* Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Info.m; sourceTree = "<group>"; };
+		A73D6568240B7E2000F94792 /* InfoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoList.m; sourceTree = "<group>"; };
+		A73D6569240B7E2000F94792 /* ProfileInfoListModelJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProfileInfoListModelJSON.json; sourceTree = "<group>"; };
+		A73D656A240B7E2000F94792 /* Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Info.h; sourceTree = "<group>"; };
+		A73D656E240B877400F94792 /* EditInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInfoCell.h; sourceTree = "<group>"; };
+		A73D656F240B877400F94792 /* EditInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInfoCell.m; sourceTree = "<group>"; };
+		A73D6571240B8AD400F94792 /* EditPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPickerCell.h; sourceTree = "<group>"; };
+		A73D6572240B8AD500F94792 /* EditPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPickerCell.m; sourceTree = "<group>"; };
+		A73D6574240B8F5A00F94792 /* MineInfoEditController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineInfoEditController.h; sourceTree = "<group>"; };
+		A73D6575240B8F5A00F94792 /* MineInfoEditController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineInfoEditController.m; sourceTree = "<group>"; };
+		A73D6577240B98CA00F94792 /* VIPQRCodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIPQRCodeController.h; sourceTree = "<group>"; };
+		A73D6578240B98CA00F94792 /* VIPQRCodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIPQRCodeController.m; sourceTree = "<group>"; };
+		A73D657B240BAE0600F94792 /* MineTouristHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTouristHeaderView.h; sourceTree = "<group>"; };
+		A73D657C240BAE0600F94792 /* MineTouristHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTouristHeaderView.m; sourceTree = "<group>"; };
+		A73D657E240BB6CE00F94792 /* MineTouristController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTouristController.h; sourceTree = "<group>"; };
+		A73D657F240BB6CE00F94792 /* MineTouristController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTouristController.m; sourceTree = "<group>"; };
+		A73D6581240BDEC000F94792 /* RepertoireCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepertoireCell.h; sourceTree = "<group>"; };
+		A73D6582240BDEC000F94792 /* RepertoireCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepertoireCell.m; sourceTree = "<group>"; };
+		A73D6584240BE60D00F94792 /* Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Log.m; sourceTree = "<group>"; };
+		A73D6585240BE60E00F94792 /* LogList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogList.m; sourceTree = "<group>"; };
+		A73D6586240BE60E00F94792 /* LogModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LogModelListJSON.json; sourceTree = "<group>"; };
+		A73D6587240BE60E00F94792 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		A73D6588240BE60E00F94792 /* LogList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogList.h; sourceTree = "<group>"; };
 		A772A988240785CD00B8FC52 /* MineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
 		A772A989240785CD00B8FC52 /* MineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		A772A98B2407877C00B8FC52 /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -491,6 +573,13 @@
 		A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorInfoUtility.m; sourceTree = "<group>"; };
 		A7C7797224027E16003EBCE0 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		A7C7797324027E16003EBCE0 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		A7FA6D8B240C95E2003982DA /* OrderModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OrderModelListJSON.json; sourceTree = "<group>"; };
+		A7FA6D92240C97E6003982DA /* OrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderController.h; sourceTree = "<group>"; };
+		A7FA6D93240C97E6003982DA /* OrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderController.m; sourceTree = "<group>"; };
+		A7FA6D96240C9843003982DA /* MineOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineOrderCell.h; sourceTree = "<group>"; };
+		A7FA6D97240C9843003982DA /* MineOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineOrderCell.m; sourceTree = "<group>"; };
+		A7FA6D99240CD13E003982DA /* DetailPresentToolBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailPresentToolBarView.h; sourceTree = "<group>"; };
+		A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPresentToolBarView.m; sourceTree = "<group>"; };
 		C3501E496233602CE81E3ADE /* Pods-MainPart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainPart.debug.xcconfig"; path = "Target Support Files/Pods-MainPart/Pods-MainPart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -727,6 +816,103 @@
 			path = MineFavor;
 			sourceTree = "<group>";
 		};
+		A738B091240A2D6B00705AF2 /* MineHistory */ = {
+			isa = PBXGroup;
+			children = (
+				A738B095240A2DAC00705AF2 /* MineHistoryCell.h */,
+				A738B096240A2DAC00705AF2 /* MineHistoryCell.m */,
+			);
+			path = MineHistory;
+			sourceTree = "<group>";
+		};
+		A738B09B240A3E6900705AF2 /* MineDiscount */ = {
+			isa = PBXGroup;
+			children = (
+				A738B09C240A3E8200705AF2 /* MineDiscountCell.h */,
+				A738B09D240A3E8200705AF2 /* MineDiscountCell.m */,
+			);
+			path = MineDiscount;
+			sourceTree = "<group>";
+		};
+		A738B0A2240A63B800705AF2 /* Mileage */ = {
+			isa = PBXGroup;
+			children = (
+				A738B0A3240A653C00705AF2 /* MineMeliedgeCell.h */,
+				A738B0A4240A653C00705AF2 /* MineMeliedgeCell.m */,
+				A738B280240A782400705AF2 /* MineOutCell.h */,
+				A738B281240A782400705AF2 /* MineOutCell.m */,
+				A738B284240A932300705AF2 /* ChartCell.h */,
+				A738B285240A932300705AF2 /* ChartCell.m */,
+			);
+			path = Mileage;
+			sourceTree = "<group>";
+		};
+		A738B0B6240A691600705AF2 /* QMUI */ = {
+			isa = PBXGroup;
+			children = (
+				A702E00E2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.h */,
+				A702E00F2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.m */,
+			);
+			path = QMUI;
+			sourceTree = "<group>";
+		};
+		A73D6552240B640A00F94792 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A73D6559240B658200F94792 /* Tool */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		A73D6559240B658200F94792 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA6D8B240C95E2003982DA /* OrderModelListJSON.json */,
+				A73D6587240BE60E00F94792 /* Log.h */,
+				A73D6584240BE60D00F94792 /* Log.m */,
+				A73D6588240BE60E00F94792 /* LogList.h */,
+				A73D6585240BE60E00F94792 /* LogList.m */,
+				A73D6586240BE60E00F94792 /* LogModelListJSON.json */,
+				A73D656A240B7E2000F94792 /* Info.h */,
+				A73D6567240B7E2000F94792 /* Info.m */,
+				A73D6566240B7E2000F94792 /* InfoList.h */,
+				A73D6568240B7E2000F94792 /* InfoList.m */,
+				A73D6569240B7E2000F94792 /* ProfileInfoListModelJSON.json */,
+				A73D6553240B645800F94792 /* Tool.h */,
+				A73D6554240B645800F94792 /* Tool.m */,
+				A73D6555240B645800F94792 /* ToolList.h */,
+				A73D6556240B645800F94792 /* ToolList.m */,
+				A73D655A240B658E00F94792 /* MineToolModelJSON.json */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		A73D655C240B6AF300F94792 /* MineToolInfo */ = {
+			isa = PBXGroup;
+			children = (
+				A73D655D240B6B2400F94792 /* IDCardInfoCell.h */,
+				A73D655E240B6B2400F94792 /* IDCardInfoCell.m */,
+				A73D6560240B705D00F94792 /* MineInfoButtonCell.h */,
+				A73D6561240B705D00F94792 /* MineInfoButtonCell.m */,
+				A73D656E240B877400F94792 /* EditInfoCell.h */,
+				A73D656F240B877400F94792 /* EditInfoCell.m */,
+				A73D6571240B8AD400F94792 /* EditPickerCell.h */,
+				A73D6572240B8AD500F94792 /* EditPickerCell.m */,
+			);
+			path = MineToolInfo;
+			sourceTree = "<group>";
+		};
+		A73D657A240BADB200F94792 /* MineTourist */ = {
+			isa = PBXGroup;
+			children = (
+				A73D657B240BAE0600F94792 /* MineTouristHeaderView.h */,
+				A73D657C240BAE0600F94792 /* MineTouristHeaderView.m */,
+				A73D6581240BDEC000F94792 /* RepertoireCell.h */,
+				A73D6582240BDEC000F94792 /* RepertoireCell.m */,
+			);
+			path = MineTourist;
+			sourceTree = "<group>";
+		};
 		A772A97F2407859900B8FC52 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,12 +952,28 @@
 		A772A9832407859900B8FC52 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A7FA6D92240C97E6003982DA /* OrderController.h */,
+				A7FA6D93240C97E6003982DA /* OrderController.m */,
 				A772A988240785CD00B8FC52 /* MineController.h */,
 				A772A989240785CD00B8FC52 /* MineController.m */,
 				A702DFE72408B39400A9646C /* QRCodeScanController.h */,
 				A702DFE82408B39400A9646C /* QRCodeScanController.m */,
 				A738B088240A1B6800705AF2 /* FavorController.h */,
 				A738B089240A1B6800705AF2 /* FavorController.m */,
+				A738B08E240A2D6700705AF2 /* HistoryController.h */,
+				A738B08F240A2D6700705AF2 /* HistoryController.m */,
+				A738B098240A3CC900705AF2 /* DiscountController.h */,
+				A738B099240A3CC900705AF2 /* DiscountController.m */,
+				A738B09F240A63AB00705AF2 /* MileageController.h */,
+				A738B0A0240A63AB00705AF2 /* MileageController.m */,
+				A73D6563240B71BD00F94792 /* MineInfoController.h */,
+				A73D6564240B71BD00F94792 /* MineInfoController.m */,
+				A73D6574240B8F5A00F94792 /* MineInfoEditController.h */,
+				A73D6575240B8F5A00F94792 /* MineInfoEditController.m */,
+				A73D6577240B98CA00F94792 /* VIPQRCodeController.h */,
+				A73D6578240B98CA00F94792 /* VIPQRCodeController.m */,
+				A73D657E240BB6CE00F94792 /* MineTouristController.h */,
+				A73D657F240BB6CE00F94792 /* MineTouristController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -786,6 +988,7 @@
 		A772A9852407859900B8FC52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A73D6552240B640A00F94792 /* Mine */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -793,6 +996,12 @@
 		A772A9862407859900B8FC52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7FA6D95240C97EB003982DA /* MineOrder */,
+				A73D657A240BADB200F94792 /* MineTourist */,
+				A73D655C240B6AF300F94792 /* MineToolInfo */,
+				A738B0A2240A63B800705AF2 /* Mileage */,
+				A738B09B240A3E6900705AF2 /* MineDiscount */,
+				A738B091240A2D6B00705AF2 /* MineHistory */,
 				A738B087240A1AD300705AF2 /* MineFavor */,
 				A772A98B2407877C00B8FC52 /* MineHeaderView.h */,
 				A772A98C2407877C00B8FC52 /* MineHeaderView.m */,
@@ -827,10 +1036,9 @@
 		A772A9872407859900B8FC52 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A738B0B6240A691600705AF2 /* QMUI */,
 				A702DFED2408BF4400A9646C /* LBXAlertAction */,
 				A702DFFE2408BFCC00A9646C /* LBXPermissions */,
-				A702E00E2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.h */,
-				A702E00F2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.m */,
 				A702DFEA2408BC2300A9646C /* StyleDIY.h */,
 				A702DFEB2408BC2400A9646C /* StyleDIY.m */,
 				A772A9A42407E12300B8FC52 /* WOPageControl.h */,
@@ -1180,6 +1388,8 @@
 				A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */,
 				A7739F792404DAFE00EF7664 /* RoomCell.h */,
 				A7739F7A2404DAFE00EF7664 /* RoomCell.m */,
+				A7FA6D99240CD13E003982DA /* DetailPresentToolBarView.h */,
+				A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -1367,6 +1577,15 @@
 			path = PureLayout;
 			sourceTree = "<group>";
 		};
+		A7FA6D95240C97EB003982DA /* MineOrder */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA6D96240C9843003982DA /* MineOrderCell.h */,
+				A7FA6D97240C9843003982DA /* MineOrderCell.m */,
+			);
+			path = MineOrder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1428,9 +1647,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7084C912406C23700FF5CAE /* LinkageTestJson.json in Resources */,
+				A73D658B240BE60E00F94792 /* LogModelListJSON.json in Resources */,
+				A7FA6D8F240C95E3003982DA /* OrderModelListJSON.json in Resources */,
 				A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */,
 				A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */,
+				A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */,
 				A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */,
+				A73D656D240B7E2100F94792 /* ProfileInfoListModelJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,18 +1717,27 @@
 				A702E00A2408BFCC00A9646C /* LBXPermission.m in Sources */,
 				A7C7797624027E17003EBCE0 /* ALView+PureLayout.m in Sources */,
 				A702DFE92408B39400A9646C /* QRCodeScanController.m in Sources */,
+				A7FA6D9B240CD13E003982DA /* DetailPresentToolBarView.m in Sources */,
+				A7FA6D94240C97E6003982DA /* OrderController.m in Sources */,
 				A7C7790E2402562E003EBCE0 /* SpotFoldCell.m in Sources */,
+				A73D6583240BDEC000F94792 /* RepertoireCell.m in Sources */,
 				A772A9B42407FF0B00B8FC52 /* WefareCell.m in Sources */,
 				A702E054240911F500A9646C /* ASFRCDManager.m in Sources */,
 				A702DFE62408A31700A9646C /* PowerCell.m in Sources */,
 				A7739FAD2405191B00EF7664 /* UIView+Extension.m in Sources */,
 				A7C7796124027D49003EBCE0 /* CustomMAMultiPolyline.m in Sources */,
+				A738B0A1240A63AB00705AF2 /* MileageController.m in Sources */,
+				A738B286240A932300705AF2 /* ChartCell.m in Sources */,
 				A7C779072402562E003EBCE0 /* RecommondController.m in Sources */,
+				A73D6557240B645800F94792 /* Tool.m in Sources */,
+				A73D6573240B8AD500F94792 /* EditPickerCell.m in Sources */,
 				A7C779212402562E003EBCE0 /* SearchView.m in Sources */,
 				A7C779122402562E003EBCE0 /* YXFlipView.m in Sources */,
 				A7C779192402562E003EBCE0 /* CustomSectionCell.m in Sources */,
 				A7C779202402562E003EBCE0 /* ImageReFreshHeader.m in Sources */,
+				A738B282240A782400705AF2 /* MineOutCell.m in Sources */,
 				A7C4F0BC2403CF69008E740A /* PopController.m in Sources */,
+				A73D6558240B645800F94792 /* ToolList.m in Sources */,
 				A738B08A240A1B6800705AF2 /* FavorController.m in Sources */,
 				A7C7792A2402562E003EBCE0 /* SectionFoldView.m in Sources */,
 				A702DFFB2408BF4400A9646C /* UIActionSheet+LBXAlertAction.m in Sources */,
@@ -1523,10 +1755,12 @@
 				A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */,
 				A7C779102402562E003EBCE0 /* UIView+snap.m in Sources */,
 				A7C7791D2402562E003EBCE0 /* BannerView.m in Sources */,
+				A73D656B240B7E2100F94792 /* Info.m in Sources */,
 				A7084C902406C23700FF5CAE /* LinkageFooter.m in Sources */,
 				A7C7795324027D10003EBCE0 /* MABusStopAnnotation.m in Sources */,
 				A7739FB62405191B00EF7664 /* GHDropMenuTitleItem.m in Sources */,
 				A7739F7F2404ECEA00EF7664 /* SearchListController.m in Sources */,
+				A738B090240A2D6700705AF2 /* HistoryController.m in Sources */,
 				A7739F8324050A4700EF7664 /* SearchItemCell.m in Sources */,
 				A7739FAF2405191B00EF7664 /* GHDropMenu.m in Sources */,
 				A772A9AB2407F56D00B8FC52 /* CreditView.m in Sources */,
@@ -1535,11 +1769,14 @@
 				A702DFFA2408BF4400A9646C /* UIWindow+LBXHierarchy.m in Sources */,
 				A7C7793B2402580C003EBCE0 /* NSObject+BlockSEL.m in Sources */,
 				A702E06024091A0400A9646C /* ColorFormatUtil.m in Sources */,
+				A73D6562240B705D00F94792 /* MineInfoButtonCell.m in Sources */,
 				A7C7794824027C09003EBCE0 /* MANaviRoute.m in Sources */,
 				A702E05F24091A0400A9646C /* Utility.m in Sources */,
 				A7C779172402562E003EBCE0 /* TYCyclePagerViewCell.m in Sources */,
 				A7C779132402562E003EBCE0 /* SpotCell.m in Sources */,
+				A738B0A5240A653C00705AF2 /* MineMeliedgeCell.m in Sources */,
 				A7C7791E2402562E003EBCE0 /* BannerCell.m in Sources */,
+				A73D657D240BAE0600F94792 /* MineTouristHeaderView.m in Sources */,
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
 				A7C7790B2402562E003EBCE0 /* CommonCell.m in Sources */,
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
@@ -1551,8 +1788,10 @@
 				A7084C932406C23700FF5CAE /* LinkageModel.m in Sources */,
 				A702E0072408BFCC00A9646C /* LBXPermissionSetting.m in Sources */,
 				A702DFFC2408BF4400A9646C /* UIAlertView+LBXAlertAction.m in Sources */,
+				A73D6576240B8F5A00F94792 /* MineInfoEditController.m in Sources */,
 				A7084C982406C27900FF5CAE /* LinkageController.m in Sources */,
 				A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */,
+				A738B097240A2DAC00705AF2 /* MineHistoryCell.m in Sources */,
 				A772A9932407A99700B8FC52 /* OrderCell.m in Sources */,
 				A7C7794424025F54003EBCE0 /* MapController.m in Sources */,
 				A702E051240911F500A9646C /* ASFRManager.m in Sources */,
@@ -1560,6 +1799,8 @@
 				A7C7790A2402562E003EBCE0 /* GridCityCell.m in Sources */,
 				A7739FB92405191B00EF7664 /* GHCustomAlertView.m in Sources */,
 				A7C7792B2402562E003EBCE0 /* WSLWaterFlowLayout.m in Sources */,
+				A73D6589240BE60E00F94792 /* Log.m in Sources */,
+				A73D656C240B7E2100F94792 /* InfoList.m in Sources */,
 				A7C7795F24027D49003EBCE0 /* TraceReplayOverlayViewController.m in Sources */,
 				A772A9A52407E12300B8FC52 /* WOPageControl.m in Sources */,
 				A7C779112402562E003EBCE0 /* YXFlipCell.m in Sources */,
@@ -1571,15 +1812,19 @@
 				A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */,
 				A772A9A22407DB2D00B8FC52 /* ProfileStatusCell.m in Sources */,
 				A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */,
+				A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */,
+				A73D655F240B6B2400F94792 /* IDCardInfoCell.m in Sources */,
 				A7C7791C2402562E003EBCE0 /* HotHeaderView.m in Sources */,
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
 				A7C779322402562E003EBCE0 /* DictUtils.m in Sources */,
 				A7C779272402562E003EBCE0 /* RemarkScoreCell.m in Sources */,
+				A7FA6D98240C9843003982DA /* MineOrderCell.m in Sources */,
 				A7739FAA2405191B00EF7664 /* UILabel+GHome.m in Sources */,
 				A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */,
 				A7C779282402562E003EBCE0 /* ItemBasicInfoCell.m in Sources */,
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
 				A7C779042402562E003EBCE0 /* MainController.m in Sources */,
+				A73D6565240B71BD00F94792 /* MineInfoController.m in Sources */,
 				A7C779242402562E003EBCE0 /* BannerZoomView.m in Sources */,
 				A7084C8F2406C23700FF5CAE /* EvenCell.m in Sources */,
 				A7739FB42405191B00EF7664 /* GHDropMenuFilterTagItem.m in Sources */,
@@ -1600,6 +1845,8 @@
 				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
 				A7739FBC2405531600EF7664 /* ReMenuView.m in Sources */,
 				A7C779232402562E003EBCE0 /* FooterEmptyView.m in Sources */,
+				A738B09E240A3E8200705AF2 /* MineDiscountCell.m in Sources */,
+				A73D6580240BB6CE00F94792 /* MineTouristController.m in Sources */,
 				A7739FAC2405191B00EF7664 /* NSArray+Bounds.m in Sources */,
 				A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */,
 				A738B08D240A1E0200705AF2 /* MineFavorCell.m in Sources */,
@@ -1618,6 +1865,7 @@
 				A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */,
 				A7739FB12405191B00EF7664 /* GHDropMenuFilterSingleInputItem.m in Sources */,
 				A702E0102408E38D00A9646C /* QDSingleImagePickerPreviewViewController.m in Sources */,
+				A73D658A240BE60E00F94792 /* LogList.m in Sources */,
 				A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */,
 				A7739FB82405191B00EF7664 /* GHDropMenuFilterSectionHeader.m in Sources */,
 				A7739FB32405191B00EF7664 /* GHDropMenuFilterTimeChoseItem.m in Sources */,
@@ -1629,6 +1877,8 @@
 				A7739FB72405191B00EF7664 /* GHDropMenuModel.m in Sources */,
 				A702E040240911E600A9646C /* FaceController.m in Sources */,
 				A7C779062402562E003EBCE0 /* HorizontalWithVerticalSectionLayout.m in Sources */,
+				A738B09A240A3CC900705AF2 /* DiscountController.m in Sources */,
+				A73D6570240B877400F94792 /* EditInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,6 +2011,7 @@
 			baseConfigurationReference = C3501E496233602CE81E3ADE /* Pods-MainPart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AKBVF54ZAS;
 				ENABLE_BITCODE = NO;
@@ -1779,6 +2030,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.feifeiyue.MainPart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1788,6 +2040,7 @@
 			baseConfigurationReference = 7D83017C8755E10886CB181A /* Pods-MainPart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AKBVF54ZAS;
 				ENABLE_BITCODE = NO;
@@ -1806,6 +2059,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.feifeiyue.MainPart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

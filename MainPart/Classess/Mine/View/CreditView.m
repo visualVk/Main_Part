@@ -38,7 +38,7 @@
   }];
   
   [self.credit mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.creditImg).with.inset(2 * SPACE);
+    //    make.left.equalTo(self.creditImg).with.inset(2 * SPACE);
     make.right.equalTo(self).with.inset(SPACE);
     make.top.equalTo(self).with.inset(0.5 * SPACE);
   }];

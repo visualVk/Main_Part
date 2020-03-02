@@ -12,4 +12,6 @@
 @property(nonatomic, strong) UILabel *asksSupplier;
 @property(nonatomic, strong) UILabel *price;
 @property(nonatomic, strong) UIImageView *buyImage;
+@property(nonatomic, strong) NSDictionary *infoDict;
+-(void)loadData:(NSDictionary*)infoDict;
 @end

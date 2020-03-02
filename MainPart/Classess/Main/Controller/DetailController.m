@@ -10,6 +10,8 @@
 #import "BannerZoomView.h"
 #import "DetailHeaderPartCell.h"
 #import "DetailInfoPartCell.h"
+#import "DetailPresentNavBar.h"
+#import "DetailPresentToolBarView.h"
 #import "FacilityCell.h"
 #import "ItemBasicInfoCell.h"
 #import "MapController.h"
@@ -44,7 +46,8 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 }
 @property (nonatomic, strong) HMSegmentedControl *segControl;
 @property (nonatomic, strong) UIView *presentView;
-@property(nonatomic, strong) UIView *presentBar;
+@property (nonatomic, strong) DetailPresentToolBarView *presentToolBar;
+@property (nonatomic, strong) DetailPresentNavBar *presentNavBar;
 @property (nonatomic, strong) NSArray *imageList;
 @property (nonatomic, strong) NSArray *roomList;
 @property (nonatomic, strong) NSMutableDictionary *openDic;
@@ -380,7 +383,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  if (scrollView != self.tableView) return;
+  if (scrollView != self.tableView) {
+    if (scrollView == self.collectionview) {
+      [self.presentNavBar didScrollView:scrollView.contentOffset];
+    }
+  };
   CGPoint point = scrollView.contentOffset;
   //  [self.navigationController.navigationBar.qmui_backgroundView
   //   setAlpha:point.y / NavigationContentTop];
@@ -540,19 +547,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (UIView *)presentView {
   if (!_presentView) {
     _presentView = [UIView new];
-    UIView *view = [UIView new];
-    view.backgroundColor = UIColor.qmui_randomColor;
     addView(_presentView, self.collectionview);
-    addView(_presentView, view);
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+    if (!self.presentToolBar) { self.presentToolBar = [DetailPresentToolBarView new]; }
+    if (!self.presentNavBar) {
+      self.presentNavBar = [[DetailPresentNavBar alloc]
+                            initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, NavigationContentTop)];
+    }
+    addView(_presentView, self.presentNavBar);
+    addView(_presentView, self.presentToolBar);
+    [self.presentToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.equalTo(self.collectionview.mas_bottom);
-      make.left.right.equalTo(_presentView);
-      make.height.mas_equalTo(55);
+      make.right.left.equalTo(self.collectionview);
+      make.height.mas_equalTo(DEVICE_HEIGHT / 15);
     }];
     
     [_presentView mas_makeConstraints:^(MASConstraintMaker *make) {
       make.left.right.top.equalTo(self.collectionview);
-      make.bottom.equalTo(view);
+      make.bottom.equalTo(self.presentToolBar);
     }];
   }
   return _presentView;

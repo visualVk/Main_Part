@@ -23,6 +23,7 @@
 #define LBXScan_Define_ZXing
 #define LBXScan_Define_ZBar
 #define LBXScan_Define_UI
+#import <pop/POP.h>
 #import "ImageUtils.h"
 #import "GenerateEntityDelegate.h"
 #import "MJExtension.h"

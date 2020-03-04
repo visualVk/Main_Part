@@ -47,6 +47,9 @@
 		A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C872406C23700FF5CAE /* LinkageListModel.m */; };
 		A7084C952406C23700FF5CAE /* LinkageMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C892406C23700FF5CAE /* LinkageMenuView.m */; };
 		A7084C982406C27900FF5CAE /* LinkageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C972406C27900FF5CAE /* LinkageController.m */; };
+		A72D3AF5240F7791009720AD /* SceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D3AF4240F7791009720AD /* SceneController.m */; };
+		A72D3AF9240F77DC009720AD /* SceneHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D3AF8240F77DC009720AD /* SceneHeaderView.m */; };
+		A72D3AFC240F7BDA009720AD /* SceneHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D3AFB240F7BDA009720AD /* SceneHeaderCell.m */; };
 		A738B08A240A1B6800705AF2 /* FavorController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B089240A1B6800705AF2 /* FavorController.m */; };
 		A738B08D240A1E0200705AF2 /* MineFavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B08C240A1E0200705AF2 /* MineFavorCell.m */; };
 		A738B090240A2D6700705AF2 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A738B08F240A2D6700705AF2 /* HistoryController.m */; };
@@ -76,6 +79,16 @@
 		A73D6589240BE60E00F94792 /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6584240BE60D00F94792 /* Log.m */; };
 		A73D658A240BE60E00F94792 /* LogList.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6585240BE60E00F94792 /* LogList.m */; };
 		A73D658B240BE60E00F94792 /* LogModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A73D6586240BE60E00F94792 /* LogModelListJSON.json */; };
+		A73FACE5240E0439008BA2D9 /* HotelWarnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACE4240E0439008BA2D9 /* HotelWarnCell.m */; };
+		A73FACE8240E08D9008BA2D9 /* OrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACE7240E08D9008BA2D9 /* OrderInfoCell.m */; };
+		A73FACEE240E0D4E008BA2D9 /* CheckInInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACED240E0D4E008BA2D9 /* CheckInInfoCell.m */; };
+		A73FACF1240E1065008BA2D9 /* CheckInTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACF0240E1065008BA2D9 /* CheckInTextFieldCell.m */; };
+		A73FACF4240E2566008BA2D9 /* OrderDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACF3240E2566008BA2D9 /* OrderDiscountCell.m */; };
+		A73FACF7240E2E0F008BA2D9 /* CheckInController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACF6240E2E0F008BA2D9 /* CheckInController.m */; };
+		A73FACFA240E3028008BA2D9 /* HotelComboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACF9240E3028008BA2D9 /* HotelComboCell.m */; };
+		A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACFC240E718A008BA2D9 /* OrderToolBarView.m */; };
+		A73FAD00240E7EE6008BA2D9 /* MentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACFF240E7EE6008BA2D9 /* MentionCell.m */; };
+		A73FAD03240E8225008BA2D9 /* SloganCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FAD02240E8225008BA2D9 /* SloganCell.m */; };
 		A772A98A240785CD00B8FC52 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A989240785CD00B8FC52 /* MineController.m */; };
 		A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A98C2407877C00B8FC52 /* MineHeaderView.m */; };
 		A772A9932407A99700B8FC52 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A9922407A99700B8FC52 /* OrderCell.m */; };
@@ -193,6 +206,13 @@
 		A7FA6D98240C9843003982DA /* MineOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D97240C9843003982DA /* MineOrderCell.m */; };
 		A7FA6D9B240CD13E003982DA /* DetailPresentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */; };
 		A7FA6D9E240CE16E003982DA /* DetailPresentNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6D9D240CE16E003982DA /* DetailPresentNavBar.m */; };
+		A7FA6DE2240CF213003982DA /* HotelOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DE1240CF213003982DA /* HotelOrderHeaderView.m */; };
+		A7FA6DE5240CF6D6003982DA /* HotelOrderDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DE4240CF6D6003982DA /* HotelOrderDatePickerView.m */; };
+		A7FA6DE8240D0DEB003982DA /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DE6240D0DEA003982DA /* UIColor+Hex.m */; };
+		A7FA6DED240D121D003982DA /* LVCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DE9240D121D003982DA /* LVCalendarCell.m */; };
+		A7FA6DEE240D121D003982DA /* CalerderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DEC240D121D003982DA /* CalerderViewController.m */; };
+		A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DF1240D3DA6003982DA /* PeopleNumController.m */; };
+		A7FA6DF6240D3DCF003982DA /* HotelNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DF5240D3DCF003982DA /* HotelNumberCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -284,6 +304,12 @@
 		A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageMenuView.h; sourceTree = "<group>"; };
 		A7084C962406C27900FF5CAE /* LinkageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageController.h; sourceTree = "<group>"; };
 		A7084C972406C27900FF5CAE /* LinkageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageController.m; sourceTree = "<group>"; };
+		A72D3AF3240F7791009720AD /* SceneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneController.h; sourceTree = "<group>"; };
+		A72D3AF4240F7791009720AD /* SceneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneController.m; sourceTree = "<group>"; };
+		A72D3AF7240F77DC009720AD /* SceneHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneHeaderView.h; sourceTree = "<group>"; };
+		A72D3AF8240F77DC009720AD /* SceneHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneHeaderView.m; sourceTree = "<group>"; };
+		A72D3AFA240F7BDA009720AD /* SceneHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneHeaderCell.h; sourceTree = "<group>"; };
+		A72D3AFB240F7BDA009720AD /* SceneHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneHeaderCell.m; sourceTree = "<group>"; };
 		A738B088240A1B6800705AF2 /* FavorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavorController.h; sourceTree = "<group>"; };
 		A738B089240A1B6800705AF2 /* FavorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorController.m; sourceTree = "<group>"; };
 		A738B08B240A1E0200705AF2 /* MineFavorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFavorCell.h; sourceTree = "<group>"; };
@@ -339,6 +365,26 @@
 		A73D6586240BE60E00F94792 /* LogModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LogModelListJSON.json; sourceTree = "<group>"; };
 		A73D6587240BE60E00F94792 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		A73D6588240BE60E00F94792 /* LogList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogList.h; sourceTree = "<group>"; };
+		A73FACE3240E0439008BA2D9 /* HotelWarnCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelWarnCell.h; sourceTree = "<group>"; };
+		A73FACE4240E0439008BA2D9 /* HotelWarnCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelWarnCell.m; sourceTree = "<group>"; };
+		A73FACE6240E08D9008BA2D9 /* OrderInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderInfoCell.h; sourceTree = "<group>"; };
+		A73FACE7240E08D9008BA2D9 /* OrderInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderInfoCell.m; sourceTree = "<group>"; };
+		A73FACEC240E0D4E008BA2D9 /* CheckInInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckInInfoCell.h; sourceTree = "<group>"; };
+		A73FACED240E0D4E008BA2D9 /* CheckInInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckInInfoCell.m; sourceTree = "<group>"; };
+		A73FACEF240E1065008BA2D9 /* CheckInTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckInTextFieldCell.h; sourceTree = "<group>"; };
+		A73FACF0240E1065008BA2D9 /* CheckInTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckInTextFieldCell.m; sourceTree = "<group>"; };
+		A73FACF2240E2566008BA2D9 /* OrderDiscountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDiscountCell.h; sourceTree = "<group>"; };
+		A73FACF3240E2566008BA2D9 /* OrderDiscountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDiscountCell.m; sourceTree = "<group>"; };
+		A73FACF5240E2E0F008BA2D9 /* CheckInController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckInController.h; sourceTree = "<group>"; };
+		A73FACF6240E2E0F008BA2D9 /* CheckInController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckInController.m; sourceTree = "<group>"; };
+		A73FACF8240E3028008BA2D9 /* HotelComboCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelComboCell.h; sourceTree = "<group>"; };
+		A73FACF9240E3028008BA2D9 /* HotelComboCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelComboCell.m; sourceTree = "<group>"; };
+		A73FACFB240E718A008BA2D9 /* OrderToolBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderToolBarView.h; sourceTree = "<group>"; };
+		A73FACFC240E718A008BA2D9 /* OrderToolBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderToolBarView.m; sourceTree = "<group>"; };
+		A73FACFE240E7EE6008BA2D9 /* MentionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MentionCell.h; sourceTree = "<group>"; };
+		A73FACFF240E7EE6008BA2D9 /* MentionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MentionCell.m; sourceTree = "<group>"; };
+		A73FAD01240E8225008BA2D9 /* SloganCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SloganCell.h; sourceTree = "<group>"; };
+		A73FAD02240E8225008BA2D9 /* SloganCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SloganCell.m; sourceTree = "<group>"; };
 		A772A988240785CD00B8FC52 /* MineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
 		A772A989240785CD00B8FC52 /* MineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		A772A98B2407877C00B8FC52 /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -583,6 +629,20 @@
 		A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPresentToolBarView.m; sourceTree = "<group>"; };
 		A7FA6D9C240CE16E003982DA /* DetailPresentNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailPresentNavBar.h; sourceTree = "<group>"; };
 		A7FA6D9D240CE16E003982DA /* DetailPresentNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPresentNavBar.m; sourceTree = "<group>"; };
+		A7FA6DE0240CF213003982DA /* HotelOrderHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelOrderHeaderView.h; sourceTree = "<group>"; };
+		A7FA6DE1240CF213003982DA /* HotelOrderHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelOrderHeaderView.m; sourceTree = "<group>"; };
+		A7FA6DE3240CF6D6003982DA /* HotelOrderDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelOrderDatePickerView.h; sourceTree = "<group>"; };
+		A7FA6DE4240CF6D6003982DA /* HotelOrderDatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelOrderDatePickerView.m; sourceTree = "<group>"; };
+		A7FA6DE6240D0DEA003982DA /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		A7FA6DE7240D0DEB003982DA /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		A7FA6DE9240D121D003982DA /* LVCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVCalendarCell.m; sourceTree = "<group>"; };
+		A7FA6DEA240D121D003982DA /* LVCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVCalendarCell.h; sourceTree = "<group>"; };
+		A7FA6DEB240D121D003982DA /* CalerderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalerderViewController.h; sourceTree = "<group>"; };
+		A7FA6DEC240D121D003982DA /* CalerderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalerderViewController.m; sourceTree = "<group>"; };
+		A7FA6DF0240D3DA6003982DA /* PeopleNumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleNumController.h; sourceTree = "<group>"; };
+		A7FA6DF1240D3DA6003982DA /* PeopleNumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleNumController.m; sourceTree = "<group>"; };
+		A7FA6DF4240D3DCF003982DA /* HotelNumberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelNumberCell.h; sourceTree = "<group>"; };
+		A7FA6DF5240D3DCF003982DA /* HotelNumberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelNumberCell.m; sourceTree = "<group>"; };
 		C3501E496233602CE81E3ADE /* Pods-MainPart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainPart.debug.xcconfig"; path = "Target Support Files/Pods-MainPart/Pods-MainPart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -661,6 +721,7 @@
 		A702E011240901E400A9646C /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A7FA6DD7240CEE54003982DA /* FSCustomCalendar */,
 				A702E041240911F500A9646C /* ARCFace */,
 				A702E03D240911E500A9646C /* Face */,
 				A702E03B240911E100A9646C /* ArcSoftFaceEngine.framework */,
@@ -808,6 +869,17 @@
 				A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A72D3AF6240F779A009720AD /* ScenePage */ = {
+			isa = PBXGroup;
+			children = (
+				A72D3AF7240F77DC009720AD /* SceneHeaderView.h */,
+				A72D3AF8240F77DC009720AD /* SceneHeaderView.m */,
+				A72D3AFA240F7BDA009720AD /* SceneHeaderCell.h */,
+				A72D3AFB240F7BDA009720AD /* SceneHeaderCell.m */,
+			);
+			path = ScenePage;
 			sourceTree = "<group>";
 		};
 		A738B087240A1AD300705AF2 /* MineFavor */ = {
@@ -1242,6 +1314,12 @@
 				A7739F7E2404ECEA00EF7664 /* SearchListController.m */,
 				A7084C962406C27900FF5CAE /* LinkageController.h */,
 				A7084C972406C27900FF5CAE /* LinkageController.m */,
+				A7FA6DF0240D3DA6003982DA /* PeopleNumController.h */,
+				A7FA6DF1240D3DA6003982DA /* PeopleNumController.m */,
+				A73FACF5240E2E0F008BA2D9 /* CheckInController.h */,
+				A73FACF6240E2E0F008BA2D9 /* CheckInController.m */,
+				A72D3AF3240F7791009720AD /* SceneController.h */,
+				A72D3AF4240F7791009720AD /* SceneController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1278,6 +1356,8 @@
 		A7C7788E2402562D003EBCE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A72D3AF6240F779A009720AD /* ScenePage */,
+				A7FA6DDE240CF1A6003982DA /* HotelOrderPage */,
 				A7739F8024050A2900EF7664 /* SearchListPage */,
 				A7C7788F2402562D003EBCE0 /* CityPage */,
 				A7C778962402562D003EBCE0 /* SpotPage */,
@@ -1395,6 +1475,8 @@
 				A7FA6D9A240CD13E003982DA /* DetailPresentToolBarView.m */,
 				A7FA6D9C240CE16E003982DA /* DetailPresentNavBar.h */,
 				A7FA6D9D240CE16E003982DA /* DetailPresentNavBar.m */,
+				A7FA6DE3240CF6D6003982DA /* HotelOrderDatePickerView.h */,
+				A7FA6DE4240CF6D6003982DA /* HotelOrderDatePickerView.m */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -1591,6 +1673,48 @@
 			path = MineOrder;
 			sourceTree = "<group>";
 		};
+		A7FA6DD7240CEE54003982DA /* FSCustomCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA6DEA240D121D003982DA /* LVCalendarCell.h */,
+				A7FA6DE9240D121D003982DA /* LVCalendarCell.m */,
+				A7FA6DEB240D121D003982DA /* CalerderViewController.h */,
+				A7FA6DEC240D121D003982DA /* CalerderViewController.m */,
+				A7FA6DE7240D0DEB003982DA /* UIColor+Hex.h */,
+				A7FA6DE6240D0DEA003982DA /* UIColor+Hex.m */,
+			);
+			path = FSCustomCalendar;
+			sourceTree = "<group>";
+		};
+		A7FA6DDE240CF1A6003982DA /* HotelOrderPage */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA6DE0240CF213003982DA /* HotelOrderHeaderView.h */,
+				A7FA6DE1240CF213003982DA /* HotelOrderHeaderView.m */,
+				A7FA6DF4240D3DCF003982DA /* HotelNumberCell.h */,
+				A7FA6DF5240D3DCF003982DA /* HotelNumberCell.m */,
+				A73FACE3240E0439008BA2D9 /* HotelWarnCell.h */,
+				A73FACE4240E0439008BA2D9 /* HotelWarnCell.m */,
+				A73FACE6240E08D9008BA2D9 /* OrderInfoCell.h */,
+				A73FACE7240E08D9008BA2D9 /* OrderInfoCell.m */,
+				A73FACEC240E0D4E008BA2D9 /* CheckInInfoCell.h */,
+				A73FACED240E0D4E008BA2D9 /* CheckInInfoCell.m */,
+				A73FACEF240E1065008BA2D9 /* CheckInTextFieldCell.h */,
+				A73FACF0240E1065008BA2D9 /* CheckInTextFieldCell.m */,
+				A73FACF2240E2566008BA2D9 /* OrderDiscountCell.h */,
+				A73FACF3240E2566008BA2D9 /* OrderDiscountCell.m */,
+				A73FACF8240E3028008BA2D9 /* HotelComboCell.h */,
+				A73FACF9240E3028008BA2D9 /* HotelComboCell.m */,
+				A73FACFB240E718A008BA2D9 /* OrderToolBarView.h */,
+				A73FACFC240E718A008BA2D9 /* OrderToolBarView.m */,
+				A73FACFE240E7EE6008BA2D9 /* MentionCell.h */,
+				A73FACFF240E7EE6008BA2D9 /* MentionCell.m */,
+				A73FAD01240E8225008BA2D9 /* SloganCell.h */,
+				A73FAD02240E8225008BA2D9 /* SloganCell.m */,
+			);
+			path = HotelOrderPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1712,9 +1836,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */,
+				A73FACF1240E1065008BA2D9 /* CheckInTextFieldCell.m in Sources */,
+				A7FA6DED240D121D003982DA /* LVCalendarCell.m in Sources */,
 				A702E056240911F500A9646C /* ASFVideoProcessor.m in Sources */,
 				A7739FAE2405191B00EF7664 /* NSString+Size.m in Sources */,
 				A7C7791B2402562E003EBCE0 /* ImageAndLabelCell.m in Sources */,
+				A7FA6DE2240CF213003982DA /* HotelOrderHeaderView.m in Sources */,
 				A7FA6D9E240CE16E003982DA /* DetailPresentNavBar.m in Sources */,
 				A772A99C2407C09300B8FC52 /* SimpleTitleView.m in Sources */,
 				A7C779142402562E003EBCE0 /* SpotHeader.m in Sources */,
@@ -1758,6 +1885,7 @@
 				A7C779342402562E003EBCE0 /* QMUIConfigurationTemplate.m in Sources */,
 				A702E055240911F500A9646C /* ASFCameraController.m in Sources */,
 				A7C779032402562E003EBCE0 /* DetailController.m in Sources */,
+				A73FAD03240E8225008BA2D9 /* SloganCell.m in Sources */,
 				A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */,
 				A7C779102402562E003EBCE0 /* UIView+snap.m in Sources */,
 				A7C7791D2402562E003EBCE0 /* BannerView.m in Sources */,
@@ -1773,6 +1901,7 @@
 				A7C779022402562E003EBCE0 /* MainTabController.m in Sources */,
 				A7C7786B2402515B003EBCE0 /* main.m in Sources */,
 				A702DFFA2408BF4400A9646C /* UIWindow+LBXHierarchy.m in Sources */,
+				A7FA6DEE240D121D003982DA /* CalerderViewController.m in Sources */,
 				A7C7793B2402580C003EBCE0 /* NSObject+BlockSEL.m in Sources */,
 				A702E06024091A0400A9646C /* ColorFormatUtil.m in Sources */,
 				A73D6562240B705D00F94792 /* MineInfoButtonCell.m in Sources */,
@@ -1781,6 +1910,8 @@
 				A7C779172402562E003EBCE0 /* TYCyclePagerViewCell.m in Sources */,
 				A7C779132402562E003EBCE0 /* SpotCell.m in Sources */,
 				A738B0A5240A653C00705AF2 /* MineMeliedgeCell.m in Sources */,
+				A73FAD00240E7EE6008BA2D9 /* MentionCell.m in Sources */,
+				A73FACE5240E0439008BA2D9 /* HotelWarnCell.m in Sources */,
 				A7C7791E2402562E003EBCE0 /* BannerCell.m in Sources */,
 				A73D657D240BAE0600F94792 /* MineTouristHeaderView.m in Sources */,
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
@@ -1799,11 +1930,13 @@
 				A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */,
 				A738B097240A2DAC00705AF2 /* MineHistoryCell.m in Sources */,
 				A772A9932407A99700B8FC52 /* OrderCell.m in Sources */,
+				A7FA6DE5240CF6D6003982DA /* HotelOrderDatePickerView.m in Sources */,
 				A7C7794424025F54003EBCE0 /* MapController.m in Sources */,
 				A702E051240911F500A9646C /* ASFRManager.m in Sources */,
 				A7C779372402562E003EBCE0 /* QDCommonUI.m in Sources */,
 				A7C7790A2402562E003EBCE0 /* GridCityCell.m in Sources */,
 				A7739FB92405191B00EF7664 /* GHCustomAlertView.m in Sources */,
+				A73FACF7240E2E0F008BA2D9 /* CheckInController.m in Sources */,
 				A7C7792B2402562E003EBCE0 /* WSLWaterFlowLayout.m in Sources */,
 				A73D6589240BE60E00F94792 /* Log.m in Sources */,
 				A73D656C240B7E2100F94792 /* InfoList.m in Sources */,
@@ -1819,6 +1952,7 @@
 				A772A9A22407DB2D00B8FC52 /* ProfileStatusCell.m in Sources */,
 				A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */,
 				A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */,
+				A73FACE8240E08D9008BA2D9 /* OrderInfoCell.m in Sources */,
 				A73D655F240B6B2400F94792 /* IDCardInfoCell.m in Sources */,
 				A7C7791C2402562E003EBCE0 /* HotHeaderView.m in Sources */,
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
@@ -1836,12 +1970,16 @@
 				A7739FB42405191B00EF7664 /* GHDropMenuFilterTagItem.m in Sources */,
 				A7C779092402562E003EBCE0 /* ImageCollectionController.m in Sources */,
 				A7C4F0C22403D5BB008E740A /* DetailInfoPartCell.m in Sources */,
+				A72D3AF9240F77DC009720AD /* SceneHeaderView.m in Sources */,
 				A772A9962407B09500B8FC52 /* SimpleImageTitleCell.m in Sources */,
+				A73FACEE240E0D4E008BA2D9 /* CheckInInfoCell.m in Sources */,
 				A7084C952406C23700FF5CAE /* LinkageMenuView.m in Sources */,
 				A7C779222402562E003EBCE0 /* HotCell.m in Sources */,
 				A702E0092408BFCC00A9646C /* LBXPermissionCamera.m in Sources */,
 				A702DFEC2408BC2400A9646C /* StyleDIY.m in Sources */,
+				A73FACFA240E3028008BA2D9 /* HotelComboCell.m in Sources */,
 				A7C7796024027D49003EBCE0 /* MATraceReplayOverlay.m in Sources */,
+				A73FACF4240E2566008BA2D9 /* OrderDiscountCell.m in Sources */,
 				A772A9992407B37F00B8FC52 /* SimpleImageTitleView.m in Sources */,
 				A702DFE3240898D600A9646C /* CardBagView.m in Sources */,
 				A702DFE02408973A00A9646C /* MineActivityBannerCell.m in Sources */,
@@ -1858,6 +1996,7 @@
 				A738B08D240A1E0200705AF2 /* MineFavorCell.m in Sources */,
 				A702DFF92408BF4400A9646C /* LBXAlertAction.m in Sources */,
 				A772A98A240785CD00B8FC52 /* MineController.m in Sources */,
+				A7FA6DF6240D3DCF003982DA /* HotelNumberCell.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
 				A702E053240911F500A9646C /* ASFRPerson.m in Sources */,
 				A7C4F0C52403F29F008E740A /* Pop2Controller.m in Sources */,
@@ -1867,6 +2006,7 @@
 				A7C779152402562E003EBCE0 /* RotationImageCell.m in Sources */,
 				A7739FB22405191B00EF7664 /* GHDropMenuWaterFallCell.m in Sources */,
 				A772A9A82407E59D00B8FC52 /* LevelSectionHeaderView.m in Sources */,
+				A7FA6DE8240D0DEB003982DA /* UIColor+Hex.m in Sources */,
 				A7C779012402562E003EBCE0 /* CollectionIndexView.m in Sources */,
 				A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */,
 				A7739FB12405191B00EF7664 /* GHDropMenuFilterSingleInputItem.m in Sources */,
@@ -1879,11 +2019,15 @@
 				A7C7797424027E17003EBCE0 /* CommonUtility.m in Sources */,
 				A7C7790F2402562E003EBCE0 /* SpotRotationView.m in Sources */,
 				A7C7791A2402562E003EBCE0 /* TitleCell.m in Sources */,
+				A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */,
+				A72D3AFC240F7BDA009720AD /* SceneHeaderCell.m in Sources */,
 				A7C779332402562E003EBCE0 /* QDThemeManager.m in Sources */,
 				A7739FB72405191B00EF7664 /* GHDropMenuModel.m in Sources */,
 				A702E040240911E600A9646C /* FaceController.m in Sources */,
+				A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */,
 				A7C779062402562E003EBCE0 /* HorizontalWithVerticalSectionLayout.m in Sources */,
 				A738B09A240A3CC900705AF2 /* DiscountController.m in Sources */,
+				A72D3AF5240F7791009720AD /* SceneController.m in Sources */,
 				A73D6570240B877400F94792 /* EditInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

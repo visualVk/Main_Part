@@ -82,9 +82,17 @@
 - (UIImageView *)buyImage {
   if (!_buyImage) {
     _buyImage = [UIImageView new];
+    _buyImage.userInteractionEnabled = true;
     _buyImage.image = UIImageMake(@"pay");
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
+    [_buyImage addGestureRecognizer:tap];
   }
   return _buyImage;
+}
+
+- (void)click {
+  if (self.clickBlock) { self.clickBlock(); }
 }
 
 - (NSAttributedString *)generatePrice:(NSDictionary *)infoDict {

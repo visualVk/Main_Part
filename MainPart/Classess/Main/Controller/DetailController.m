@@ -8,11 +8,13 @@
 
 #import "DetailController.h"
 #import "BannerZoomView.h"
+#import "CheckInController.h"
 #import "DetailHeaderPartCell.h"
 #import "DetailInfoPartCell.h"
 #import "DetailPresentNavBar.h"
 #import "DetailPresentToolBarView.h"
 #import "FacilityCell.h"
+#import "HotelOrderDatePickerView.h"
 #import "ItemBasicInfoCell.h"
 #import "MapController.h"
 #import "MarkUtils.h"
@@ -44,6 +46,7 @@ BannerZoomDelegate, UICollectionViewDelegate,
 UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   BOOL _didScolled;
 }
+@property (nonatomic, strong) HotelOrderDatePickerView *orderDatePickerView;
 @property (nonatomic, strong) HMSegmentedControl *segControl;
 @property (nonatomic, strong) UIView *presentView;
 @property (nonatomic, strong) DetailPresentToolBarView *presentToolBar;
@@ -55,12 +58,12 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 @property (nonatomic, strong) NSMutableArray *cellHs;
 @property (nonatomic, strong) UIBarButtonItem *favor;
 @property (nonatomic, strong) UICollectionView *collectionview;
-@property (nonatomic, strong) QMUIModalPresentationViewController *detailInfoCon;
+@property (nonatomic, strong) QMUIModalPresentationViewController *modalViewController;
 @property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
 @end
 
 @implementation DetailController
-
+@synthesize modalViewController = _modalViewController;
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
@@ -100,6 +103,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   // 对 self.view 的操作写在这里
   [self generateRootView];
   [self.segControl setAlpha:0];
+  [self.orderDatePickerView setAlpha:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -314,14 +318,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   }
   if (section > 0 && section <= self.roomList.count) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    QMUIModalPresentationViewController *modalViewController =
-    [[QMUIModalPresentationViewController alloc] init];
-    modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
+    self.modalViewController = [[QMUIModalPresentationViewController alloc] init];
+    self.modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
     //    modalViewController.contentView = self.collectionview;
-    modalViewController.contentView = self.presentView;
-    modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.modalViewController.contentView = self.presentView;
+    self.modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     __weak __typeof(self) weakSelf = self;
-    modalViewController.layoutBlock =
+    self.modalViewController.layoutBlock =
     ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
       weakSelf.presentView.qmui_frameApplyTransform = CGRectSetXY(
                                                                   weakSelf.presentView.frame,
@@ -329,7 +332,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                                                                    CGRectGetWidth(weakSelf.presentView.frame)),
                                                                   CGRectGetHeight(containerBounds) - CGRectGetHeight(weakSelf.presentView.bounds));
     };
-    [modalViewController showWithAnimated:YES completion:^(BOOL finished){}];
+    [self.modalViewController showWithAnimated:YES completion:^(BOOL finished){}];
   }
 }
 
@@ -356,6 +359,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)generateRootView {
   addView(self.view, self.tableView);
   addView(self.view, self.segControl);
+  addView(self.view, self.orderDatePickerView);
   
   [self navBarAlp];
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -368,6 +372,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     make.left.right.equalTo(self.view);
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
     make.height.equalTo(@(SEGHEIGHT));
+  }];
+  
+  [self.orderDatePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.right.equalTo(self.segControl);
+    make.top.equalTo(self.segControl.mas_bottom);
+    make.height.mas_equalTo(@(SEGHEIGHT));
   }];
 }
 
@@ -393,10 +403,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   //   setAlpha:point.y / NavigationContentTop];
   //  [UIView performWithoutAnimation:^{
   [self.segControl setAlpha:point.y / NavigationContentTop];
+  [self.orderDatePickerView setAlpha:point.y / NavigationContentTop];
   if (point.y > NavigationContentTop) {
     if (!_didScolled) {
       scrollView.contentInset =
-      UIEdgeInsetsMake(NavigationContentTop + CGRectGetHeight(self.segControl.frame), 0, 0, 0);
+      UIEdgeInsetsMake(NavigationContentTop + CGRectGetHeight(self.segControl.frame) +
+                       CGRectGetHeight(self.orderDatePickerView.frame),
+                       0, 0, 0);
       _didScolled = true;
       __weak __typeof(self) weakSelf = self;
       [UIView transitionWithView:self.favor.qmui_view
@@ -469,6 +482,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - Lazy init
+- (HotelOrderDatePickerView *)orderDatePickerView {
+  if (!_orderDatePickerView) {
+    _orderDatePickerView = [HotelOrderDatePickerView new];
+    _orderDatePickerView.layer.shadowOffset = CGSizeMake(0, 2);
+    _orderDatePickerView.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
+    _orderDatePickerView.layer.shadowOpacity = 0.25;
+    [_orderDatePickerView loadData:@{
+      @"stDate" : [NSDate dateWithTimeIntervalSinceNow:0],
+      @"edDate" : [NSDate dateWithTimeIntervalSinceNow:24 * 60 * 60 * 4],
+      @"room" : @"1",
+      @"people" : @"2"
+    }];
+  }
+  return _orderDatePickerView;
+}
+
 - (HMSegmentedControl *)segControl {
   if (!_segControl) {
     _segControl = [HMSegmentedControl new];
@@ -528,6 +557,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _tableView.clipsToBounds = YES;
     _tableView.estimatedRowHeight = ITEMCELLHEIGHT;
     _tableView.estimatedSectionHeaderHeight = ITEMCELLHEIGHT;
+    _tableView.showsVerticalScrollIndicator = false;
     _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     [_tableView registerClass:ItemBasicInfoCell.class forCellReuseIdentifier:ITEMBASICINFOCELL];
     [_tableView registerClass:RemarkCell.class forCellReuseIdentifier:REMARKCELL];
@@ -548,17 +578,25 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   if (!_presentView) {
     _presentView = [UIView new];
     addView(_presentView, self.collectionview);
-    if (!self.presentToolBar) { self.presentToolBar = [DetailPresentToolBarView new]; }
+    if (!self.presentToolBar) {
+      self.presentToolBar = [DetailPresentToolBarView new];
+      __weak __typeof(self) weakSelf = self;
+      self.presentToolBar.clickBlock = ^{
+        [weakSelf.modalViewController hideWithAnimated:YES completion:nil];
+        CheckInController *ciCon = [CheckInController new];
+        [weakSelf.navigationController pushViewController:ciCon animated:YES];
+      };
+    }
     if (!self.presentNavBar) {
       self.presentNavBar = [[DetailPresentNavBar alloc]
-                            initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, NavigationContentTop)];
+                            initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, NavigationBarHeight)];
     }
     addView(_presentView, self.presentNavBar);
     addView(_presentView, self.presentToolBar);
     [self.presentToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.equalTo(self.collectionview.mas_bottom);
       make.right.left.equalTo(self.collectionview);
-      make.height.mas_equalTo(DEVICE_HEIGHT / 15);
+      make.height.mas_equalTo(DEVICE_HEIGHT / 10);
     }];
     
     [_presentView mas_makeConstraints:^(MASConstraintMaker *make) {

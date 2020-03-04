@@ -43,6 +43,8 @@
 	<string>需要照相权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>相册</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>需要访问日历权限</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

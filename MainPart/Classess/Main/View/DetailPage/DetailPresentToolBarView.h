@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^ClickBlock)(void);
 @interface DetailPresentToolBarView : UIView
-@property(nonatomic, strong) UILabel *asksSupplier;
-@property(nonatomic, strong) UILabel *price;
-@property(nonatomic, strong) UIImageView *buyImage;
-@property(nonatomic, strong) NSDictionary *infoDict;
--(void)loadData:(NSDictionary*)infoDict;
+@property (nonatomic, strong) UILabel *asksSupplier;
+@property (nonatomic, strong) UILabel *price;
+@property (nonatomic, strong) UIImageView *buyImage;
+@property (nonatomic, strong) NSDictionary *infoDict;
+@property (nonatomic, strong) ClickBlock clickBlock;
+- (void)loadData:(NSDictionary *)infoDict;
 @end

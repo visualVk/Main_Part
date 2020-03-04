@@ -22,6 +22,7 @@ PODS:
     - AMapFoundation (~> 1.6.1)
   - AMapSearch (7.1.0):
     - AMapFoundation (~> 1.4)
+  - BEMCheckBox (1.4.1)
   - BRPickerView (2.5.5):
     - BRPickerView/AddressPickerView (= 2.5.5)
     - BRPickerView/Base (= 2.5.5)
@@ -39,6 +40,8 @@ PODS:
   - DDCardView (1.0.1):
     - SDWebImage
   - DOPDropDownMenu-Enhanced (1.0.0)
+  - DRCellSlideGestureRecognizer (1.0.0)
+  - FSCalendar (2.8.1)
   - HMSegmentedControl (1.5.5)
   - JHChainableAnimations (3.0.1)
   - JQCollectionViewAlignLayout (0.1.5)
@@ -56,6 +59,8 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.2.1)
   - MJRefresh (3.3.1)
+  - pop (1.0.12)
+  - PPNumberButton (0.8.0)
   - QMUIKit (4.0.4):
     - QMUIKit/QMUIComponents (= 4.0.4)
     - QMUIKit/QMUICore (= 4.0.4)
@@ -372,11 +377,14 @@ DEPENDENCIES:
   - AMap3DMap
   - AMapLocation
   - AMapSearch
+  - BEMCheckBox
   - BRPickerView
   - BTTransition (from `./`)
   - CSXMarkView
   - DDCardView
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
+  - DRCellSlideGestureRecognizer
+  - FSCalendar
   - HMSegmentedControl
   - JHChainableAnimations (~> 3.0.1)
   - JQCollectionViewAlignLayout
@@ -388,6 +396,8 @@ DEPENDENCIES:
   - Masonry
   - MJExtension
   - MJRefresh
+  - pop (~> 1.0)
+  - PPNumberButton
   - QMUIKit
   - ReactiveObjC
   - SAMKeychain
@@ -407,10 +417,13 @@ SPEC REPOS:
     - AMapFoundation
     - AMapLocation
     - AMapSearch
+    - BEMCheckBox
     - BRPickerView
     - CSXMarkView
     - DDCardView
     - DOPDropDownMenu-Enhanced
+    - DRCellSlideGestureRecognizer
+    - FSCalendar
     - HMSegmentedControl
     - JHChainableAnimations
     - JQCollectionViewAlignLayout
@@ -419,6 +432,8 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - MJRefresh
+    - pop
+    - PPNumberButton
     - QMUIKit
     - ReactiveObjC
     - SAMKeychain
@@ -440,7 +455,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AAChartKit:
-    :commit: 107f3251b1628262b77fae066aec5ea6c0bda06f
+    :commit: f40ca065daea510a8959c4875c2273376cc57f2f
     :git: https://github.com/AAChartModel/AAChartKit.git
 
 SPEC CHECKSUMS:
@@ -450,11 +465,14 @@ SPEC CHECKSUMS:
   AMapFoundation: 672dc3a4759cb733f447c1e1b020f7ba2729f4ab
   AMapLocation: b4162db67f813508a14ee7e05c7ee4073785221d
   AMapSearch: 6bd6d361c5eb00110e0bffa4acf88b7bb9f7e059
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
   BTTransition: 1800692555cca4a98b7d3c1956d73a7a07539376
   CSXMarkView: be699e407253299738b88bfc180d16aefd8bb685
   DDCardView: 21ada5efeac292fdfd3812fa7f82625e0e85aefa
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
+  DRCellSlideGestureRecognizer: c7213100aa8b1a54b3388c2e73894039058c7795
+  FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   JHChainableAnimations: 0237489ed063f0ec5b351f5c7bb26c1891517074
   JQCollectionViewAlignLayout: d44142c09e6ba96cc874ac5014ff64accb8995ce
@@ -463,6 +481,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  PPNumberButton: 4442ff64c21d91733057ca1b3dc05fb4df55f2c0
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
@@ -476,6 +496,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 0c98166245d11c94adee2ad4e0227c8926b80ecd
+PODFILE CHECKSUM: 8b10a079d021f6a0bbd927af3e19e7df2efd2294
 
 COCOAPODS: 1.8.4

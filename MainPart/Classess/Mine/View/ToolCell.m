@@ -51,6 +51,7 @@ const NSInteger TOOLTAG = 10002;
   NSDictionary *dict = [NSDictionary readLocalFileWithName:@"MineToolModelJSON"];
   self.datas = [[ToolList alloc] initWithDictionary:dict].tool;
   [self generateRootView];
+  self.backgroundColor = UIColor.clearColor;
 }
 
 - (void)updateCellAppearanceWithIndexPath:(NSIndexPath *)indexPath {
@@ -68,7 +69,7 @@ const NSInteger TOOLTAG = 10002;
   addView(self.container, self.titleView);
   addView(self.container, self.toolGridView);
   
-  self.container.backgroundColor = UIColor.qmui_randomColor;
+  self.container.backgroundColor = UIColor.qd_backgroundColor;
   
   [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(superview).with.inset(0.5 * SPACE);

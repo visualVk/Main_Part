@@ -150,6 +150,7 @@ QMUITableViewDataSource> {
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = false;
     _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    _tableView.backgroundColor = UIColor.qd_customBackgroundColor;
     self.mineHeader =
     [[MineHeaderView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT / 3.5)];
     self.mineHeader.imgBackground.frame = self.mineHeader.frame;
@@ -249,7 +250,7 @@ QMUITableViewDataSource> {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if (section == 2) { return DEVICE_HEIGHT / 4; }
-  return 10;
+  return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

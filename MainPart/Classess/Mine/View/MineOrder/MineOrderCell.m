@@ -12,6 +12,7 @@
 
 @interface MineOrderCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIView *container;
+@property (nonatomic, strong) UIView *shadowView;
 @end
 
 @implementation MineOrderCell
@@ -35,6 +36,7 @@
 
 - (void)generateRootView {
   UIView *superview = self.contentView;
+  addView(superview, self.shadowView);
   addView(superview, self.container);
   addView(self.container, self.hotelName);
   addView(self.container, self.state);
@@ -46,6 +48,9 @@
   addView(self.container, self.deleteBtn);
   addView(self.container, self.payBtn);
   self.payBtn.hidden = YES;
+  
+  [self.shadowView
+   mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self.container); }];
   
   [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(superview).with.inset(0.5 * SPACE);
@@ -98,6 +103,19 @@
     //    make.top.equalTo(self.buyInfo.mas_bottom).with.inset(0.5 * SPACE);
     make.bottom.equalTo(self.container).with.inset(0.5 * SPACE);
   }];
+}
+
+- (UIView *)shadowView {
+  if (!_shadowView) {
+    _shadowView = [UIView new];
+    _shadowView.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
+    _shadowView.layer.shadowOffset = CGSizeMake(1, 1);
+    _shadowView.layer.shadowOpacity = 0.25;
+    _shadowView.backgroundColor = UIColor.qd_backgroundColor;
+    _shadowView.layer.cornerRadius = 10;
+    _shadowView.layer.shadowRadius = 10;
+  }
+  return _shadowView;
 }
 
 - (UIView *)container {

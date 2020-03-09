@@ -9,7 +9,7 @@
 #import <SDCycleScrollView.h>
 #import <UIKit/UIKit.h>
 
-@interface SceneHeaderView : UIView
+@interface SceneDetailHeaderView : UIView
 @property (nonatomic, strong) SDCycleScrollView *banner;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) QMUILabel *remarkOne;

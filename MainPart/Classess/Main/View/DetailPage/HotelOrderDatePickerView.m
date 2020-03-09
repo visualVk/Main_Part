@@ -14,7 +14,6 @@
 
 @interface HotelOrderDatePickerView () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIViewController *parentController;
-@property (nonatomic, strong) QMUIModalPresentationViewController *datePickCon;
 ;
 @end
 

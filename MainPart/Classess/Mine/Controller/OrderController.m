@@ -11,6 +11,7 @@
 #import "GHDropMenuModel.h"
 #import "MarkUtils.h"
 #import "MineOrderCell.h"
+#import "OrderDetailController.h"
 #import <HMSegmentedControl.h>
 #define MINEORDERCELL @"mineordercell"
 
@@ -123,7 +124,7 @@ GenerateEntityDelegate>
 - (HMSegmentedControl *)segCon {
   if (!_segCon) {
     _segCon = [[HMSegmentedControl alloc]
-               initWithSectionTitles:@[ @"全部订单", @"待付款", @"为出行", @"待评价" ]];
+               initWithSectionTitles:@[ @"全部订单", @"待付款", @"未出行", @"待评价" ]];
     _segCon.selectedSegmentIndex = self.selectedIndex;
     _segCon.selectedTitleTextAttributes =
     @{NSForegroundColorAttributeName : [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1]};
@@ -228,5 +229,7 @@ GenerateEntityDelegate>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  OrderDetailController *odCon = [OrderDetailController new];
+  [self.navigationController pushViewController:odCon animated:YES];
 }
 @end

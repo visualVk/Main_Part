@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SceneHeaderCell : UICollectionViewCell
-@property(nonatomic, strong) UILabel *title;
+@interface SceneDetailHeaderCell : UICollectionViewCell
+@property(nonatomic, strong) UILabel *sceneName;
 @property(nonatomic, strong) UILabel *phrase;
 @property(nonatomic, strong) UILabel *score;
 @property(nonatomic, strong) UILabel *remark;

@@ -136,8 +136,15 @@ QMUITableViewDataSource>
     _subBtn.backgroundColor = UIColor.qmui_randomColor;
     [_subBtn setTitle:@"提交订单" forState:UIControlStateNormal];
     [_subBtn setTitleColor:UIColor.qd_backgroundColor forState:UIControlStateNormal];
+    [_subBtn addTarget:self
+                action:@selector(gotoPayController)
+      forControlEvents:UIControlEventTouchUpInside];
   }
   return _subBtn;
+}
+
+- (void)gotoPayController {
+  if (self.pushPay) self.pushPay();
 }
 
 - (QMUITableView *)tableView {

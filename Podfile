@@ -67,4 +67,5 @@ target 'MainPart' do
   pod 'PPNumberButton'
   pod 'BEMCheckBox'
   pod 'pop', '~> 1.0'
+  # pod 'CYPasswordView'
 end

@@ -148,7 +148,8 @@
   NSInteger hours = [curHourStr integerValue];
   NSMutableArray *hourList = [NSMutableArray arrayWithCapacity:12];
   for (int i = 0; i < 12; i++) {
-    [hourList addObject:[[NSNumber numberWithInteger:hours + i] stringValue]];
+    [hourList addObject:[NSString stringWithFormat:@"%@:00", [[NSNumber numberWithInteger:hours + i]
+                                                              stringValue]]];
   }
   
   BRStringPickerView *datePicker = [[BRStringPickerView alloc] init];
@@ -156,8 +157,9 @@
   datePicker.title = @"选择预计到达时间";
   datePicker.dataSourceArr = hourList;
   datePicker.selectIndex = 0;
-  datePicker.resultModelBlock =
-  ^(BRResultModel *resultModel) { NSLog(@"选择的值：%@", resultModel.value); };
+  datePicker.resultModelBlock = ^(BRResultModel *resultModel) {
+    QMUILogInfo(@"order info cell", @"选择的值：%@", resultModel.value);
+  };
   [datePicker show];
 }
 @end

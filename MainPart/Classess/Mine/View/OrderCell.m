@@ -36,6 +36,7 @@ const NSInteger ORDERINDEX = 30000;
   //  ];
   self.datas = [NSDictionary readLocalFileWithName:@"OrderModelListJSON"][@"order"];
   [self generateRootView];
+  self.backgroundColor = UIColor.clearColor;
 }
 
 - (void)updateCellAppearanceWithIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +61,7 @@ const NSInteger ORDERINDEX = 30000;
   
   self.orderGridView.layer.cornerRadius = 10;
   self.orderGridView.layer.masksToBounds = YES;
-  self.orderGridView.backgroundColor = UIColor.qmui_randomColor;
+  self.orderGridView.backgroundColor = UIColor.qd_backgroundColor;
 }
 
 - (QMUIGridView *)orderGridView {

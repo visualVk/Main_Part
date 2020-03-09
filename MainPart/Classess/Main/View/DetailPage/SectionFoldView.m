@@ -25,7 +25,10 @@
 @implementation SectionFoldView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) { [self generateRootView]; }
+  if (self = [super initWithFrame:frame]) {
+    [self generateRootView];
+    self.backgroundColor = UIColor.clearColor;
+  }
   return self;
 }
 

@@ -37,6 +37,7 @@ PODS:
     - BRPickerView/Base
   - BTTransition (0.1.2)
   - CSXMarkView (0.0.7)
+  - CYPasswordView (0.0.4)
   - DDCardView (1.0.1):
     - SDWebImage
   - DOPDropDownMenu-Enhanced (1.0.0)
@@ -381,6 +382,7 @@ DEPENDENCIES:
   - BRPickerView
   - BTTransition (from `./`)
   - CSXMarkView
+  - CYPasswordView
   - DDCardView
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
   - DRCellSlideGestureRecognizer
@@ -420,6 +422,7 @@ SPEC REPOS:
     - BEMCheckBox
     - BRPickerView
     - CSXMarkView
+    - CYPasswordView
     - DDCardView
     - DOPDropDownMenu-Enhanced
     - DRCellSlideGestureRecognizer
@@ -469,6 +472,7 @@ SPEC CHECKSUMS:
   BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
   BTTransition: 1800692555cca4a98b7d3c1956d73a7a07539376
   CSXMarkView: be699e407253299738b88bfc180d16aefd8bb685
+  CYPasswordView: 0656dc98f1e81d003c5a7289b29e6288d78054a3
   DDCardView: 21ada5efeac292fdfd3812fa7f82625e0e85aefa
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   DRCellSlideGestureRecognizer: c7213100aa8b1a54b3388c2e73894039058c7795
@@ -496,6 +500,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 8b10a079d021f6a0bbd927af3e19e7df2efd2294
+PODFILE CHECKSUM: 0053a47fd89fb12abea52de6da300cd7f9768fe1
 
 COCOAPODS: 1.8.4

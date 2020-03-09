@@ -8,15 +8,22 @@
 
 #import "LevelSectionHeaderView.h"
 #import "MarkUtils.h"
+#import <SJAttributesFactory.h>
 
 @interface LevelSectionHeaderView () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIView *levelContainer;
+@property (nonatomic, strong) UILabel *levelLabel;
 @end
 
 @implementation LevelSectionHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) { [self generateRootView]; }
+  if (self = [super initWithFrame:frame]) {
+    [self generateRootView];
+    self.qmui_borderColor = UIColor.qd_separatorColor;
+    self.qmui_borderPosition = QMUIViewBorderPositionBottom;
+    self.qmui_borderWidth = 0.5;
+  }
   return self;
 }
 
@@ -26,40 +33,49 @@
 
 - (void)generateRootView {
   addView(self, self.levelContainer);
-  addView(self.levelContainer, self.levelView);
+  addView(self.levelContainer, self.waveView);
+  addView(self.levelContainer, self.levelLabel);
   
   [self.levelContainer
    mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self); }];
   
-  [self.levelView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.center.equalTo(self);
-    make.height.equalTo(self.levelContainer).offset(-SPACE);
-    make.width.equalTo(self.levelView.mas_height);
+  [self.waveView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.bottom.equalTo(self.levelContainer).with.inset(SPACE);
+    make.centerX.equalTo(self.levelContainer);
+    make.width.equalTo(self.waveView.mas_height);
   }];
+  
+  [self.levelLabel
+   mas_makeConstraints:^(MASConstraintMaker *make) { make.center.equalTo(self.waveView); }];
 }
 
-- (ZZCircleProgress *)levelView {
-  if (!_levelView) {
-    _levelView = [[ZZCircleProgress alloc] initWithFrame:CGRectZero
-                                           pathBackColor:UIColor.qd_placeholderColor
-                                           pathFillColor:UIColor.qmui_randomColor
-                                              startAngle:130
-                                             strokeWidth:20];
-    _levelView.progress = (arc4random() % 1600) * 1. / 1600;
-    _levelView.reduceAngle = 80;
-    _levelView.pointImage.image = UIImageMake(@"check_selected");
-    _levelView.showProgressText = false;
-    _levelView.increaseFromLast = YES;
-    _levelView.progressLabel.text = @"目前登记16";
-    _levelView.progressLabel.textColor = UIColor.qd_backgroundColor;
+- (HWWaveView *)waveView {
+  if (!_waveView) {
+    _waveView = [[HWWaveView alloc] initWithFrame:CGRectMake(50, 50, 80, 80)];
+    _waveView.progress = (arc4random() % 1600) * 1. / 1600;
   }
-  return _levelView;
+  return _waveView;
+}
+
+- (UILabel *)levelLabel {
+  if (!_levelLabel) {
+    _levelLabel = [UILabel new];
+    _levelLabel.numberOfLines = 0;
+    _levelLabel.attributedText =
+    [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.append([NSString stringWithFormat:@"%u", (arc4random() % 1600)])
+      .textColor(UIColor.qd_mainTextColor)
+      .font(UIFontBoldMake(40));
+      make.append(@"\n超过98%的人").textColor(UIColor.qd_mainTextColor).font(UIFontMake(18));
+    }];
+  }
+  return _levelLabel;
 }
 
 - (UIView *)levelContainer {
   if (!_levelContainer) {
     _levelContainer = [UIView new];
-    _levelContainer.backgroundColor = UIColor.qmui_randomColor;
+    _levelContainer.backgroundColor = UIColor.qd_backgroundColor;
   }
   return _levelContainer;
 }

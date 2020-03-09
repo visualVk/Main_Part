@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 typedef void (^PopOrderDetail)(void);
+typedef void (^PushPay)(void);
 @interface OrderToolBarView : UIView
 @property (nonatomic, strong) UIImageView *askSupplier;
 @property (nonatomic, strong) UILabel *askSupplierTitle;
@@ -16,4 +17,5 @@ typedef void (^PopOrderDetail)(void);
 @property (nonatomic, strong) UILabel *consumeDetail;
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) PopOrderDetail popOrderDetail;
+@property (nonatomic, strong) PushPay pushPay;
 @end

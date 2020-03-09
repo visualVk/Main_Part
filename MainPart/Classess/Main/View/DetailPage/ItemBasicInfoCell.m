@@ -32,6 +32,7 @@
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
   self.selectionStyle = UITableViewCellSelectionStyleNone;
+  self.backgroundColor = UIColor.clearColor;
   [self generateRootView];
 }
 
@@ -50,7 +51,7 @@
   UIView *container = [UIView new];
   container.layer.cornerRadius = 10.0f;
   container.layer.masksToBounds = YES;
-  container.backgroundColor = UIColor.qd_customBackgroundColor;
+  container.backgroundColor = UIColor.qd_backgroundColor;
   addView(superview, container);
   [container mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.equalTo(superview);

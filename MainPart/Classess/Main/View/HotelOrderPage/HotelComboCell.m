@@ -44,12 +44,12 @@
     make.edges.equalTo(superview).with.insets(padding);
   }];
   
-  [@[ self.stDate, self.edDate, self.days, self.configuration, self.showHotel ]
+  [@[ self.stDate, self.edDate, self.days, self.configuration ]
    mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.container).with.inset(0.5 * SPACE);
   }];
   
-  [@[ self.stDate, self.days, self.edDate, self.configuration, self.showHotel ]
+  [@[ self.stDate, self.days, self.edDate, self.configuration ]
    mas_distributeViewsAlongAxis:MASAxisTypeHorizontal
    withFixedSpacing:0.5 * SPACE
    leadSpacing:0
@@ -77,7 +77,7 @@
     addView(_container, self.stDate);
     addView(_container, self.days);
     addView(_container, self.edDate);
-    addView(_container, self.showHotel);
+//    addView(_container, self.showHotel);
     addView(_container, self.hotelTitle);
     addView(_container, self.tags);
     addView(_container, self.configuration);

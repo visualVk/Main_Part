@@ -10,6 +10,7 @@
 #import "BannerView.h"
 #import "BannerViewSpot.h"
 #import "MarkUtils.h"
+#import "SceneController.h"
 #import "SpotCell.h"
 #import "SpotFoldCell.h"
 #import "SpotHeader.h"
@@ -114,25 +115,8 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  //  if (self.tableView == tableView) {
-  //    SpotFoldCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-  //    if ([cell isAnimating]) { return; }
-  //    NSTimeInterval reloadTime;
-  //    if ([_cellHs[indexPath.row] floatValue] == [SpotFoldCell cellCloseH]) {
-  //      _cellHs[indexPath.row] = [NSNumber numberWithFloat:[SpotFoldCell cellOpenH]];
-  //      [cell startFoldAnimated:YES foldType:FoldTypeOpen];
-  //      reloadTime = 0.6;
-  //    } else {
-  //      _cellHs[indexPath.row] = [NSNumber numberWithFloat:[SpotFoldCell cellCloseH]];
-  //      [cell startFoldAnimated:YES foldType:FoldTypeClose];
-  //      reloadTime = 1.4;
-  //    }
-  //    [UIView animateWithDuration:reloadTime
-  //                     animations:^{
-  //      [tableView beginUpdates];
-  //      [tableView endUpdates];
-  //    }];
-  //  }
+  SceneController *sCon = [SceneController new];
+  [self.navigationController pushViewController:sCon animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

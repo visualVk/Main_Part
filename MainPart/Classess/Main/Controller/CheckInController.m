@@ -14,6 +14,7 @@
 #import "OrderDiscountCell.h"
 #import "OrderInfoCell.h"
 #import "OrderToolBarView.h"
+#import "PayMethodController.h"
 #import "SloganCell.h"
 #define MENTIONCELL @"mentioncell"
 #define SLOGANCELL @"slogancell"
@@ -125,6 +126,12 @@ QMUITableViewDataSource>
       [weakSelf.orderToolBar.tableView.layer pop_addAnimation:weakSelf.anim
                                                        forKey:@"springanimate"];
     };
+    _orderToolBar.pushPay = ^{
+      PayMethodController *pCon = [PayMethodController new];
+      //      [weakSelf popDimingView];
+      [weakSelf removeDimingContainer];
+      [weakSelf.navigationController pushViewController:pCon animated:YES];
+    };
   }
   return _orderToolBar;
 }
@@ -149,7 +156,7 @@ QMUITableViewDataSource>
     addView(_dmingView, topView);
     addView(_dmingView, bottomView);
     UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popDimingView)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popDimingView:)];
     [_dmingView addGestureRecognizer:tap];
   }
   return _dmingView;
@@ -168,8 +175,15 @@ QMUITableViewDataSource>
   return _anim;
 }
 
-- (void)popDimingView {
-  [self.dmingView qmui_removeAllSubviews];
+- (void)popDimingView:(UITapGestureRecognizer *)tap {
+  //  [self.dmingView qmui_removeAllSubviews];
+  CGPoint point = [tap locationInView:self.dmingView];
+  if (!CGRectContainsPoint(self.orderToolBar.tableView.frame, point)) {
+    [self removeDimingContainer];
+  }
+}
+
+- (void)removeDimingContainer {
   [self.dmingView removeFromSuperview];
 }
 

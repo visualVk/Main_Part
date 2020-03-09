@@ -313,7 +313,7 @@ updateResultsForSearchString:(NSString *)searchString {
   self.tableview.qmui_cacheCellHeightByKeyAutomatically = YES;
   self.tableview.scrollEnabled = YES;
   self.tableview.separatorStyle = UITableViewCellSelectionStyleNone;
-  self.tableview.backgroundColor = UIColorMakeWithHex(@"#fbfaf5");
+  self.tableview.backgroundColor = UIColor.qd_customBackgroundColor;
   //  self.tableview.backgroundColor = UIColor.lightGrayColor;
   [self.tableview registerClass:[QMUITableViewCell class] forCellReuseIdentifier:@"cell"];
   [self.tableview registerClass:[BannerCell class] forCellReuseIdentifier:@"bannercell"];

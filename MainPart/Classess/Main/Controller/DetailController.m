@@ -553,6 +553,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.backgroundColor = UIColor.qd_customBackgroundColor;
     _tableView.contentMode = UIViewContentModeScaleAspectFill;
     _tableView.clipsToBounds = YES;
     _tableView.estimatedRowHeight = ITEMCELLHEIGHT;

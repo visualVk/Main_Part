@@ -17,6 +17,8 @@
 #import "SimpleTitleView.h"
 #import "ToolList.h"
 #import "VIPQRCodeController.h"
+#import "ViewController.h"
+#import <easyar/engine.oc.h>
 const NSInteger TOOLTAG = 10002;
 @interface ToolCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) SimpleTitleView *titleView;
@@ -30,24 +32,6 @@ const NSInteger TOOLTAG = 10002;
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
-  //  self.datas = @[
-  //    @{ @"title" : @"爆炸",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"就是",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"艺术",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"咸鱼突",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"刺",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"派大星",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"蘑菇云",
-  //       @"image" : @"emotion_04" },
-  //    @{ @"title" : @"CNM",
-  //       @"image" : @"emotion_04" }
-  //  ];
   NSDictionary *dict = [NSDictionary readLocalFileWithName:@"MineToolModelJSON"];
   self.datas = [[ToolList alloc] initWithDictionary:dict].tool;
   [self generateRootView];
@@ -131,6 +115,7 @@ const NSInteger TOOLTAG = 10002;
   QMUILogInfo(@"tool cell", @"click:%@", view.title.text);
   if (!self.parentController) { self.parentController = [self qmui_viewController]; }
   UIViewController *desCon = nil;
+  
   switch (view.tag - TOOLTAG) {
     case 0:
       desCon = [MineInfoController new];
@@ -146,8 +131,14 @@ const NSInteger TOOLTAG = 10002;
       break;
     case 6:
       desCon = [MineTouristController new];
+      desCon.hidesBottomBarWhenPushed = true;
+      break;
     default:
       break;
+  }
+  if (view.tag - TOOLTAG == 7) {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"ARMain" bundle:nil];
+    desCon = [sb instantiateInitialViewController];
   }
   //  if ([@"刺" isEqualToString:view.title.text]) {
   //    FaceController *faCon = [[FaceController alloc] initWithFaceType:RegisterFace];

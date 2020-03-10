@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UILabel *price;
 @property (nonatomic, strong) UIImageView *qrCodeImage;
 @property (nonatomic, strong) UIImageView *switchPage;
+@property (nonatomic, strong) UILabel *roomCombo;
 
--(void)resetStatus;
+- (void)resetStatus;
 @end

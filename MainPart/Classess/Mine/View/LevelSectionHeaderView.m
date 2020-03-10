@@ -7,12 +7,16 @@
 //
 
 #import "LevelSectionHeaderView.h"
+#import "CircleSpringView.h"
 #import "MarkUtils.h"
 #import <SJAttributesFactory.h>
 
-@interface LevelSectionHeaderView () <GenerateEntityDelegate>
+@interface LevelSectionHeaderView () <GenerateEntityDelegate> {
+  BOOL initalize;
+}
 @property (nonatomic, strong) UIView *levelContainer;
 @property (nonatomic, strong) UILabel *levelLabel;
+@property (nonatomic, strong) QMUILabel *levelTitle;
 @end
 
 @implementation LevelSectionHeaderView
@@ -29,19 +33,28 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  if (!initalize) {
+    [self generateCircleSpringView:self.waveView.frame center:self.center];
+    initalize = true;
+  }
 }
 
 - (void)generateRootView {
   addView(self, self.levelContainer);
   addView(self.levelContainer, self.waveView);
   addView(self.levelContainer, self.levelLabel);
+  addView(self.levelContainer, self.levelTitle);
   
   [self.levelContainer
    mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self); }];
   
+  [self.levelTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.top.equalTo(self.levelContainer).with.inset(0.5 * SPACE);
+  }];
+  
   [self.waveView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.bottom.equalTo(self.levelContainer).with.inset(SPACE);
-    make.centerX.equalTo(self.levelContainer);
+    make.centerX.centerY.equalTo(self.levelContainer);
     make.width.equalTo(self.waveView.mas_height);
   }];
   
@@ -79,4 +92,41 @@
   }
   return _levelContainer;
 }
+
+- (QMUILabel *)levelTitle {
+  if (!_levelTitle) {
+    _levelTitle = [QMUILabel new];
+    _levelTitle.text = @"旅行成长值";
+    _levelTitle.textColor = UIColor.qd_mainTextColor;
+    _levelTitle.font = UIFontLightMake(18);
+    _levelTitle.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+    _levelTitle.qmui_borderColor = UIColor.orangeColor;
+    _levelTitle.qmui_borderWidth = 2;
+    _levelTitle.qmui_borderPosition = QMUIViewBorderPositionLeft;
+  }
+  return _levelTitle;
+}
+
+- (void)generateCircleSpringView:(CGRect)rect center:(CGPoint)center {
+  CircleSpringView *springView = nil;
+  int count = arc4random() % 5 + 2;
+  for (int i = 0; i < count;) {
+    int randomR = arc4random() % (int)(SPACE) + rect.size.width + 40;
+    CGFloat pointY = arc4random() % randomR + 30;
+    CGFloat minX =
+    -sqrtf(randomR * randomR - (pointY - DEVICE_HEIGHT / 8) * (pointY - DEVICE_HEIGHT / 8)) +
+    center.x;
+    CGFloat maxX =
+    sqrtf(randomR * randomR - (pointY - DEVICE_HEIGHT / 8) * (pointY - DEVICE_HEIGHT / 8)) +
+    center.x;
+    springView = [[CircleSpringView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    springView.center = CGPointMake(minX, pointY);
+    [self.levelContainer insertSubview:springView belowSubview:self.levelTitle];
+    springView = [[CircleSpringView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    springView.center = springView.center = CGPointMake(maxX, pointY);
+    [self.levelContainer insertSubview:springView belowSubview:self.levelTitle];
+    i += 2;
+  }
+}
+
 @end

@@ -11,6 +11,7 @@
 #import "MineOrderCheckPersonInfoView.h"
 #import "MineOrderHotelView.h"
 #import "MineOrderInfoCell.h"
+#import "MineOrderQuestionToolBar.h"
 #import "MineOrderRoomInfoView.h"
 #import <JQCollectionViewAlignLayout.h>
 #define MINEORDERROOMINFOCELL @"mineorderroominfoview"
@@ -21,6 +22,7 @@
 @interface OrderDetailController () <GenerateEntityDelegate, UICollectionViewDelegate,
 UICollectionViewDataSource,
 JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
+@property (nonatomic, strong) MineOrderQuestionToolBar *queToolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collaspeList;
 @end
@@ -72,11 +74,19 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 #pragma mark - GenerateEntityDelegate
 - (void)generateRootView {
   addView(self.view, self.collectionView);
+  addView(self.view, self.queToolBar);
   
   [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.right.equalTo(self.view);
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+    //    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    make.bottom.equalTo(self.queToolBar.mas_top);
+  }];
+  
+  [self.queToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
     make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    make.left.right.equalTo(self.view);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 15);
   }];
 }
 
@@ -104,6 +114,11 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
     _collectionView.dataSource = self;
   }
   return _collectionView;
+}
+
+- (MineOrderQuestionToolBar *)queToolBar {
+  if (!_queToolBar) { _queToolBar = [MineOrderQuestionToolBar new]; }
+  return _queToolBar;
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource

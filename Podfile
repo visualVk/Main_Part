@@ -39,7 +39,6 @@ target 'MainPart' do
   pod 'TYAttributedLabel', '~> 2.6.2'
   pod 'HMSegmentedControl'
   pod 'WMDragView'
-  pod 'DDCardView'
   pod 'SDCycleScrollView','>= 1.80'
   pod 'JQCollectionViewAlignLayout'
   pod 'AMapLocation'

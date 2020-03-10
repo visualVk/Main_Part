@@ -9,6 +9,7 @@
 #import "MineOrderRoomInfoView.h"
 #import "MarkUtils.h"
 #import <LBXScanNative.h>
+#import <SJAttributesFactory.h>
 
 @interface MineOrderRoomInfoView () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIView *container;
@@ -21,6 +22,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     self.backgroundColor = UIColor.qd_backgroundColor;
+    self.clipsToBounds = YES;
     [self generateRootView];
   }
   return self;
@@ -62,25 +64,43 @@
     _container.backgroundColor = UIColor.qd_backgroundColor;
     addView(_container, self.roomName);
     addView(_container, self.room);
+    addView(_container, self.roomCombo);
     addView(_container, self.roomStatus);
     addView(_container, self.liveDuration);
     addView(_container, self.price);
     addView(_container, self.switchPage);
     
-    [@[ self.roomName, self.room, self.liveDuration ]
+    [@[ self.roomName, self.room, self.roomCombo, self.liveDuration ]
      mas_makeConstraints:^(MASConstraintMaker *make) {
       make.left.equalTo(_container).with.inset(0.5 * SPACE);
     }];
     
-    [@[ self.roomName, self.room, self.liveDuration ]
-     mas_distributeViewsAlongAxis:MASAxisTypeVertical
-     withFixedSpacing:0.25 * SPACE
-     leadSpacing:0
-     tailSpacing:0];
+    //    [@[ self.roomName, self.room, self.liveDuration ]
+    //     mas_distributeViewsAlongAxis:MASAxisTypeVertical
+    //     withFixedSpacing:0.25 * SPACE
+    //     leadSpacing:0
+    //     tailSpacing:0];
+    
+    [self.roomName mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(_container).with.inset(0.5 * SPACE);
+    }];
+    
+    [self.room mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(self.roomName.mas_bottom).with.inset(0.5 * SPACE);
+    }];
+    
+    [self.roomCombo mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(self.room.mas_bottom).with.inset(0.5 * SPACE);
+      make.bottom.lessThanOrEqualTo(self.liveDuration.mas_top);
+    }];
     
     [self.switchPage mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.trailing.equalTo(_container);
       make.size.lessThanOrEqualTo(_container);
+    }];
+    
+    [self.liveDuration mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.bottom.equalTo(_container).with.inset(0.5 * SPACE);
     }];
     
     [self.roomStatus mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,13 +175,26 @@
     _switchPage = [UIImageView new];
     _switchPage.userInteractionEnabled = YES;
     _switchPage.image = UIImageMake(@"switch_page");
-    _switchPage.layer.backgroundColor = UIColor.lightGrayColor.CGColor;
-    _switchPage.layer.opacity = 0.45;
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rotationClick)];
     [_switchPage addGestureRecognizer:tap];
   }
   return _switchPage;
+}
+
+- (UILabel *)roomCombo {
+  if (!_roomCombo) {
+    _roomCombo = [UILabel new];
+    _roomCombo.numberOfLines = 0;
+    _roomCombo.attributedText =
+    [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.textColor(UIColor.qd_placeholderColor).font(UIFontMake(14));
+      make.append(@"·两张大床\n");
+      make.append(@"·包早中晚餐(入住当天不包早中餐)\n");
+      make.append(@"·享有免费车位，wifi");
+    }];
+  }
+  return _roomCombo;
 }
 
 - (void)rotationClick {
@@ -256,9 +289,14 @@
   [self.container.superview bringSubviewToFront:self.container];
   
   POPSpringAnimation *transformSize =
-  [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleY];
-  transformSize.fromValue = @(0);
-  transformSize.toValue = @(1);
+  [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];
+  transformSize.fromValue = @(-DEVICE_HEIGHT / 4);
+  transformSize.toValue = @(0);
+  
+  POPBasicAnimation *opacity = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+  opacity.fromValue = @(0);
+  opacity.toValue = @(1);
   [self.contentView.layer pop_addAnimation:transformSize forKey:@"tran"];
+  [self.contentView.layer pop_addAnimation:opacity forKey:@"opacity"];
 }
 @end

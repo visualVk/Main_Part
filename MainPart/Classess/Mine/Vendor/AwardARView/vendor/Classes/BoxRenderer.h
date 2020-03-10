@@ -1,0 +1,19 @@
+//================================================================================================================================
+//
+// Copyright (c) 2015-2019 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
+// EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
+// and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
+//
+//================================================================================================================================
+
+#import <easyar/vector.oc.h>
+#import <easyar/matrix.oc.h>
+
+// all methods of this class can only be called on one thread with the same OpenGLES
+@interface BoxRenderer : NSObject
+
++ (instancetype)create;
+
+- (void)render:(easyar_Matrix44F *)projectionMatrix cameraview:(easyar_Matrix44F *)cameraview size:(easyar_Vec2F *)size;
+
+@end

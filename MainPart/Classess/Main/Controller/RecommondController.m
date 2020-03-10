@@ -8,17 +8,19 @@
 #import "RecommondController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
-#import "SpotRotationView.h"
-#import <JHChainableAnimations/JHChainableAnimations.h>
+#import "QiCardView.h"
+#import "RecCell.h"
+#import "RecToolBar.h"
+#define RECCELL @"reccell"
 
-@interface RecommondController () <UICollectionViewDelegate, UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout, GenerateEntityDelegate> {
+@interface RecommondController () <GenerateEntityDelegate, QiCardViewDelegate,
+QiCardViewDataSource> {
   BOOL flag;
+  NSInteger curIndex;
 }
-@property (nonatomic, strong) UICollectionView *collectionview;
-@property (nonatomic, strong) QMUICollectionViewPagingLayout *collectionViewLayout;
 @property (nonatomic, strong) NSArray *tagList;
-@property (nonatomic, strong) UIView *pepView;
+@property (nonatomic, strong) QiCardView *cardView;
+@property (nonatomic, strong) RecToolBar *recToolBar;
 @end
 
 @implementation RecommondController
@@ -27,6 +29,7 @@ UICollectionViewDelegateFlowLayout, GenerateEntityDelegate> {
   [super didInitialize];
   // init 时做的事情请写在这里
   self.tagList = @[ @"价格实惠", @"交通方便", @"服务好", @"待人友善", @"环境舒适" ];
+  self.view.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.45];
 }
 
 - (void)initSubviews {
@@ -65,101 +68,108 @@ UICollectionViewDelegateFlowLayout, GenerateEntityDelegate> {
   self.title = @"";
 }
 
-#pragma mark - UICollectionViewDelegate
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 1;
+#pragma mark - GenerateRoowView Delegate
+- (void)generateRootView {
+  [self.cardView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.right.equalTo(self.view).with.inset(20);
+    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).with.inset(20);
+    //    make.height.mas_equalTo(DEVICE_HEIGHT * 3 / 5);
+    make.bottom.equalTo(self.recToolBar.mas_top);
+  }];
+  
+  [self.recToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.right.equalTo(self.view);
+    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).with.inset(30);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 12);
+  }];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section {
-  return 10 + 1;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row > 9) {
-    UICollectionViewCell *cell =
-    [collectionView dequeueReusableCellWithReuseIdentifier:@"refreshcell"
-                                              forIndexPath:indexPath];
-    cell.backgroundColor = UIColor.qmui_randomColor;
-    return cell;
+#pragma mark - Lazy Init
+- (QiCardView *)cardView {
+  if (!_cardView) {
+    _cardView =
+    [[QiCardView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH - 40, DEVICE_HEIGHT / 2)];
+    _cardView.center = CGPointMake(DEVICE_WIDTH / 2, DEVICE_HEIGHT / 2);
+    _cardView.dataSource = self;
+    _cardView.delegate = self;
+    _cardView.visibleCount = 4;
+    _cardView.lineSpacing = 15.0;
+    _cardView.interitemSpacing = 10.0;
+    _cardView.maxAngle = 10.0;
+    _cardView.isAlpha = YES;
+    _cardView.maxRemoveDistance = 100.0;
+    _cardView.layer.cornerRadius = 10.0;
+    [_cardView registerClass:RecCell.class forCellReuseIdentifier:RECCELL];
+    [self.view addSubview:_cardView];
   }
-  SpotRotationView *cell =
-  [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-  cell.datas = self.tagList;
-  [cell loadData];
+  return _cardView;
+}
+
+- (RecToolBar *)recToolBar {
+  if (!_recToolBar) {
+    _recToolBar = [RecToolBar new];
+    _recToolBar.detailBlock = ^(NSInteger tag) {
+      
+    };
+    _recToolBar.discountBlock = ^(NSInteger tag) {
+      
+    };
+    _recToolBar.favorBlock = ^(NSInteger tag) {
+      
+    };
+    [self.view addSubview:_recToolBar];
+  }
+  return _recToolBar;
+}
+
+#pragma mark - QiCardViewDataSource
+
+- (RecCell *)cardView:(QiCardView *)cardView cellForRowAtIndex:(NSInteger)index {
+  
+  RecCell *cell = [cardView dequeueReusableCellWithIdentifier:RECCELL];
+  //    cell.cellData = _cellItems[index];
+  cell.layer.cornerRadius = 10.0;
+  cell.layer.masksToBounds = YES;
+  //    cell.buttonClicked = ^(UIButton *sender) {
+  //        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL
+  //        URLWithString:self.cellItems[index].url]]; [self presentViewController:safariVC
+  //        animated:YES completion:nil];
+  //    };
   return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(CGRectGetWidth(collectionView.bounds) -
-                    UIEdgeInsetsGetHorizontalValue(self.collectionViewLayout.sectionInset) -
-                    UIEdgeInsetsGetHorizontalValue(self.collectionview.qmui_contentInset),
-                    CGRectGetHeight(collectionView.bounds) -
-                    UIEdgeInsetsGetVerticalValue(self.collectionViewLayout.sectionInset) -
-                    UIEdgeInsetsGetVerticalValue(self.collectionview.qmui_contentInset));
+- (NSInteger)numberOfCountInCardView:(UITableView *)cardView {
+  return 3;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-  didEndDisplayingCell:(UICollectionViewCell *)cell
-    forItemAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row < 10) {
-    SpotRotationView *sCell = (SpotRotationView *)cell;
-    [sCell stateInit];
-  }
+#pragma mark - QiCardViewDelegate
+
+- (void)cardView:(QiCardView *)cardView
+didRemoveLastCell:(QiCardViewCell *)cell
+   forRowAtIndex:(NSInteger)index {
+  [cardView reloadDataAnimated:YES];
 }
 
-#pragma mark - GenerateRoowView Delegate
-- (void)generateRootView {
-  //  self.loadView.backgroundColor = UIColor.qmui_randomColor;
-  addView(self.view, self.collectionview);
-  //  addView(self.collectionview, self.pepView);
+- (void)cardView:(QiCardView *)cardView
+   didRemoveCell:(QiCardViewCell *)cell
+   forRowAtIndex:(NSInteger)index {
+  NSLog(@"didRemoveCell forRowAtIndex = %ld", index);
+}
+
+- (void)cardView:(QiCardView *)cardView
+  didDisplayCell:(QiCardViewCell *)cell
+   forRowAtIndex:(NSInteger)index {
   
-  [self.collectionview mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.view).offset(0.5 * SPACE);
-    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0.5 * SPACE);
-    make.right.equalTo(self.view).offset(-0.5 * SPACE);
-    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(0.5 * SPACE);
-  }];
+  NSLog(@"didDisplayCell forRowAtIndex = %ld", index);
   
-  //  self.pepView.frame = CGRectMake(3500, 200, 50, 50);
+  NSLog(@"currentFirstIndex = %ld", cardView.currentFirstIndex);
+  NSLog(@"%ld", index);
+  curIndex = index;
 }
 
-#pragma mark - Lazy init UICollection View
-- (UICollectionView *)collectionview {
-  if (!_collectionview) {
-    self.collectionViewLayout = [[QMUICollectionViewPagingLayout alloc]
-                                 initWithStyle:QMUICollectionViewPagingLayoutStyleRotation];
-    self.collectionViewLayout.sectionInset = UIEdgeInsetsMake(SPACE, SPACE, SPACE, SPACE);
-    self.collectionViewLayout.minimumLineSpacing = 0;
-    self.collectionViewLayout.minimumInteritemSpacing = 0;
-    _collectionview = [[UICollectionView alloc] initWithFrame:CGRectZero
-                                         collectionViewLayout:self.collectionViewLayout];
-    _collectionview.backgroundColor = UIColor.qd_backgroundColor;
-    //    [_collectionview registerClass:UICollectionViewCell.class
-    //    forCellWithReuseIdentifier:@"cell"];
-    [_collectionview registerClass:UICollectionViewCell.class
-        forCellWithReuseIdentifier:@"refreshcell"];
-    [_collectionview registerClass:SpotRotationView.class forCellWithReuseIdentifier:@"cell"];
-    _collectionview.delegate = self;
-    _collectionview.dataSource = self;
-  }
-  return _collectionview;
+- (void)cardView:(QiCardView *)cardView
+     didMoveCell:(QiCardViewCell *)cell
+    forMovePoint:(CGPoint)point {
+  //    NSLog(@"move point = %@", NSStringFromCGPoint(point));
 }
-
-- (UIView *)pepView {
-  if (!_pepView) {
-    _pepView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    _pepView.backgroundColor = UIColor.qmui_randomColor;
-  }
-  return _pepView;
-}
-#pragma mark - UIScollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  QMUILogInfo(@"recommond controller", @"scrollview,x=%f,y=%f", scrollView.contentOffset.x,
-              scrollView.contentOffset.y);
-}
-
 @end

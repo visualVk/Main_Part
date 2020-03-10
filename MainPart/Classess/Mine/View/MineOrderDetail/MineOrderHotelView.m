@@ -33,13 +33,15 @@
   addView(superview, self.hotelContainer);
   
   [self.locateImage mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(superview).with.inset(0.5 * SPACE);
+    make.left.top.bottom.equalTo(superview).with.inset(0.5 * SPACE);
+    make.width.equalTo(self.locateImage.mas_height);
     make.centerY.equalTo(superview);
   }];
   
   [self.hotelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(self.locateImage.mas_right);
     make.right.equalTo(superview);
+    make.centerY.equalTo(superview);
     make.top.bottom.equalTo(superview).with.inset(0.5 * SPACE);
   }];
 }
@@ -62,7 +64,7 @@
     }];
     
     [self.goHotelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(self.hotelName);
+      make.top.equalTo(self.hotelName).with.inset(0.25 * SPACE);
       make.right.equalTo(_hotelContainer).with.inset(0.5 * SPACE);
     }];
   }
@@ -105,8 +107,8 @@
 - (UIImageView *)locateImage {
   if (!_locateImage) {
     _locateImage = [UIImageView new];
-    _locateImage.image = UIImageMake(@"locate");
-    _locateImage.contentMode = QMUIImageResizingModeScaleAspectFit;
+    _locateImage.image = UIImageMake(@"pink_gradient");
+    _locateImage.contentMode = QMUIImageResizingModeScaleToFill;
   }
   return _locateImage;
 }

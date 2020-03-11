@@ -49,6 +49,8 @@ QMUINavigationControllerDelegate> {
 @property (nonatomic, assign) Boolean okFlag;
 @property (nonatomic, assign) CGPoint curContentOffset;
 @property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
+//首页临时标题数组
+@property (nonatomic, strong) NSArray *tmpList;
 
 @end
 
@@ -63,12 +65,13 @@ QMUINavigationControllerDelegate> {
     @"Helps", @"Maintain", @"Liver", @"Health", @"Function", @"Supports", @"Healthy", @"Fat",
     @"Metabolism", @"Nuturally"
   ];
-  self.searchResultsKeywords = [[NSMutableArray alloc] init];
+  self.searchResultsKeywords = [[NSMutableArray alloc] initWithArray:@[]];
   self.statusBarStyle = [super preferredStatusBarStyle];
   self.imageList = @[
     @"icon_moreOperation_shareChat", @"icon_moreOperation_shareChat",
     @"icon_moreOperation_shareChat", @"icon_moreOperation_shareChat"
   ];
+  self.tmpList = @[ @"", @"", @"", @"", @"" ];
 }
 
 - (void)initSubviews {
@@ -152,7 +155,7 @@ QMUINavigationControllerDelegate> {
 #pragma mark - <QMUITableViewDataSource,QMUITableViewDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  if (tableView == self.tableview) { return 5; }
+  if (tableView == self.tableview) { return self.tmpList.count; }
   return self.searchResultsKeywords.count;
 }
 
@@ -428,6 +431,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
 }
 - (void)dealloc {
   [AMLocationUtils stopReGeo];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - navigation bar alpha

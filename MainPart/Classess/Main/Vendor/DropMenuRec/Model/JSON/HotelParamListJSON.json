@@ -1,0 +1,155 @@
+{
+  "hotelParam" : [
+    {
+      "param" : "price",
+      "type" : "酒店价格",
+      "title" : [
+        {
+          "String" : "起始价格",
+          "id" : 0
+        },
+        {
+          "String" : "最高价格",
+          "id" : 1
+        }
+      ],
+      "isMuti" : false
+    },
+    {
+      "param" : "roomType",
+      "type" : "房型",
+      "title" : [
+        {
+          "String" : "双床房",
+          "id" : 0
+        },
+        {
+          "String" : "大床房",
+          "id" : 1
+        },
+        {
+          "String" : "多床房",
+          "id" : 2
+        },
+        {
+          "String" : "单人床房",
+          "id" : 3
+        }
+      ],
+      "isMuti" : true
+    },
+    {
+      "param" : "commet",
+      "type" : "评论数量",
+      "title" : [
+        {
+          "String" : "10条以上",
+          "id" : 0
+        },
+        {
+          "String" : "100条以上",
+          "id" : 1
+        },
+        {
+          "String" : "1000条以上",
+          "id" : 2
+        },
+        {
+          "String" : "10000条以上",
+          "id" : 3
+        }
+      ],
+      "isMuti" : false
+    },
+    {
+      "param" : "discount",
+      "type" : "优惠促销",
+      "title" : [
+        {
+          "String" : "全部优惠促销",
+          "id" : 0
+        },
+        {
+          "String" : "天天特价",
+          "id" : 1
+        },
+        {
+          "String" : "门店新客",
+          "id" : 2
+        },
+        {
+          "String" : "每日特惠",
+          "id" : 3
+        },
+        {
+          "String" : "学生特价",
+          "id" : 4
+        },
+        {
+          "String" : "高星首单专项",
+          "id" : 5
+        },
+        {
+          "String" : "健康守护",
+          "id" : 6
+        }
+      ],
+      "isMuti" : true
+    },
+    {
+      "param" : "brand",
+      "type" : "品牌",
+      "title" : [
+        {
+          "String" : "个人经营",
+          "id" : 0
+        },
+        {
+          "String" : "香格里拉",
+          "id" : 1
+        },
+        {
+          "String" : "瓯江",
+          "id" : 2
+        },
+        {
+          "String" : "南唐",
+          "id" : 3
+        },
+        {
+          "String" : "双子",
+          "id" : 4
+        },
+        {
+          "String" : "摩羯",
+          "id" : 5
+        },
+        {
+          "String" : "秦始皇",
+          "id" : 6
+        },
+        {
+          "String" : "五五开",
+          "id" : 7
+        },
+        {
+          "String" : "pdd",
+          "id" : 8
+        },
+        {
+          "String" : "马老师",
+          "id" : 9
+        },
+        {
+          "String" : "天秤",
+          "id" : 10
+        },
+        {
+          "String" : "狮子",
+          "id" : 11
+        }
+      ],
+      "isMuti" : true
+    }
+  ]
+}

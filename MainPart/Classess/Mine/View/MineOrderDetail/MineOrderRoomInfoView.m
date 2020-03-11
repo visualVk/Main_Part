@@ -30,8 +30,6 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  self.qrCodeImage.image =
-  [LBXScanNative createQRWithString:@"测试仪" QRSize:self.qrCodeImage.bounds.size];
 }
 
 - (void)generateRootView {
@@ -56,6 +54,7 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
+  self.qrCodeImage.image = nil;
 }
 
 - (UIView *)container {
@@ -198,6 +197,10 @@
 }
 
 - (void)rotationClick {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self.qrCodeImage.image =
+    [LBXScanNative createQRWithString:@"测试仪" QRSize:self.qrCodeImage.bounds.size];
+  });
   [MineOrderRoomInfoView transitformShowView:self.backContainer hiddenView:self.container];
 }
 
@@ -257,6 +260,8 @@
 }
 
 - (void)backToFront {
+  //  [self.backContainer setNeedsLayout];
+  //  [self.backContainer layoutIfNeeded];
   [MineOrderRoomInfoView transitformShowView:self.container hiddenView:self.backContainer];
 }
 

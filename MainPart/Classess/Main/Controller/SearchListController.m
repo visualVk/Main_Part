@@ -8,23 +8,21 @@
 
 #import "SearchListController.h"
 #import "DetailController.h"
-#import "GHDropMenu.h"
-#import "GHDropMenuModel.h"
+#import "DropMenuController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
 #import "ReMenuView.h"
 #import "SearchItemCell.h"
 #import <HMSegmentedControl.h>
-#import <JHChainableAnimator.h>
 #define ITEMSERACHCELL @"itemsearchcell"
 #define ITEMCELLHEIGHT DEVICE_HEIGHT / 5;
 
 @interface SearchListController () <GenerateEntityDelegate, QMUITableViewDelegate,
-QMUITableViewDataSource, GHDropMenuDelegate>
+QMUITableViewDataSource, DropMenuDelegate>
 @property (nonatomic, strong) QMUISearchController *mySearchController;
 @property (nonatomic, strong) HMSegmentedControl *segController;
+@property (nonatomic, strong) DropMenuController *dropController;
 @property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
-@property (nonatomic, strong) GHDropMenu *dropMenu;
 @property (nonatomic, strong) UIView *showView;
 @property (nonatomic, strong) UIView *monView;
 
@@ -72,29 +70,22 @@ QMUITableViewDataSource, GHDropMenuDelegate>
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"<##>";
 }
 
 - (void)dealloc {
-  [self.dropMenu closeMenu];
 }
 
 #pragma mark - GenerateRooViewDelegate
 - (void)generateRootView {
-  //  addView(self.view, self.segController);
-  ReMenuView *view = [ReMenuView new];
-  addView(self.view, self.dropMenu);
+  //  ReMenuView *view = [ReMenuView new];
+  self.dropController = [DropMenuController new];
+  self.dropController.delegate = self;
   addView(self.view, self.tableView);
-  addView(self.view, view);
-  
-  //  [self.segController mas_makeConstraints:^(MASConstraintMaker *make) {
-  //    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-  //    make.left.right.equalTo(self.view);
-  //    make.height.mas_equalTo(DEVICE_HEIGHT / 20);
-  //  }];
+  addView(self.view, self.dropController.menu);
+  //  addView(self.view, view);
   
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.dropMenu.mas_bottom);
+    make.top.equalTo(self.dropController.menu.mas_bottom);
     make.left.right.equalTo(self.view);
     make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
   }];
@@ -178,53 +169,9 @@ QMUITableViewDataSource, GHDropMenuDelegate>
   return _tableView;
 }
 
-- (GHDropMenu *)dropMenu {
-  if (!_dropMenu) {
-    GHDropMenuModel *configuration = [[GHDropMenuModel alloc] init];
-    configuration.recordSeleted = NO;
-    configuration.titles = [configuration creaDropMenuData];
-    
-    __weak __typeof(self) weakSelf = self;
-    _dropMenu = [GHDropMenu creatDropMenuWithConfiguration:configuration
-                                                     frame:CGRectMake(0, kGHSafeAreaTopHeight, kGHScreenWidth, 44)
-                                        dropMenuTitleBlock:^(GHDropMenuModel *_Nonnull dropMenuModel) {
-      
-    }
-                                     dropMenuTagArrayBlock:^(NSArray *_Nonnull tagArray) { [weakSelf getStrWith:tagArray]; }];
-    _dropMenu.titleSeletedImageName = @"up_normal";
-    _dropMenu.titleNormalImageName = @"down_normal";
-    _dropMenu.delegate = self;
-    _dropMenu.durationTime = 0.5;
-  }
-  return _dropMenu;
-}
-#pragma mark - DropMenuDelegate
-- (void)dropMenu:(GHDropMenu *)dropMenu dropMenuTitleModel:(GHDropMenuModel *)dropMenuTitleModel {
-  self.navigationItem.title = [NSString stringWithFormat:@"筛选结果: %@", dropMenuTitleModel.title];
-}
-- (void)dropMenu:(GHDropMenu *)dropMenu tagArray:(NSArray *)tagArray {
-  [self getStrWith:tagArray];
-}
-- (void)getStrWith:(NSArray *)tagArray {
-  NSMutableString *string = [NSMutableString string];
-  if (tagArray.count) {
-    for (GHDropMenuModel *dropMenuTagModel in tagArray) {
-      if (dropMenuTagModel.tagSeleted) {
-        if (dropMenuTagModel.tagName.length) {
-          [string appendFormat:@"%@", dropMenuTagModel.tagName];
-        }
-      }
-      if (dropMenuTagModel.maxPrice.length) {
-        [string appendFormat:@"最大价格%@", dropMenuTagModel.maxPrice];
-      }
-      if (dropMenuTagModel.minPrice.length) {
-        [string appendFormat:@"最小价格%@", dropMenuTagModel.minPrice];
-      }
-      if (dropMenuTagModel.singleInput.length) {
-        [string appendFormat:@"%@", dropMenuTagModel.singleInput];
-      }
-    }
-  }
-  //  self.navigationItem.title = [NSString stringWithFormat:@"筛选结果: %@", string];
+- (void)reloadDataWithQuery:(HotelQueryModel *)queryModel {
+  /// todo:联网修改
+  self.hotelList = @[ @"", @"", @"", @"", @"", @"", @"" ];
+  [self.tableView reloadData];
 }
 @end

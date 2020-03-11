@@ -49,11 +49,14 @@
   addView(self.container, self.payBtn);
   self.payBtn.hidden = YES;
   
-  [self.shadowView
-   mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self.container); }];
-  
+  [self.shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.container).with.inset(3);
+    make.left.right.equalTo(self.container);
+    make.bottom.equalTo(self.container);
+  }];
+  UIEdgeInsets padding = UIEdgeInsetsMake(0.25 * SPACE, 0.5 * SPACE, 0.25 * SPACE, 0.5 * SPACE);
   [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(superview).with.inset(0.5 * SPACE);
+    make.edges.equalTo(superview).with.insets(padding);
   }];
   
   [self.hotelName mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -109,8 +112,8 @@
   if (!_shadowView) {
     _shadowView = [UIView new];
     _shadowView.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
-    _shadowView.layer.shadowOffset = CGSizeMake(1, 1);
-    _shadowView.layer.shadowOpacity = 0.25;
+    _shadowView.layer.shadowOffset = CGSizeMake(0, 3);
+    _shadowView.layer.shadowOpacity = 0.1;
     _shadowView.backgroundColor = UIColor.qd_backgroundColor;
     _shadowView.layer.cornerRadius = 10;
     _shadowView.layer.shadowRadius = 10;

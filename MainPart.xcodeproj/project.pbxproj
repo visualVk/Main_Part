@@ -166,10 +166,8 @@
 		A7C341D82413D5B000BAEF70 /* HWProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C341D32413D5B000BAEF70 /* HWProgressView.m */; };
 		A7C341D92413D5B000BAEF70 /* HWInstallView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C341D52413D5B000BAEF70 /* HWInstallView.m */; };
 		A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0B72403BDA4008E740A /* DateUtils.m */; };
-		A7C4F0BC2403CF69008E740A /* PopController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BB2403CF69008E740A /* PopController.m */; };
 		A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */; };
 		A7C4F0C22403D5BB008E740A /* DetailInfoPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */; };
-		A7C4F0C52403F29F008E740A /* Pop2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F0C42403F29F008E740A /* Pop2Controller.m */; };
 		A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C778642402515B003EBCE0 /* Assets.xcassets */; };
 		A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C778662402515B003EBCE0 /* LaunchScreen.storyboard */; };
 		A7C7786B2402515B003EBCE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7786A2402515B003EBCE0 /* main.m */; };
@@ -262,6 +260,20 @@
 		A7FA6DEE240D121D003982DA /* CalerderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DEC240D121D003982DA /* CalerderViewController.m */; };
 		A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DF1240D3DA6003982DA /* PeopleNumController.m */; };
 		A7FA6DF6240D3DCF003982DA /* HotelNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA6DF5240D3DCF003982DA /* HotelNumberCell.m */; };
+		A7FBA08A2419BA480000287A /* MineProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0892419BA480000287A /* MineProfileController.m */; };
+		A7FBA08E2419BA8E0000287A /* MineProfileAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA08D2419BA8E0000287A /* MineProfileAvatarCell.m */; };
+		A7FBA0912419DD8C0000287A /* MineQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0902419DD8C0000287A /* MineQRCodeController.m */; };
+		A7FBA0942419DE7A0000287A /* MineQrCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0932419DE7A0000287A /* MineQrCodeView.m */; };
+		A7FBA09B241A1C2B0000287A /* MineNewPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA09A241A1C2B0000287A /* MineNewPhoneController.m */; };
+		A7FBA09E241A31C60000287A /* MineCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA09D241A31C60000287A /* MineCodeController.m */; };
+		A7FBA0A2241A70A60000287A /* QDAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0A1241A70A60000287A /* QDAlertHelper.m */; };
+		A7FBA0A6241A79C90000287A /* MineInfoSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0A5241A79C90000287A /* MineInfoSetController.m */; };
+		A7FBA0A9241A7AC60000287A /* MineTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA0A8241A7AC60000287A /* MineTextFieldCell.m */; };
+		A7FD2B67241B3E13006B3CC1 /* MinePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B66241B3E13006B3CC1 /* MinePasswordController.m */; };
+		A7FD2B6A241B4603006B3CC1 /* MineAvatarPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B69241B4603006B3CC1 /* MineAvatarPickerController.m */; };
+		A7FD2B6D241B74FF006B3CC1 /* MineOrderServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */; };
+		A7FD2B70241B812B006B3CC1 /* MineFoodOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */; };
+		A7FD2B73241BAFFC006B3CC1 /* MineFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */; };
 		A7FE9A6224177DEB00A8D259 /* ARAwardController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A6124177DEB00A8D259 /* ARAwardController.m */; };
 		A7FE9A8624177E1E00A8D259 /* AwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A6524177E1D00A8D259 /* AwardView.m */; };
 		A7FE9A8924177E1E00A8D259 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A7124177E1D00A8D259 /* ViewController.m */; };
@@ -358,7 +370,6 @@
 		A702E05E24091A0400A9646C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
 		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
-		A7084C742406C23700FF5CAE /* LinkageMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageMenuProtocol.h; sourceTree = "<group>"; };
 		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
 		A7084C772406C23700FF5CAE /* EvenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvenCell.h; sourceTree = "<group>"; };
 		A7084C782406C23700FF5CAE /* LinkageFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageFooter.h; sourceTree = "<group>"; };
@@ -617,14 +628,10 @@
 		A7C341D52413D5B000BAEF70 /* HWInstallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWInstallView.m; sourceTree = "<group>"; };
 		A7C4F0B62403BDA4008E740A /* DateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		A7C4F0B72403BDA4008E740A /* DateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
-		A7C4F0BA2403CF69008E740A /* PopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopController.h; sourceTree = "<group>"; };
-		A7C4F0BB2403CF69008E740A /* PopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopController.m; sourceTree = "<group>"; };
 		A7C4F0BD2403D59F008E740A /* DetailHeaderPartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailHeaderPartCell.h; sourceTree = "<group>"; };
 		A7C4F0BE2403D59F008E740A /* DetailHeaderPartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailHeaderPartCell.m; sourceTree = "<group>"; };
 		A7C4F0C02403D5BB008E740A /* DetailInfoPartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailInfoPartCell.h; sourceTree = "<group>"; };
 		A7C4F0C12403D5BB008E740A /* DetailInfoPartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailInfoPartCell.m; sourceTree = "<group>"; };
-		A7C4F0C32403F29F008E740A /* Pop2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pop2Controller.h; sourceTree = "<group>"; };
-		A7C4F0C42403F29F008E740A /* Pop2Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pop2Controller.m; sourceTree = "<group>"; };
 		A7C7785524025159003EBCE0 /* MainPart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainPart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C778642402515B003EBCE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7C778672402515B003EBCE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -818,6 +825,34 @@
 		A7FA6DF1240D3DA6003982DA /* PeopleNumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleNumController.m; sourceTree = "<group>"; };
 		A7FA6DF4240D3DCF003982DA /* HotelNumberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelNumberCell.h; sourceTree = "<group>"; };
 		A7FA6DF5240D3DCF003982DA /* HotelNumberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelNumberCell.m; sourceTree = "<group>"; };
+		A7FBA0882419BA480000287A /* MineProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineProfileController.h; sourceTree = "<group>"; };
+		A7FBA0892419BA480000287A /* MineProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineProfileController.m; sourceTree = "<group>"; };
+		A7FBA08C2419BA8E0000287A /* MineProfileAvatarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineProfileAvatarCell.h; sourceTree = "<group>"; };
+		A7FBA08D2419BA8E0000287A /* MineProfileAvatarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineProfileAvatarCell.m; sourceTree = "<group>"; };
+		A7FBA08F2419DD8C0000287A /* MineQRCodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineQRCodeController.h; sourceTree = "<group>"; };
+		A7FBA0902419DD8C0000287A /* MineQRCodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineQRCodeController.m; sourceTree = "<group>"; };
+		A7FBA0922419DE7A0000287A /* MineQrCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineQrCodeView.h; sourceTree = "<group>"; };
+		A7FBA0932419DE7A0000287A /* MineQrCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineQrCodeView.m; sourceTree = "<group>"; };
+		A7FBA099241A1C2B0000287A /* MineNewPhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineNewPhoneController.h; sourceTree = "<group>"; };
+		A7FBA09A241A1C2B0000287A /* MineNewPhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineNewPhoneController.m; sourceTree = "<group>"; };
+		A7FBA09C241A31C60000287A /* MineCodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineCodeController.h; sourceTree = "<group>"; };
+		A7FBA09D241A31C60000287A /* MineCodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineCodeController.m; sourceTree = "<group>"; };
+		A7FBA0A0241A70A60000287A /* QDAlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QDAlertHelper.h; sourceTree = "<group>"; };
+		A7FBA0A1241A70A60000287A /* QDAlertHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QDAlertHelper.m; sourceTree = "<group>"; };
+		A7FBA0A4241A79C90000287A /* MineInfoSetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineInfoSetController.h; sourceTree = "<group>"; };
+		A7FBA0A5241A79C90000287A /* MineInfoSetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineInfoSetController.m; sourceTree = "<group>"; };
+		A7FBA0A7241A7AC60000287A /* MineTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTextFieldCell.h; sourceTree = "<group>"; };
+		A7FBA0A8241A7AC60000287A /* MineTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTextFieldCell.m; sourceTree = "<group>"; };
+		A7FD2B65241B3E13006B3CC1 /* MinePasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinePasswordController.h; sourceTree = "<group>"; };
+		A7FD2B66241B3E13006B3CC1 /* MinePasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinePasswordController.m; sourceTree = "<group>"; };
+		A7FD2B68241B4603006B3CC1 /* MineAvatarPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAvatarPickerController.h; sourceTree = "<group>"; };
+		A7FD2B69241B4603006B3CC1 /* MineAvatarPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAvatarPickerController.m; sourceTree = "<group>"; };
+		A7FD2B6B241B74FF006B3CC1 /* MineOrderServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineOrderServiceCell.h; sourceTree = "<group>"; };
+		A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineOrderServiceCell.m; sourceTree = "<group>"; };
+		A7FD2B6E241B812B006B3CC1 /* MineFoodOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodOrderController.h; sourceTree = "<group>"; };
+		A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodOrderController.m; sourceTree = "<group>"; };
+		A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodCell.h; sourceTree = "<group>"; };
+		A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodCell.m; sourceTree = "<group>"; };
 		A7FE9A6024177DEB00A8D259 /* ARAwardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARAwardController.h; sourceTree = "<group>"; };
 		A7FE9A6124177DEB00A8D259 /* ARAwardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARAwardController.m; sourceTree = "<group>"; };
 		A7FE9A6524177E1D00A8D259 /* AwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwardView.m; sourceTree = "<group>"; };
@@ -1033,7 +1068,6 @@
 			isa = PBXGroup;
 			children = (
 				A7084C702406C23700FF5CAE /* Expand */,
-				A7084C732406C23700FF5CAE /* Protocol */,
 				A7084C752406C23700FF5CAE /* Cell */,
 				A7084C802406C23700FF5CAE /* Json */,
 				A7084C832406C23700FF5CAE /* Model */,
@@ -1049,14 +1083,6 @@
 				A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */,
 			);
 			path = Expand;
-			sourceTree = "<group>";
-		};
-		A7084C732406C23700FF5CAE /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				A7084C742406C23700FF5CAE /* LinkageMenuProtocol.h */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A7084C752406C23700FF5CAE /* Cell */ = {
@@ -1203,6 +1229,10 @@
 				A7C341CB24139D2100BAEF70 /* MineOrderInfoTBCell.m */,
 				A7D654A32416675800AECF5E /* MineOrderQuestionToolBar.h */,
 				A7D654A42416675800AECF5E /* MineOrderQuestionToolBar.m */,
+				A7FD2B6B241B74FF006B3CC1 /* MineOrderServiceCell.h */,
+				A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */,
+				A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */,
+				A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */,
 			);
 			path = MineOrderDetail;
 			sourceTree = "<group>";
@@ -1210,6 +1240,7 @@
 		A73D6552240B640A00F94792 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A7FBA0AB241A7B440000287A /* Info */,
 				A73D6559240B658200F94792 /* Tool */,
 			);
 			path = Mine;
@@ -1218,22 +1249,19 @@
 		A73D6559240B658200F94792 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				A7FA6D8B240C95E2003982DA /* OrderModelListJSON.json */,
+				A7FBA0AA241A7B2F0000287A /* JSON */,
 				A73D6587240BE60E00F94792 /* Log.h */,
 				A73D6584240BE60D00F94792 /* Log.m */,
 				A73D6588240BE60E00F94792 /* LogList.h */,
 				A73D6585240BE60E00F94792 /* LogList.m */,
-				A73D6586240BE60E00F94792 /* LogModelListJSON.json */,
 				A73D656A240B7E2000F94792 /* Info.h */,
 				A73D6567240B7E2000F94792 /* Info.m */,
 				A73D6566240B7E2000F94792 /* InfoList.h */,
 				A73D6568240B7E2000F94792 /* InfoList.m */,
-				A73D6569240B7E2000F94792 /* ProfileInfoListModelJSON.json */,
 				A73D6553240B645800F94792 /* Tool.h */,
 				A73D6554240B645800F94792 /* Tool.m */,
 				A73D6555240B645800F94792 /* ToolList.h */,
 				A73D6556240B645800F94792 /* ToolList.m */,
-				A73D655A240B658E00F94792 /* MineToolModelJSON.json */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1329,6 +1357,22 @@
 				A73AEC3624126D8F00AD6880 /* OrderDetailController.m */,
 				A7FE9A6024177DEB00A8D259 /* ARAwardController.h */,
 				A7FE9A6124177DEB00A8D259 /* ARAwardController.m */,
+				A7FBA0882419BA480000287A /* MineProfileController.h */,
+				A7FBA0892419BA480000287A /* MineProfileController.m */,
+				A7FBA08F2419DD8C0000287A /* MineQRCodeController.h */,
+				A7FBA0902419DD8C0000287A /* MineQRCodeController.m */,
+				A7FBA099241A1C2B0000287A /* MineNewPhoneController.h */,
+				A7FBA09A241A1C2B0000287A /* MineNewPhoneController.m */,
+				A7FBA09C241A31C60000287A /* MineCodeController.h */,
+				A7FBA09D241A31C60000287A /* MineCodeController.m */,
+				A7FBA0A4241A79C90000287A /* MineInfoSetController.h */,
+				A7FBA0A5241A79C90000287A /* MineInfoSetController.m */,
+				A7FD2B65241B3E13006B3CC1 /* MinePasswordController.h */,
+				A7FD2B66241B3E13006B3CC1 /* MinePasswordController.m */,
+				A7FD2B68241B4603006B3CC1 /* MineAvatarPickerController.h */,
+				A7FD2B69241B4603006B3CC1 /* MineAvatarPickerController.m */,
+				A7FD2B6E241B812B006B3CC1 /* MineFoodOrderController.h */,
+				A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1351,6 +1395,7 @@
 		A772A9862407859900B8FC52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7FBA08B2419BA500000287A /* MineProfile */,
 				A7FE9ABA2417A58C00A8D259 /* Mine */,
 				A73AEC3824126DAC00AD6880 /* MineOrderDetail */,
 				A7FA6D95240C97EB003982DA /* MineOrder */,
@@ -1750,10 +1795,6 @@
 		A7C778802402562D003EBCE0 /* trash */ = {
 			isa = PBXGroup;
 			children = (
-				A7C4F0BA2403CF69008E740A /* PopController.h */,
-				A7C4F0BB2403CF69008E740A /* PopController.m */,
-				A7C4F0C32403F29F008E740A /* Pop2Controller.h */,
-				A7C4F0C42403F29F008E740A /* Pop2Controller.m */,
 				A7C778812402562D003EBCE0 /* HorizontalWithVerticalSectionLayout.h */,
 				A7C778822402562D003EBCE0 /* HorizontalWithVerticalSectionLayout.m */,
 			);
@@ -2014,6 +2055,8 @@
 				A7C778FD2402562E003EBCE0 /* UIImageEffects.m */,
 				A7C778FE2402562E003EBCE0 /* QDCommonUI.m */,
 				A7C778FF2402562E003EBCE0 /* QDUIHelper.h */,
+				A7FBA0A0241A70A60000287A /* QDAlertHelper.h */,
+				A7FBA0A1241A70A60000287A /* QDAlertHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2163,6 +2206,37 @@
 				A73FAD02240E8225008BA2D9 /* SloganCell.m */,
 			);
 			path = HotelOrderPage;
+			sourceTree = "<group>";
+		};
+		A7FBA08B2419BA500000287A /* MineProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A7FBA08C2419BA8E0000287A /* MineProfileAvatarCell.h */,
+				A7FBA08D2419BA8E0000287A /* MineProfileAvatarCell.m */,
+				A7FBA0922419DE7A0000287A /* MineQrCodeView.h */,
+				A7FBA0932419DE7A0000287A /* MineQrCodeView.m */,
+				A7FBA0A7241A7AC60000287A /* MineTextFieldCell.h */,
+				A7FBA0A8241A7AC60000287A /* MineTextFieldCell.m */,
+			);
+			path = MineProfile;
+			sourceTree = "<group>";
+		};
+		A7FBA0AA241A7B2F0000287A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A7FA6D8B240C95E2003982DA /* OrderModelListJSON.json */,
+				A73D6586240BE60E00F94792 /* LogModelListJSON.json */,
+				A73D6569240B7E2000F94792 /* ProfileInfoListModelJSON.json */,
+				A73D655A240B658E00F94792 /* MineToolModelJSON.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		A7FBA0AB241A7B440000287A /* Info */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		A7FE9A6324177E1D00A8D259 /* AwardARView */ = {
@@ -2460,10 +2534,10 @@
 				A7FE9A8B24177E1E00A8D259 /* OpenGLView.m in Sources */,
 				A7C779202402562E003EBCE0 /* ImageReFreshHeader.m in Sources */,
 				A738B282240A782400705AF2 /* MineOutCell.m in Sources */,
-				A7C4F0BC2403CF69008E740A /* PopController.m in Sources */,
 				A73D6558240B645800F94792 /* ToolList.m in Sources */,
 				A72D3B08240FCDD8009720AD /* SceneSpotCell.m in Sources */,
 				A738B08A240A1B6800705AF2 /* FavorController.m in Sources */,
+				A7FBA0A2241A70A60000287A /* QDAlertHelper.m in Sources */,
 				A7C7792A2402562E003EBCE0 /* SectionFoldView.m in Sources */,
 				A702DFFB2408BF4400A9646C /* UIActionSheet+LBXAlertAction.m in Sources */,
 				A702E052240911F500A9646C /* FSDKFR.xcdatamodeld in Sources */,
@@ -2474,7 +2548,9 @@
 				A73AEC282412148600AD6880 /* PayPasswordController.m in Sources */,
 				A7739FAB2405191B00EF7664 /* NSString+Arc4random.m in Sources */,
 				A772A99F2407C3C900B8FC52 /* ToolCell.m in Sources */,
+				A7FBA08A2419BA480000287A /* MineProfileController.m in Sources */,
 				A7C7792D2402562E003EBCE0 /* SceneDelegate.m in Sources */,
+				A7FD2B6D241B74FF006B3CC1 /* MineOrderServiceCell.m in Sources */,
 				A7C779342402562E003EBCE0 /* QMUIConfigurationTemplate.m in Sources */,
 				A702E055240911F500A9646C /* ASFCameraController.m in Sources */,
 				A7C779032402562E003EBCE0 /* DetailController.m in Sources */,
@@ -2521,6 +2597,7 @@
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
 				A7C7790B2402562E003EBCE0 /* CommonCell.m in Sources */,
 				A7FE9AB924178C0100A8D259 /* GHDropSpotMenuModel.m in Sources */,
+				A7FD2B70241B812B006B3CC1 /* MineFoodOrderController.m in Sources */,
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A793DC4D2419275C00CB49BB /* WMZDropMenuTool.m in Sources */,
@@ -2558,8 +2635,11 @@
 				A7C7795224027D10003EBCE0 /* MANaviPolyline.m in Sources */,
 				A7C7797524027E17003EBCE0 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				A7C779162402562E003EBCE0 /* BannerViewSpot.m in Sources */,
+				A7FD2B67241B3E13006B3CC1 /* MinePasswordController.m in Sources */,
 				A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */,
+				A7FBA0942419DE7A0000287A /* MineQrCodeView.m in Sources */,
 				A772A9A22407DB2D00B8FC52 /* ProfileStatusCell.m in Sources */,
+				A7FD2B73241BAFFC006B3CC1 /* MineFoodCell.m in Sources */,
 				A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */,
 				A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */,
 				A7FE9A8F24177E1E00A8D259 /* ARScanSixView.m in Sources */,
@@ -2584,6 +2664,7 @@
 				A73D6565240B71BD00F94792 /* MineInfoController.m in Sources */,
 				A793DC3F2419275C00CB49BB /* HotelParam.m in Sources */,
 				A7C779242402562E003EBCE0 /* BannerZoomView.m in Sources */,
+				A7FBA0A9241A7AC60000287A /* MineTextFieldCell.m in Sources */,
 				A7084C8F2406C23700FF5CAE /* EvenCell.m in Sources */,
 				A7739FB42405191B00EF7664 /* GHDropMenuFilterTagItem.m in Sources */,
 				A7C779092402562E003EBCE0 /* ImageCollectionController.m in Sources */,
@@ -2625,12 +2706,14 @@
 				A772A98A240785CD00B8FC52 /* MineController.m in Sources */,
 				A7D654A124162FCA00AECF5E /* RecToolBar.m in Sources */,
 				A7FA6DF6240D3DCF003982DA /* HotelNumberCell.m in Sources */,
+				A7FBA0A6241A79C90000287A /* MineInfoSetController.m in Sources */,
 				A73AEC3124123CA000AD6880 /* PayFinishCell.m in Sources */,
 				A7FE9A8A24177E1E00A8D259 /* BGRenderer.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
+				A7FBA0912419DD8C0000287A /* MineQRCodeController.m in Sources */,
 				A702E053240911F500A9646C /* ASFRPerson.m in Sources */,
-				A7C4F0C52403F29F008E740A /* Pop2Controller.m in Sources */,
 				A7C779252402562E003EBCE0 /* ItemSectionView.m in Sources */,
+				A7FBA09B241A1C2B0000287A /* MineNewPhoneController.m in Sources */,
 				A7C341D72413D5B000BAEF70 /* HWCircleView.m in Sources */,
 				A7C779312402562E003EBCE0 /* ImageUtils.m in Sources */,
 				A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */,
@@ -2656,11 +2739,14 @@
 				A7C7791A2402562E003EBCE0 /* TitleCell.m in Sources */,
 				A793DC4E2419275C00CB49BB /* WMZDropCustomView.m in Sources */,
 				A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */,
+				A7FD2B6A241B4603006B3CC1 /* MineAvatarPickerController.m in Sources */,
+				A7FBA09E241A31C60000287A /* MineCodeController.m in Sources */,
 				A72D3AFC240F7BDA009720AD /* SceneDetailHeaderCell.m in Sources */,
 				A7C779332402562E003EBCE0 /* QDThemeManager.m in Sources */,
 				A7739FB72405191B00EF7664 /* GHDropMenuModel.m in Sources */,
 				A702E040240911E600A9646C /* FaceController.m in Sources */,
 				A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */,
+				A7FBA08E2419BA8E0000287A /* MineProfileAvatarCell.m in Sources */,
 				A7C341CC24139D2100BAEF70 /* MineOrderInfoTBCell.m in Sources */,
 				A7C779062402562E003EBCE0 /* HorizontalWithVerticalSectionLayout.m in Sources */,
 				A72D3B02240F87C6009720AD /* SceneMultiLineCell.m in Sources */,

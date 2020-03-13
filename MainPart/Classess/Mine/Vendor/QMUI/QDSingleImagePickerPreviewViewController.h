@@ -7,17 +7,20 @@
 //
 
 @class QDSingleImagePickerPreviewViewController;
-
-@protocol QDSingleImagePickerPreviewViewControllerDelegate <QMUIImagePickerPreviewViewControllerDelegate>
+typedef enum { ImagePickerNotFull, ImagePickerFull } ImagePickerType;
+@protocol
+QDSingleImagePickerPreviewViewControllerDelegate <QMUIImagePickerPreviewViewControllerDelegate>
 
 @required
-- (void)imagePickerPreviewViewController:(QDSingleImagePickerPreviewViewController *)imagePickerPreviewViewController didSelectImageWithImagesAsset:(QMUIAsset *)imageAsset;
+- (void)imagePickerPreviewViewController:
+(QDSingleImagePickerPreviewViewController *)imagePickerPreviewViewController
+           didSelectImageWithImagesAsset:(QMUIAsset *)imageAsset;
 
 @end
 
 @interface QDSingleImagePickerPreviewViewController : QMUIImagePickerPreviewViewController
-
-@property(nonatomic, weak) id<QDSingleImagePickerPreviewViewControllerDelegate> delegate;
-@property(nonatomic, strong) QMUIAssetsGroup *assetsGroup;
+@property (nonatomic, assign) ImagePickerType imagePickerType;
+@property (nonatomic, weak) id<QDSingleImagePickerPreviewViewControllerDelegate> delegate;
+@property (nonatomic, strong) QMUIAssetsGroup *assetsGroup;
 
 @end

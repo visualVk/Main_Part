@@ -32,10 +32,8 @@ target 'MainPart' do
   # pod 'SAMKeychain',:modular_headers => true
   pod 'FSCalendar'
   pod 'DRCellSlideGestureRecognizer'
-  pod 'DOPDropDownMenu-Enhanced', '~> 1.0.0'
   pod 'SJAttributesFactory'
-  pod 'BTTransition', :path => './'
-  pod 'JHChainableAnimations', '~> 3.0.1'
+  #pod 'BTTransition', :path => './'
   pod 'TYAttributedLabel', '~> 2.6.2'
   pod 'HMSegmentedControl'
   pod 'WMDragView'
@@ -47,7 +45,6 @@ target 'MainPart' do
   pod 'WMZBanner'
   pod 'BRPickerView'
   pod 'SDWebImage', '~> 5.0'
-  pod 'JTCalendar', '~> 2.0'
   pod 'MJRefresh'
   pod 'TYCyclePagerView'
   pod 'ReactiveObjC'
@@ -66,5 +63,7 @@ target 'MainPart' do
   pod 'PPNumberButton'
   pod 'BEMCheckBox'
   pod 'pop', '~> 1.0'
-  # pod 'CYPasswordView'
+  pod 'CRBoxInputView', '1.1.7'
+  pod 'JVFloatLabeledTextField'
+  pod 'HQImageEditViewController'
 end

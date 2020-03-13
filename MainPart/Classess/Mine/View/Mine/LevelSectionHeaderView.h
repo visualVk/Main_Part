@@ -13,4 +13,6 @@
 @interface LevelSectionHeaderView : UIView
 //@property (nonatomic, strong) ZZCircleProgress *levelView;
 @property (nonatomic, strong) HWWaveView *waveView;
+-(void)hideAllCircleView;
+-(void)showAllCircleView;
 @end

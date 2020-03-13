@@ -13,11 +13,13 @@
 #import "MineOrderInfoCell.h"
 #import "MineOrderQuestionToolBar.h"
 #import "MineOrderRoomInfoView.h"
+#import "MineOrderServiceCell.h"
 #import <JQCollectionViewAlignLayout.h>
 #define MINEORDERROOMINFOCELL @"mineorderroominfoview"
 #define MINEORDERCHECKPERSONINFOVIEW @"mineordercheckpersoninfoview"
 #define MINEORDERHOTELVIEW @"mineorderhotelview"
 #define MINEORDERINFOCELL @"mineorderinfocell"
+#define MINEORDERSERVICECELL @"mineorderservicecell"
 
 @interface OrderDetailController () <GenerateEntityDelegate, UICollectionViewDelegate,
 UICollectionViewDataSource,
@@ -25,6 +27,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 @property (nonatomic, strong) MineOrderQuestionToolBar *queToolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collaspeList;
+@property (nonatomic, strong) NSArray *datas;
 @end
 
 @implementation OrderDetailController
@@ -33,6 +36,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
   [super didInitialize];
   // init 时做的事情请写在这里
   self.collaspeList = [NSMutableArray arrayWithArray:@[ @"0", @"0", @"0" ]];
+  self.datas = @[ @"", @"", @"" ];
 }
 
 - (void)initSubviews {
@@ -110,6 +114,8 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
                withReuseIdentifier:@"default"];
     [_collectionView registerClass:MineOrderInfoCell.class
         forCellWithReuseIdentifier:MINEORDERINFOCELL];
+    [_collectionView registerClass:MineOrderServiceCell.class
+        forCellWithReuseIdentifier:MINEORDERSERVICECELL];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
   }
@@ -123,7 +129,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 5;
+  return 3 + self.datas.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -135,14 +141,14 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  if (section == 0) return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
-  if (section > 0 && section < 4) {
-    if ([@"0" isEqualToString:self.collaspeList[section - 1]]) {
+  if (section == 0 || section == 1) return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
+  if (section > 1 && section < self.datas.count + 2) {
+    if ([@"0" isEqualToString:self.collaspeList[section - 2]]) {
       return CGSizeMake(DEVICE_WIDTH, 0);
     }
     return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 4);
   }
-  if (section == 4) return CGSizeMake(DEVICE_WIDTH, 1.25 * SPACE + 85);
+  if (section == 5) return CGSizeMake(DEVICE_WIDTH, 1.25 * SPACE + 85);
   return CGSizeZero;
 }
 
@@ -150,7 +156,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  if (section == 0 || section == 4) {
+  if (section == 0 || section == 2 + self.datas.count || section == 1) {
     UICollectionReusableView *defaultHeader =
     [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                        withReuseIdentifier:@"default"
@@ -180,28 +186,38 @@ referenceSizeForFooterInSection:(NSInteger)section {
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
-  if (section == 0 || section == 4) return CGSizeMake(DEVICE_WIDTH, 0);
+  if (section == 0 || section == 2 + self.datas.count || section == 1)
+    return CGSizeMake(DEVICE_WIDTH, 0);
   return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  if (section == 0) {
+  if (section == 0) { //酒店名
     MineOrderHotelView *morhCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERHOTELVIEW
                                               forIndexPath:indexPath];
     return morhCell;
   }
-  if (section == 4) {
+  if (section == 1) { //订餐 健身
+    MineOrderServiceCell *mosCell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERSERVICECELL
+                                              forIndexPath:indexPath];
+    mosCell.parentController = self;
+    return mosCell;
+  }
+  if (section == self.datas.count + 2) { //支付后的订单cell
     MineOrderInfoCell *moiCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERINFOCELL
                                               forIndexPath:indexPath];
     return moiCell;
   }
+  //登记人信息和其房间信息
   MineOrderRoomInfoView *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERROOMINFOCELL
                                             forIndexPath:indexPath];
+  cell.price.text = [NSString stringWithFormat:@"%li", section];
   [cell resetStatus];
   return cell;
 }
@@ -224,10 +240,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)collapseSectionHeader:(UITapGestureRecognizer *)tap {
   NSInteger section = tap.qmui_targetView.tag;
-  if ([@"0" isEqualToString:self.collaspeList[section - 1]]) {
-    self.collaspeList[section - 1] = @"1";
+  if ([@"0" isEqualToString:self.collaspeList[section - 2]]) {
+    self.collaspeList[section - 2] = @"1";
   } else {
-    self.collaspeList[section - 1] = @"0";
+    self.collaspeList[section - 2] = @"0";
   }
   [UIView performWithoutAnimation:^{
     [self.collectionView

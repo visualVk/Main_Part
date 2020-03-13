@@ -53,6 +53,7 @@
   return _tagLB;
 }
 - (void)addSpringAnimate:(UIView *)view {
+  [view.layer pop_removeAllAnimations];
   __weak __typeof(self) weakSelf = self;
   POPBasicAnimation *spring = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
   spring.duration = 1.5;

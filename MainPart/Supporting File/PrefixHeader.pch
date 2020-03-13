@@ -35,7 +35,6 @@
 #import <SAMKeychain/SAMKeychain.h>
 #import <ArcSoftFaceEngine/ArcSoftFaceEngine.h>
 #import <ReactiveObjC/ReactiveObjC.h>
-#import <JHChainableAnimator.h>
 #import <Masonry.h>
 #import "QDCommonUI.h"
 #import "QDUIHelper.h"

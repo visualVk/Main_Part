@@ -19,8 +19,6 @@
 #import "MapController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
-#import "Pop2Controller.h"
-#import "PopController.h"
 #import "RemarkCell.h"
 #import "RemarkScoreCell.h"
 #import "RoomCell.h"

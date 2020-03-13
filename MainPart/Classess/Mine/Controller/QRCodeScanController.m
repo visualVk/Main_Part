@@ -7,6 +7,7 @@
 //
 
 #import "QRCodeScanController.h"
+#import "AppDelegate.h"
 #import "LBXAlertAction.h"
 #import "LBXPermission.h"
 #import "MarkUtils.h"
@@ -426,6 +427,7 @@ imagePickerPreviewViewControllerForImagePickerViewController:
 (QDSingleImagePickerPreviewViewController *)imagePickerPreviewViewController
            didSelectImageWithImagesAsset:(QMUIAsset *)imageAsset {
   // 储存最近选择了图片的相册，方便下次直接进入该相册
+  __weak __typeof(self) weakSelf = self;
   [QMUIImagePickerHelper
    updateLastestAlbumWithAssetsGroup:imagePickerPreviewViewController.assetsGroup
    ablumContentType:kAlbumContentType
@@ -441,6 +443,8 @@ imagePickerPreviewViewControllerForImagePickerViewController:
         targetImage = [UIImage imageWithData:UIImageJPEGRepresentation(targetImage, 1)];
       }
     }
+    AppDelegate *delegate = (AppDelegate *)[UIApplication.sharedApplication delegate];
+    [QMUITips showLoading:@"识别中" inView:delegate.window];
     [self performSelector:@selector(setPhoto:) withObject:targetImage afterDelay:1.8];
   }];
 }
@@ -450,6 +454,7 @@ imagePickerPreviewViewControllerForImagePickerViewController:
   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
     [LBXScanNative recognizeImage:qrCodeImage
                           success:^(NSArray<LBXScanResult *> *array) {
+      [QMUITips hideAllTips];
       [weakSelf scanResultWithArray:array];
     }];
   } else {

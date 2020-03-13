@@ -13,7 +13,6 @@
 
 @interface PayFinishController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
-@property (nonatomic, strong) QMUITableView *tableView;
 @end
 
 @implementation PayFinishController
@@ -56,7 +55,7 @@ QMUITableViewDataSource>
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"支付成功";
+  //  self.title = @"支付成功";
 }
 
 #pragma mark - GenerateEntityDelegate
@@ -108,6 +107,7 @@ QMUITableViewDataSource>
   if (row == 0) {
     PayFinishCell *pfCell =
     [tableView dequeueReusableCellWithIdentifier:PAYFINISHCELL forIndexPath:indexPath];
+    pfCell.title.text = self.title;
     return pfCell;
   }
   static NSString *identifier = @"cell";

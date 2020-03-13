@@ -10,6 +10,6 @@
 
 @interface LeftCell : QMUITableViewCell
 
-@property(nonatomic, strong) UILabel *label;
+@property(nonatomic, strong) QMUILabel *label;
 -(void)loadTitle:(NSString*)title;
 @end

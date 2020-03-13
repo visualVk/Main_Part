@@ -35,18 +35,16 @@ PODS:
     - BRPickerView/Base
   - BRPickerView/StringPickerView (2.5.5):
     - BRPickerView/Base
-  - BTTransition (0.1.2)
+  - CRBoxInputView (1.1.7):
+    - Masonry
   - CSXMarkView (0.0.7)
-  - CYPasswordView (0.0.4)
-  - DDCardView (1.0.1):
-    - SDWebImage
-  - DOPDropDownMenu-Enhanced (1.0.0)
   - DRCellSlideGestureRecognizer (1.0.0)
   - FSCalendar (2.8.1)
   - HMSegmentedControl (1.5.5)
-  - JHChainableAnimations (3.0.1)
+  - HQImageEditViewController (0.0.1):
+    - Masonry
   - JQCollectionViewAlignLayout (0.1.5)
-  - JTCalendar (2.2.5)
+  - JVFloatLabeledTextField (1.2.2)
   - LBXScan/LBXNative (2.3):
     - LBXScan/Types (~> 2.2)
   - LBXScan/LBXZBar (2.3):
@@ -380,17 +378,14 @@ DEPENDENCIES:
   - AMapSearch
   - BEMCheckBox
   - BRPickerView
-  - BTTransition (from `./`)
+  - CRBoxInputView (= 1.1.7)
   - CSXMarkView
-  - CYPasswordView
-  - DDCardView
-  - DOPDropDownMenu-Enhanced (~> 1.0.0)
   - DRCellSlideGestureRecognizer
   - FSCalendar
   - HMSegmentedControl
-  - JHChainableAnimations (~> 3.0.1)
+  - HQImageEditViewController
   - JQCollectionViewAlignLayout
-  - JTCalendar (~> 2.0)
+  - JVFloatLabeledTextField
   - LBXScan/LBXNative (~> 2.3)
   - LBXScan/LBXZBar (~> 2.3)
   - LBXScan/LBXZXing (~> 2.3)
@@ -421,16 +416,14 @@ SPEC REPOS:
     - AMapSearch
     - BEMCheckBox
     - BRPickerView
+    - CRBoxInputView
     - CSXMarkView
-    - CYPasswordView
-    - DDCardView
-    - DOPDropDownMenu-Enhanced
     - DRCellSlideGestureRecognizer
     - FSCalendar
     - HMSegmentedControl
-    - JHChainableAnimations
+    - HQImageEditViewController
     - JQCollectionViewAlignLayout
-    - JTCalendar
+    - JVFloatLabeledTextField
     - LBXScan
     - Masonry
     - MJExtension
@@ -453,12 +446,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AAChartKit:
     :git: https://github.com/AAChartModel/AAChartKit.git
-  BTTransition:
-    :path: "./"
 
 CHECKOUT OPTIONS:
   AAChartKit:
-    :commit: f40ca065daea510a8959c4875c2273376cc57f2f
+    :commit: 701e79eff4488b8cb50920c7af5432bf4b95c19e
     :git: https://github.com/AAChartModel/AAChartKit.git
 
 SPEC CHECKSUMS:
@@ -470,17 +461,14 @@ SPEC CHECKSUMS:
   AMapSearch: 6bd6d361c5eb00110e0bffa4acf88b7bb9f7e059
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
-  BTTransition: 1800692555cca4a98b7d3c1956d73a7a07539376
+  CRBoxInputView: 72b35e2f3df36739a444eadefc9ef0dbf1fe576e
   CSXMarkView: be699e407253299738b88bfc180d16aefd8bb685
-  CYPasswordView: 0656dc98f1e81d003c5a7289b29e6288d78054a3
-  DDCardView: 21ada5efeac292fdfd3812fa7f82625e0e85aefa
-  DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   DRCellSlideGestureRecognizer: c7213100aa8b1a54b3388c2e73894039058c7795
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
-  JHChainableAnimations: 0237489ed063f0ec5b351f5c7bb26c1891517074
+  HQImageEditViewController: 84e610e99b7d1fcb2a174b4563bcda1b0830bc4f
   JQCollectionViewAlignLayout: d44142c09e6ba96cc874ac5014ff64accb8995ce
-  JTCalendar: 4056fd48735e1148b487acad35d72faea2387b25
+  JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
@@ -500,6 +488,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 0053a47fd89fb12abea52de6da300cd7f9768fe1
+PODFILE CHECKSUM: ca238ef0a4dcb8dbe2b301dda80124c693b82ea4
 
 COCOAPODS: 1.8.4

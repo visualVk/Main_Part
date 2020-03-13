@@ -190,16 +190,15 @@ QMUITableViewDataSource, PayPasswordDelegate>
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)),
                  dispatch_get_main_queue(), ^{
     [QMUITips hideAllTips];
-    [QMUITips showSucceed:@"支付成功"
-                   inView:UIApplication.sharedApplication.keyWindow
-           hideAfterDelay:2];
     [weakSelf.ppCon.view removeFromSuperview];
     BOOL result = true;
     if (result) { //支付成功
       NSMutableArray<UIViewController *> *cons =
       weakSelf.navigationController.viewControllers.mutableCopy;
       [cons removeObjectsInRange:NSMakeRange(cons.count - 2, 2)];
-      [cons addObject:[PayFinishController new]];
+      PayFinishController *pfCon = [PayFinishController new];
+      pfCon.title = @"支付成功";
+      [cons addObject:pfCon];
       weakSelf.navigationController.viewControllers = cons;
     }
   });

@@ -66,7 +66,7 @@
   [self.linkageMenu mas_makeConstraints:^(MASConstraintMaker *make) {
     make.right.left.equalTo(self.view);
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    make.bottom.equalTo(self.view.mas_bottom);
   }];
 }
 

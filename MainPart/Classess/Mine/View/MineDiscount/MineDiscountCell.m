@@ -90,6 +90,7 @@
     make.top.equalTo(self.detailView).with.inset(2 * SPACE);
     make.bottom.equalTo(self.detailView).with.inset(0.25 * SPACE);
   }];
+  self.detailView.hidden = YES;
 }
 
 - (UIView *)container {

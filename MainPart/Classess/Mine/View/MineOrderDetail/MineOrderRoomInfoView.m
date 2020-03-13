@@ -30,12 +30,19 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  __weak __typeof(self) weakSelf = self;
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)),
+                 dispatch_get_main_queue(), ^{
+    weakSelf.qrCodeImage.image =
+    [LBXScanNative createQRWithString:@"300120sk=2ksadjksad"
+                               QRSize:weakSelf.qrCodeImage.bounds.size];
+  });
 }
 
 - (void)generateRootView {
   UIView *superview = self.contentView;
   addView(superview, self.container);
-  [superview insertSubview:self.backContainer belowSubview:self.container];
+  //  [superview insertSubview:self.backContainer belowSubview:self.container];
   
   UIEdgeInsets padding = UIEdgeInsetsMake(0, 0.5 * SPACE, 0, 0);
   [self.container mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,10 +53,10 @@
     make.edges.equalTo(superview);
   }];
   
-  [self.backContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.center.equalTo(superview);
-    make.edges.equalTo(superview);
-  }];
+  //  [self.backContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+  //    make.center.equalTo(superview);
+  //    make.edges.equalTo(superview);
+  //  }];
 }
 
 - (void)prepareForReuse {
@@ -67,7 +74,8 @@
     addView(_container, self.roomStatus);
     addView(_container, self.liveDuration);
     addView(_container, self.price);
-    addView(_container, self.switchPage);
+    addView(_container, self.qrCodeImage);
+    //    addView(_container, self.switchPage);
     
     [@[ self.roomName, self.room, self.roomCombo, self.liveDuration ]
      mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,12 +99,13 @@
     [self.roomCombo mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.equalTo(self.room.mas_bottom).with.inset(0.5 * SPACE);
       make.bottom.lessThanOrEqualTo(self.liveDuration.mas_top);
+      make.width.equalTo(_container).multipliedBy(3.0 / 5);
     }];
     
-    [self.switchPage mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.trailing.equalTo(_container);
-      make.size.lessThanOrEqualTo(_container);
-    }];
+    //    [self.switchPage mas_makeConstraints:^(MASConstraintMaker *make) {
+    //      make.top.trailing.equalTo(_container);
+    //      make.size.lessThanOrEqualTo(_container);
+    //    }];
     
     [self.liveDuration mas_makeConstraints:^(MASConstraintMaker *make) {
       make.bottom.equalTo(_container).with.inset(0.5 * SPACE);
@@ -104,7 +113,7 @@
     
     [self.roomStatus mas_makeConstraints:^(MASConstraintMaker *make) {
       make.trailing.equalTo(_container).with.inset(0.5 * SPACE);
-      make.top.equalTo(self.switchPage.mas_bottom).with.inset(0.25 * SPACE);
+      make.centerY.equalTo(self.roomName);
     }];
     
     [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,6 +123,13 @@
     
     [@[ self.price, self.roomStatus ] mas_makeConstraints:^(MASConstraintMaker *make) {
       make.size.lessThanOrEqualTo(_container);
+    }];
+    
+    [self.qrCodeImage mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(self.roomCombo.mas_right).with.inset(5);
+      make.right.equalTo(_container).with.inset(5);
+      make.bottom.equalTo(self.price.mas_top).with.inset(5);
+      make.height.equalTo(self.qrCodeImage.mas_width);
     }];
   }
   return _container;
@@ -169,17 +185,17 @@
   return _price;
 }
 
-- (UIImageView *)switchPage {
-  if (!_switchPage) {
-    _switchPage = [UIImageView new];
-    _switchPage.userInteractionEnabled = YES;
-    _switchPage.image = UIImageMake(@"switch_page");
-    UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rotationClick)];
-    [_switchPage addGestureRecognizer:tap];
-  }
-  return _switchPage;
-}
+//- (UIImageView *)switchPage {
+//  if (!_switchPage) {
+//    _switchPage = [UIImageView new];
+//    _switchPage.userInteractionEnabled = YES;
+//    _switchPage.image = UIImageMake(@"switch_page");
+//    UITapGestureRecognizer *tap =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rotationClick)];
+//    [_switchPage addGestureRecognizer:tap];
+//  }
+//  return _switchPage;
+//}
 
 - (UILabel *)roomCombo {
   if (!_roomCombo) {
@@ -196,48 +212,48 @@
   return _roomCombo;
 }
 
-- (void)rotationClick {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    self.qrCodeImage.image =
-    [LBXScanNative createQRWithString:@"测试仪" QRSize:self.qrCodeImage.bounds.size];
-  });
-  [MineOrderRoomInfoView transitformShowView:self.backContainer hiddenView:self.container];
-}
+//- (void)rotationClick {
+//  dispatch_async(dispatch_get_main_queue(), ^{
+//    self.qrCodeImage.image =
+//    [LBXScanNative createQRWithString:@"测试仪" QRSize:self.qrCodeImage.bounds.size];
+//  });
+//  [MineOrderRoomInfoView transitformShowView:self.backContainer hiddenView:self.container];
+//}
 
-#pragma mark - 背面
-- (UIView *)backContainer {
-  if (!_backContainer) {
-    _backContainer = [UIView new];
-    _backContainer.backgroundColor = UIColor.qd_backgroundColor;
-    UILabel *label = [UILabel new];
-    label.textColor = UIColor.qd_placeholderColor;
-    label.font = UIFontMake(18);
-    label.text = @"入住二维码证明，30分钟刷新一次";
-    label.textAlignment = NSTextAlignmentCenter;
-    addView(_backContainer, self.qrCodeImage);
-    addView(_backContainer, label);
-    addView(_backContainer, self.backSwitchImage);
-    
-    [self.qrCodeImage mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(_backContainer);
-      make.bottom.equalTo(label.mas_top).with.inset(0.25 * SPACE);
-      make.width.equalTo(self.qrCodeImage.mas_height);
-      make.centerX.equalTo(label);
-    }];
-    
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-      //      make.top.equalTo(self.qrCodeImage.mas_bottom).with.inset(0.25 * SPACE);
-      make.right.left.bottom.equalTo(_backContainer);
-      make.height.lessThanOrEqualTo(_backContainer);
-    }];
-    
-    [self.backSwitchImage mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.right.top.equalTo(_backContainer);
-      make.size.lessThanOrEqualTo(_backContainer);
-    }];
-  }
-  return _backContainer;
-}
+//#pragma mark - 背面
+//- (UIView *)backContainer {
+//  if (!_backContainer) {
+//    _backContainer = [UIView new];
+//    _backContainer.backgroundColor = UIColor.qd_backgroundColor;
+//    UILabel *label = [UILabel new];
+//    label.textColor = UIColor.qd_placeholderColor;
+//    label.font = UIFontMake(18);
+//    label.text = @"入住二维码证明，30分钟刷新一次";
+//    label.textAlignment = NSTextAlignmentCenter;
+//    addView(_backContainer, self.qrCodeImage);
+//    addView(_backContainer, label);
+//    addView(_backContainer, self.backSwitchImage);
+//
+//    [self.qrCodeImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//      make.top.equalTo(_backContainer);
+//      make.bottom.equalTo(label.mas_top).with.inset(0.25 * SPACE);
+//      make.width.equalTo(self.qrCodeImage.mas_height);
+//      make.centerX.equalTo(label);
+//    }];
+//
+//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//      //      make.top.equalTo(self.qrCodeImage.mas_bottom).with.inset(0.25 * SPACE);
+//      make.right.left.bottom.equalTo(_backContainer);
+//      make.height.lessThanOrEqualTo(_backContainer);
+//    }];
+//
+//    [self.backSwitchImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//      make.right.top.equalTo(_backContainer);
+//      make.size.lessThanOrEqualTo(_backContainer);
+//    }];
+//  }
+//  return _backContainer;
+//}
 
 - (UIImageView *)qrCodeImage {
   if (!_qrCodeImage) {
@@ -247,51 +263,51 @@
   return _qrCodeImage;
 }
 
-- (UIImageView *)backSwitchImage {
-  if (!_backSwitchImage) {
-    _backSwitchImage = [UIImageView new];
-    _backSwitchImage.userInteractionEnabled = YES;
-    _backSwitchImage.image = UIImageMake(@"switch_page");
-    UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backToFront)];
-    [_backSwitchImage addGestureRecognizer:tap];
-  }
-  return _backSwitchImage;
-}
-
-- (void)backToFront {
-  //  [self.backContainer setNeedsLayout];
-  //  [self.backContainer layoutIfNeeded];
-  [MineOrderRoomInfoView transitformShowView:self.container hiddenView:self.backContainer];
-}
-
-#pragma mark - 翻转动画
-+ (void)transitformShowView:(UIView *)view hiddenView:(UIView *)toView {
-  view.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0, 1, 0);
-  toView.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0, 0, 0);
-  
-  [UIView animateWithDuration:0.6
-                        delay:0
-                      options:UIViewAnimationOptionCurveEaseInOut
-                   animations:^{ toView.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0, 1, 0); }
-                   completion:^(BOOL finished) {
-    
-    [view.superview bringSubviewToFront:view];
-    
-    [UIView
-     animateWithDuration:0.6
-     delay:0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{ view.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0); }
-     completion:nil];
-    
-  }];
-}
+//- (UIImageView *)backSwitchImage {
+//  if (!_backSwitchImage) {
+//    _backSwitchImage = [UIImageView new];
+//    _backSwitchImage.userInteractionEnabled = YES;
+//    _backSwitchImage.image = UIImageMake(@"switch_page");
+//    UITapGestureRecognizer *tap =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backToFront)];
+//    [_backSwitchImage addGestureRecognizer:tap];
+//  }
+//  return _backSwitchImage;
+//}
+//
+//- (void)backToFront {
+//  //  [self.backContainer setNeedsLayout];
+//  //  [self.backContainer layoutIfNeeded];
+//  [MineOrderRoomInfoView transitformShowView:self.container hiddenView:self.backContainer];
+//}
+//
+//#pragma mark - 翻转动画
+//+ (void)transitformShowView:(UIView *)view hiddenView:(UIView *)toView {
+//  view.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0, 1, 0);
+//  toView.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0, 0, 0);
+//
+//  [UIView animateWithDuration:0.6
+//                        delay:0
+//                      options:UIViewAnimationOptionCurveEaseInOut
+//                   animations:^{ toView.layer.transform = CATransform3DMakeRotation(M_PI / 2, 0,
+//                   1, 0); } completion:^(BOOL finished) {
+//
+//    [view.superview bringSubviewToFront:view];
+//
+//    [UIView
+//     animateWithDuration:0.6
+//     delay:0
+//     options:UIViewAnimationOptionCurveEaseInOut
+//     animations:^{ view.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0); }
+//     completion:nil];
+//
+//  }];
+//}
 
 - (void)resetStatus {
-  self.container.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
-  self.backContainer.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
-  [self.container.superview bringSubviewToFront:self.container];
+  //  self.container.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+  //  self.backContainer.layer.transform = CATransform3DMakeRotation(0, 0, 0, 0);
+  //  [self.container.superview bringSubviewToFront:self.container];
   
   POPSpringAnimation *transformSize =
   [POPSpringAnimation animationWithPropertyNamed:kPOPLayerTranslationY];

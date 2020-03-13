@@ -114,8 +114,9 @@ JQCollectionViewAlignLayoutDelegate> {
     _tableView.sectionHeaderHeight = 0;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.qmui_borderColor = UIColor.lightGrayColor;
-    _tableView.qmui_borderPosition = QMUIViewBorderPositionRight;
+    //    _tableView.qmui_borderColor = UIColor.lightGrayColor;
+    //    _tableView.qmui_borderPosition = QMUIViewBorderPositionRight;
+    _tableView.backgroundColor = UIColor.qd_customBackgroundColor;
     _tableView.bounces = false;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
@@ -145,8 +146,10 @@ JQCollectionViewAlignLayoutDelegate> {
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   LeftCell *cell = [tableView dequeueReusableCellWithIdentifier:LEFTCELL forIndexPath:indexPath];
-    cell.label.text = self.datas[indexPath.row].title;
-//  [cell loadTitle:self.datas[indexPath.row].title];
+  cell.label.text = self.datas[indexPath.row].title;
+  //  [cell loadTitle:self.datas[indexPath.row].title];
+  cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds];
+  cell.selectedBackgroundView.backgroundColor = UIColor.whiteColor;
   return cell;
 }
 
@@ -207,12 +210,19 @@ JQCollectionViewAlignLayoutDelegate> {
 /// @param section <#section description#>
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
+  if ([self.link_delegate respondsToSelector:@selector(collectionView:numberInSection:)]) {
+    return [self.link_delegate collectionView:collectionView numberInSection:section];
+  }
   return self.datas[section].imageList.count + self.datas[section].labelList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  
+  //自定义右cell
+  if ([self.link_delegate respondsToSelector:@selector(collectionView:drawCellForIndexPath:)]) {
+    return [self.link_delegate collectionView:collectionView drawCellForIndexPath:indexPath];
+  }
+  //默认情况
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
   NSInteger curImageTot = self.datas[section].imageList.count;
@@ -234,6 +244,12 @@ JQCollectionViewAlignLayoutDelegate> {
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  if ([self.link_delegate respondsToSelector:@selector(collectionView:sizeForIndexPathCell:)]) {
+    CGSize size = [self.link_delegate collectionView:collectionView sizeForIndexPathCell:indexPath];
+    if (size.height == -1) { return CGSizeMake(self.collectionView.frame.size.width, 44); }
+    if (size.width == -1) { return CGSizeMake(self.collectionView.frame.size.width, size.height); }
+    return size;
+  }
   NSInteger row = indexPath.row;
   NSInteger curImageTot = self.datas[indexPath.section].imageList.count;
   if (row < curImageTot) {
@@ -279,7 +295,7 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
       NSInteger row =
       (indexPath.section + 1 < self.datas.count ? indexPath.section + 1 : self.datas.count - 1);
       [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]
-                                  animated:YES
+                                  animated:NO
                             scrollPosition:UITableViewScrollPositionNone];
       if (![self.tableView
             qmui_cellVisibleAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]]) {
@@ -303,7 +319,7 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
   if (!self.isBegin || isTable) return;
   if (!isDown && [elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section inSection:0]
-                                animated:YES
+                                animated:NO
                           scrollPosition:UITableViewScrollPositionNone];
     if (![self.tableView qmui_cellVisibleAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section
                                                                         inSection:0]]) {
@@ -318,12 +334,22 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
+  if ([self.link_delegate respondsToSelector:@selector(collectionView:sizeForHeaderInSection:)]) {
+    CGFloat height =
+    [self.link_delegate collectionView:collectionView sizeForHeaderInSection:section];
+    return CGSizeMake(self.collectionView.frame.size.width, height < 0 ? 0 : height);
+  }
   return CGSizeMake(CGRectGetWidth(self.collectionView.frame), DEVICE_HEIGHT / 25);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForFooterInSection:(NSInteger)section {
+  if ([self.link_delegate respondsToSelector:@selector(collectionView:sizeForFooterInSection:)]) {
+    CGFloat height =
+    [self.link_delegate collectionView:collectionView sizeForFooterInSection:section];
+    return CGSizeMake(self.collectionView.frame.size.width, height < 0 ? 0 : height);
+  }
   return CGSizeMake(CGRectGetWidth(self.collectionView.frame), DEVICE_HEIGHT / 25);
 }
 

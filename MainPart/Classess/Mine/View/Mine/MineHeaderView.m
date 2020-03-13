@@ -12,6 +12,7 @@
 #import "HistoryController.h"
 #import "MarkUtils.h"
 #import "MileageController.h"
+#import "MineProfileController.h"
 #import "NSObject+BlockSEL.h"
 #import <SJAttributesFactory.h>
 const NSInteger TAGBEGIN = 1000;
@@ -122,6 +123,10 @@ const NSInteger TAGBEGIN = 1000;
     _profileImg.image = UIImageMake(@"pink_gradient");
     _profileImg.contentMode = QMUIImageResizingModeScaleAspectFill;
     _profileImg.backgroundColor = UIColor.clearColor;
+    _profileImg.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileClick)];
+    [_profileImg addGestureRecognizer:tap];
   }
   return _profileImg;
 }
@@ -133,6 +138,10 @@ const NSInteger TAGBEGIN = 1000;
     _name.font = UIFontBoldMake(20);
     _name.text = @"尊敬的客户";
     _name.textColor = UIColor.qd_backgroundColor;
+    _name.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileClick)];
+    [_name addGestureRecognizer:tap];
   }
   return _name;
 }
@@ -228,6 +237,12 @@ const NSInteger TAGBEGIN = 1000;
     _imgBackground.contentMode = QMUIImageResizingModeScaleAspectFill;
   }
   return _imgBackground;
+}
+
+- (void)profileClick {
+  if (!self.parentController) self.parentController = [self qmui_viewController];
+  MineProfileController *con = [MineProfileController new];
+  [self.parentController.navigationController pushViewController:con animated:YES];
 }
 
 - (void)loadData {

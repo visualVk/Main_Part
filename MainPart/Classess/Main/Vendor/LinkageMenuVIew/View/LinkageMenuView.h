@@ -6,9 +6,26 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
-#import "LinkageMenuProtocol.h"
 #import "LinkageModel.h"
 #import <UIKit/UIKit.h>
+
+@protocol LinkageMenuProtocol <NSObject>
+@optional
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                    drawCellForIndexPath:(NSIndexPath *)indexPath;
+- (CGSize)collectionView:(UICollectionView *)collectionView
+    sizeForIndexPathCell:(NSIndexPath *)indexPath;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberInSection:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+   sizeForFooterInSection:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+   sizeForHeaderInSection:(NSInteger)section;
+
+- (NSInteger)rightTopAndBottomTotolNum:(NSInteger)section;
+- (NSInteger)rightNumberOfSections;
+- (NSInteger)leftTotal:(NSInteger)section;
+- (NSString *)loadLeftTitle;
+@end
 
 @interface LinkageMenuView : UIView
 @property (nonatomic, strong) QMUITableView *tableView;

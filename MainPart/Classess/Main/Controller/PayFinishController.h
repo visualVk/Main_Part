@@ -10,4 +10,5 @@
 
 @interface PayFinishController : QMUICommonViewController
 
+@property (nonatomic, strong) QMUITableView *tableView;
 @end

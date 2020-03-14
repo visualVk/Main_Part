@@ -33,10 +33,17 @@ const NSInteger FoodImageIndex = 10000;
 - (void)layoutSubviews {
   [super layoutSubviews];
   self.foodNumSignal = RACObserve(self.foodNum, text);
+  if (self.model.foodNum) {
+    self.foodSubImg.hidden = self.foodNum.hidden = false;
+  } else {
+    self.foodSubImg.hidden = self.foodNum.hidden = YES;
+  }
 }
 
 - (void)prepareForReuse {
   self.foodNumSignal = nil;
+  self.model = nil;
+  self.foodSubImg.hidden = self.foodNum.hidden = YES;
 }
 
 - (void)generateRootView {
@@ -203,9 +210,7 @@ const NSInteger FoodImageIndex = 10000;
   UIView *view = tap.qmui_targetView;
   if (view.tag == FoodImageIndex) {
     self.foodNum.text =
-    [NSString stringWithFormat:@"%li", [self.foodNum.text integerValue] - 1 < 0
-     ? 0
-                              : [self.foodNum.text integerValue] - 1];
+    [NSString stringWithFormat:@"%li", self.model.foodNum - 1 < 0 ? 0 : (--self.model.foodNum)];
     __weak __typeof(self) weakSelf = self;
     [self.foodNumSignal subscribeNext:^(NSString *x) {
       if ([x isEqualToString:@"0"]) {
@@ -215,7 +220,7 @@ const NSInteger FoodImageIndex = 10000;
       }
     }];
   } else if (view.tag == FoodImageIndex + 1) {
-    self.foodNum.text = [NSString stringWithFormat:@"%li", [self.foodNum.text integerValue] + 1];
+    self.foodNum.text = [NSString stringWithFormat:@"%li", (++self.model.foodNum)];
     __weak __typeof(self) weakSelf = self;
     [self.foodNumSignal subscribeNext:^(NSString *x) {
       weakSelf.foodNum.hidden = false;
@@ -223,6 +228,7 @@ const NSInteger FoodImageIndex = 10000;
       weakSelf.foodSubImg.userInteractionEnabled = YES;
     }];
   }
+  if (self.clickBlock) { self.clickBlock(self.model); }
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)recognizer {
@@ -234,9 +240,7 @@ const NSInteger FoodImageIndex = 10000;
   }
   if (view.tag == FoodImageIndex) {
     self.foodNum.text =
-    [NSString stringWithFormat:@"%li", [self.foodNum.text integerValue] - 1 < 0
-     ? 0
-                              : [self.foodNum.text integerValue] - 1];
+    [NSString stringWithFormat:@"%li", self.model.foodNum - 1 < 0 ? 0 : (--self.model.foodNum)];
     __weak __typeof(self) weakSelf = self;
     [self.foodNumSignal subscribeNext:^(NSString *x) {
       if ([x isEqualToString:@"0"]) {
@@ -246,7 +250,7 @@ const NSInteger FoodImageIndex = 10000;
       }
     }];
   } else if (view.tag == FoodImageIndex + 1) {
-    self.foodNum.text = [NSString stringWithFormat:@"%li", [self.foodNum.text integerValue] + 1];
+    self.foodNum.text = [NSString stringWithFormat:@"%li", (++self.model.foodNum)];
     __weak __typeof(self) weakSelf = self;
     [self.foodNumSignal subscribeNext:^(NSString *x) {
       weakSelf.foodNum.hidden = false;
@@ -260,4 +264,20 @@ const NSInteger FoodImageIndex = 10000;
 //(UIGestureRecognizer *)otherGestureRecognizer {
 //  return YES;
 //}
+
+- (void)setModel:(Food *)model {
+  _model = model;
+  self.foodTitle.text = model.foodName;
+  self.foodNum.text = [NSString stringWithFormat:@"%li", model.foodNum];
+  self.foodDescription.text = model.foodDescription;
+  self.foodPrice.text = [NSString stringWithFormat:@"¥%@", model.foodPrice];
+}
+
+- (void)loadData:(Food *)model {
+  self.model = model;
+  self.foodTitle.text = model.foodName;
+  self.foodNum.text = [NSString stringWithFormat:@"%li", model.foodNum];
+  self.foodDescription.text = model.foodDescription;
+  self.foodPrice.text = [NSString stringWithFormat:@"¥%@", model.foodPrice];
+}
 @end

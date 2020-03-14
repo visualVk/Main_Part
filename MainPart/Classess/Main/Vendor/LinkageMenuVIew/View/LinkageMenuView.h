@@ -20,7 +20,11 @@
    sizeForFooterInSection:(NSInteger)section;
 - (CGFloat)collectionView:(UICollectionView *)collectionView
    sizeForHeaderInSection:(NSInteger)section;
-
+- (void)collectionView:(UICollectionView *)collectionView
+didScrollWithContentOffset:(CGPoint)contentOffset;
+//用于设置空白cell
+- (NSInteger)numberOfSection:(UICollectionView *)collectionView;
+///废弃的方法
 - (NSInteger)rightTopAndBottomTotolNum:(NSInteger)section;
 - (NSInteger)rightNumberOfSections;
 - (NSInteger)leftTotal:(NSInteger)section;
@@ -28,8 +32,8 @@
 @end
 
 @interface LinkageMenuView : UIView
-@property (nonatomic, strong) QMUITableView *tableView;
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, readonly) QMUITableView *tableView;
+@property (nonatomic, readonly) UICollectionView *collectionView;
 // section名和左菜单栏标题
 @property (nonatomic, strong) NSArray<LinkageModel *> *datas;
 

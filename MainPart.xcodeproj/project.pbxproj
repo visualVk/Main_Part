@@ -101,6 +101,14 @@
 		A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACFC240E718A008BA2D9 /* OrderToolBarView.m */; };
 		A73FAD00240E7EE6008BA2D9 /* MentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FACFF240E7EE6008BA2D9 /* MentionCell.m */; };
 		A73FAD03240E8225008BA2D9 /* SloganCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A73FAD02240E8225008BA2D9 /* SloganCell.m */; };
+		A75DB908241C96260037C0BA /* MineFoodToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB907241C96260037C0BA /* MineFoodToolBar.m */; };
+		A75DB90B241CA7030037C0BA /* EmptyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB90A241CA7030037C0BA /* EmptyCollectionViewCell.m */; };
+		A75DB924241CBCAD0037C0BA /* FoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB91F241CBCAB0037C0BA /* FoodList.m */; };
+		A75DB925241CBCAD0037C0BA /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB921241CBCAC0037C0BA /* Food.m */; };
+		A75DB926241CBCAD0037C0BA /* MineFoodModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A75DB922241CBCAC0037C0BA /* MineFoodModelListJSON.json */; };
+		A75DB92B241CCFFB0037C0BA /* PopListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB92A241CCFFB0037C0BA /* PopListController.m */; };
+		A75DB92F241CD0C40037C0BA /* PopListSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB92E241CD0C40037C0BA /* PopListSectionView.m */; };
+		A75DB932241CD2B80037C0BA /* PopListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB931241CD2B80037C0BA /* PopListItemCell.m */; };
 		A772A98A240785CD00B8FC52 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A989240785CD00B8FC52 /* MineController.m */; };
 		A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A98C2407877C00B8FC52 /* MineHeaderView.m */; };
 		A772A9932407A99700B8FC52 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A9922407A99700B8FC52 /* OrderCell.m */; };
@@ -499,6 +507,21 @@
 		A73FACFF240E7EE6008BA2D9 /* MentionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MentionCell.m; sourceTree = "<group>"; };
 		A73FAD01240E8225008BA2D9 /* SloganCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SloganCell.h; sourceTree = "<group>"; };
 		A73FAD02240E8225008BA2D9 /* SloganCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SloganCell.m; sourceTree = "<group>"; };
+		A75DB906241C96260037C0BA /* MineFoodToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodToolBar.h; sourceTree = "<group>"; };
+		A75DB907241C96260037C0BA /* MineFoodToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodToolBar.m; sourceTree = "<group>"; };
+		A75DB909241CA7030037C0BA /* EmptyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyCollectionViewCell.h; sourceTree = "<group>"; };
+		A75DB90A241CA7030037C0BA /* EmptyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyCollectionViewCell.m; sourceTree = "<group>"; };
+		A75DB91F241CBCAB0037C0BA /* FoodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodList.m; sourceTree = "<group>"; };
+		A75DB920241CBCAB0037C0BA /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		A75DB921241CBCAC0037C0BA /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		A75DB922241CBCAC0037C0BA /* MineFoodModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MineFoodModelListJSON.json; sourceTree = "<group>"; };
+		A75DB923241CBCAD0037C0BA /* FoodList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodList.h; sourceTree = "<group>"; };
+		A75DB929241CCFFB0037C0BA /* PopListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopListController.h; sourceTree = "<group>"; };
+		A75DB92A241CCFFB0037C0BA /* PopListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopListController.m; sourceTree = "<group>"; };
+		A75DB92D241CD0C40037C0BA /* PopListSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopListSectionView.h; sourceTree = "<group>"; };
+		A75DB92E241CD0C40037C0BA /* PopListSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopListSectionView.m; sourceTree = "<group>"; };
+		A75DB930241CD2B80037C0BA /* PopListItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopListItemCell.h; sourceTree = "<group>"; };
+		A75DB931241CD2B80037C0BA /* PopListItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopListItemCell.m; sourceTree = "<group>"; };
 		A772A988240785CD00B8FC52 /* MineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
 		A772A989240785CD00B8FC52 /* MineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		A772A98B2407877C00B8FC52 /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -1098,6 +1121,8 @@
 				A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */,
 				A7084C7F2406C23700FF5CAE /* SingularCell.h */,
 				A7084C7A2406C23700FF5CAE /* SingularCell.m */,
+				A75DB909241CA7030037C0BA /* EmptyCollectionViewCell.h */,
+				A75DB90A241CA7030037C0BA /* EmptyCollectionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1233,6 +1258,8 @@
 				A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */,
 				A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */,
 				A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */,
+				A75DB906241C96260037C0BA /* MineFoodToolBar.h */,
+				A75DB907241C96260037C0BA /* MineFoodToolBar.m */,
 			);
 			path = MineOrderDetail;
 			sourceTree = "<group>";
@@ -1240,6 +1267,7 @@
 		A73D6552240B640A00F94792 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A75DB90C241CB5090037C0BA /* Food */,
 				A7FBA0AB241A7B440000287A /* Info */,
 				A73D6559240B658200F94792 /* Tool */,
 			);
@@ -1290,6 +1318,47 @@
 				A73D6582240BDEC000F94792 /* RepertoireCell.m */,
 			);
 			path = MineTourist;
+			sourceTree = "<group>";
+		};
+		A75DB90C241CB5090037C0BA /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB920241CBCAB0037C0BA /* Food.h */,
+				A75DB921241CBCAC0037C0BA /* Food.m */,
+				A75DB923241CBCAD0037C0BA /* FoodList.h */,
+				A75DB91F241CBCAB0037C0BA /* FoodList.m */,
+				A75DB922241CBCAC0037C0BA /* MineFoodModelListJSON.json */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
+		A75DB927241CCFCD0037C0BA /* PopListController */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB92C241CD0570037C0BA /* View */,
+				A75DB928241CCFDA0037C0BA /* Controller */,
+			);
+			path = PopListController;
+			sourceTree = "<group>";
+		};
+		A75DB928241CCFDA0037C0BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB929241CCFFB0037C0BA /* PopListController.h */,
+				A75DB92A241CCFFB0037C0BA /* PopListController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A75DB92C241CD0570037C0BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB92D241CD0C40037C0BA /* PopListSectionView.h */,
+				A75DB92E241CD0C40037C0BA /* PopListSectionView.m */,
+				A75DB930241CD2B80037C0BA /* PopListItemCell.h */,
+				A75DB931241CD2B80037C0BA /* PopListItemCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A772A97F2407859900B8FC52 /* Mine */ = {
@@ -1412,6 +1481,7 @@
 		A772A9872407859900B8FC52 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A75DB927241CCFCD0037C0BA /* PopListController */,
 				A7FE9A6324177E1D00A8D259 /* AwardARView */,
 				A7C341CD2413D5B000BAEF70 /* CustomProgressView */,
 				A738B0B6240A691600705AF2 /* QMUI */,
@@ -2432,6 +2502,7 @@
 				A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */,
 				A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */,
 				A793DC442419275C00CB49BB /* RankModelListJSON.json in Resources */,
+				A75DB926241CBCAD0037C0BA /* MineFoodModelListJSON.json in Resources */,
 				A793DC4C2419275C00CB49BB /* WMZDropMenu.bundle in Resources */,
 				A73D656D240B7E2100F94792 /* ProfileInfoListModelJSON.json in Resources */,
 				A7FE9A9224177E1E00A8D259 /* ARMain.storyboard in Resources */,
@@ -2529,6 +2600,7 @@
 				A793DC4A2419275C00CB49BB /* WMZDropDownMenu+DealDelegate.m in Sources */,
 				A7C779122402562E003EBCE0 /* YXFlipView.m in Sources */,
 				A793DC512419275C00CB49BB /* WMZDropDownMenu.m in Sources */,
+				A75DB90B241CA7030037C0BA /* EmptyCollectionViewCell.m in Sources */,
 				A72D3B0B240FD403009720AD /* SceneTypeEmbedCell.m in Sources */,
 				A7C779192402562E003EBCE0 /* CustomSectionCell.m in Sources */,
 				A7FE9A8B24177E1E00A8D259 /* OpenGLView.m in Sources */,
@@ -2592,6 +2664,7 @@
 				A7990F292410A1AF00238B33 /* PayMethodController.m in Sources */,
 				A7C7791E2402562E003EBCE0 /* BannerCell.m in Sources */,
 				A73D657D240BAE0600F94792 /* MineTouristHeaderView.m in Sources */,
+				A75DB924241CBCAD0037C0BA /* FoodList.m in Sources */,
 				A7D6549E2416264B00AECF5E /* RecCell.m in Sources */,
 				A73AEC2B2412395C00AD6880 /* StrategyCell.m in Sources */,
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
@@ -2623,6 +2696,7 @@
 				A7C7790A2402562E003EBCE0 /* GridCityCell.m in Sources */,
 				A7739FB92405191B00EF7664 /* GHCustomAlertView.m in Sources */,
 				A793DC472419275C00CB49BB /* Town.m in Sources */,
+				A75DB92F241CD0C40037C0BA /* PopListSectionView.m in Sources */,
 				A73FACF7240E2E0F008BA2D9 /* CheckInController.m in Sources */,
 				A7C7792B2402562E003EBCE0 /* WSLWaterFlowLayout.m in Sources */,
 				A73D6589240BE60E00F94792 /* Log.m in Sources */,
@@ -2637,6 +2711,7 @@
 				A7C779162402562E003EBCE0 /* BannerViewSpot.m in Sources */,
 				A7FD2B67241B3E13006B3CC1 /* MinePasswordController.m in Sources */,
 				A7C4F0B82403BDA4008E740A /* DateUtils.m in Sources */,
+				A75DB908241C96260037C0BA /* MineFoodToolBar.m in Sources */,
 				A7FBA0942419DE7A0000287A /* MineQrCodeView.m in Sources */,
 				A772A9A22407DB2D00B8FC52 /* ProfileStatusCell.m in Sources */,
 				A7FD2B73241BAFFC006B3CC1 /* MineFoodCell.m in Sources */,
@@ -2644,6 +2719,7 @@
 				A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */,
 				A7FE9A8F24177E1E00A8D259 /* ARScanSixView.m in Sources */,
 				A73FACE8240E08D9008BA2D9 /* OrderInfoCell.m in Sources */,
+				A75DB932241CD2B80037C0BA /* PopListItemCell.m in Sources */,
 				A73D655F240B6B2400F94792 /* IDCardInfoCell.m in Sources */,
 				A7C7791C2402562E003EBCE0 /* HotHeaderView.m in Sources */,
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
@@ -2688,6 +2764,7 @@
 				A702DFE3240898D600A9646C /* CardBagView.m in Sources */,
 				A72D3AFF240F83FD009720AD /* SceneSingleLineCell.m in Sources */,
 				A702DFE02408973A00A9646C /* MineActivityBannerCell.m in Sources */,
+				A75DB92B241CCFFB0037C0BA /* PopListController.m in Sources */,
 				A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */,
 				A702DFFD2408BF4400A9646C /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,
@@ -2709,6 +2786,7 @@
 				A7FBA0A6241A79C90000287A /* MineInfoSetController.m in Sources */,
 				A73AEC3124123CA000AD6880 /* PayFinishCell.m in Sources */,
 				A7FE9A8A24177E1E00A8D259 /* BGRenderer.m in Sources */,
+				A75DB925241CBCAD0037C0BA /* Food.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
 				A7FBA0912419DD8C0000287A /* MineQRCodeController.m in Sources */,
 				A702E053240911F500A9646C /* ASFRPerson.m in Sources */,

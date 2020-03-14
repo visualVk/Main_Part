@@ -7,6 +7,7 @@
 //
 
 #import "LinkageMenuView.h"
+#import "EmptyCollectionViewCell.h"
 #import "EvenCell.h"
 #import "LeftCell.h"
 #import "LinkageFooter.h"
@@ -19,6 +20,7 @@
 #define EVENCELL @"evencell"
 #define TITLECELL @"titlecell"
 #define LEFTCELL @"leftcell"
+#define EMPTYCOLLECTIONVIEWCELL @"emptycollectionviewcell"
 @interface LinkageMenuView () <QMUITableViewDelegate, QMUITableViewDataSource,
 UICollectionViewDelegate, UICollectionViewDataSource,
 JQCollectionViewAlignLayoutDelegate> {
@@ -30,6 +32,8 @@ JQCollectionViewAlignLayoutDelegate> {
 @property (nonatomic, assign) NSInteger curRow;
 @property (nonatomic, assign) NSInteger leftTot;
 @property (nonatomic, strong) UIView *changeBackView;
+@property (nonatomic, strong) QMUITableView *tableView;
+@property (nonatomic, strong) UICollectionView *collectionView;
 @end
 
 @implementation LinkageMenuView
@@ -81,6 +85,11 @@ JQCollectionViewAlignLayoutDelegate> {
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   if (scrollView == self.collectionView) {
     isDown = (scrollView.contentOffset.y > offsetsC);
+    if ([self.link_delegate
+         respondsToSelector:@selector(collectionView:didScrollWithContentOffset:)]) {
+      [self.link_delegate collectionView:self.collectionView
+              didScrollWithContentOffset:scrollView.contentOffset];
+    }
   } else {
     isDown = (scrollView.contentOffset.y > offsetsC);
   }
@@ -97,7 +106,8 @@ JQCollectionViewAlignLayoutDelegate> {
   
   [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(self.tableView.mas_right);
-    make.top.right.bottom.equalTo(self);
+    make.top.right.equalTo(self);
+    make.bottom.equalTo(self);
   }];
 }
 
@@ -124,6 +134,7 @@ JQCollectionViewAlignLayoutDelegate> {
                       scrollPosition:UITableViewScrollPositionNone];
     //    [self tableView:_tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0
     //    inSection:0]];
+    _tableView.showsVerticalScrollIndicator = false;
   }
   return _tableView;
 }
@@ -185,7 +196,7 @@ JQCollectionViewAlignLayoutDelegate> {
     layout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
     _collectionView =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionView.backgroundColor = UIColor.clearColor;
+    _collectionView.backgroundColor = UIColor.qd_backgroundColor;
     _collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
     [_collectionView registerClass:SingularCell.class forCellWithReuseIdentifier:SINGULARCELL];
     [_collectionView registerClass:EvenCell.class forCellWithReuseIdentifier:EVENCELL];
@@ -195,6 +206,9 @@ JQCollectionViewAlignLayoutDelegate> {
     [_collectionView registerClass:LinkageTitleHeader.class
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:TITLECELL];
+    [_collectionView registerClass:EmptyCollectionViewCell.class
+        forCellWithReuseIdentifier:EMPTYCOLLECTIONVIEWCELL];
+    _collectionView.showsVerticalScrollIndicator = false;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
   }
@@ -202,6 +216,9 @@ JQCollectionViewAlignLayoutDelegate> {
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+  if ([self.link_delegate respondsToSelector:@selector(numberOfSection:)]) {
+    return [self.link_delegate numberOfSection:collectionView];
+  }
   return self.datas.count;
 }
 
@@ -218,6 +235,12 @@ JQCollectionViewAlignLayoutDelegate> {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section >= self.datas.count) {
+    EmptyCollectionViewCell *mcvCell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:EMPTYCOLLECTIONVIEWCELL
+                                              forIndexPath:indexPath];
+    return mcvCell;
+  }
   //自定义右cell
   if ([self.link_delegate respondsToSelector:@selector(collectionView:drawCellForIndexPath:)]) {
     return [self.link_delegate collectionView:collectionView drawCellForIndexPath:indexPath];
@@ -266,7 +289,10 @@ JQCollectionViewAlignLayoutDelegate> {
     LinkageTitleHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                     withReuseIdentifier:TITLECELL
                                                                            forIndexPath:indexPath];
-    header.title.text = self.datas[indexPath.section].title;
+    if (indexPath.section < self.datas.count)
+      header.title.text = self.datas[indexPath.section].title;
+    else
+      header.title.text = @"";
     return header;
   }
   LinkageFooter *footer =
@@ -289,6 +315,7 @@ JQCollectionViewAlignLayoutDelegate> {
 didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
       forElementOfKind:(NSString *)elementKind
            atIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section >= self.datas.count) return;
   if (!self.isBegin || isTable) return;
   if (isDown && [elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
     if (collectionView.dragging || collectionView.decelerating) {
@@ -316,6 +343,7 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 willDisplaySupplementaryView:(UICollectionReusableView *)view
         forElementKind:(NSString *)elementKind
            atIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section >= self.datas.count) return;
   if (!self.isBegin || isTable) return;
   if (!isDown && [elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section inSection:0]
@@ -334,6 +362,7 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
+  if (section >= self.datas.count) return CGSizeMake(self.collectionView.frame.size.width, 0);
   if ([self.link_delegate respondsToSelector:@selector(collectionView:sizeForHeaderInSection:)]) {
     CGFloat height =
     [self.link_delegate collectionView:collectionView sizeForHeaderInSection:section];

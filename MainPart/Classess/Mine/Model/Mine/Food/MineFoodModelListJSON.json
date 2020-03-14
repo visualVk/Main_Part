@@ -1,0 +1,108 @@
+{
+  "food" : [
+    {
+      "foodNum" : 0,
+      "foodName" : "水煮肉片",
+      "type" : 0,
+      "typeName" : "主食",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "土豆",
+      "type" : 0,
+      "typeName" : "主食",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "藕片",
+      "type" : 0,
+      "typeName" : "主食",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "牛肉",
+      "type" : 0,
+      "typeName" : "主食",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "炸串",
+      "type" : 0,
+      "typeName" : "主食",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "青椒",
+      "type" : 1,
+      "typeName" : "佐料",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "花椒",
+      "type" : 1,
+      "typeName" : "佐料",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "朝天椒",
+      "type" : 1,
+      "typeName" : "佐料",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "魔鬼椒",
+      "type" : 1,
+      "typeName" : "佐料",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "炸鸡腿",
+      "type" : 2,
+      "typeName" : "肥宅快乐餐",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "汉堡",
+      "type" : 2,
+      "typeName" : "肥宅快乐餐",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "薯条",
+      "type" : 2,
+      "typeName" : "肥宅快乐餐",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    },
+    {
+      "foodNum" : 0,
+      "foodName" : "可乐",
+      "type" : 2,
+      "typeName" : "肥宅快乐餐",
+      "foodDescription" : "xasdadasdasd",
+      "foodPrice" : "199"
+    }
+  ]
+}

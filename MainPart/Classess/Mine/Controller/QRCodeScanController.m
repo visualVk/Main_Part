@@ -8,9 +8,11 @@
 
 #import "QRCodeScanController.h"
 #import "AppDelegate.h"
+#import "CustomUrlUtil.h"
 #import "LBXAlertAction.h"
 #import "LBXPermission.h"
 #import "MarkUtils.h"
+#import "MineFoodOrderController.h"
 #import "QDSingleImagePickerPreviewViewController.h"
 #import "StyleDIY.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -198,7 +200,9 @@ QMUIImagePickerPreviewViewControllerDelegate, QDSingleImagePickerPreviewViewCont
     return;
   }
   /// 显示结果
-  [self popAlertMsgWithScanResult:scanResult.strScanned];
+  NSDictionary *dict = [CustomUrlUtil getUrlParam:scanResult.strScanned];
+  //  [self popAlertMsgWithScanResult:[dict description]];
+  [self pushControllerWithScannResult:dict];
 }
 
 //开关闪光灯
@@ -313,6 +317,26 @@ QMUIImagePickerPreviewViewControllerDelegate, QDSingleImagePickerPreviewViewCont
                                  msg:strResult
                     buttonsStatement:@[ @"知道了" ]
                          chooseBlock:^(NSInteger buttonIdx) { [weakSelf reStartDevice]; }];
+}
+#pragma mark - 根据结果跳转
+- (void)pushControllerWithScannResult:(NSDictionary *)dict {
+  if ([@"orderFood" isEqualToString:dict[@"function"]]) {
+#ifdef Test_Hotel
+    OrderCheckInfo *tmp = [OrderCheckInfo new];
+    tmp.dinnerAddress = @"aaa楼bbb层ccc号";
+    tmp.hotelName = @"温州荣欣大酒店";
+    CheckInfo *model = [CheckInfo new];
+    model.roomAddress = dict[@"roomAddress"];
+    tmp.checkInfo = @[ model ];
+    MineFoodOrderController *mfoCon = [MineFoodOrderController new];
+    mfoCon.foodOrderType = [dict[@"type"] integerValue];
+    mfoCon.orderCheckInfo = tmp;
+    __weak __typeof(self) weakSelf = self;
+    [self.navigationController qmui_pushViewController:mfoCon
+                                              animated:YES
+                                            completion:^{ [weakSelf reStartDevice]; }];
+#endif
+  }
 }
 
 - (void)showNextVCWithScanResult:(LBXScanResult *)strResult {

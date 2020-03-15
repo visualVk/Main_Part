@@ -24,15 +24,22 @@
 		A702E00A2408BFCC00A9646C /* LBXPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E0042408BFCC00A9646C /* LBXPermission.m */; };
 		A702E00C2408C0AA00A9646C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A702E00B2408C0AA00A9646C /* Foundation.framework */; };
 		A702E0102408E38D00A9646C /* QDSingleImagePickerPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E00F2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.m */; };
-		A702E040240911E600A9646C /* FaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E03F240911E500A9646C /* FaceController.m */; };
-		A702E051240911F500A9646C /* ASFRManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E043240911F500A9646C /* ASFRManager.m */; };
-		A702E052240911F500A9646C /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A702E047240911F500A9646C /* FSDKFR.xcdatamodeld */; };
-		A702E053240911F500A9646C /* ASFRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E049240911F500A9646C /* ASFRPerson.m */; };
-		A702E054240911F500A9646C /* ASFRCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E04A240911F500A9646C /* ASFRCDManager.m */; };
-		A702E055240911F500A9646C /* ASFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E04D240911F500A9646C /* ASFCameraController.m */; };
-		A702E056240911F500A9646C /* ASFVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E04F240911F500A9646C /* ASFVideoProcessor.m */; };
-		A702E05F24091A0400A9646C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E05B24091A0400A9646C /* Utility.m */; };
-		A702E06024091A0400A9646C /* ColorFormatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A702E05D24091A0400A9646C /* ColorFormatUtil.m */; };
+		A703A720241DDB7500ABC74A /* MineFoodListTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A71F241DDB7500ABC74A /* MineFoodListTitleCell.m */; };
+		A703A723241DDDA100ABC74A /* MineFoodItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A722241DDDA100ABC74A /* MineFoodItemCell.m */; };
+		A703A726241DE73E00ABC74A /* MineFoodDiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A725241DE73E00ABC74A /* MineFoodDiscountCell.m */; };
+		A703A729241DF4D400ABC74A /* MineFoodPayToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A728241DF4D400ABC74A /* MineFoodPayToolBar.m */; };
+		A703A747241E1D5200ABC74A /* CheckInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A743241E1D5100ABC74A /* CheckInfo.m */; };
+		A703A748241E1D5200ABC74A /* OrderCheckInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A745241E1D5200ABC74A /* OrderCheckInfo.m */; };
+		A703A749241E1D5200ABC74A /* MineOrderListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A703A746241E1D5200ABC74A /* MineOrderListJSON.json */; };
+		A703A74D241E1FAC00ABC74A /* CustomUrlUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A74C241E1FAC00ABC74A /* CustomUrlUtil.m */; };
+		A703A750241E2AC700ABC74A /* MineRoomChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A74F241E2AC700ABC74A /* MineRoomChooseController.m */; };
+		A703A759241E456500ABC74A /* MineSportModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A703A754241E456500ABC74A /* MineSportModelListJSON.json */; };
+		A703A75A241E456500ABC74A /* HotelDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A756241E456500ABC74A /* HotelDevice.m */; };
+		A703A75B241E456500ABC74A /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A758241E456500ABC74A /* Device.m */; };
+		A703A75F241E458A00ABC74A /* MineSportDeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A75E241E458A00ABC74A /* MineSportDeviceCell.m */; };
+		A703A763241E4CE900ABC74A /* MineSportDeviceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A762241E4CE900ABC74A /* MineSportDeviceHeaderView.m */; };
+		A703A766241E51CD00ABC74A /* MineSportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A765241E51CD00ABC74A /* MineSportController.m */; };
+		A703A76D241E5C2A00ABC74A /* MineSportTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A76C241E5C2A00ABC74A /* MineSportTitleCell.m */; };
 		A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */; };
 		A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */; };
 		A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C792406C23700FF5CAE /* LeftCell.m */; };
@@ -109,6 +116,18 @@
 		A75DB92B241CCFFB0037C0BA /* PopListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB92A241CCFFB0037C0BA /* PopListController.m */; };
 		A75DB92F241CD0C40037C0BA /* PopListSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB92E241CD0C40037C0BA /* PopListSectionView.m */; };
 		A75DB932241CD2B80037C0BA /* PopListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB931241CD2B80037C0BA /* PopListItemCell.m */; };
+		A75DB946241D045A0037C0BA /* FaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB935241D04590037C0BA /* FaceController.m */; };
+		A75DB947241D045A0037C0BA /* ASFRManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB938241D04590037C0BA /* ASFRManager.m */; };
+		A75DB948241D045A0037C0BA /* FSDKFR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A75DB93C241D04590037C0BA /* FSDKFR.xcdatamodeld */; };
+		A75DB949241D045A0037C0BA /* ASFRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB93E241D04590037C0BA /* ASFRPerson.m */; };
+		A75DB94A241D045A0037C0BA /* ASFRCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB93F241D04590037C0BA /* ASFRCDManager.m */; };
+		A75DB94B241D045A0037C0BA /* ASFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB942241D04590037C0BA /* ASFCameraController.m */; };
+		A75DB94C241D045A0037C0BA /* ASFVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB944241D04590037C0BA /* ASFVideoProcessor.m */; };
+		A75DB952241D04930037C0BA /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB94E241D04930037C0BA /* Utility.m */; };
+		A75DB953241D04930037C0BA /* ColorFormatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB950241D04930037C0BA /* ColorFormatUtil.m */; };
+		A75DB957241D04BA0037C0BA /* ArcSoftFaceEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75DB956241D04BA0037C0BA /* ArcSoftFaceEngine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A75DB95A241D1D8F0037C0BA /* MineFoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB959241D1D8F0037C0BA /* MineFoodAddressCell.m */; };
+		A75DB95D241D23A80037C0BA /* MineFoodPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75DB95C241D23A80037C0BA /* MineFoodPayController.m */; };
 		A772A98A240785CD00B8FC52 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A989240785CD00B8FC52 /* MineController.m */; };
 		A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A98C2407877C00B8FC52 /* MineHeaderView.m */; };
 		A772A9932407A99700B8FC52 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A772A9922407A99700B8FC52 /* OrderCell.m */; };
@@ -165,7 +184,6 @@
 		A7990F292410A1AF00238B33 /* PayMethodController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7990F282410A1AF00238B33 /* PayMethodController.m */; };
 		A7990F2D2410A36C00238B33 /* PayDeadlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7990F2C2410A36C00238B33 /* PayDeadlineCell.m */; };
 		A7990F302410A84E00238B33 /* PayMethodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7990F2F2410A84E00238B33 /* PayMethodCell.m */; };
-		A7990F5A2410EA3200238B33 /* SLKPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7990F582410EA3100238B33 /* SLKPayView.m */; };
 		A7C341C62413976F00BAEF70 /* MineTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C341C52413976F00BAEF70 /* MineTitleCell.m */; };
 		A7C341C924139B2700BAEF70 /* MineOrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C341C824139B2700BAEF70 /* MineOrderInfoCell.m */; };
 		A7C341CC24139D2100BAEF70 /* MineOrderInfoTBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C341CB24139D2100BAEF70 /* MineOrderInfoTBCell.m */; };
@@ -305,8 +323,6 @@
 		A7FE9AA82417815300A8D259 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FE9AA72417815300A8D259 /* CoreMotion.framework */; };
 		A7FE9AAA2417816100A8D259 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FE9AA92417816100A8D259 /* CoreVideo.framework */; };
 		A7FE9AAD2417818B00A8D259 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7FE9AAC2417818A00A8D259 /* OpenGLES.framework */; };
-		A7FE9AB4241786AE00A8D259 /* ArcSoftFaceEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A702E03B240911E100A9646C /* ArcSoftFaceEngine.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A7FE9AB5241786AE00A8D259 /* ArcSoftFaceEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A702E03B240911E100A9646C /* ArcSoftFaceEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7FE9AB924178C0100A8D259 /* GHDropSpotMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9AB824178C0100A8D259 /* GHDropSpotMenuModel.m */; };
 /* End PBXBuildFile section */
 
@@ -317,7 +333,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A7FE9AB5241786AE00A8D259 /* ArcSoftFaceEngine.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,24 +373,36 @@
 		A702E00B2408C0AA00A9646C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A702E00E2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDSingleImagePickerPreviewViewController.h; sourceTree = "<group>"; };
 		A702E00F2408E38C00A9646C /* QDSingleImagePickerPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDSingleImagePickerPreviewViewController.m; sourceTree = "<group>"; };
-		A702E03B240911E100A9646C /* ArcSoftFaceEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArcSoftFaceEngine.framework; sourceTree = "<group>"; };
-		A702E03E240911E500A9646C /* FaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceController.h; sourceTree = "<group>"; };
-		A702E03F240911E500A9646C /* FaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceController.m; sourceTree = "<group>"; };
-		A702E043240911F500A9646C /* ASFRManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRManager.m; sourceTree = "<group>"; };
-		A702E044240911F500A9646C /* ASFRCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRCDManager.h; sourceTree = "<group>"; };
-		A702E045240911F500A9646C /* ASFRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRPerson.h; sourceTree = "<group>"; };
-		A702E046240911F500A9646C /* ASFRManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRManager.h; sourceTree = "<group>"; };
-		A702E048240911F500A9646C /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
-		A702E049240911F500A9646C /* ASFRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRPerson.m; sourceTree = "<group>"; };
-		A702E04A240911F500A9646C /* ASFRCDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRCDManager.m; sourceTree = "<group>"; };
-		A702E04C240911F500A9646C /* ASFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFCameraController.h; sourceTree = "<group>"; };
-		A702E04D240911F500A9646C /* ASFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFCameraController.m; sourceTree = "<group>"; };
-		A702E04F240911F500A9646C /* ASFVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFVideoProcessor.m; sourceTree = "<group>"; };
-		A702E050240911F500A9646C /* ASFVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFVideoProcessor.h; sourceTree = "<group>"; };
-		A702E05B24091A0400A9646C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		A702E05C24091A0400A9646C /* ColorFormatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorFormatUtil.h; sourceTree = "<group>"; };
-		A702E05D24091A0400A9646C /* ColorFormatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorFormatUtil.m; sourceTree = "<group>"; };
-		A702E05E24091A0400A9646C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		A703A71E241DDB7500ABC74A /* MineFoodListTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodListTitleCell.h; sourceTree = "<group>"; };
+		A703A71F241DDB7500ABC74A /* MineFoodListTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodListTitleCell.m; sourceTree = "<group>"; };
+		A703A721241DDDA100ABC74A /* MineFoodItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodItemCell.h; sourceTree = "<group>"; };
+		A703A722241DDDA100ABC74A /* MineFoodItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodItemCell.m; sourceTree = "<group>"; };
+		A703A724241DE73E00ABC74A /* MineFoodDiscountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodDiscountCell.h; sourceTree = "<group>"; };
+		A703A725241DE73E00ABC74A /* MineFoodDiscountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodDiscountCell.m; sourceTree = "<group>"; };
+		A703A727241DF4D400ABC74A /* MineFoodPayToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodPayToolBar.h; sourceTree = "<group>"; };
+		A703A728241DF4D400ABC74A /* MineFoodPayToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodPayToolBar.m; sourceTree = "<group>"; };
+		A703A742241E1D5100ABC74A /* CheckInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInfo.h; sourceTree = "<group>"; };
+		A703A743241E1D5100ABC74A /* CheckInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInfo.m; sourceTree = "<group>"; };
+		A703A744241E1D5100ABC74A /* OrderCheckInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCheckInfo.h; sourceTree = "<group>"; };
+		A703A745241E1D5200ABC74A /* OrderCheckInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCheckInfo.m; sourceTree = "<group>"; };
+		A703A746241E1D5200ABC74A /* MineOrderListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MineOrderListJSON.json; sourceTree = "<group>"; };
+		A703A74B241E1FAC00ABC74A /* CustomUrlUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomUrlUtil.h; sourceTree = "<group>"; };
+		A703A74C241E1FAC00ABC74A /* CustomUrlUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomUrlUtil.m; sourceTree = "<group>"; };
+		A703A74E241E2AC700ABC74A /* MineRoomChooseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineRoomChooseController.h; sourceTree = "<group>"; };
+		A703A74F241E2AC700ABC74A /* MineRoomChooseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineRoomChooseController.m; sourceTree = "<group>"; };
+		A703A754241E456500ABC74A /* MineSportModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MineSportModelListJSON.json; sourceTree = "<group>"; };
+		A703A755241E456500ABC74A /* HotelDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDevice.h; sourceTree = "<group>"; };
+		A703A756241E456500ABC74A /* HotelDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDevice.m; sourceTree = "<group>"; };
+		A703A757241E456500ABC74A /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		A703A758241E456500ABC74A /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		A703A75D241E458A00ABC74A /* MineSportDeviceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineSportDeviceCell.h; sourceTree = "<group>"; };
+		A703A75E241E458A00ABC74A /* MineSportDeviceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportDeviceCell.m; sourceTree = "<group>"; };
+		A703A761241E4CE900ABC74A /* MineSportDeviceHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineSportDeviceHeaderView.h; sourceTree = "<group>"; };
+		A703A762241E4CE900ABC74A /* MineSportDeviceHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportDeviceHeaderView.m; sourceTree = "<group>"; };
+		A703A764241E51CD00ABC74A /* MineSportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineSportController.h; sourceTree = "<group>"; };
+		A703A765241E51CD00ABC74A /* MineSportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportController.m; sourceTree = "<group>"; };
+		A703A76B241E5C2A00ABC74A /* MineSportTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineSportTitleCell.h; sourceTree = "<group>"; };
+		A703A76C241E5C2A00ABC74A /* MineSportTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportTitleCell.m; sourceTree = "<group>"; };
 		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
 		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
 		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
@@ -522,6 +549,28 @@
 		A75DB92E241CD0C40037C0BA /* PopListSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopListSectionView.m; sourceTree = "<group>"; };
 		A75DB930241CD2B80037C0BA /* PopListItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopListItemCell.h; sourceTree = "<group>"; };
 		A75DB931241CD2B80037C0BA /* PopListItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopListItemCell.m; sourceTree = "<group>"; };
+		A75DB934241D04590037C0BA /* FaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceController.h; sourceTree = "<group>"; };
+		A75DB935241D04590037C0BA /* FaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceController.m; sourceTree = "<group>"; };
+		A75DB938241D04590037C0BA /* ASFRManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRManager.m; sourceTree = "<group>"; };
+		A75DB939241D04590037C0BA /* ASFRCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRCDManager.h; sourceTree = "<group>"; };
+		A75DB93A241D04590037C0BA /* ASFRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRPerson.h; sourceTree = "<group>"; };
+		A75DB93B241D04590037C0BA /* ASFRManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFRManager.h; sourceTree = "<group>"; };
+		A75DB93D241D04590037C0BA /* FSDKFR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FSDKFR.xcdatamodel; sourceTree = "<group>"; };
+		A75DB93E241D04590037C0BA /* ASFRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRPerson.m; sourceTree = "<group>"; };
+		A75DB93F241D04590037C0BA /* ASFRCDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFRCDManager.m; sourceTree = "<group>"; };
+		A75DB941241D04590037C0BA /* ASFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFCameraController.h; sourceTree = "<group>"; };
+		A75DB942241D04590037C0BA /* ASFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFCameraController.m; sourceTree = "<group>"; };
+		A75DB944241D04590037C0BA /* ASFVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFVideoProcessor.m; sourceTree = "<group>"; };
+		A75DB945241D04590037C0BA /* ASFVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFVideoProcessor.h; sourceTree = "<group>"; };
+		A75DB94E241D04930037C0BA /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		A75DB94F241D04930037C0BA /* ColorFormatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorFormatUtil.h; sourceTree = "<group>"; };
+		A75DB950241D04930037C0BA /* ColorFormatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorFormatUtil.m; sourceTree = "<group>"; };
+		A75DB951241D04930037C0BA /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		A75DB956241D04BA0037C0BA /* ArcSoftFaceEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArcSoftFaceEngine.framework; sourceTree = "<group>"; };
+		A75DB958241D1D8F0037C0BA /* MineFoodAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodAddressCell.h; sourceTree = "<group>"; };
+		A75DB959241D1D8F0037C0BA /* MineFoodAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodAddressCell.m; sourceTree = "<group>"; };
+		A75DB95B241D23A80037C0BA /* MineFoodPayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodPayController.h; sourceTree = "<group>"; };
+		A75DB95C241D23A80037C0BA /* MineFoodPayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodPayController.m; sourceTree = "<group>"; };
 		A772A988240785CD00B8FC52 /* MineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
 		A772A989240785CD00B8FC52 /* MineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
 		A772A98B2407877C00B8FC52 /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -633,8 +682,6 @@
 		A7990F2C2410A36C00238B33 /* PayDeadlineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayDeadlineCell.m; sourceTree = "<group>"; };
 		A7990F2E2410A84E00238B33 /* PayMethodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayMethodCell.h; sourceTree = "<group>"; };
 		A7990F2F2410A84E00238B33 /* PayMethodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayMethodCell.m; sourceTree = "<group>"; };
-		A7990F582410EA3100238B33 /* SLKPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKPayView.m; sourceTree = "<group>"; };
-		A7990F592410EA3100238B33 /* SLKPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKPayView.h; sourceTree = "<group>"; };
 		A7C341C42413976F00BAEF70 /* MineTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTitleCell.h; sourceTree = "<group>"; };
 		A7C341C52413976F00BAEF70 /* MineTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTitleCell.m; sourceTree = "<group>"; };
 		A7C341C724139B2700BAEF70 /* MineOrderInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineOrderInfoCell.h; sourceTree = "<group>"; };
@@ -925,7 +972,7 @@
 			files = (
 				5D7FDFD25E38BBD5B43E8277 /* libPods-MainPart.a in Frameworks */,
 				A7FE9A9C2417810F00A8D259 /* Accelerate.framework in Frameworks */,
-				A7FE9AB4241786AE00A8D259 /* ArcSoftFaceEngine.framework in Frameworks */,
+				A75DB957241D04BA0037C0BA /* ArcSoftFaceEngine.framework in Frameworks */,
 				A7FE9AA02417813000A8D259 /* AVFoundation.framework in Frameworks */,
 				A7FE9AA82417815300A8D259 /* CoreMotion.framework in Frameworks */,
 				A7FE9AA62417814D00A8D259 /* CoreMedia.framework in Frameworks */,
@@ -1013,78 +1060,76 @@
 		A702E011240901E400A9646C /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A75DB956241D04BA0037C0BA /* ArcSoftFaceEngine.framework */,
+				A75DB94D241D04930037C0BA /* ArcUtil */,
+				A75DB936241D04590037C0BA /* ARCFace */,
+				A75DB933241D04590037C0BA /* Face */,
 				A7FA6DD7240CEE54003982DA /* FSCustomCalendar */,
-				A702E041240911F500A9646C /* ARCFace */,
-				A702E03D240911E500A9646C /* Face */,
-				A702E03B240911E100A9646C /* ArcSoftFaceEngine.framework */,
 			);
 			path = vendor;
 			sourceTree = "<group>";
 		};
-		A702E03D240911E500A9646C /* Face */ = {
+		A703A74A241E1F9400ABC74A /* CustomURLUtil */ = {
 			isa = PBXGroup;
 			children = (
-				A702E03E240911E500A9646C /* FaceController.h */,
-				A702E03F240911E500A9646C /* FaceController.m */,
+				A703A74B241E1FAC00ABC74A /* CustomUrlUtil.h */,
+				A703A74C241E1FAC00ABC74A /* CustomUrlUtil.m */,
 			);
-			name = Face;
-			path = ../../LoginPart/LoginPart/Classess/Login/View/Face;
+			path = CustomURLUtil;
 			sourceTree = "<group>";
 		};
-		A702E041240911F500A9646C /* ARCFace */ = {
+		A703A751241E3DD800ABC74A /* MineFood */ = {
 			isa = PBXGroup;
 			children = (
-				A702E05A24091A0400A9646C /* ArcUtil */,
-				A702E042240911F500A9646C /* database */,
-				A702E04B240911F500A9646C /* camera */,
-				A702E04E240911F500A9646C /* engine */,
+				A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */,
+				A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */,
+				A75DB906241C96260037C0BA /* MineFoodToolBar.h */,
+				A75DB907241C96260037C0BA /* MineFoodToolBar.m */,
+				A75DB958241D1D8F0037C0BA /* MineFoodAddressCell.h */,
+				A75DB959241D1D8F0037C0BA /* MineFoodAddressCell.m */,
+				A703A71E241DDB7500ABC74A /* MineFoodListTitleCell.h */,
+				A703A71F241DDB7500ABC74A /* MineFoodListTitleCell.m */,
+				A703A721241DDDA100ABC74A /* MineFoodItemCell.h */,
+				A703A722241DDDA100ABC74A /* MineFoodItemCell.m */,
+				A703A724241DE73E00ABC74A /* MineFoodDiscountCell.h */,
+				A703A725241DE73E00ABC74A /* MineFoodDiscountCell.m */,
+				A703A727241DF4D400ABC74A /* MineFoodPayToolBar.h */,
+				A703A728241DF4D400ABC74A /* MineFoodPayToolBar.m */,
 			);
-			name = ARCFace;
-			path = ../../LoginPart/LoginPart/Classess/Login/Controller/ARCFace;
+			path = MineFood;
 			sourceTree = "<group>";
 		};
-		A702E042240911F500A9646C /* database */ = {
+		A703A752241E3DEA00ABC74A /* MineSport */ = {
 			isa = PBXGroup;
 			children = (
-				A702E043240911F500A9646C /* ASFRManager.m */,
-				A702E044240911F500A9646C /* ASFRCDManager.h */,
-				A702E045240911F500A9646C /* ASFRPerson.h */,
-				A702E046240911F500A9646C /* ASFRManager.h */,
-				A702E047240911F500A9646C /* FSDKFR.xcdatamodeld */,
-				A702E049240911F500A9646C /* ASFRPerson.m */,
-				A702E04A240911F500A9646C /* ASFRCDManager.m */,
+				A703A75D241E458A00ABC74A /* MineSportDeviceCell.h */,
+				A703A75E241E458A00ABC74A /* MineSportDeviceCell.m */,
+				A703A761241E4CE900ABC74A /* MineSportDeviceHeaderView.h */,
+				A703A762241E4CE900ABC74A /* MineSportDeviceHeaderView.m */,
+				A703A76B241E5C2A00ABC74A /* MineSportTitleCell.h */,
+				A703A76C241E5C2A00ABC74A /* MineSportTitleCell.m */,
 			);
-			path = database;
+			path = MineSport;
 			sourceTree = "<group>";
 		};
-		A702E04B240911F500A9646C /* camera */ = {
+		A703A753241E455C00ABC74A /* Sport */ = {
 			isa = PBXGroup;
 			children = (
-				A702E04C240911F500A9646C /* ASFCameraController.h */,
-				A702E04D240911F500A9646C /* ASFCameraController.m */,
+				A703A767241E549F00ABC74A /* JSON */,
+				A703A757241E456500ABC74A /* Device.h */,
+				A703A758241E456500ABC74A /* Device.m */,
+				A703A755241E456500ABC74A /* HotelDevice.h */,
+				A703A756241E456500ABC74A /* HotelDevice.m */,
 			);
-			path = camera;
+			path = Sport;
 			sourceTree = "<group>";
 		};
-		A702E04E240911F500A9646C /* engine */ = {
+		A703A767241E549F00ABC74A /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				A702E04F240911F500A9646C /* ASFVideoProcessor.m */,
-				A702E050240911F500A9646C /* ASFVideoProcessor.h */,
+				A703A754241E456500ABC74A /* MineSportModelListJSON.json */,
 			);
-			path = engine;
-			sourceTree = "<group>";
-		};
-		A702E05A24091A0400A9646C /* ArcUtil */ = {
-			isa = PBXGroup;
-			children = (
-				A702E05B24091A0400A9646C /* Utility.m */,
-				A702E05C24091A0400A9646C /* ColorFormatUtil.h */,
-				A702E05D24091A0400A9646C /* ColorFormatUtil.m */,
-				A702E05E24091A0400A9646C /* Utility.h */,
-			);
-			name = ArcUtil;
-			path = ../../Utils/ArcUtil;
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */ = {
@@ -1256,10 +1301,6 @@
 				A7D654A42416675800AECF5E /* MineOrderQuestionToolBar.m */,
 				A7FD2B6B241B74FF006B3CC1 /* MineOrderServiceCell.h */,
 				A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */,
-				A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */,
-				A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */,
-				A75DB906241C96260037C0BA /* MineFoodToolBar.h */,
-				A75DB907241C96260037C0BA /* MineFoodToolBar.m */,
 			);
 			path = MineOrderDetail;
 			sourceTree = "<group>";
@@ -1267,6 +1308,7 @@
 		A73D6552240B640A00F94792 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A703A753241E455C00ABC74A /* Sport */,
 				A75DB90C241CB5090037C0BA /* Food */,
 				A7FBA0AB241A7B440000287A /* Info */,
 				A73D6559240B658200F94792 /* Tool */,
@@ -1361,6 +1403,68 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A75DB933241D04590037C0BA /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB934241D04590037C0BA /* FaceController.h */,
+				A75DB935241D04590037C0BA /* FaceController.m */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		A75DB936241D04590037C0BA /* ARCFace */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB937241D04590037C0BA /* database */,
+				A75DB940241D04590037C0BA /* camera */,
+				A75DB943241D04590037C0BA /* engine */,
+			);
+			path = ARCFace;
+			sourceTree = "<group>";
+		};
+		A75DB937241D04590037C0BA /* database */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB938241D04590037C0BA /* ASFRManager.m */,
+				A75DB939241D04590037C0BA /* ASFRCDManager.h */,
+				A75DB93A241D04590037C0BA /* ASFRPerson.h */,
+				A75DB93B241D04590037C0BA /* ASFRManager.h */,
+				A75DB93C241D04590037C0BA /* FSDKFR.xcdatamodeld */,
+				A75DB93E241D04590037C0BA /* ASFRPerson.m */,
+				A75DB93F241D04590037C0BA /* ASFRCDManager.m */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		A75DB940241D04590037C0BA /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB941241D04590037C0BA /* ASFCameraController.h */,
+				A75DB942241D04590037C0BA /* ASFCameraController.m */,
+			);
+			path = camera;
+			sourceTree = "<group>";
+		};
+		A75DB943241D04590037C0BA /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB944241D04590037C0BA /* ASFVideoProcessor.m */,
+				A75DB945241D04590037C0BA /* ASFVideoProcessor.h */,
+			);
+			path = engine;
+			sourceTree = "<group>";
+		};
+		A75DB94D241D04930037C0BA /* ArcUtil */ = {
+			isa = PBXGroup;
+			children = (
+				A75DB94E241D04930037C0BA /* Utility.m */,
+				A75DB94F241D04930037C0BA /* ColorFormatUtil.h */,
+				A75DB950241D04930037C0BA /* ColorFormatUtil.m */,
+				A75DB951241D04930037C0BA /* Utility.h */,
+			);
+			path = ArcUtil;
+			sourceTree = "<group>";
+		};
 		A772A97F2407859900B8FC52 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1393,6 +1497,7 @@
 		A772A9822407859900B8FC52 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A703A74A241E1F9400ABC74A /* CustomURLUtil */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1442,6 +1547,12 @@
 				A7FD2B69241B4603006B3CC1 /* MineAvatarPickerController.m */,
 				A7FD2B6E241B812B006B3CC1 /* MineFoodOrderController.h */,
 				A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */,
+				A75DB95B241D23A80037C0BA /* MineFoodPayController.h */,
+				A75DB95C241D23A80037C0BA /* MineFoodPayController.m */,
+				A703A74E241E2AC700ABC74A /* MineRoomChooseController.h */,
+				A703A74F241E2AC700ABC74A /* MineRoomChooseController.m */,
+				A703A764241E51CD00ABC74A /* MineSportController.h */,
+				A703A765241E51CD00ABC74A /* MineSportController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1464,6 +1575,8 @@
 		A772A9862407859900B8FC52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A703A752241E3DEA00ABC74A /* MineSport */,
+				A703A751241E3DD800ABC74A /* MineFood */,
 				A7FBA08B2419BA500000287A /* MineProfile */,
 				A7FE9ABA2417A58C00A8D259 /* Mine */,
 				A73AEC3824126DAC00AD6880 /* MineOrderDetail */,
@@ -1712,16 +1825,6 @@
 				A73AEC332412482300AD6880 /* SelectCircleVIew.m */,
 			);
 			path = PayPage;
-			sourceTree = "<group>";
-		};
-		A7990F572410EA3100238B33 /* SLTKeyBoard */ = {
-			isa = PBXGroup;
-			children = (
-				A7990F582410EA3100238B33 /* SLKPayView.m */,
-				A7990F592410EA3100238B33 /* SLKPayView.h */,
-			);
-			name = SLTKeyBoard;
-			path = ../../../../../../Downloads/CustomPayKeyboard/CustomPayKeyboard/SLTKeyBoard;
 			sourceTree = "<group>";
 		};
 		A7C341CD2413D5B000BAEF70 /* CustomProgressView */ = {
@@ -2023,7 +2126,6 @@
 				A793DC0F2419275B00CB49BB /* DropMenuRec */,
 				A7D654932416243B00AECF5E /* QiCardView */,
 				A73AEC252412148500AD6880 /* PayPassword */,
-				A7990F572410EA3100238B33 /* SLTKeyBoard */,
 				A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */,
 				A7739F842405191A00EF7664 /* GHDropMenu */,
 			);
@@ -2305,6 +2407,11 @@
 		A7FBA0AB241A7B440000287A /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				A703A742241E1D5100ABC74A /* CheckInfo.h */,
+				A703A743241E1D5100ABC74A /* CheckInfo.m */,
+				A703A746241E1D5200ABC74A /* MineOrderListJSON.json */,
+				A703A744241E1D5100ABC74A /* OrderCheckInfo.h */,
+				A703A745241E1D5200ABC74A /* OrderCheckInfo.m */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -2499,9 +2606,11 @@
 				A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */,
 				A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */,
 				A793DC462419275C00CB49BB /* HotelParamListJSON.json in Resources */,
+				A703A749241E1D5200ABC74A /* MineOrderListJSON.json in Resources */,
 				A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */,
 				A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */,
 				A793DC442419275C00CB49BB /* RankModelListJSON.json in Resources */,
+				A703A759241E456500ABC74A /* MineSportModelListJSON.json in Resources */,
 				A75DB926241CBCAD0037C0BA /* MineFoodModelListJSON.json in Resources */,
 				A793DC4C2419275C00CB49BB /* WMZDropMenu.bundle in Resources */,
 				A73D656D240B7E2100F94792 /* ProfileInfoListModelJSON.json in Resources */,
@@ -2561,12 +2670,13 @@
 				A7FE9A9324177E1E00A8D259 /* TonePlayerSimple.m in Sources */,
 				A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */,
 				A73FACF1240E1065008BA2D9 /* CheckInTextFieldCell.m in Sources */,
+				A703A75B241E456500ABC74A /* Device.m in Sources */,
 				A793DC492419275C00CB49BB /* Rank.m in Sources */,
 				A7FA6DED240D121D003982DA /* LVCalendarCell.m in Sources */,
 				A73AEC412412736800AD6880 /* MineOrderHotelView.m in Sources */,
-				A702E056240911F500A9646C /* ASFVideoProcessor.m in Sources */,
 				A7739FAE2405191B00EF7664 /* NSString+Size.m in Sources */,
 				A7C7791B2402562E003EBCE0 /* ImageAndLabelCell.m in Sources */,
+				A75DB952241D04930037C0BA /* Utility.m in Sources */,
 				A7FA6DE2240CF213003982DA /* HotelOrderHeaderView.m in Sources */,
 				A7FA6D9E240CE16E003982DA /* DetailPresentNavBar.m in Sources */,
 				A7FE9A8624177E1E00A8D259 /* AwardView.m in Sources */,
@@ -2583,7 +2693,6 @@
 				A7C7790E2402562E003EBCE0 /* SpotFoldCell.m in Sources */,
 				A73D6583240BDEC000F94792 /* RepertoireCell.m in Sources */,
 				A772A9B42407FF0B00B8FC52 /* WefareCell.m in Sources */,
-				A702E054240911F500A9646C /* ASFRCDManager.m in Sources */,
 				A7990F2D2410A36C00238B33 /* PayDeadlineCell.m in Sources */,
 				A73AEC472412802800AD6880 /* MineOrderRoomInfoView.m in Sources */,
 				A702DFE62408A31700A9646C /* PowerCell.m in Sources */,
@@ -2612,7 +2721,6 @@
 				A7FBA0A2241A70A60000287A /* QDAlertHelper.m in Sources */,
 				A7C7792A2402562E003EBCE0 /* SectionFoldView.m in Sources */,
 				A702DFFB2408BF4400A9646C /* UIActionSheet+LBXAlertAction.m in Sources */,
-				A702E052240911F500A9646C /* FSDKFR.xcdatamodeld in Sources */,
 				A7C7797924027E17003EBCE0 /* UIView+Toast.m in Sources */,
 				A7739FB52405191B00EF7664 /* GHDropMenuFilterInputItem.m in Sources */,
 				A7FE9A9124177E1E00A8D259 /* RandomView.m in Sources */,
@@ -2624,12 +2732,13 @@
 				A7C7792D2402562E003EBCE0 /* SceneDelegate.m in Sources */,
 				A7FD2B6D241B74FF006B3CC1 /* MineOrderServiceCell.m in Sources */,
 				A7C779342402562E003EBCE0 /* QMUIConfigurationTemplate.m in Sources */,
-				A702E055240911F500A9646C /* ASFCameraController.m in Sources */,
 				A7C779032402562E003EBCE0 /* DetailController.m in Sources */,
+				A75DB946241D045A0037C0BA /* FaceController.m in Sources */,
 				A73FAD03240E8225008BA2D9 /* SloganCell.m in Sources */,
 				A7C7796224027D49003EBCE0 /* MATraceReplayOverlayRender.m in Sources */,
 				A7C779102402562E003EBCE0 /* UIView+snap.m in Sources */,
 				A7C7791D2402562E003EBCE0 /* BannerView.m in Sources */,
+				A75DB94A241D045A0037C0BA /* ASFRCDManager.m in Sources */,
 				A73D656B240B7E2100F94792 /* Info.m in Sources */,
 				A7084C902406C23700FF5CAE /* LinkageFooter.m in Sources */,
 				A72D3B05240FA44A009720AD /* SceneSegSectionView.m in Sources */,
@@ -2646,23 +2755,25 @@
 				A73AEC3724126D8F00AD6880 /* OrderDetailController.m in Sources */,
 				A772A9AB2407F56D00B8FC52 /* CreditView.m in Sources */,
 				A7C779022402562E003EBCE0 /* MainTabController.m in Sources */,
+				A703A748241E1D5200ABC74A /* OrderCheckInfo.m in Sources */,
 				A7C7786B2402515B003EBCE0 /* main.m in Sources */,
 				A702DFFA2408BF4400A9646C /* UIWindow+LBXHierarchy.m in Sources */,
 				A7FA6DEE240D121D003982DA /* CalerderViewController.m in Sources */,
 				A7C7793B2402580C003EBCE0 /* NSObject+BlockSEL.m in Sources */,
-				A702E06024091A0400A9646C /* ColorFormatUtil.m in Sources */,
 				A73AEC342412482300AD6880 /* SelectCircleVIew.m in Sources */,
 				A73D6562240B705D00F94792 /* MineInfoButtonCell.m in Sources */,
 				A7C341C62413976F00BAEF70 /* MineTitleCell.m in Sources */,
 				A7C7794824027C09003EBCE0 /* MANaviRoute.m in Sources */,
-				A702E05F24091A0400A9646C /* Utility.m in Sources */,
 				A7C779172402562E003EBCE0 /* TYCyclePagerViewCell.m in Sources */,
 				A7C779132402562E003EBCE0 /* SpotCell.m in Sources */,
 				A738B0A5240A653C00705AF2 /* MineMeliedgeCell.m in Sources */,
 				A73FAD00240E7EE6008BA2D9 /* MentionCell.m in Sources */,
+				A703A729241DF4D400ABC74A /* MineFoodPayToolBar.m in Sources */,
+				A75DB947241D045A0037C0BA /* ASFRManager.m in Sources */,
 				A73FACE5240E0439008BA2D9 /* HotelWarnCell.m in Sources */,
 				A7990F292410A1AF00238B33 /* PayMethodController.m in Sources */,
 				A7C7791E2402562E003EBCE0 /* BannerCell.m in Sources */,
+				A75DB95A241D1D8F0037C0BA /* MineFoodAddressCell.m in Sources */,
 				A73D657D240BAE0600F94792 /* MineTouristHeaderView.m in Sources */,
 				A75DB924241CBCAD0037C0BA /* FoodList.m in Sources */,
 				A7D6549E2416264B00AECF5E /* RecCell.m in Sources */,
@@ -2670,6 +2781,7 @@
 				A7C7792F2402562E003EBCE0 /* AMLocationUtils.m in Sources */,
 				A7C7790B2402562E003EBCE0 /* CommonCell.m in Sources */,
 				A7FE9AB924178C0100A8D259 /* GHDropSpotMenuModel.m in Sources */,
+				A703A76D241E5C2A00ABC74A /* MineSportTitleCell.m in Sources */,
 				A7FD2B70241B812B006B3CC1 /* MineFoodOrderController.m in Sources */,
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
@@ -2684,6 +2796,7 @@
 				A73D6576240B8F5A00F94792 /* MineInfoEditController.m in Sources */,
 				A7084C982406C27900FF5CAE /* LinkageController.m in Sources */,
 				A7990F302410A84E00238B33 /* PayMethodCell.m in Sources */,
+				A75DB949241D045A0037C0BA /* ASFRPerson.m in Sources */,
 				A7739F7B2404DAFE00EF7664 /* RoomCell.m in Sources */,
 				A738B097240A2DAC00705AF2 /* MineHistoryCell.m in Sources */,
 				A7FE9A9024177E1E00A8D259 /* PopView.m in Sources */,
@@ -2691,7 +2804,6 @@
 				A7FE9A8C24177E1E00A8D259 /* helloar.m in Sources */,
 				A7FA6DE5240CF6D6003982DA /* HotelOrderDatePickerView.m in Sources */,
 				A7C7794424025F54003EBCE0 /* MapController.m in Sources */,
-				A702E051240911F500A9646C /* ASFRManager.m in Sources */,
 				A7C779372402562E003EBCE0 /* QDCommonUI.m in Sources */,
 				A7C7790A2402562E003EBCE0 /* GridCityCell.m in Sources */,
 				A7739FB92405191B00EF7664 /* GHCustomAlertView.m in Sources */,
@@ -2716,8 +2828,10 @@
 				A772A9A22407DB2D00B8FC52 /* ProfileStatusCell.m in Sources */,
 				A7FD2B73241BAFFC006B3CC1 /* MineFoodCell.m in Sources */,
 				A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */,
+				A703A720241DDB7500ABC74A /* MineFoodListTitleCell.m in Sources */,
 				A73D6579240B98CA00F94792 /* VIPQRCodeController.m in Sources */,
 				A7FE9A8F24177E1E00A8D259 /* ARScanSixView.m in Sources */,
+				A703A723241DDDA100ABC74A /* MineFoodItemCell.m in Sources */,
 				A73FACE8240E08D9008BA2D9 /* OrderInfoCell.m in Sources */,
 				A75DB932241CD2B80037C0BA /* PopListItemCell.m in Sources */,
 				A73D655F240B6B2400F94792 /* IDCardInfoCell.m in Sources */,
@@ -2725,7 +2839,9 @@
 				A7C779182402562E003EBCE0 /* TicketCell.m in Sources */,
 				A7C779322402562E003EBCE0 /* DictUtils.m in Sources */,
 				A7C779272402562E003EBCE0 /* RemarkScoreCell.m in Sources */,
+				A703A75F241E458A00ABC74A /* MineSportDeviceCell.m in Sources */,
 				A7FA6D98240C9843003982DA /* MineOrderCell.m in Sources */,
+				A75DB94B241D045A0037C0BA /* ASFCameraController.m in Sources */,
 				A793DC502419275C00CB49BB /* Aspects.m in Sources */,
 				A793DC4F2419275C00CB49BB /* WMZDropMenuParam.m in Sources */,
 				A7739FAA2405191B00EF7664 /* UILabel+GHome.m in Sources */,
@@ -2733,14 +2849,17 @@
 				A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */,
 				A7C779282402562E003EBCE0 /* ItemBasicInfoCell.m in Sources */,
 				A793DC412419275C00CB49BB /* RankList.m in Sources */,
+				A75DB948241D045A0037C0BA /* FSDKFR.xcdatamodeld in Sources */,
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
 				A793DC402419275C00CB49BB /* TownList.m in Sources */,
+				A703A750241E2AC700ABC74A /* MineRoomChooseController.m in Sources */,
 				A7C779042402562E003EBCE0 /* MainController.m in Sources */,
 				A7D654A924168EEB00AECF5E /* CircleSpringView.m in Sources */,
 				A73D6565240B71BD00F94792 /* MineInfoController.m in Sources */,
 				A793DC3F2419275C00CB49BB /* HotelParam.m in Sources */,
 				A7C779242402562E003EBCE0 /* BannerZoomView.m in Sources */,
 				A7FBA0A9241A7AC60000287A /* MineTextFieldCell.m in Sources */,
+				A703A75A241E456500ABC74A /* HotelDevice.m in Sources */,
 				A7084C8F2406C23700FF5CAE /* EvenCell.m in Sources */,
 				A7739FB42405191B00EF7664 /* GHDropMenuFilterTagItem.m in Sources */,
 				A7C779092402562E003EBCE0 /* ImageCollectionController.m in Sources */,
@@ -2758,6 +2877,7 @@
 				A793DC432419275C00CB49BB /* HotelParamList.m in Sources */,
 				A73FACF4240E2566008BA2D9 /* OrderDiscountCell.m in Sources */,
 				A772A9992407B37F00B8FC52 /* SimpleImageTitleView.m in Sources */,
+				A703A726241DE73E00ABC74A /* MineFoodDiscountCell.m in Sources */,
 				A7D654992416243C00AECF5E /* QiCardViewCell.m in Sources */,
 				A7FE9A8D24177E1E00A8D259 /* BoxRenderer.m in Sources */,
 				A7C341D82413D5B000BAEF70 /* HWProgressView.m in Sources */,
@@ -2767,6 +2887,7 @@
 				A75DB92B241CCFFB0037C0BA /* PopListController.m in Sources */,
 				A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */,
 				A702DFFD2408BF4400A9646C /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
+				A75DB953241D04930037C0BA /* ColorFormatUtil.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,
 				A7FE9A8924177E1E00A8D259 /* ViewController.m in Sources */,
 				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
@@ -2776,12 +2897,16 @@
 				A73D6580240BB6CE00F94792 /* MineTouristController.m in Sources */,
 				A7739FAC2405191B00EF7664 /* NSArray+Bounds.m in Sources */,
 				A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */,
+				A703A747241E1D5200ABC74A /* CheckInfo.m in Sources */,
+				A703A74D241E1FAC00ABC74A /* CustomUrlUtil.m in Sources */,
 				A7FE9A6224177DEB00A8D259 /* ARAwardController.m in Sources */,
 				A7C341D92413D5B000BAEF70 /* HWInstallView.m in Sources */,
 				A738B08D240A1E0200705AF2 /* MineFavorCell.m in Sources */,
 				A702DFF92408BF4400A9646C /* LBXAlertAction.m in Sources */,
 				A772A98A240785CD00B8FC52 /* MineController.m in Sources */,
+				A75DB95D241D23A80037C0BA /* MineFoodPayController.m in Sources */,
 				A7D654A124162FCA00AECF5E /* RecToolBar.m in Sources */,
+				A75DB94C241D045A0037C0BA /* ASFVideoProcessor.m in Sources */,
 				A7FA6DF6240D3DCF003982DA /* HotelNumberCell.m in Sources */,
 				A7FBA0A6241A79C90000287A /* MineInfoSetController.m in Sources */,
 				A73AEC3124123CA000AD6880 /* PayFinishCell.m in Sources */,
@@ -2789,7 +2914,6 @@
 				A75DB925241CBCAD0037C0BA /* Food.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
 				A7FBA0912419DD8C0000287A /* MineQRCodeController.m in Sources */,
-				A702E053240911F500A9646C /* ASFRPerson.m in Sources */,
 				A7C779252402562E003EBCE0 /* ItemSectionView.m in Sources */,
 				A7FBA09B241A1C2B0000287A /* MineNewPhoneController.m in Sources */,
 				A7C341D72413D5B000BAEF70 /* HWCircleView.m in Sources */,
@@ -2800,7 +2924,6 @@
 				A772A9A82407E59D00B8FC52 /* LevelSectionHeaderView.m in Sources */,
 				A7FA6DE8240D0DEB003982DA /* UIColor+Hex.m in Sources */,
 				A7C779012402562E003EBCE0 /* CollectionIndexView.m in Sources */,
-				A7990F5A2410EA3200238B33 /* SLKPayView.m in Sources */,
 				A7FE9A8E24177E1E00A8D259 /* ToolClass.m in Sources */,
 				A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */,
 				A7739FB12405191B00EF7664 /* GHDropMenuFilterSingleInputItem.m in Sources */,
@@ -2817,12 +2940,13 @@
 				A7C7791A2402562E003EBCE0 /* TitleCell.m in Sources */,
 				A793DC4E2419275C00CB49BB /* WMZDropCustomView.m in Sources */,
 				A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */,
+				A703A766241E51CD00ABC74A /* MineSportController.m in Sources */,
 				A7FD2B6A241B4603006B3CC1 /* MineAvatarPickerController.m in Sources */,
 				A7FBA09E241A31C60000287A /* MineCodeController.m in Sources */,
 				A72D3AFC240F7BDA009720AD /* SceneDetailHeaderCell.m in Sources */,
+				A703A763241E4CE900ABC74A /* MineSportDeviceHeaderView.m in Sources */,
 				A7C779332402562E003EBCE0 /* QDThemeManager.m in Sources */,
 				A7739FB72405191B00EF7664 /* GHDropMenuModel.m in Sources */,
-				A702E040240911E600A9646C /* FaceController.m in Sources */,
 				A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */,
 				A7FBA08E2419BA8E0000287A /* MineProfileAvatarCell.m in Sources */,
 				A7C341CC24139D2100BAEF70 /* MineOrderInfoTBCell.m in Sources */,
@@ -3042,12 +3166,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A702E047240911F500A9646C /* FSDKFR.xcdatamodeld */ = {
+		A75DB93C241D04590037C0BA /* FSDKFR.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A702E048240911F500A9646C /* FSDKFR.xcdatamodel */,
+				A75DB93D241D04590037C0BA /* FSDKFR.xcdatamodel */,
 			);
-			currentVersion = A702E048240911F500A9646C /* FSDKFR.xcdatamodel */;
+			currentVersion = A75DB93D241D04590037C0BA /* FSDKFR.xcdatamodel */;
 			path = FSDKFR.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

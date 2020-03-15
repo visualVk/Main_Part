@@ -82,13 +82,15 @@
   }];
   
   [self.itemCombo mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.trailing.equalTo(self.itemName);
+    make.left.equalTo(self.itemName);
     make.top.equalTo(self.itemName.mas_bottom).with.inset(0.25 * SPACE);
+    make.right.equalTo(self.perPrice.mas_left);
   }];
   
   [self.perPrice mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerY.equalTo(self.itemImage);
     make.trailing.equalTo(self.container).with.inset(0.5 * SPACE);
+    make.width.equalTo(self.container).multipliedBy(1.0 / 8);
   }];
   
   [self.buyInfo mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,11 +199,12 @@
   return _perPrice;
 }
 
-- (NSAttributedString *)generatePerPrice {
+- (NSAttributedString *)generatePerPrice:(NSString *)perPrice num:(NSInteger)num {
   NSAttributedString *str =
   [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.alignment(NSTextAlignmentRight);
     make.append(@"¥").font(UIFontMake(13));
-    make.append([NSString stringWithFormat:@"%.2f\nx%d", 3636.13, 1]).font(UIFontMake(15));
+    make.append([NSString stringWithFormat:@"%@\nx%li", perPrice, num]).font(UIFontMake(15));
   }];
   return str;
 }
@@ -228,11 +231,11 @@
   return _buyInfo;
 }
 
-- (NSAttributedString *)generatebuyInfo {
+- (NSAttributedString *)generatebuyInfo:(NSInteger)num totPrice:(NSString *)price {
   NSAttributedString *str =
   [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
-    make.append([NSString stringWithFormat:@"共%d件商品 合计:¥", 1]).font(UIFontMake(12));
-    make.append([NSString stringWithFormat:@"%.2lf", 490.101]).font(UIFontBoldMake(15));
+    make.append([NSString stringWithFormat:@"共%li件商品 合计:¥", num]).font(UIFontMake(12));
+    make.append([NSString stringWithFormat:@"%@", price]).font(UIFontBoldMake(15));
   }];
   return str;
 }
@@ -240,7 +243,7 @@
 - (QMUIGhostButton *)payBtn {
   if (!_payBtn) {
     _payBtn = [[QMUIGhostButton alloc] initWithGhostType:QMUIGhostButtonColorGray];
-    [_payBtn setTitle:@"待付款" forState:UIControlStateNormal];
+    [_payBtn setTitle:@"未出行" forState:UIControlStateNormal];
     _payBtn.titleLabel.font = UIFontMake(16);
     _payBtn.contentEdgeInsets = UIEdgeInsetsMake(3, 10, 3, 10);
   }
@@ -257,12 +260,50 @@
   return _deleteBtn;
 }
 
-- (void)loadData {
-  self.hotelName.attributedText = [self generateHotelName];
-  self.itemName.text = @"xxa";
-  self.itemImage.image = UIImageMake(@"pink_gradient");
-  self.itemCombo.attributedText = [self generateItemCombo];
-  self.perPrice.attributedText = [self generatePerPrice];
-  self.buyInfo.attributedText = [self generatebuyInfo];
+//- (void)loadData {
+//  self.hotelName.attributedText = [self generateHotelName];
+//  self.itemName.text = @"xxa";
+//  self.itemImage.image = UIImageMake(@"pink_gradient");
+//  self.itemCombo.attributedText = [self generateItemCombo];
+//  self.perPrice.attributedText = [self generatePerPrice:@"3636" num:<#(NSInteger)#>];
+//  self.buyInfo.attributedText = [self generatebuyInfo];
+//}
+
+- (void)setModel:(OrderCheckInfo *)model {
+  _model = model;
+  self.hotelName.text = model.hotelName;
+  self.itemName.text = model.roomTypeName;
+  self.itemCombo.attributedText =
+  [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.font(UIFontMake(15)).textColor(UIColor.qd_placeholderColor);
+    make.append(model.roomCombo);
+  }];
+  self.perPrice.attributedText = [self generatePerPrice:model.roomPrice num:model.checkInfo.count];
+  self.buyInfo.attributedText =
+  [self generatebuyInfo:model.checkInfo.count
+               totPrice:[NSString stringWithFormat:@"%g", model.roomPrice.doubleValue *
+                         model.checkInfo.count]];
+  
+  switch (model.orderStatus) {
+    case 0:
+      self.state.text = @"未出行";
+      [self.payBtn setTitle:self.state.text forState:UIControlStateNormal];
+      self.payBtn.hidden = false;
+      self.deleteBtn.hidden = YES;
+      break;
+    case 1:
+      self.state.text = @"未付款";
+      self.payBtn.hidden = YES;
+      self.deleteBtn.hidden = false;
+      break;
+    case 2:
+      self.state.text = @"待评价";
+      [self.payBtn setTitle:self.state.text forState:UIControlStateNormal];
+      self.payBtn.hidden = false;
+      self.deleteBtn.hidden = YES;
+      break;
+    default:
+      break;
+  }
 }
 @end

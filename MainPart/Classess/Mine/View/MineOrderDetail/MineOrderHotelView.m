@@ -54,7 +54,8 @@
     addView(_hotelContainer, self.goHotelBtn);
     
     [self.hotelName mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.left.equalTo(_hotelContainer).with.inset(SPACE);
+      make.left.equalTo(_hotelContainer).with.inset(SPACE);
+      make.top.equalTo(_hotelContainer);
     }];
     
     [self.hotelAddress mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -64,7 +65,8 @@
     }];
     
     [self.goHotelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(self.hotelName).with.inset(0.25 * SPACE);
+      //      make.top.equalTo(self.hotelName).with.inset(0.25 * SPACE);
+      make.centerY.equalTo(_hotelContainer);
       make.right.equalTo(_hotelContainer).with.inset(0.5 * SPACE);
     }];
   }
@@ -86,9 +88,10 @@
     _goHotelBtn = [QMUIButton new];
     _goHotelBtn.userInteractionEnabled = YES;
     [_goHotelBtn setTitle:@"详情" forState:UIControlStateNormal];
-    [_goHotelBtn addTarget:self
-                    action:@selector(goHotelClick)
-          forControlEvents:UIControlEventTouchUpInside];
+    _goHotelBtn.userInteractionEnabled = false;
+    //    [_goHotelBtn addTarget:self
+    //                    action:@selector(goHotelClick)
+    //          forControlEvents:UIControlEventTouchUpInside];
   }
   return _goHotelBtn;
 }

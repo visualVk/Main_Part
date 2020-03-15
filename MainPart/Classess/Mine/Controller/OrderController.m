@@ -9,6 +9,8 @@
 #import "OrderController.h"
 #import "MarkUtils.h"
 #import "MineOrderCell.h"
+#import "NSDictionary+LoadJson.h"
+#import "OrderCheckInfo.h"
 #import "OrderDetailController.h"
 #import <HMSegmentedControl.h>
 #define MINEORDERCELL @"mineordercell"
@@ -18,6 +20,7 @@ GenerateEntityDelegate>
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) HMSegmentedControl *segCon;
 @property (nonatomic, assign) NSInteger *selectedIndex;
+@property (nonatomic, strong) NSArray<OrderCheckInfo *> *orderCheckInfoList;
 @end
 
 @implementation OrderController
@@ -41,6 +44,14 @@ GenerateEntityDelegate>
       default:
         break;
     }
+    
+#ifdef Test_Hotel
+    NSDictionary *dict = [NSDictionary readLocalFileWithName:@"MineOrderListJSON"];
+    OrderCheckInfo *modelOne = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    OrderCheckInfo *modelTwo = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    OrderCheckInfo *modelThree = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    self.orderCheckInfoList = @[ modelOne, modelTwo, modelThree ];
+#endif
   }
   return self;
 }
@@ -149,7 +160,8 @@ GenerateEntityDelegate>
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 4;
+  //  return 4;
+  return self.orderCheckInfoList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,7 +180,7 @@ GenerateEntityDelegate>
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   MineOrderCell *moCell =
   [tableView dequeueReusableCellWithIdentifier:MINEORDERCELL forIndexPath:indexPath];
-  [moCell loadData];
+  moCell.model = self.orderCheckInfoList[indexPath.row];
   return moCell;
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -181,6 +193,7 @@ GenerateEntityDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   OrderDetailController *odCon = [OrderDetailController new];
+  odCon.orderCheckInfo = self.orderCheckInfoList[indexPath.row];
   [self.navigationController pushViewController:odCon animated:YES];
 }
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^PopListClearBlock)(void);
 @interface PopListSectionView : UIView
-@property(nonatomic, strong) UILabel *popListTitle;
-@property(nonatomic, strong) UILabel *popListClear;
+@property (nonatomic, strong) UILabel *popListTitle;
+@property (nonatomic, strong) UILabel *popListClear;
+@property (nonatomic, strong) PopListClearBlock popListClearBlock;
 @end

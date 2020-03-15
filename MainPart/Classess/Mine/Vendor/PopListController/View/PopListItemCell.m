@@ -22,6 +22,8 @@ const NSInteger ItemIndex = 10000;
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
   self.backgroundColor = UIColor.qd_backgroundColor;
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
+  [self generateRootView];
 }
 
 - (void)updateCellAppearanceWithIndexPath:(NSIndexPath *)indexPath {
@@ -40,17 +42,20 @@ const NSInteger ItemIndex = 10000;
   addView(superview, self.popItemNumContainer);
   
   [self.popItemName mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.bottom.left.equalTo(superview).with.inset(0.5 * SPACE);
+    make.left.equalTo(superview).with.inset(0.5 * SPACE);
   }];
   
   [self.popItemPrice mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.bottom.equalTo(superview);
-    make.right.equalTo(self.popItemNumContainer.mas_left);
+    //    make.top.bottom.equalTo(superview);
+    make.right.equalTo(self.popItemNumContainer.mas_left).with.inset(5);
   }];
   
   [self.popItemNumContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.bottom.right.equalTo(superview).with.inset(0.5 * SPACE);
+    make.right.equalTo(superview).with.inset(0.5 * SPACE);
   }];
+  
+  [@[ self.popItemName, self.popItemPrice, self.popItemNumContainer ]
+   mas_makeConstraints:^(MASConstraintMaker *make) { make.centerY.equalTo(superview); }];
 }
 
 - (UIView *)popItemNumContainer {
@@ -82,7 +87,7 @@ const NSInteger ItemIndex = 10000;
   if (!_popItemAddImg) {
     _popItemAddImg = [UIImageView new];
     _popItemAddImg.image = UIImageMake(@"increase_eleme");
-    _popItemAddImg.tag = ItemIndex;
+    _popItemAddImg.tag = ItemIndex + 1;
     _popItemAddImg.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemNumClick:)];
@@ -95,7 +100,7 @@ const NSInteger ItemIndex = 10000;
   if (!_popItemSubImg) {
     _popItemSubImg = [UIImageView new];
     _popItemSubImg.image = UIImageMake(@"decrease_eleme");
-    _popItemSubImg.tag = ItemIndex + 1;
+    _popItemSubImg.tag = ItemIndex;
     _popItemSubImg.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemNumClick:)];
@@ -108,7 +113,8 @@ const NSInteger ItemIndex = 10000;
   if (!_popItemNum) {
     _popItemNum = [UILabel new];
     _popItemNum.text = @"0";
-    _popItemNum.hidden = YES;
+    _popItemNum.textAlignment = NSTextAlignmentCenter;
+    //    _popItemNum.hidden = YES;
   }
   return _popItemNum;
 }
@@ -151,5 +157,6 @@ const NSInteger ItemIndex = 10000;
   self.popItemPrice.text =
   [NSString stringWithFormat:@"¥%g", [model.foodPrice doubleValue] * model.foodNum];
   self.popItemNum.text = [NSString stringWithFormat:@"%li", model.foodNum];
+  self.popItemName.text = model.foodName;
 }
 @end

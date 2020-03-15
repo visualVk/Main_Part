@@ -18,7 +18,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    self.backgroundColor = UIColor.clearColor;
+    self.backgroundColor = UIColor.qd_customBackgroundColor;
     [self generateRootView];
   }
   return self;
@@ -64,7 +64,15 @@
       make.textColor(UIColor.qd_descriptionTextColor).font(UIFontMake(13));
       make.append(@"清空");
     }];
+    _popListClear.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clearListClick)];
+    [_popListClear addGestureRecognizer:tap];
   }
   return _popListClear;
+}
+
+- (void)clearListClick {
+  if (self.popListClearBlock) { self.popListClearBlock(); }
 }
 @end

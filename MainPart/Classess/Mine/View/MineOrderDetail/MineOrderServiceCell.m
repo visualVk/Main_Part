@@ -9,6 +9,7 @@
 #import "MineOrderServiceCell.h"
 #import "MarkUtils.h"
 #import "MineFoodOrderController.h"
+#import "MineSportController.h"
 
 @interface MineOrderServiceCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIImageView *foodImg;
@@ -99,8 +100,10 @@
 - (void)foodClick {
   QMUILogInfo(@"mine order service cell", @"food click");
   if (self.parentController) {
-    [self.parentController.navigationController pushViewController:[MineFoodOrderController new]
-                                                          animated:YES];
+    MineFoodOrderController *mfoCon = [MineFoodOrderController new];
+    mfoCon.foodOrderType = RoomOrderType;
+    mfoCon.orderCheckInfo = self.model;
+    [self.parentController.navigationController pushViewController:mfoCon animated:YES];
   }
 }
 
@@ -146,7 +149,7 @@
 - (UILabel *)sportTitle {
   if (!_sportTitle) {
     _sportTitle = [UILabel new];
-    _sportTitle.text = @"订餐";
+    _sportTitle.text = @"健身";
     _sportTitle.textColor = UIColorBlack;
     _sportTitle.font = UIFontLightMake(15);
   }
@@ -159,6 +162,8 @@
     //    [self.parentController.navigationController pushViewController:[MineFoodOrderController
     //    new]
     //                                                          animated:YES];
+    MineSportController *msCon = [MineSportController new];
+    [self.parentController.navigationController pushViewController:msCon animated:YES];
   }
 }
 @end

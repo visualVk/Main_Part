@@ -9,14 +9,22 @@
 
 #import "MineFoodToolBar.h"
 #import "MarkUtils.h"
+#import "MineFoodPayController.h"
+#import "PopListController.h"
 
-@interface MineFoodToolBar () <GenerateEntityDelegate>
+@interface MineFoodToolBar () <GenerateEntityDelegate, PopListDelegate> {
+  NSInteger _tot;
+  CGFloat _totPrice;
+}
 @property (nonatomic, strong) UIView *container;
 @property (nonatomic, strong) UIView *blackContainer;
 @property (nonatomic, strong) UIImageView *foodShopImg;
 @property (nonatomic, strong) QMUILabel *foodNumTag;
 @property (nonatomic, strong) UILabel *foodTotPrice;
 @property (nonatomic, strong) QMUIButton *foodBuyBtn;
+@property (nonatomic, strong) PopListController *popListController;
+@property (nonatomic, strong) NSMutableArray *buyFoodList;
+@property (nonatomic, strong) UIView *topViewContainer;
 @end
 
 @implementation MineFoodToolBar
@@ -38,15 +46,29 @@
   
   [self.container mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(self); }];
 }
+#pragma mark - Lazy Init
+- (UIView *)topViewContainer {
+  if (!_topViewContainer) {
+    _topViewContainer = [UIView new];
+    _topViewContainer.backgroundColor = UIColor.systemYellowColor;
+  }
+  return _topViewContainer;
+}
 
 - (UIView *)container {
   if (!_container) {
     _container = [UIView new];
+    addView(_container, self.topViewContainer);
     addView(_container, self.blackContainer);
     addView(_container, self.foodShopImg);
     addView(_container, self.foodTotPrice);
     addView(_container, self.foodNumTag);
     addView(_container, self.foodBuyBtn);
+    
+    [self.topViewContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.left.right.equalTo(_container);
+      make.bottom.equalTo(self.blackContainer.mas_top);
+    }];
     
     [self.foodShopImg mas_makeConstraints:^(MASConstraintMaker *make) {
       make.bottom.equalTo(_container).with.inset(SafeAreaInsetsConstantForDeviceWithNotch.bottom);
@@ -61,13 +83,14 @@
     }];
     
     [self.foodTotPrice mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(self.blackContainer).with.inset(5);
+      make.top.equalTo(self.foodShopImg.mas_centerY).with.inset(5);
       make.left.equalTo(self.foodShopImg.mas_right).with.inset(5);
     }];
     
     [self.blackContainer mas_makeConstraints:^(MASConstraintMaker *make) {
       make.left.right.bottom.equalTo(_container);
       make.top.equalTo(self.foodShopImg.mas_centerY).with.inset(-10);
+      //      make.top.equalTo(_container).with.inset(-10);
     }];
     
     [self.foodBuyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,7 +137,7 @@
     _foodNumTag.textAlignment = NSTextAlignmentCenter;
     _foodNumTag.backgroundColor = UIColor.orangeColor;
     _foodNumTag.layer.masksToBounds = YES;
-    _foodNumTag.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
+    _foodNumTag.contentEdgeInsets = UIEdgeInsetsMake(3, 3, 3, 3);
     _foodNumTag.textColor = UIColor.qd_backgroundColor;
     _foodNumTag.font = UIFontMake(12);
     _foodNumTag.hidden = YES;
@@ -149,28 +172,72 @@
   return _foodBuyBtn;
 }
 
+#pragma mark - Click Listener
 - (void)foodBuyClick {
   QMUILogInfo(@"mine food tool bar", @"food buy click");
+  if (!self.buyFoodList.count) return;
+  MineFoodPayController *mfpCon = [MineFoodPayController new];
+  mfpCon.foodList = self.buyFoodList;
+  mfpCon.foodTotPrice = _totPrice;
+  mfpCon.model = self.model;
+  mfpCon.foodPayType = (self.addressEnable ? OrderPayType : QRCodePayType);
+  mfpCon.title = [NSString stringWithFormat:@"%@-订餐", self.model.hotelName];
+  [[self qmui_viewController].navigationController pushViewController:mfpCon animated:YES];
 }
 
 - (void)showBuyList {
   QMUILogInfo(@"mine food tool bar", @"show food list");
+  if (!_tot) return;
+  if (!self.popListController) {
+    self.popListController = [PopListController new];
+    self.popListController.delegate = self;
+    CGFloat height =
+    self.foodShopImg.frame.size.height + SafeAreaInsetsConstantForDeviceWithNotch.bottom;
+    self.popListController.bottomView.frame =
+    CGRectMake(0, DEVICE_HEIGHT - height, DEVICE_WIDTH, height);
+    [self.popListController.bottomView setNeedsLayout];
+    [self.popListController.bottomView layoutIfNeeded];
+  }
+  //  self.buyFoodList = [NSMutableArray new];
+  //  for (Food *food in self.modelList) {
+  //    if (food.foodNum) { [self.buyFoodList addObject:food]; }
+  //  }
+  self.popListController.foodList = self.buyFoodList;
+  [self.popListController showPopListView];
 }
 
 - (void)setModelList:(NSMutableArray<Food *> *)modelList {
   _modelList = modelList;
-  double totPrice = 0;
-  NSInteger tot = 0;
+  self.buyFoodList = [NSMutableArray new];
+  _totPrice = 0;
+  _tot = 0;
   for (Food *food in modelList) {
-    totPrice += [food.foodPrice doubleValue] * food.foodNum;
-    tot += food.foodNum;
+    if (food.foodNum) {
+      [self.buyFoodList addObject:food];
+      _totPrice += [food.foodPrice doubleValue] * food.foodNum;
+      _tot += food.foodNum;
+    }
   }
-  self.foodTotPrice.text = [NSString stringWithFormat:@"¥%g", totPrice];
-  if (tot != 0) {
+  self.foodTotPrice.text = [NSString stringWithFormat:@"¥%g", _totPrice];
+  if (_tot != 0) {
     self.foodNumTag.hidden = false;
   } else {
     self.foodNumTag.hidden = YES;
   }
-  self.foodNumTag.text = [NSString stringWithFormat:@"%li", tot];
+  self.foodNumTag.text = [NSString stringWithFormat:@"%li", _tot];
+}
+
+#pragma mark - PopListDelegate
+- (void)foodNumberValueChanged:(NSInteger)currentNumber {
+  if (self.foodNumChangeBlock) {
+    self.foodNumChangeBlock();
+    if (!currentNumber) {
+      self.buyFoodList = [NSMutableArray new];
+      for (Food *food in self.modelList) {
+        if (food.foodNum) { [self.buyFoodList addObject:food]; }
+      }
+      self.popListController.foodList = self.buyFoodList;
+    }
+  }
 }
 @end

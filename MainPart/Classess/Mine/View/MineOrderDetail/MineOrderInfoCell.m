@@ -123,7 +123,8 @@ QMUITableViewDataSource>
   if (row == 0) {
     moitbCell = [tableView dequeueReusableCellWithIdentifier:MINEORDERINFOTBCELLHAVERIGHT
                                                 forIndexPath:indexPath];
-    moitbCell.detailL.text = @"87578949848948489489";
+    //    moitbCell.detailL.text = @"87578949848948489489";
+    moitbCell.detailL.text = self.model.orderId;
     moitbCell.rightL.text = @"复制";
   } else if (row == 1) {
     moitbCell = [tableView dequeueReusableCellWithIdentifier:MINEORDERINFOTBCELLHAVERIGHT
@@ -134,7 +135,7 @@ QMUITableViewDataSource>
     moitbCell = [tableView dequeueReusableCellWithIdentifier:MINEORDERINFOTBCELLHAVERIGHT
                                                 forIndexPath:indexPath];
     moitbCell.titleL.text = @"创建时间:";
-    moitbCell.detailL.text = @"2020-03-03 18:19:39";
+    moitbCell.detailL.text = self.model.orderDate;
   }
   moitbCell.selectionStyle = UITableViewCellSelectionStyleNone;
   return moitbCell;
@@ -148,5 +149,10 @@ QMUITableViewDataSource>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (void)setModel:(OrderCheckInfo *)model {
+  _model = model;
+  //  [self.tableView reloadData];
 }
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderCheckInfo.h"
 @interface MineOrderServiceCell : UICollectionViewCell
 @property(nonatomic, strong) UIViewController *parentController;
+@property(nonatomic, strong) OrderCheckInfo *model;
 @end

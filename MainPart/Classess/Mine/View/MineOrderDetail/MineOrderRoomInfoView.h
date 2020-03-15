@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderCheckInfo.h"
 @interface MineOrderRoomInfoView : UICollectionViewCell
 @property (nonatomic, strong) UILabel *roomName;
 @property (nonatomic, strong) UILabel *roomStatus;
@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UIImageView *qrCodeImage;
 @property (nonatomic, strong) UIImageView *switchPage;
 @property (nonatomic, strong) UILabel *roomCombo;
+@property(nonatomic, strong) OrderCheckInfo *model;
+@property(nonatomic, assign) NSInteger modelIndex;
 
 - (void)resetStatus;
 @end

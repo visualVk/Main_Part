@@ -7,6 +7,7 @@
 //
 
 #import "QMUITableViewCell.h"
+#import "OrderCheckInfo.h"
 typedef enum { NonPayment, Paid, Remark } OrderType;
 @interface MineOrderCell : QMUITableViewCell
 @property (nonatomic, strong) UILabel *hotelName;
@@ -19,5 +20,6 @@ typedef enum { NonPayment, Paid, Remark } OrderType;
 @property (nonatomic, strong) QMUIGhostButton *payBtn;
 @property (nonatomic, strong) QMUIGhostButton *deleteBtn;
 @property (nonatomic, strong) NSDictionary *infoDict;
+@property(nonatomic, strong) OrderCheckInfo *model;
 -(void)loadData;
 @end

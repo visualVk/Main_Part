@@ -1,0 +1,63 @@
+{
+  "hotelId" : false,
+  "hotelName" : "温州荣欣大酒店",
+  "edDate" : "8:00",
+  "stDate" : "22:00",
+  "deviceDescription" : "本酒店免费向住户开放所有健身房设施，请注意开放时间，除开放时间外，本酒店健身房不开放",
+  "device" : [
+    {
+      "deviceID" : 0,
+      "deviceName" : "跑步机",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 17
+    },
+    {
+      "deviceID" : 1,
+      "deviceName" : "自行车",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 50
+    },
+    {
+      "deviceID" : 2,
+      "deviceName" : "卧推",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 3,
+      "deviceName" : "杠铃",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 4,
+      "deviceName" : "沙包",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 5,
+      "deviceName" : "深蹲",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 6,
+      "deviceName" : "引体向上",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 7,
+      "deviceName" : "硬拉",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 7
+    },
+    {
+      "deviceID" : 8,
+      "deviceName" : "跳绳",
+      "deviceNum" : 50,
+      "deviceUsedNum" : 17
+    }
+  ]
+}

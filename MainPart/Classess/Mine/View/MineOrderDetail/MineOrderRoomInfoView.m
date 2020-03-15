@@ -31,12 +31,12 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   __weak __typeof(self) weakSelf = self;
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)),
-                 dispatch_get_main_queue(), ^{
-    weakSelf.qrCodeImage.image =
-    [LBXScanNative createQRWithString:@"300120sk=2ksadjksad"
-                               QRSize:weakSelf.qrCodeImage.bounds.size];
-  });
+  //  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)),
+  //                 dispatch_get_main_queue(), ^{
+  //    weakSelf.qrCodeImage.image =
+  //    [LBXScanNative createQRWithString:@"300120sk=2ksadjksad"
+  //                               QRSize:weakSelf.qrCodeImage.bounds.size];
+  //  });
 }
 
 - (void)generateRootView {
@@ -201,15 +201,15 @@
   if (!_roomCombo) {
     _roomCombo = [UILabel new];
     _roomCombo.numberOfLines = 0;
-    _roomCombo.attributedText =
-    [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
-      make.textColor(UIColor.qd_placeholderColor).font(UIFontMake(14));
-      make.append(@"·两张大床\n");
-      make.append(@"·包早中晚餐(入住当天不包早中餐)\n");
-      make.append(@"·享有免费车位，wifi");
-    }];
   }
   return _roomCombo;
+}
+
+- (NSAttributedString *)generateRoomCombo:(NSString *)combo {
+  return [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.textColor(UIColor.qd_placeholderColor).font(UIFontMake(14));
+    make.append(combo);
+  }];
 }
 
 //- (void)rotationClick {
@@ -319,5 +319,18 @@
   opacity.toValue = @(1);
   [self.contentView.layer pop_addAnimation:transformSize forKey:@"tran"];
   [self.contentView.layer pop_addAnimation:opacity forKey:@"opacity"];
+}
+
+- (void)setModel:(OrderCheckInfo *)model {
+  _model = model;
+  self.roomName.text = model.roomTypeName;
+  self.roomCombo.attributedText = [self generateRoomCombo:model.roomCombo];
+  CheckInfo *checkInfo = model.checkInfo[self.modelIndex];
+  self.room.text = checkInfo.roomAddress;
+  self.roomStatus.text = checkInfo.roomStatus ? @"已入住" : @"未入住";
+  self.liveDuration.text = [NSString stringWithFormat:@"%@ 至 %@", model.stDate, model.edDate];
+  self.price.text = [NSString stringWithFormat:@"¥%@", model.roomPrice];
+  self.qrCodeImage.image =
+  [LBXScanNative createQRWithString:checkInfo.roomAddress QRSize:self.qrCodeImage.bounds.size];
 }
 @end

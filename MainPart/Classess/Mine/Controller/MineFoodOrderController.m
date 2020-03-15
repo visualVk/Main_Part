@@ -18,7 +18,9 @@
 #define MINEFOODCELL @"minefoodcell"
 
 @interface MineFoodOrderController () <GenerateEntityDelegate, LinkageMenuProtocol,
-UIScrollViewDelegate>
+UIScrollViewDelegate> {
+  CGPoint _contentOffset;
+}
 @property (nonatomic, strong) LinkageMenuView *linkageMenu;
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *container;
@@ -28,7 +30,7 @@ UIScrollViewDelegate>
 @property (nonatomic, strong) NSMutableArray<LinkageModel *> *foodTypeList;
 @property (nonatomic, strong) NSMutableArray<Food *> *foodList;
 @property (nonatomic, strong) SDCycleScrollView *bannerView;
-
+@property (nonatomic, strong) NSString *address;
 @end
 
 @implementation MineFoodOrderController
@@ -36,6 +38,7 @@ UIScrollViewDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+#ifdef Test_Hotel
   NSDictionary *dict = [NSDictionary readLocalFileWithName:@"MineFoodModelListJSON"];
   FoodList *foodList = [[FoodList alloc] initWithDictionary:dict];
   self.foodList = [foodList.food mutableCopy];
@@ -51,6 +54,7 @@ UIScrollViewDelegate>
     NSMutableArray *tmp = self.foodDict[food.typeName];
     [tmp addObject:food];
   }
+#endif
 }
 
 - (void)initSubviews {
@@ -93,9 +97,6 @@ UIScrollViewDelegate>
 #pragma mark - Lazy Init
 - (LinkageMenuView *)linkageMenu {
   if (!_linkageMenu) {
-    NSDictionary *dict = [NSDictionary readLocalFileWithName:@"LinkageListJSON"];
-    [LinkageListModel mj_objectClassInArray];
-    LinkageListModel *linkModelList = [LinkageListModel mj_objectWithKeyValues:dict];
     _linkageMenu = [[LinkageMenuView alloc] initWithDataSource:self.foodTypeList];
     _linkageMenu.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [_linkageMenu.collectionView registerClass:MineFoodCell.class
@@ -157,6 +158,12 @@ UIScrollViewDelegate>
   if (!_mineFoodToolBar) {
     _mineFoodToolBar = [MineFoodToolBar new];
     _mineFoodToolBar.modelList = self.foodList;
+    __weak __typeof(self) weakSelf = self;
+    _mineFoodToolBar.foodNumChangeBlock = ^{
+      [weakSelf.linkageMenu.collectionView reloadData];
+      weakSelf.mineFoodToolBar.modelList = weakSelf.foodList;
+      [weakSelf.linkageMenu.collectionView setContentOffset:_contentOffset];
+    };
   }
   return _mineFoodToolBar;
 }
@@ -194,6 +201,8 @@ UIScrollViewDelegate>
   [self.mineFoodToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.right.bottom.equalTo(self.view);
   }];
+  [self.mineFoodToolBar setNeedsLayout];
+  [self.mineFoodToolBar layoutIfNeeded];
 }
 
 #pragma mark - LinkageMenuProtocol
@@ -239,6 +248,8 @@ didScrollWithContentOffset:(CGPoint)contentOffset {
     self.linkageMenu.collectionView.scrollEnabled = false;
     self.scrollView.scrollEnabled = YES;
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+  } else {
+    _contentOffset = contentOffset;
   }
 }
 
@@ -251,9 +262,9 @@ didScrollWithContentOffset:(CGPoint)contentOffset {
   if (scrollView != self.scrollView) {}
   if (scrollView == self.scrollView) {
     CGPoint point = scrollView.contentOffset;
-    if (point.y > DEVICE_HEIGHT / 10) {
+    if (point.y > DEVICE_HEIGHT / 5) {
       self.linkageMenu.collectionView.scrollEnabled = YES;
-      [self.scrollView setContentOffset:CGPointMake(0, DEVICE_HEIGHT / 10) animated:NO];
+      [self.scrollView setContentOffset:CGPointMake(0, DEVICE_HEIGHT / 5) animated:NO];
       //      [self.linkageMenu.collectionView
       //       setContentOffset:CGPointMake(0, point.y - DEVICE_HEIGHT / 10)];
       self.scrollView.scrollEnabled = false;
@@ -266,5 +277,13 @@ didScrollWithContentOffset:(CGPoint)contentOffset {
         }
     }
   }
+}
+
+- (void)setOrderCheckInfo:(OrderCheckInfo *)orderCheckInfo {
+  _orderCheckInfo = orderCheckInfo;
+  [self.linkageMenu.tableView reloadData];
+  [self.linkageMenu.collectionView reloadData];
+  self.mineFoodToolBar.model = orderCheckInfo;
+  self.mineFoodToolBar.addressEnable = (self.foodOrderType == RoomOrderType);
 }
 @end

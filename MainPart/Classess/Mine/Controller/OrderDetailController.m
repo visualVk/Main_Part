@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailController.h"
+#import "DetailController.h"
 #import "MarkUtils.h"
 #import "MineOrderCheckPersonInfoView.h"
 #import "MineOrderHotelView.h"
@@ -27,6 +28,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 @property (nonatomic, strong) MineOrderQuestionToolBar *queToolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collaspeList;
+@property (nonatomic, strong) NSArray<CheckInfo *> *checkList;
 @property (nonatomic, strong) NSArray *datas;
 @end
 
@@ -35,8 +37,8 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
-  self.collaspeList = [NSMutableArray arrayWithArray:@[ @"0", @"0", @"0" ]];
-  self.datas = @[ @"", @"", @"" ];
+  self.collaspeList = [NSMutableArray new];
+  //  self.datas = @[ @"", @"", @"" ];
 }
 
 - (void)initSubviews {
@@ -52,6 +54,8 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  self.checkList = self.orderCheckInfo.checkInfo;
+  for (CheckInfo *checkInfo in self.checkList) { [self.collaspeList addObject:@"0"]; }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -129,7 +133,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 3 + self.datas.count;
+  return 3 + self.checkList.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -142,7 +146,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   if (section == 0 || section == 1) return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
-  if (section > 1 && section < self.datas.count + 2) {
+  if (section > 1 && section < self.checkList.count + 2) {
     if ([@"0" isEqualToString:self.collaspeList[section - 2]]) {
       return CGSizeMake(DEVICE_WIDTH, 0);
     }
@@ -156,7 +160,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  if (section == 0 || section == 2 + self.datas.count || section == 1) {
+  if (section == 0 || section == 2 + self.checkList.count || section == 1) {
     UICollectionReusableView *defaultHeader =
     [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                        withReuseIdentifier:@"default"
@@ -186,7 +190,7 @@ referenceSizeForFooterInSection:(NSInteger)section {
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section {
-  if (section == 0 || section == 2 + self.datas.count || section == 1)
+  if (section == 0 || section == 2 + self.checkList.count || section == 1)
     return CGSizeMake(DEVICE_WIDTH, 0);
   return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
 }
@@ -198,32 +202,41 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     MineOrderHotelView *morhCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERHOTELVIEW
                                               forIndexPath:indexPath];
+    morhCell.hotelName.text = self.orderCheckInfo.hotelName;
+    morhCell.hotelAddress.text = self.orderCheckInfo.hotelAddress;
     return morhCell;
   }
   if (section == 1) { //订餐 健身
     MineOrderServiceCell *mosCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERSERVICECELL
                                               forIndexPath:indexPath];
+    mosCell.model = self.orderCheckInfo;
     mosCell.parentController = self;
     return mosCell;
   }
-  if (section == self.datas.count + 2) { //支付后的订单cell
+  if (section == self.checkList.count + 2) { //支付后的订单cell
     MineOrderInfoCell *moiCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERINFOCELL
                                               forIndexPath:indexPath];
+    moiCell.model = self.orderCheckInfo;
     return moiCell;
   }
   //登记人信息和其房间信息
   MineOrderRoomInfoView *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:MINEORDERROOMINFOCELL
                                             forIndexPath:indexPath];
-  cell.price.text = [NSString stringWithFormat:@"%li", section];
+  cell.modelIndex = indexPath.section - 2;
+  cell.model = self.orderCheckInfo;
   [cell resetStatus];
   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    DetailController *dCon = [DetailController new];
+    [self.navigationController pushViewController:dCon animated:YES];
+  }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView

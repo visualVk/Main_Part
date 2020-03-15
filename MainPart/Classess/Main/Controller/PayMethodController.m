@@ -13,7 +13,6 @@
 #import "PayFinishController.h"
 #import "PayMethodCell.h"
 #import "PayPasswordController.h"
-#import "SLKPayView.h"
 #import <POP.h>
 #define PAYDEADLINECELL @"paydeadlinecell"
 #define PAYMETHODCELL @"paymethodcell"

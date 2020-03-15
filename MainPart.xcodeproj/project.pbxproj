@@ -40,6 +40,10 @@
 		A703A763241E4CE900ABC74A /* MineSportDeviceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A762241E4CE900ABC74A /* MineSportDeviceHeaderView.m */; };
 		A703A766241E51CD00ABC74A /* MineSportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A765241E51CD00ABC74A /* MineSportController.m */; };
 		A703A76D241E5C2A00ABC74A /* MineSportTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A76C241E5C2A00ABC74A /* MineSportTitleCell.m */; };
+		A703A776241E73C500ABC74A /* QiCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A771241E73C500ABC74A /* QiCardView.m */; };
+		A703A777241E73C500ABC74A /* QiCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A772241E73C500ABC74A /* QiCardViewCell.m */; };
+		A703A778241E73C500ABC74A /* QiCardItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A775241E73C500ABC74A /* QiCardItemCell.m */; };
+		A703A77C241E743400ABC74A /* QiDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A77B241E743400ABC74A /* QiDataModel.m */; };
 		A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */; };
 		A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */; };
 		A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C792406C23700FF5CAE /* LeftCell.m */; };
@@ -268,8 +272,6 @@
 		A7C7797724027E17003EBCE0 /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */; };
 		A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */; };
 		A7C7797924027E17003EBCE0 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C7797324027E16003EBCE0 /* UIView+Toast.m */; };
-		A7D654982416243C00AECF5E /* QiCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D654952416243B00AECF5E /* QiCardView.m */; };
-		A7D654992416243C00AECF5E /* QiCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D654962416243B00AECF5E /* QiCardViewCell.m */; };
 		A7D6549E2416264B00AECF5E /* RecCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6549D2416264B00AECF5E /* RecCell.m */; };
 		A7D654A124162FCA00AECF5E /* RecToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D654A024162FCA00AECF5E /* RecToolBar.m */; };
 		A7D654A52416675800AECF5E /* MineOrderQuestionToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D654A42416675800AECF5E /* MineOrderQuestionToolBar.m */; };
@@ -403,6 +405,14 @@
 		A703A765241E51CD00ABC74A /* MineSportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportController.m; sourceTree = "<group>"; };
 		A703A76B241E5C2A00ABC74A /* MineSportTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineSportTitleCell.h; sourceTree = "<group>"; };
 		A703A76C241E5C2A00ABC74A /* MineSportTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineSportTitleCell.m; sourceTree = "<group>"; };
+		A703A770241E73C500ABC74A /* QiCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCardViewCell.h; sourceTree = "<group>"; };
+		A703A771241E73C500ABC74A /* QiCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardView.m; sourceTree = "<group>"; };
+		A703A772241E73C500ABC74A /* QiCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardViewCell.m; sourceTree = "<group>"; };
+		A703A773241E73C500ABC74A /* QiCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCardView.h; sourceTree = "<group>"; };
+		A703A774241E73C500ABC74A /* QiCardItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCardItemCell.h; sourceTree = "<group>"; };
+		A703A775241E73C500ABC74A /* QiCardItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardItemCell.m; sourceTree = "<group>"; };
+		A703A77A241E743400ABC74A /* QiDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiDataModel.h; sourceTree = "<group>"; };
+		A703A77B241E743400ABC74A /* QiDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiDataModel.m; sourceTree = "<group>"; };
 		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
 		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
 		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
@@ -860,10 +870,6 @@
 		A7C7797124027E16003EBCE0 /* ErrorInfoUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorInfoUtility.m; sourceTree = "<group>"; };
 		A7C7797224027E16003EBCE0 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		A7C7797324027E16003EBCE0 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
-		A7D654942416243B00AECF5E /* QiCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCardViewCell.h; sourceTree = "<group>"; };
-		A7D654952416243B00AECF5E /* QiCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardView.m; sourceTree = "<group>"; };
-		A7D654962416243B00AECF5E /* QiCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardViewCell.m; sourceTree = "<group>"; };
-		A7D654972416243B00AECF5E /* QiCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiCardView.h; sourceTree = "<group>"; };
 		A7D6549C2416264B00AECF5E /* RecCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecCell.h; sourceTree = "<group>"; };
 		A7D6549D2416264B00AECF5E /* RecCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecCell.m; sourceTree = "<group>"; };
 		A7D6549F24162FCA00AECF5E /* RecToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecToolBar.h; sourceTree = "<group>"; };
@@ -1130,6 +1136,37 @@
 				A703A754241E456500ABC74A /* MineSportModelListJSON.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		A703A76E241E73C500ABC74A /* QiCardView */ = {
+			isa = PBXGroup;
+			children = (
+				A703A779241E743400ABC74A /* Model */,
+				A703A76F241E73C500ABC74A /* QiCardView */,
+				A703A774241E73C500ABC74A /* QiCardItemCell.h */,
+				A703A775241E73C500ABC74A /* QiCardItemCell.m */,
+			);
+			path = QiCardView;
+			sourceTree = "<group>";
+		};
+		A703A76F241E73C500ABC74A /* QiCardView */ = {
+			isa = PBXGroup;
+			children = (
+				A703A770241E73C500ABC74A /* QiCardViewCell.h */,
+				A703A771241E73C500ABC74A /* QiCardView.m */,
+				A703A772241E73C500ABC74A /* QiCardViewCell.m */,
+				A703A773241E73C500ABC74A /* QiCardView.h */,
+			);
+			path = QiCardView;
+			sourceTree = "<group>";
+		};
+		A703A779241E743400ABC74A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A703A77A241E743400ABC74A /* QiDataModel.h */,
+				A703A77B241E743400ABC74A /* QiDataModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */ = {
@@ -2123,8 +2160,8 @@
 		A7C778D62402562E003EBCE0 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A703A76E241E73C500ABC74A /* QiCardView */,
 				A793DC0F2419275B00CB49BB /* DropMenuRec */,
-				A7D654932416243B00AECF5E /* QiCardView */,
 				A73AEC252412148500AD6880 /* PayPassword */,
 				A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */,
 				A7739F842405191A00EF7664 /* GHDropMenu */,
@@ -2304,18 +2341,6 @@
 				A7C7797024027E16003EBCE0 /* NSArray+PureLayout.m */,
 			);
 			path = PureLayout;
-			sourceTree = "<group>";
-		};
-		A7D654932416243B00AECF5E /* QiCardView */ = {
-			isa = PBXGroup;
-			children = (
-				A7D654942416243B00AECF5E /* QiCardViewCell.h */,
-				A7D654952416243B00AECF5E /* QiCardView.m */,
-				A7D654962416243B00AECF5E /* QiCardViewCell.m */,
-				A7D654972416243B00AECF5E /* QiCardView.h */,
-			);
-			name = QiCardView;
-			path = ../../../../../../Downloads/ios_program/QiCardView/QiCardView/QiCardView/View/QiCardView;
 			sourceTree = "<group>";
 		};
 		A7D6549B2416262500AECF5E /* RecommondPage */ = {
@@ -2672,6 +2697,7 @@
 				A73FACF1240E1065008BA2D9 /* CheckInTextFieldCell.m in Sources */,
 				A703A75B241E456500ABC74A /* Device.m in Sources */,
 				A793DC492419275C00CB49BB /* Rank.m in Sources */,
+				A703A77C241E743400ABC74A /* QiDataModel.m in Sources */,
 				A7FA6DED240D121D003982DA /* LVCalendarCell.m in Sources */,
 				A73AEC412412736800AD6880 /* MineOrderHotelView.m in Sources */,
 				A7739FAE2405191B00EF7664 /* NSString+Size.m in Sources */,
@@ -2786,6 +2812,7 @@
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A793DC4D2419275C00CB49BB /* WMZDropMenuTool.m in Sources */,
+				A703A778241E73C500ABC74A /* QiCardItemCell.m in Sources */,
 				A7C779302402562E003EBCE0 /* RequestUtils.m in Sources */,
 				A7C7791F2402562E003EBCE0 /* SelectionCell.m in Sources */,
 				A7084C8E2406C23700FF5CAE /* SingularCell.m in Sources */,
@@ -2878,7 +2905,6 @@
 				A73FACF4240E2566008BA2D9 /* OrderDiscountCell.m in Sources */,
 				A772A9992407B37F00B8FC52 /* SimpleImageTitleView.m in Sources */,
 				A703A726241DE73E00ABC74A /* MineFoodDiscountCell.m in Sources */,
-				A7D654992416243C00AECF5E /* QiCardViewCell.m in Sources */,
 				A7FE9A8D24177E1E00A8D259 /* BoxRenderer.m in Sources */,
 				A7C341D82413D5B000BAEF70 /* HWProgressView.m in Sources */,
 				A702DFE3240898D600A9646C /* CardBagView.m in Sources */,
@@ -2912,6 +2938,7 @@
 				A73AEC3124123CA000AD6880 /* PayFinishCell.m in Sources */,
 				A7FE9A8A24177E1E00A8D259 /* BGRenderer.m in Sources */,
 				A75DB925241CBCAD0037C0BA /* Food.m in Sources */,
+				A703A776241E73C500ABC74A /* QiCardView.m in Sources */,
 				A7C779262402562E003EBCE0 /* RemarkCell.m in Sources */,
 				A7FBA0912419DD8C0000287A /* MineQRCodeController.m in Sources */,
 				A7C779252402562E003EBCE0 /* ItemSectionView.m in Sources */,
@@ -2932,7 +2959,6 @@
 				A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */,
 				A7739FB82405191B00EF7664 /* GHDropMenuFilterSectionHeader.m in Sources */,
 				A7C341C924139B2700BAEF70 /* MineOrderInfoCell.m in Sources */,
-				A7D654982416243C00AECF5E /* QiCardView.m in Sources */,
 				A7739FB32405191B00EF7664 /* GHDropMenuFilterTimeChoseItem.m in Sources */,
 				A7C7790C2402562E003EBCE0 /* CityHeaderView.m in Sources */,
 				A7C7797424027E17003EBCE0 /* CommonUtility.m in Sources */,
@@ -2950,6 +2976,7 @@
 				A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */,
 				A7FBA08E2419BA8E0000287A /* MineProfileAvatarCell.m in Sources */,
 				A7C341CC24139D2100BAEF70 /* MineOrderInfoTBCell.m in Sources */,
+				A703A777241E73C500ABC74A /* QiCardViewCell.m in Sources */,
 				A7C779062402562E003EBCE0 /* HorizontalWithVerticalSectionLayout.m in Sources */,
 				A72D3B02240F87C6009720AD /* SceneMultiLineCell.m in Sources */,
 				A738B09A240A3CC900705AF2 /* DiscountController.m in Sources */,

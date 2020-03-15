@@ -51,7 +51,7 @@
 - (UIView *)inner {
   if (!_inner) {
     _inner = [UIView new];
-    _inner.backgroundColor = UIColor.qmui_randomColor;
+    _inner.backgroundColor = UIColor.qd_tintColor;
     _inner.layer.borderColor = UIColor.clearColor.CGColor;
     _inner.hidden = YES;
   }

@@ -42,4 +42,5 @@ didScrollWithContentOffset:(CGPoint)contentOffset;
 @property (nonatomic, weak) id<LinkageMenuProtocol> link_delegate;
 - (instancetype)initWithDataSource:(NSArray<LinkageModel *> *)datasource;
 - (void)loadData:(NSArray<LinkageModel *> *)datasource;
+- (void)reloadData;
 @end

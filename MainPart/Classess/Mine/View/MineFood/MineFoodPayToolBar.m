@@ -37,9 +37,9 @@
 - (UIView *)container {
   if (!_container) {
     _container = [UIView new];
-    _container.backgroundColor = [UIColorBlack colorWithAlphaComponent:0.75];
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *visualView = [[UIVisualEffectView alloc] initWithEffect:blur];
+    _container.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *visualView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     addView(_container, visualView);
     addView(_container, self.payPrice);
     addView(_container, self.payBtn);

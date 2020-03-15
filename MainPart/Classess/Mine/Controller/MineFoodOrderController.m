@@ -281,8 +281,7 @@ didScrollWithContentOffset:(CGPoint)contentOffset {
 
 - (void)setOrderCheckInfo:(OrderCheckInfo *)orderCheckInfo {
   _orderCheckInfo = orderCheckInfo;
-  [self.linkageMenu.tableView reloadData];
-  [self.linkageMenu.collectionView reloadData];
+  [self.linkageMenu reloadData];
   self.mineFoodToolBar.model = orderCheckInfo;
   self.mineFoodToolBar.addressEnable = (self.foodOrderType == RoomOrderType);
 }

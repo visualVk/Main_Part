@@ -1,8 +1,8 @@
 {
   "hotelId" : false,
   "hotelName" : "温州荣欣大酒店",
-  "edDate" : "8:00",
-  "stDate" : "22:00",
+  "edDate" : "22:00",
+  "stDate" : "8:00",
   "deviceDescription" : "本酒店免费向住户开放所有健身房设施，请注意开放时间，除开放时间外，本酒店健身房不开放",
   "device" : [
     {

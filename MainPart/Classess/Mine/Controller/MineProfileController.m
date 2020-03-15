@@ -104,7 +104,7 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
   self.profileList = @[
     @[
       @{ @"title" : @"个人头像",
-         @"detail" : @"" },
+         @"detail" : UIImageMake(@"pink_gradient") },
       @{ @"title" : @"身份认证",
          @"detail" : @"已认证" },
       @{ @"title" : @"绑定手机号",

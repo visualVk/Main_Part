@@ -389,4 +389,12 @@ referenceSizeForFooterInSection:(NSInteger)section {
   [self.tableView reloadData];
   [self.collectionView reloadData];
 }
+
+- (void)reloadData {
+  [self.tableView reloadData];
+  [self.collectionView reloadData];
+  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                              animated:YES
+                        scrollPosition:UITableViewScrollPositionNone];
+}
 @end

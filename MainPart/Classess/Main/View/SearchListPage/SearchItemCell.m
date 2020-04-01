@@ -61,7 +61,7 @@
     make.left.equalTo(self.simple);
     make.width.mas_equalTo(tagSize.width);
     make.height.mas_equalTo(tagSize.height);
-    make.top.equalTo(self.simple.mas_bottom);
+    make.top.equalTo(self.simple.mas_bottom).with.inset(2);
   }];
   
   [self.desPrice mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,8 +120,8 @@
     _tagFloatView = [[QMUIFloatLayoutView alloc] init];
     _tagFloatView.itemMargins = UIEdgeInsetsMake(0, 5, 0, 5);
     for (int i = 0; i < 2; i++) {
-      [_tagFloatView addSubview:[SearchItemCell generateTagLabelWithContent:@"xxxax"]];
-      [_tagFloatView addSubview:[SearchItemCell generateTagLabelWithContent:@"xas"]];
+      [_tagFloatView addSubview:[self generateTagLabelWithContent:@"xxxax"]];
+      [_tagFloatView addSubview:[self generateTagLabelWithContent:@"xas"]];
     }
   }
   return _tagFloatView;
@@ -164,9 +164,9 @@
   return _price;
 }
 
-+ (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
+- (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
   QMUILabel *label = [QMUILabel new];
-  label.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
+  label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
   label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
   label.layer.borderWidth = 1.0f;
   label.text = content;
@@ -175,5 +175,73 @@
   label.highlightedTextColor = nil;
   label.highlightedBackgroundColor = nil;
   return label;
+}
+
+- (void)generateTagLabelList:(NSArray *)list {
+  [self.tagFloatView qmui_removeAllSubviews];
+  for (NSString *str in list) {
+    [self.tagFloatView addSubview:[self generateTagLabelWithContent:str]];
+  }
+}
+
+- (NSAttributedString *)generateHotelInfo:(NSDictionary *)dict {
+  return [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.textColor(UIColor.qd_mainTextColor);
+    make.append(@"title").font(UIFontBoldMake(20));
+    make.appendImage(
+                     ^(id<SJUTImageAttachment> _Nonnull make) { make.image = UIImageMake(@"more_bottom"); })
+    .baseLineOffset(-4);
+    make.append(@"\nscore分 remark remarkmore\n")
+    .textColor(UIColor.qd_tintColor)
+    .font(UIFontMake(14));
+    make.append([NSString stringWithFormat:@"%@\n%@", dict[@"distance"], dict[@"location"]])
+    .textColor(UIColor.qd_placeholderColor)
+    .font(UIFontMake(14));
+    make.regex(@"title").replaceWithString(dict[@"title"]);
+    make.regex(@"score").replaceWithText(^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.append(dict[@"score"]).textColor(UIColor.qd_tintColor).font(UIFontMake(18));
+    });
+    make.regex(@"\\bremark\\b").replaceWithText(^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.append(dict[@"remark"]).textColor(UIColor.qd_tintColor).font(UIFontBoldMake(18));
+    });
+    make.regex(@"\\bremarkmore\\b").replaceWithString(dict[@"remarkmore"]);
+  }];
+}
+
+- (NSAttributedString *)generatePrice:(HotelModel *)prices {
+  return [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.textColor(UIColor.qd_placeholderColor).font(UIFontMake(14));
+    make.append([NSString stringWithFormat:@"¥%g", prices.hotelMaxprice])
+    .strikethrough(^(id<SJUTDecoration> _Nonnull make) {
+      make.style = NSUnderlineStyleSingle | NSUnderlineStylePatternSolid;
+      make.color = UIColor.qd_placeholderColor;
+    });
+    make.append([NSString stringWithFormat:@"¥%g ", prices.lowPrice])
+    .textColor(UIColor.qmui_randomColor)
+    .font(UIFontMake(18));
+    make.append(@"起");
+    make.regex(@"¥").update(
+                            ^(id<SJUTAttributesProtocol> _Nonnull make) { make.font(UIFontMake(14)); });
+  }];
+}
+
+- (void)setModel:(HotelModel *)model {
+  _model = model;
+  self.simple.attributedText = [self generateHotelInfo:@{
+    @"title" : model.hotelName,
+    @"score" : [NSString stringWithFormat:@"%.1f", model.hotelSource],
+    @"remark" : @"好",
+    @"remarkmore" : @"很棒",
+    @"distance" : @"16km",
+    @"location" : model.hotelLocation
+  }];
+  self.price.attributedText = [self generatePrice:model];
+  self.desPrice.text = [NSString stringWithFormat:@"已减¥%g", model.orgPrice];
+  if (model.logoList.count > 3) {
+    NSMutableArray *tmp = [model.logoList mutableCopy];
+    [tmp removeObjectsInRange:NSMakeRange(2, model.logoList.count - 3)];
+    [self generateTagLabelList:tmp];
+  }
+  [self generateTagLabelList:model.logoList];
 }
 @end

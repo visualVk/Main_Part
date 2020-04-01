@@ -31,6 +31,8 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  [self.layer pop_removeAllAnimations];
+  isScale = false;
   [self addSpringAnimate:self];
 }
 

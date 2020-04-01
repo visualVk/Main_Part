@@ -28,31 +28,31 @@
 }
 
 - (void)generateRootView {
-  UIView *superview                = self.contentView;
-  CGFloat imageHeight = CGRectGetHeight(superview.bounds)*0.7;
+  UIView *superview = self.contentView;
+  CGFloat imageHeight = CGRectGetHeight(superview.bounds) * 0.7;
   CGFloat textWidth = CGRectGetWidth(superview.bounds) * 0.35;
-//  QMUILogInfo(@"selection content cell",frameAndBounds(superview));
-  self.cellTitle                   = [UILabel new];
-  self.cellTitle.font              = UIFontBoldMake(TITLEPLACE);
-  self.cellTitle.text              = @"title";
-  self.cellTitle.textColor         = UIColor.qd_mainTextColor;
-  self.cellPlaceholder             = [UILabel new];
-  self.cellPlaceholder.font        = UIFontMake(TITLEPLACE);
-  self.cellPlaceholder.text        = @"placeholder";
-  self.cellPlaceholder.textColor   = UIColor.qd_placeholderColor;
-  self.clickLB                     = [UILabel new];
-  self.clickLB.font                = UIFontMake(13);
+  //  QMUILogInfo(@"selection content cell",frameAndBounds(superview));
+  self.cellTitle = [UILabel new];
+  self.cellTitle.font = UIFontBoldMake(TITLEPLACE);
+  self.cellTitle.text = @"温泉优惠券";
+  self.cellTitle.textColor = UIColor.qd_mainTextColor;
+  self.cellPlaceholder = [UILabel new];
+  self.cellPlaceholder.font = UIFontMake(TITLEPLACE);
+  self.cellPlaceholder.text = @"50-20";
+  self.cellPlaceholder.textColor = UIColor.qd_placeholderColor;
+  self.clickLB = [UILabel new];
+  self.clickLB.font = UIFontMake(13);
   self.clickLB.textAlignment = NSTextAlignmentCenter;
-  self.clickLB.text                = @"立即领取";
-  self.clickLB.textColor           = UIColor.qd_backgroundColor;
-  self.clickLB.backgroundColor     = UIColor.orangeColor;
-  self.clickLB.layer.cornerRadius  = 8;
+  self.clickLB.text = @"立即领取";
+  self.clickLB.textColor = UIColor.qd_backgroundColor;
+  self.clickLB.backgroundColor = UIColor.orangeColor;
+  self.clickLB.layer.cornerRadius = 8;
   self.clickLB.layer.masksToBounds = true;
-  self.imageview                   = [UIImageView new];
-  self.imageview.image             = UIImageMake(@"profile_background");
-  self.imageview.contentMode       = QMUIImageResizingModeScaleAspectFill;
-
-    addView(superview, self.imageview);
+  self.imageview = [UIImageView new];
+  self.imageview.image = UIImageMake(@"profile_background");
+  self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
+  
+  addView(superview, self.imageview);
   addView(superview, self.cellTitle);
   addView(superview, self.cellPlaceholder);
   addView(superview, self.clickLB);
@@ -65,7 +65,8 @@
   [self.cellPlaceholder mas_makeConstraints:^(MASConstraintMaker *make) {
     //    make.top.equalTo(self.cellTitle.mas_bottom);
     make.left.equalTo(self.cellTitle).with.priorityHigh;
-    make.centerY.equalTo(superview).with.priorityHigh;;
+    make.centerY.equalTo(superview).with.priorityHigh;
+    ;
   }];
   
   [self.clickLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,7 +77,7 @@
   
   [self.imageview mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerY.equalTo(superview);
-    make.right.equalTo(superview).offset(-0.5*SPACE);
+    make.right.equalTo(superview).offset(-0.5 * SPACE);
     make.width.equalTo(@(imageHeight));
     make.height.equalTo(@(imageHeight));
   }];
@@ -92,7 +93,9 @@
 #define SECONDROW 1
 #define FIRSTNUM 2
 #define SECONDNUM 1
-#define COLLECTIONHEIGHT SECONDTYPESECTIONHEIGHT*FIRSTROW + FIRSTTYPESECTIONHEIGHT*SECONDROW + 2 * (FIRSTROW + SECONDROW - 1)
+#define COLLECTIONHEIGHT                                                                           \
+SECONDTYPESECTIONHEIGHT *FIRSTROW + FIRSTTYPESECTIONHEIGHT *SECONDROW +                          \
+2 * (FIRSTROW + SECONDROW - 1)
 #define FIRSTTYPESECTIONWIDTH (DEVICE_WIDTH - 2 * SPACE - 2.0 * (FIRSTNUM - 1) - 4) / FIRSTNUM
 #define FIRSTTYPESECTIONHEIGHT (DEVICE_WIDTH - 2 * SPACE - 2.0 * (FIRSTNUM - 1)) / (2 * FIRSTNUM)
 #define SECONDTYPESECTIONWIDTH (DEVICE_WIDTH - 2 * SPACE - 2.0 * (SECONDNUM - 1)) / SECONDNUM
@@ -108,8 +111,8 @@ UICollectionViewDelegate, JQCollectionViewAlignLayoutDelegate>
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
   QMUILogInfo(@"first section frame", @"%f,%f", FIRSTTYPESECTIONHEIGHT, FIRSTTYPESECTIONWIDTH);
-  self.selectionStyle     = UITableViewCellSelectionStyleNone;
-//  self.contentView.bounds = CGRectMake(0, 0, 9999, 9999);
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
+  //  self.contentView.bounds = CGRectMake(0, 0, 9999, 9999);
   [self generateRootView];
 }
 
@@ -133,34 +136,35 @@ UICollectionViewDelegate, JQCollectionViewAlignLayoutDelegate>
     make.bottom.equalTo(superview);
     make.height.equalTo(@(COLLECTIONHEIGHT));
   }];
-//  SECONDTYPESECTIONHEIGHT*FIRSTROW + FIRSTTYPESECTIONHEIGHT*SECONDROW + 2 *(FIRSTROW + SECONDROW);
-  self.collectionview.layer.cornerRadius = (SECONDTYPESECTIONHEIGHT + FIRSTTYPESECTIONHEIGHT + 2) / 50;
-  self.collectionview.layer.shadowOffset  = CGSizeMake(0, 1);
-  self.collectionview.layer.shadowColor   = [[UIColor blackColor] CGColor];
-  self.collectionview.layer.shadowRadius  = self.collectionview.layer.cornerRadius;
+  //  SECONDTYPESECTIONHEIGHT*FIRSTROW + FIRSTTYPESECTIONHEIGHT*SECONDROW + 2 *(FIRSTROW +
+  //  SECONDROW);
+  self.collectionview.layer.cornerRadius =
+  (SECONDTYPESECTIONHEIGHT + FIRSTTYPESECTIONHEIGHT + 2) / 50;
+  self.collectionview.layer.shadowOffset = CGSizeMake(0, 1);
+  self.collectionview.layer.shadowColor = [[UIColor blackColor] CGColor];
+  self.collectionview.layer.shadowRadius = self.collectionview.layer.cornerRadius;
   self.collectionview.layer.shadowOpacity = 0.25;
-  self.collectionview.clipsToBounds       = false;
+  self.collectionview.clipsToBounds = false;
   self.collectionview.layer.masksToBounds = false;
-
 }
 
 - (UICollectionView *)collectionview {
   if (!_collectionview) {
     JQCollectionViewAlignLayout *layout = [[JQCollectionViewAlignLayout alloc] init];
-    layout.itemsHorizontalAlignment     = JQCollectionViewItemsHorizontalAlignmentLeft;
-    layout.itemsVerticalAlignment       = JQCollectionViewItemsVerticalAlignmentCenter;
-    layout.itemsDirection               = JQCollectionViewItemsDirectionLTR;
-    layout.sectionInset                 = UIEdgeInsetsMake(0, 0, 2, 0);
-    layout.minimumLineSpacing           = 2;
-    layout.minimumInteritemSpacing      = 2;
+    layout.itemsHorizontalAlignment = JQCollectionViewItemsHorizontalAlignmentLeft;
+    layout.itemsVerticalAlignment = JQCollectionViewItemsVerticalAlignmentCenter;
+    layout.itemsDirection = JQCollectionViewItemsDirectionLTR;
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 2, 0);
+    layout.minimumLineSpacing = 2;
+    layout.minimumInteritemSpacing = 2;
     _collectionview =
     [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionview.scrollEnabled   = false;
+    _collectionview.scrollEnabled = false;
     _collectionview.backgroundColor = UIColor.qd_backgroundColor;
     [_collectionview registerClass:[TitleCell class] forCellWithReuseIdentifier:TOPTITLECELL];
     [_collectionview registerClass:[SelectionContentCell class]
         forCellWithReuseIdentifier:SELECTCONTENTCELL];
-    _collectionview.delegate   = self;
+    _collectionview.delegate = self;
     _collectionview.dataSource = self;
   }
   return _collectionview;
@@ -184,10 +188,11 @@ UICollectionViewDelegate, JQCollectionViewAlignLayoutDelegate>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  NSInteger row     = indexPath.row;
+  NSInteger row = indexPath.row;
   if (section == 0) {
     TitleCell *ttCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:TOPTITLECELL forIndexPath:indexPath];
+    ttCell.title.text = @"优惠券推荐";
     return ttCell;
   }
   if (section == 1) {
@@ -213,7 +218,9 @@ UICollectionViewDelegate, JQCollectionViewAlignLayoutDelegate>
   return CGSizeMake(0, 0);
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  QMUILogInfo(@"selection cell click",@"click:(sec:%li,row:%li)",indexPath.section,indexPath.row);
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  QMUILogInfo(@"selection cell click", @"click:(sec:%li,row:%li)", indexPath.section,
+              indexPath.row);
 }
 @end

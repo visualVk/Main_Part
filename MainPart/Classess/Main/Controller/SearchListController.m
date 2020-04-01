@@ -9,8 +9,11 @@
 #import "SearchListController.h"
 #import "DetailController.h"
 #import "DropMenuController.h"
+#import "HotelModel.h"
+#import "HotelModelList.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "QDAlertHelper.h"
 #import "ReMenuView.h"
 #import "SearchItemCell.h"
 #import <HMSegmentedControl.h>
@@ -26,7 +29,7 @@ QMUITableViewDataSource, DropMenuDelegate>
 @property (nonatomic, strong) UIView *showView;
 @property (nonatomic, strong) UIView *monView;
 
-@property (nonatomic, strong) NSArray *hotelList;
+@property (nonatomic, strong) NSArray<HotelModel *> *hotelList;
 @end
 
 @implementation SearchListController
@@ -34,7 +37,7 @@ QMUITableViewDataSource, DropMenuDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
-  self.hotelList = @[ @"", @"", @"", @"" ];
+  //  self.hotelList = @[ @"", @"", @"", @"" ];
 }
 
 - (void)initSubviews {
@@ -46,10 +49,25 @@ QMUITableViewDataSource, DropMenuDelegate>
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
   [self generateRootView];
+  self.emptyView.backgroundColor = UIColor.qd_backgroundColor;
+  [self showEmptyViewWithText:@"稍等"
+                   detailText:@"正在加载中"
+                  buttonTitle:@"点我试试？"
+                 buttonAction:@selector(emptyBtn)];
+  
+  [self findAllHotel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+}
+
+- (void)emptyBtn {
+  [QDAlertHelper showChooseAlertWithTitle:@"233"
+                                  message:@"x1x1x"
+                           preferredStyle:QMUIAlertControllerStyleAlert
+                               chooseList:@[ @"xx", @"yy" ]
+                              chooseBlock:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -110,6 +128,7 @@ QMUITableViewDataSource, DropMenuDelegate>
   if (section == 0) {
     SearchItemCell *siCell =
     [tableView dequeueReusableCellWithIdentifier:ITEMSERACHCELL forIndexPath:indexPath];
+    siCell.model = self.hotelList[indexPath.row];
     return siCell;
   }
   static NSString *identifier = @"cell";
@@ -124,6 +143,7 @@ QMUITableViewDataSource, DropMenuDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   DetailController *detCon = [DetailController new];
+  detCon.hotelModel = self.hotelList[indexPath.row];
   [self.navigationController qmui_pushViewController:detCon
                                             animated:YES
                                           completion:^{
@@ -139,25 +159,25 @@ QMUITableViewDataSource, DropMenuDelegate>
   return 0;
 }
 
-#pragma mark - Lazy init
-- (HMSegmentedControl *)segController {
-  if (!_segController) {
-    NSArray *titles = @[ @"测试1", @"测试2", @"测试3", @"测试4" ];
-    UIImage *image = UIImageMake(@"more_bottom");
-    NSArray *images = @[ image, image, image, image ];
-    _segController = [[HMSegmentedControl alloc] initWithSectionImages:images
-                                                 sectionSelectedImages:images
-                                                     titlesForSections:titles];
-    _segController.imagePosition = HMSegmentedControlImagePositionRightOfText;
-    _segController.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    _segController.selectionIndicatorHeight = 0;
-    _segController.type = HMSegmentedControlTypeTextImages;
-    __weak __typeof(self) weakSelf = self;
-    _segController.selectedSegmentIndex = 3;
-    _segController.indexChangeBlock = ^(NSInteger index) {};
-  }
-  return _segController;
-}
+//#pragma mark - Lazy init
+//- (HMSegmentedControl *)segController {
+//  if (!_segController) {
+//    NSArray *titles = @[ @"测试1", @"测试2", @"测试3", @"测试4" ];
+//    UIImage *image = UIImageMake(@"more_bottom");
+//    NSArray *images = @[ image, image, image, image ];
+//    _segController = [[HMSegmentedControl alloc] initWithSectionImages:images
+//                                                 sectionSelectedImages:images
+//                                                     titlesForSections:titles];
+//    _segController.imagePosition = HMSegmentedControlImagePositionRightOfText;
+//    _segController.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    _segController.selectionIndicatorHeight = 0;
+//    _segController.type = HMSegmentedControlTypeTextImages;
+//    __weak __typeof(self) weakSelf = self;
+//    _segController.selectedSegmentIndex = 3;
+//    _segController.indexChangeBlock = ^(NSInteger index) {};
+//  }
+//  return _segController;
+//}
 
 - (UITableView *)tableView {
   if (!_tableView) {
@@ -171,7 +191,34 @@ QMUITableViewDataSource, DropMenuDelegate>
 
 - (void)reloadDataWithQuery:(HotelQueryModel *)queryModel {
   /// todo:联网修改
-  self.hotelList = @[ @"", @"", @"", @"", @"", @"", @"" ];
+  queryModel.hotelRank = queryModel.hotelRankList.firstObject;
+  [[RequestUtils shareManager] RequestPostWithUrl:FindAllHotel
+                                           Object:queryModel
+                                          Success:^(NSDictionary *_Nullable dict) {
+    HotelModelList *tmpList = [HotelModelList mj_objectWithKeyValues:dict];
+    self.hotelList = tmpList.data;
+    //    [self.tableView reloadData];
+  }
+                                          Failure:^(NSError *_Nullable err) { QMUILogWarn(@"query model", @"query failed!"); }];
+}
+
+- (void)setHotelList:(NSArray<HotelModel *> *)hotelList {
+  _hotelList = hotelList;
   [self.tableView reloadData];
+}
+
+#pragma mark - http api
+- (void)findAllHotel {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager] RequestPostWithUrl:FindAllHotel
+                                           Object:nil
+                                          Success:^(NSDictionary *_Nullable dict) {
+    QMUILogInfo(@"requestutil", @"%@", [dict description]);
+    HotelModelList *list =
+    [HotelModelList mj_objectWithKeyValues:dict];
+    [weakSelf hideEmptyView];
+    weakSelf.hotelList = list.data;
+  }
+                                          Failure:^(NSError *_Nullable err){}];
 }
 @end

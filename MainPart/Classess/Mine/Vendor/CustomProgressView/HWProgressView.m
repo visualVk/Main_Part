@@ -27,7 +27,7 @@
         UIView *borderView = [[UIView alloc] initWithFrame:self.bounds];
         borderView.layer.cornerRadius = self.bounds.size.height * 0.5;
         borderView.layer.masksToBounds = YES;
-        borderView.backgroundColor = [UIColor whiteColor];
+        borderView.backgroundColor = [UIColor grayColor];
         borderView.layer.borderColor = [KProgressColor CGColor];
         borderView.layer.borderWidth = KProgressBorderWidth;
         [self addSubview:borderView];

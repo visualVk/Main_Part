@@ -71,7 +71,7 @@ QMUITableViewDataSource>
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"酒店名";
+  //  self.title = @"酒店名";
 }
 
 #pragma mark - GenerateEntityDelegate

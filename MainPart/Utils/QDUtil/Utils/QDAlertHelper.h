@@ -15,7 +15,7 @@ typedef void (^ChooseBlock)(NSInteger selectedIndex);
                          message:(NSString *)message
                   preferredStyle:(QMUIAlertControllerStyle)preferredStyle
                       chooseList:(NSArray<NSString *> *)chooseList
-                     chooseBlock:(ChooseBlock)chooseBlock;
+                     chooseBlock:(_Nullable ChooseBlock)chooseBlock;
 @end
 
 NS_ASSUME_NONNULL_END

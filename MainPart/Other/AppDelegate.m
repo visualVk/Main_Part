@@ -8,8 +8,12 @@
 
 #import "AppDelegate.h"
 #import "AMLocationUtils.h"
+#import "LoginMainController.h"
 #import "MainTabController.h"
 #import "QMUIConfigurationTemplate.h"
+#import "QMUIConfigurationTemplateDark.h"
+#import "Users.h"
+#import <AvoidCrash.h>
 #define AMLOCATIONAPPID @"b794a47f8cc58d7845b3b16566172528"
 @interface AppDelegate ()
 
@@ -20,13 +24,45 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
+  //防止出现array nil右fundation框架产生，并且没有详细报错内容的乱七八糟的错误
+  [AvoidCrash makeAllEffective];
+  NSArray *noneSelClassStrings =
+  @[ @"NSNull", @"NSNumber", @"NSString", @"NSDictionary", @"NSArray" ];
+  [AvoidCrash setupNoneSelClassStringsArr:noneSelClassStrings];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(dealwithCrashMessage:)
+                                               name:AvoidCrashNotification
+                                             object:nil];
   [self configurateQmuiTheme];
   //  [AMLocationUtils sharedInstance];
+  
+#ifdef Test_Hotel
+  //  [[RequestUtils shareManager] RequestPostWithUrl:@"/api/user/login/pas"
+  //                                        Parameter:@{
+  //                                          @"logincode" : @"a463806017",
+  //                                          @"password" : @"123456"
+  //                                        }
+  //                                          Success:^(NSDictionary *_Nullable dict) {
+  //    Bearer = dict[@"data"][@"token"];
+  //    QMUILogInfo(@"Bearer", @"jwt token:{%@}", Bearer);
+  //  }
+  //                                          Failure:nil];
+#endif
+  
   [AMapServices sharedServices].apiKey = AMLOCATIONAPPID;
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
   self.window.backgroundColor = UIColor.qd_backgroundColor;
   self.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-  self.window.rootViewController = [[MainTabController alloc] init];
+  //  self.window.rootViewController = [[MainTabController alloc] init];
+  UIViewController *con = nil;
+  Users *users = [Users new];
+  if (!users || !users.username || !users.password || [@"" isEqualToString:users.username] ||
+      [@"" isEqualToString:users.password]) {
+    con = [LoginMainController new];
+  } else {
+    con = [MainTabController new];
+  }
+  self.window.rootViewController = con;
   [self.window makeKeyAndVisible];
   return YES;
 }
@@ -43,6 +79,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   QMUIThemeManagerCenter.defaultThemeManager.themeGenerator =
   ^__kindof NSObject *_Nonnull(NSString *_Nonnull identifier) {
     if ([identifier isEqualToString:QDThemeIdentifierDefault]) return QMUIConfigurationTemplate.new;
+    if ([identifier isEqualToString:QDThemeIdentifierDark])
+      return QMUIConfigurationTemplateDark.new;
     return nil;
   };
   
@@ -107,4 +145,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //  will not return.
 //}
 
+- (void)dealwithCrashMessage:(NSNotification *)note {
+  //注意:所有的信息都在userInfo中
+  //你可以在这里收集相应的崩溃信息进行相应的处理(比如传到自己服务器)
+  NSLog(@"%@", note.userInfo);
+}
 @end

@@ -15,7 +15,11 @@
 #define CHECKININFOCELL @"checkininfocell"
 #define CHECKINTEXTFIELDCELL @"checkintextfieldcell"
 
-@interface OrderInfoCell () <GenerateEntityDelegate, QMUITableViewDelegate, QMUITableViewDataSource>
+@interface OrderInfoCell () <GenerateEntityDelegate, QMUITableViewDelegate,
+QMUITableViewDataSource> {
+  NSString *_date;
+  NSInteger _roomNum;
+}
 @property (nonatomic, strong) UIView *container;
 @property (nonatomic, strong) UIViewController *parentController;
 @end
@@ -104,18 +108,28 @@
     CheckInInfoCell *ciCell =
     [tableView dequeueReusableCellWithIdentifier:CHECKININFOCELL forIndexPath:indexPath];
     ciCell.title.text = @"房间数";
+    ciCell.content.text = [NSString stringWithFormat:@"%li", _roomNum];
     return ciCell;
   }
   if (row == 2) {
     CheckInInfoCell *ciCell =
     [tableView dequeueReusableCellWithIdentifier:CHECKININFOCELL forIndexPath:indexPath];
     ciCell.title.text = @"住客信息";
+    ciCell.content.text = @"小a";
     return ciCell;
   }
   if (row == 3) {
     CheckInInfoCell *ciCell =
     [tableView dequeueReusableCellWithIdentifier:CHECKININFOCELL forIndexPath:indexPath];
     ciCell.title.text = @"预计到店";
+    if (_date || [_date isEqualToString:@""]) {
+      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+      [dateFormatter setDateFormat:@"HH:mm"];
+      NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
+      ciCell.content.text = strDate;
+    } else {
+      ciCell.content.text = _date;
+    }
     return ciCell;
   }
   static NSString *identifier = @"cell";
@@ -131,16 +145,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger row = indexPath.row;
   if (!self.parentController) self.parentController = [self qmui_viewController];
-  if (row == 1) { [self selectNum]; }
-  if (row == 3) { [self selectHours]; }
+  if (row == 1) { [self selectNum:indexPath]; }
+  if (row == 3) { [self selectHours:indexPath]; }
 }
 
-- (void)selectNum {
+- (void)selectNum:(NSIndexPath *)indexPath {
   PeopleNumController *pnCon = [PeopleNumController new];
+  __weak __typeof(self) weakSelf = self;
+  pnCon.pepleSelectBlock = ^(NSInteger num) {
+    _roomNum = num;
+    [weakSelf.tableView reloadRowsAtIndexPaths:@[ indexPath ]
+                              withRowAnimation:UITableViewRowAnimationNone];
+  };
   [self.parentController.navigationController pushViewController:pnCon animated:YES];
 }
 
-- (void)selectHours {
+- (void)selectHours:(NSIndexPath *)indexPath {
   NSDate *curHour = [NSDate date];
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   formatter.dateFormat = @"H";
@@ -151,7 +171,7 @@
     [hourList addObject:[NSString stringWithFormat:@"%@:00", [[NSNumber numberWithInteger:hours + i]
                                                               stringValue]]];
   }
-  
+  __weak __typeof(self) weakSelf = self;
   BRStringPickerView *datePicker = [[BRStringPickerView alloc] init];
   datePicker.pickerMode = BRStringPickerComponentSingle;
   datePicker.title = @"选择预计到达时间";
@@ -159,6 +179,9 @@
   datePicker.selectIndex = 0;
   datePicker.resultModelBlock = ^(BRResultModel *resultModel) {
     QMUILogInfo(@"order info cell", @"选择的值：%@", resultModel.value);
+    _date = resultModel.value;
+    [weakSelf.tableView reloadRowsAtIndexPaths:@[ indexPath ]
+                              withRowAnimation:UITableViewRowAnimationNone];
   };
   [datePicker show];
 }

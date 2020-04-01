@@ -9,10 +9,16 @@
 #import "PeopleNumController.h"
 #import "HotelNumberCell.h"
 #import "MarkUtils.h"
-#define HOTELNUMBERCELL @"hotelnumbercell"
+#define HOTELNUMBERCELL1 @"hotelnumbercell1"
+#define HOTELNUMBERCELL2 @"hotelnumbercell2"
+#define HOTELNUMBERCELL3 @"hotelnumbercell3"
 
 @interface PeopleNumController () <GenerateEntityDelegate, QMUITableViewDelegate,
-QMUITableViewDataSource>
+QMUITableViewDataSource, PPNumberButtonDelegate> {
+  CGFloat one;
+  CGFloat two;
+  CGFloat three;
+}
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) QMUIButton *confirmBtn;
 @end
@@ -22,6 +28,7 @@ QMUITableViewDataSource>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  one = two = three = 1;
 }
 
 - (void)initSubviews {
@@ -81,7 +88,9 @@ QMUITableViewDataSource>
 - (QMUITableView *)tableView {
   if (!_tableView) {
     _tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    [_tableView registerClass:HotelNumberCell.class forCellReuseIdentifier:HOTELNUMBERCELL];
+    [_tableView registerClass:HotelNumberCell.class forCellReuseIdentifier:HOTELNUMBERCELL1];
+    [_tableView registerClass:HotelNumberCell.class forCellReuseIdentifier:HOTELNUMBERCELL2];
+    [_tableView registerClass:HotelNumberCell.class forCellReuseIdentifier:HOTELNUMBERCELL3];
     _tableView.delegate = self;
     _tableView.dataSource = self;
   }
@@ -94,8 +103,19 @@ QMUITableViewDataSource>
     _confirmBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     [_confirmBtn setTitle:@"完成" forState:UIControlStateNormal];
     _confirmBtn.titleLabel.font = UIFontBoldMake(18);
+    [_confirmBtn addTarget:self
+                    action:@selector(back2Prev)
+          forControlEvents:UIControlEventTouchUpInside];
   }
   return _confirmBtn;
+}
+
+- (void)back2Prev {
+  if (self.pepleSelectBlock) {
+    NSInteger tot = one + two + three;
+    self.pepleSelectBlock(tot);
+  }
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - QMUITableViewDelegate,QMUITableViewDataSource
@@ -113,8 +133,28 @@ QMUITableViewDataSource>
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  HotelNumberCell *hnCell =
-  [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL forIndexPath:indexPath];
+  HotelNumberCell *hnCell;
+  if (indexPath.row == 0) {
+    hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL1 forIndexPath:indexPath];
+  } else if (indexPath.row == 1) {
+    hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL2 forIndexPath:indexPath];
+  } else {
+    hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL3 forIndexPath:indexPath];
+  }
+  hnCell.stepBtn.tag = indexPath.row;
+  hnCell.stepBtn.delegate = self;
+  switch (indexPath.row) {
+    case 0:
+      hnCell.stepBtn.currentNumber = one;
+      break;
+    case 1:
+      hnCell.stepBtn.currentNumber = two;
+      break;
+    case 2:
+      hnCell.stepBtn.currentNumber = three;
+    default:
+      break;
+  }
   return hnCell;
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -126,5 +166,17 @@ QMUITableViewDataSource>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (void)pp_numberButton:(PPNumberButton *)numberButton
+                 number:(NSInteger)number
+         increaseStatus:(BOOL)increaseStatus {
+  if (numberButton.tag == 0) {
+    one = number;
+  } else if (numberButton.tag == 1) {
+    two = number;
+  } else {
+    three = number;
+  }
 }
 @end

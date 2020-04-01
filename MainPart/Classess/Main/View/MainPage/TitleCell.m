@@ -24,16 +24,17 @@
 }
 
 - (void)generateRootView {
-  self.title           = [UILabel new];
-  self.title.font      = UIFontBoldMake(TITLEFONTSIZE);
-  self.title.text      = @"主题";
-  self.title.textColor = UIColor.qd_mainTextColor;
-  self.moreBtn         = [QMUIButton new];
+  self.title = [UILabel new];
+  self.title.font = UIFontBoldMake(TITLEFONTSIZE);
+  self.title.text = @"主题";
+  self.title.textColor = UIColor.blackColor;
+  self.moreBtn = [QMUIButton new];
   [self.moreBtn setTitle:@"更多" forState:UIControlStateNormal];
   self.moreBtn.titleLabel.font = UIFontMake(TITLELITE);
   [self.moreBtn setTitleColor:UIColor.qd_placeholderColor forState:UIControlStateNormal];
   [self.moreBtn setImage:UIImageMake(@"right_arrow_small") forState:UIControlStateNormal];
   self.moreBtn.imagePosition = QMUIButtonImagePositionRight;
+  self.moreBtn.userInteractionEnabled = false;
   
   addView(self.contentView, self.title);
   addView(self.contentView, self.moreBtn);

@@ -11,6 +11,7 @@
 #import "MarkUtils.h"
 #import "MineActivityBannerCell.h"
 #import "MineHeaderView.h"
+#import "MineProfileController.h"
 #import "NSObject+BlockSEL.h"
 #import "OrderCell.h"
 #import "PowerCell.h"
@@ -44,29 +45,25 @@ QMUITableViewDataSource> {
   // init 时做的事情请写在这里
   self.powerList = @[
     @{ @"image" : @"power",
-       @"title" : @"咸鱼突刺" },
+       @"title" : @"快速入住" },
     @{ @"image" : @"power",
-       @"title" : @"爆炸就是艺术" },
+       @"title" : @"免费寄送行李" },
     @{ @"image" : @"power",
-       @"title" : @"海绵宝宝" },
+       @"title" : @"享受9折优惠" },
     @{ @"image" : @"power",
-       @"title" : @"小蜗" },
+       @"title" : @"免收中介费" },
     @{ @"image" : @"power",
-       @"title" : @"痞老板" },
+       @"title" : @"享受会员活动" },
     @{ @"image" : @"power",
-       @"title" : @"秦始皇大钱" },
+       @"title" : @"旅行分析" },
     @{ @"image" : @"power",
-       @"title" : @"派大星" },
+       @"title" : @"年度旅行总结" },
     @{ @"image" : @"power",
-       @"title" : @"章鱼哥" },
+       @"title" : @"住宿分析" },
     @{ @"image" : @"power",
-       @"title" : @"蟹老板" },
+       @"title" : @"年度住宿总结" },
     @{ @"image" : @"power",
-       @"title" : @"派大星" },
-    @{ @"image" : @"power",
-       @"title" : @"章鱼哥" },
-    @{ @"image" : @"power",
-       @"title" : @"蟹老板" }
+       @"title" : @"身份免检" }
   ];
 }
 
@@ -103,6 +100,17 @@ QMUITableViewDataSource> {
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
+  self.title = @"我的";
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithImage:UIImageMake(@"mine_profile")
+                                   style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(go2MineInfo)];
+}
+
+- (void)go2MineInfo {
+  MineProfileController *mpCon = [MineProfileController new];
+  [self.navigationController pushViewController:mpCon animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -267,6 +275,7 @@ QMUITableViewDataSource> {
 
 #pragma mark - navigation bar alpha
 - (void)navBarAlp {
+  __weak __typeof(self) weakSelf = self;
   self.navigationAnimator = [[QMUINavigationBarScrollingAnimator alloc] init];
   self.navigationAnimator.scrollView = self.tableView;
   self.navigationAnimator.offsetYToStartAnimation = 0;
@@ -274,6 +283,7 @@ QMUITableViewDataSource> {
   
   self.navigationAnimator.backgroundImageBlock =
   ^UIImage *_Nonnull(QMUINavigationBarScrollingAnimator *_Nonnull animator, float progress) {
+    [weakSelf.titleView setAlpha:progress];
     return [NavBarBackgroundImage qmui_imageWithAlpha:progress];
   };
   self.navigationAnimator.shadowImageBlock =

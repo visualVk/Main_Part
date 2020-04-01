@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HotHeaderClickDelegate <NSObject>
+
+- (void)reloadDataWithIndex:(NSInteger)index;
+
+@end
+
 @interface HotHeaderView : UICollectionReusableView
-@property(nonatomic, strong) UICollectionView *collectionview;
+@property (nonatomic, strong) UICollectionView *collectionview;
+@property (nonatomic, weak) id<HotHeaderClickDelegate> delegate;
 @end

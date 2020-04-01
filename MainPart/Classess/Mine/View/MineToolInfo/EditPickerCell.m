@@ -70,6 +70,9 @@
       NSLog(@"选择的值：%@", selectValue);
       weakSelf.content.text = selectValue;
       weakSelf.content.textColor = UIColor.qd_mainTextColor;
+      if ([weakSelf.delegate respondsToSelector:@selector(contentValueChange:content:)]) {
+        [weakSelf.delegate contentValueChange:weakSelf.title.text content:selectValue];
+      }
     };
     _datePicker.pickerStyle = [BRPickerStyle pickerStyleWithDoneTextColor:[UIColor blueColor]];
   }
@@ -79,7 +82,7 @@
 - (UILabel *)title {
   if (!_title) {
     _title = [UILabel new];
-    _title.textColor = UIColor.qd_separatorColor;
+    _title.textColor = UIColor.qd_placeholderColor;
     _title.font = UIFontMake(18);
     _title.text = @"title";
   }
@@ -91,7 +94,7 @@
     _content = [UILabel new];
     _content.userInteractionEnabled = YES;
     _content.text = @"content";
-    _content.textColor = UIColor.qd_separatorColor;
+    _content.textColor = UIColor.qd_mainTextColor;
     _content.font = UIFontMake(18);
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDatePicker)];

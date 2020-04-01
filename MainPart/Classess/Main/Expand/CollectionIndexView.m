@@ -125,12 +125,14 @@
   UILabel *aimView = self.indexLabels[index];
   for (UILabel *view in self.indexLabels) {
     if (aimView == view) {
-      view.textColor = UIColor.qd_mainTextColor;
-      view.backgroundColor = UIColor.qd_tintColor;
+      view.textColor = UIColor.systemBlueColor;
+      //      view.backgroundColor = UIColor.qd_tintColor;
+      view.font = UIFontBoldMake(16);
       continue;
     }
     view.textColor = UIColor.qd_placeholderColor;
     view.backgroundColor = UIColor.clearColor;
+    view.font = UIFontMake(14);
   }
 }
 
@@ -186,10 +188,12 @@
 - (void)setNewIndexForPoint:(CGPoint)point {
   for (UILabel *view in self.indexLabels) {
     view.textColor = UIColor.qd_placeholderColor;
+    view.font = UIFontMake(14);
     view.backgroundColor = UIColor.clearColor;
     if (CGRectContainsPoint(view.frame, point)) {
-      view.backgroundColor = UIColor.qd_tintColor;
-      view.textColor = UIColor.qd_mainTextColor;
+      //      view.backgroundColor = UIColor.qd_tintColor;
+      view.textColor = UIColor.systemBlueColor;
+      view.font = UIFontBoldMake(16);
       NSUInteger newIndex = [self.indexTitles indexOfObject:view.text];
       if (newIndex != _currentIndex) {
         _currentIndex = newIndex;

@@ -254,7 +254,8 @@ JQCollectionViewAlignLayoutDelegate> {
     SingularCell *sCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:SINGULARCELL forIndexPath:indexPath];
     /// todo: webimage加载
-    sCell.imageview.image = UIImageMake(model.imageList[row]);
+    [sCell.imageview sd_setImageWithURL:[NSURL URLWithString:model.imageList[row]]
+                       placeholderImage:UIImageMake(@"pink_gradient")];
     sCell.title.text = model.hintList[row];
     return sCell;
   }

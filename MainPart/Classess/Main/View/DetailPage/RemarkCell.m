@@ -14,6 +14,7 @@
 @interface RemarkCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIImageView *avtorImg;
 @property (nonatomic, strong) UIImageView *levelImg;
+@property (nonatomic, strong) QMUILabel *checkInTypeLB;
 @property (nonatomic, strong) UILabel *username;
 @property (nonatomic, strong) TYAttributedLabel *remark;
 @end
@@ -43,6 +44,7 @@
   addView(superview, self.avtorImg);
   addView(superview, self.username);
   addView(superview, self.remark);
+  addView(superview, self.checkInTypeLB);
   
   [self.avtorImg mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.left.equalTo(superview).offset(0.5 * SPACE);
@@ -52,7 +54,7 @@
   }];
   
   [self.username mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.avtorImg.mas_right);
+    make.left.equalTo(self.avtorImg.mas_right).with.inset(0.25 * SPACE);
     make.top.equalTo(self.avtorImg.mas_top);
     make.height.equalTo(@30);
   }];
@@ -61,6 +63,11 @@
     make.top.equalTo(self.avtorImg.mas_bottom).offset(0.5 * SPACE);
     make.left.equalTo(self.avtorImg);
     make.right.bottom.equalTo(superview).offset(-0.5 * SPACE);
+  }];
+  
+  [self.checkInTypeLB mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.username);
+    make.right.equalTo(superview).with.inset(0.5 * SPACE);
   }];
 }
 
@@ -79,6 +86,22 @@
     _username.font = UIFontBoldMake(16);
   }
   return _username;
+}
+
+- (QMUILabel *)checkInTypeLB {
+  if (!_checkInTypeLB) {
+    _checkInTypeLB = [QMUILabel new];
+    _checkInTypeLB.contentEdgeInsets = UIEdgeInsetsMake(3, 5, 3, 5);
+    _checkInTypeLB.layer.borderColor = UIColor.systemGrayColor.CGColor;
+    _checkInTypeLB.layer.cornerRadius = 3;
+    _checkInTypeLB.layer.borderWidth = 1;
+    _checkInTypeLB.textColor = UIColor.systemGrayColor;
+    _checkInTypeLB.layer.masksToBounds = YES;
+    _checkInTypeLB.highlightedTextColor = nil;
+    _checkInTypeLB.highlightedBackgroundColor = nil;
+    _checkInTypeLB.font = UIFontMake(17);
+  }
+  return _checkInTypeLB;
 }
 
 - (TYAttributedLabel *)remark {
@@ -101,4 +124,10 @@
   return _remark;
 }
 
+- (void)setModel:(HotelAppreaiseModel *)model {
+  _model = model;
+  self.remark.text = model.content;
+  
+  self.checkInTypeLB.text = model.roomtypeName;
+}
 @end

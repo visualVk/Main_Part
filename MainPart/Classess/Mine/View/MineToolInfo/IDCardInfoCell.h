@@ -6,9 +6,10 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
-#import "QMUITableViewCell.h"
 #import "Info.h"
+#import "QMUITableViewCell.h"
 @interface IDCardInfoCell : QMUITableViewCell
 @property (nonatomic, strong) UILabel *infoAttr;
--(void)loadData:(Info*)info;
+@property (nonatomic, strong) Info *model;
+- (void)loadData:(Info *)info;
 @end

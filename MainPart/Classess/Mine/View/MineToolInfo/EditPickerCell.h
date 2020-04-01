@@ -6,11 +6,13 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "EditInfoCell.h"
 #import "QMUITableViewCell.h"
 #import <BRPickerView.h>
 @interface EditPickerCell : QMUITableViewCell
-@property(nonatomic, strong) UILabel *title;
-@property(nonatomic, strong) UILabel *content;
-@property(nonatomic, strong) UIImageView *image;
-@property(nonatomic, strong) BRDatePickerView *datePicker;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *content;
+@property (nonatomic, strong) UIImageView *image;
+@property (nonatomic, strong) BRDatePickerView *datePicker;
+@property (nonatomic, weak) id<EditInfoCellDelegate> delegate;
 @end

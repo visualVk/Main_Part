@@ -9,6 +9,7 @@
 #import "RemarkScoreCell.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import <SJAttributesFactory.h>
 
 @interface RemarkScoreCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) UILabel *title;
@@ -103,7 +104,7 @@
     //    _liteTag.translatesAutoresizingMaskIntoConstraints = NO;
     _liteTag.padding = UIEdgeInsetsMake(0, 10, 0, 0);
     for (int i = 0; i < 3; ++i) {
-      UILabel *label = [RemarkScoreCell generateTagLabel];
+      UILabel *label = [self generateTagLabel];
       CGSize size = [label sizeThatFits:CGSizeMake(30, MAXFLOAT)];
       self.labelHeight = size.height;
       addView(_liteTag, label);
@@ -119,10 +120,18 @@
   return _container;
 }
 
-+ (UILabel *)generateTagLabel {
+- (UILabel *)generateTagLabel {
   UILabel *label = [UILabel new];
   label.textColor = UIColor.qd_codeColor;
   label.text = @"卫生4.5";
+  label.font = UIFontMake(14);
+  return label;
+}
+
+- (UILabel *)generateTagLabelWithContent:(NSString *)content {
+  UILabel *label = [UILabel new];
+  label.textColor = UIColor.qd_codeColor;
+  label.text = content;
   label.font = UIFontMake(14);
   return label;
 }
@@ -135,4 +144,32 @@
   return label;
 }
 
+- (void)generateTagFlow:(NSArray *)list {
+  [self.liteTag qmui_removeAllSubviews];
+  for (NSString *str in list) { [self.liteTag addSubview:[self generateTagLabelWithContent:str]]; }
+}
+
+- (NSAttributedString *)generateAvgScore:(CGFloat)score {
+  return [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.append([NSString stringWithFormat:@"%g", score])
+    .textColor(UIColor.qd_tintColor)
+    .font(UIFontBoldMake(25));
+    make.append(@"分").textColor(UIColor.qd_tintColor).font(UIFontMake(18));
+  }];
+}
+
+- (void)setModel:(HotelRoomModel *)model {
+  _model = model;
+  self.score.attributedText = [self generateAvgScore:model.avgGrade];
+  [self generateTagFlow:@[
+    [self floatConvertString:model.serviceGrade name:@"服务"],
+    [self floatConvertString:model.hygieneGrade name:@"卫生"],
+    [self floatConvertString:model.serviceGrade name:@"设施"],
+    [self floatConvertString:model.serviceGrade name:@"位置"]
+  ]];
+}
+
+- (NSString *)floatConvertString:(CGFloat)score name:(NSString *)name {
+  return [NSString stringWithFormat:@"%@%g", name, score];
+}
 @end

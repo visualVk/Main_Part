@@ -6,8 +6,8 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "HotelRoomModel.h"
 #import <QMUIKit/QMUIKit.h>
-
 @interface RemarkScoreCell : QMUITableViewCell
-
+@property (nonatomic, weak) HotelRoomModel *model;
 @end

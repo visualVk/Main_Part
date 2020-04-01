@@ -6,8 +6,8 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "HotelRoomModel.h"
 #import "QMUITableViewCell.h"
-
 @interface RoomCell : QMUITableViewCell
-
+@property (nonatomic, weak) HotelRoomModel *model;
 @end

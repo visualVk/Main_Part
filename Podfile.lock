@@ -22,6 +22,7 @@ PODS:
     - AMapFoundation (~> 1.6.1)
   - AMapSearch (7.1.0):
     - AMapFoundation (~> 1.4)
+  - AvoidCrash (2.5.2)
   - BEMCheckBox (1.4.1)
   - BRPickerView (2.5.5):
     - BRPickerView/AddressPickerView (= 2.5.5)
@@ -376,6 +377,7 @@ DEPENDENCIES:
   - AMap3DMap
   - AMapLocation
   - AMapSearch
+  - AvoidCrash (~> 2.5.2)
   - BEMCheckBox
   - BRPickerView
   - CRBoxInputView (= 1.1.7)
@@ -414,6 +416,7 @@ SPEC REPOS:
     - AMapFoundation
     - AMapLocation
     - AMapSearch
+    - AvoidCrash
     - BEMCheckBox
     - BRPickerView
     - CRBoxInputView
@@ -449,7 +452,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AAChartKit:
-    :commit: 701e79eff4488b8cb50920c7af5432bf4b95c19e
+    :commit: 716a5cec4de5cfc86f6fb4e6bfbbf05595ab48b4
     :git: https://github.com/AAChartModel/AAChartKit.git
 
 SPEC CHECKSUMS:
@@ -459,6 +462,7 @@ SPEC CHECKSUMS:
   AMapFoundation: 672dc3a4759cb733f447c1e1b020f7ba2729f4ab
   AMapLocation: b4162db67f813508a14ee7e05c7ee4073785221d
   AMapSearch: 6bd6d361c5eb00110e0bffa4acf88b7bb9f7e059
+  AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BRPickerView: c010fbd1ced79808f485e65a65e62132df218414
   CRBoxInputView: 72b35e2f3df36739a444eadefc9ef0dbf1fe576e
@@ -488,6 +492,6 @@ SPEC CHECKSUMS:
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: ca238ef0a4dcb8dbe2b301dda80124c693b82ea4
+PODFILE CHECKSUM: 970271bef2da0257ee3b081e8d1d1dda6b99197b
 
 COCOAPODS: 1.8.4

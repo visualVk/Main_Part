@@ -209,8 +209,11 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   QMUILogInfo(@"hot header view", @"click(sec = %li, row = %li)", indexPath.section, indexPath.row);
-  if (!self.parentController) { self.parentController = self.qmui_viewController; }
-  SearchListController *slCon = [SearchListController new];
-  [self.parentController.navigationController pushViewController:slCon animated:YES];
+  //  if (!self.parentController) { self.parentController = self.qmui_viewController; }
+  //  SearchListController *slCon = [SearchListController new];
+  //  [self.parentController.navigationController pushViewController:slCon animated:YES];
+  if ([self.delegate respondsToSelector:@selector(reloadDataWithIndex:)]) {
+    [self.delegate reloadDataWithIndex:indexPath.row];
+  }
 }
 @end

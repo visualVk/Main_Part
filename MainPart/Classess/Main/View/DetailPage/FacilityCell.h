@@ -16,8 +16,9 @@ typedef enum : NSUInteger {
 @interface FacilityCell : YXFlipCell
 
 @property (nonatomic, assign) NSInteger number;
-@property(nonatomic, assign) FacilityCellType type;
-+ (FacilityCell *)testCellWithTableView:(UITableView *)tableView;
+@property (nonatomic, assign) FacilityCellType type;
++ (FacilityCell *)testCellWithTableView:(UITableView *)tableView
+                           facilityType:(FacilityCellType)type;
 + (CGFloat)cellCloseH;
 + (CGFloat)cellOpenH;
 + (CGFloat)foldNum;

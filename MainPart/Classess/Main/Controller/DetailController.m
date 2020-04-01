@@ -14,7 +14,10 @@
 #import "DetailPresentNavBar.h"
 #import "DetailPresentToolBarView.h"
 #import "FacilityCell.h"
+#import "HotelAppreaiseModel.h"
+#import "HotelAppreaiseModelList.h"
 #import "HotelOrderDatePickerView.h"
+#import "HotelRoomModelList.h"
 #import "ItemBasicInfoCell.h"
 #import "MapController.h"
 #import "MarkUtils.h"
@@ -50,7 +53,6 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 @property (nonatomic, strong) DetailPresentToolBarView *presentToolBar;
 @property (nonatomic, strong) DetailPresentNavBar *presentNavBar;
 @property (nonatomic, strong) NSArray *imageList;
-@property (nonatomic, strong) NSArray *roomList;
 @property (nonatomic, strong) NSMutableDictionary *openDic;
 @property (nonatomic, strong) BannerZoomView *banner;
 @property (nonatomic, strong) NSMutableArray *cellHs;
@@ -58,6 +60,10 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 @property (nonatomic, strong) UICollectionView *collectionview;
 @property (nonatomic, strong) QMUIModalPresentationViewController *modalViewController;
 @property (nonatomic, strong) QMUINavigationBarScrollingAnimator *navigationAnimator;
+@property (nonatomic, strong) NSArray<HotelRoomModel *> *hotelRoomList;
+@property (nonatomic, strong) NSMutableDictionary *hotelRoomDict;
+@property (nonatomic, strong) NSMutableArray *hotelRoomTypeList;
+@property (nonatomic, strong) NSArray<HotelAppreaiseModel *> *hotelAppreaiseModelList;
 @end
 
 @implementation DetailController
@@ -69,12 +75,10 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
     @"pink_gradient", @"navigationbar_background", @"pink_gradient", @"navigationbar_background",
     @"pink_gradient", @"navigationbar_background"
   ];
-  self.roomList = @[ @"豪华标间", @"行政标间", @"钟点房" ];
-  self.openDic = [NSMutableDictionary dictionaryWithDictionary:@{
-    @"豪华标间" : [NSNumber numberWithBool:false],
-    @"行政标间" : [NSNumber numberWithBool:false],
-    @"钟点房" : [NSNumber numberWithBool:false]
-  }];
+  self.openDic = [NSMutableDictionary dictionaryWithCapacity:self.hotelRoomList.count];
+  for (HotelRoomModel *hotelRoom in self.hotelRoomList) {
+    self.openDic[hotelRoom.roomType] = [NSNumber numberWithBool:false];
+  }
   self.cellHs = [NSMutableArray array];
   for (int i = 0; i < 2; i++) {
     [self.cellHs addObject:[NSNumber numberWithDouble:[FacilityCell cellCloseH]]];
@@ -99,9 +103,11 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
+  [self showEmptyView];
   [self generateRootView];
   [self.segControl setAlpha:0];
   [self.orderDatePickerView setAlpha:0];
+  [self findHotelById];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -126,25 +132,32 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"CNM";
+  self.title = @"酒店详情";
 }
 
 #pragma mark - QMUITableViewDelegate,QMUITableviewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1 + self.roomList.count + 1 + 1;
+  if (self.hotelAppreaiseModelList != nil && self.hotelAppreaiseModelList.count) {
+    return 1 + self.hotelRoomTypeList.count + 2;
+  }
+  return 1 + self.hotelRoomTypeList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if (section == 0) { return 2; }
-  if (section > 0 && section <= self.roomList.count) { return 4; }
-  if (section == self.roomList.count + 1) { return 2; }
+  if (section > 0 && section <= self.hotelRoomTypeList.count) {
+    NSString *key = self.hotelRoomTypeList[section - 1];
+    NSArray *tmp = self.hotelRoomDict[key];
+    return tmp.count;
+  }
+  if (section == self.hotelRoomTypeList.count + 1) { return 2; }
   return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
-  if (section > 0 && section < self.roomList.count + 1) {
-    NSString *key = self.roomList[section - 1];
+  if (section > 0 && section < self.hotelRoomTypeList.count + 1) {
+    NSString *key = self.hotelRoomTypeList[section - 1];
     BOOL flg = [self.openDic[key] boolValue];
     if (flg) {
       return ITEMCELLHEIGHT;
@@ -152,29 +165,35 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
       return 0;
     }
   }
-  if (section == self.roomList.count + 1) { return [self.cellHs[indexPath.row] doubleValue]; }
-  if (section == self.roomList.count + 2) { return REMARKSCOREHEIGHT; }
+  if (section == self.hotelRoomTypeList.count + 1) {
+    return [self.cellHs[indexPath.row] doubleValue];
+  }
+  if (section == self.hotelRoomTypeList.count + 2) { return REMARKSCOREHEIGHT; }
   return -1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   if (section == 0) { return nil; }
-  if (section > 0 && section < self.roomList.count + 1) {
-    SectionFoldView *fold = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ITEMHEADER];
+  if (section > 0 && section < self.hotelRoomTypeList.count + 1) {
+    //    SectionFoldView *fold = [tableView
+    //    dequeueReusableHeaderFooterViewWithIdentifier:ITEMHEADER];
+    SectionFoldView *fold = nil;
     if (!fold) {
       fold = [[SectionFoldView alloc] init];
       fold.parentTableView = tableView;
+      NSArray *tmp = self.hotelRoomDict[self.hotelRoomTypeList[section - 1]];
+      fold.model = tmp[0];
       fold.type = QMUITableViewHeaderFooterViewTypeHeader;
       fold.qmui_borderColor = UIColor.qd_separatorColor;
       fold.qmui_borderPosition = QMUIViewBorderPositionTop;
       __weak __typeof(self) weakSelf = self;
       fold.didSelectBlock = ^(BOOL isOpen) {
-        NSInteger rows = 4;
+        NSInteger rows = tmp.count;
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:rows];
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < rows; ++i) {
           [arr addObject:[NSIndexPath indexPathForRow:i inSection:section]];
         }
-        NSString *key = self.roomList[section - 1];
+        NSString *key = self.hotelRoomTypeList[section - 1];
         BOOL flg = [weakSelf.openDic[key] boolValue];
         if (!flg) {
           weakSelf.openDic[key] = [NSNumber numberWithBool:YES];
@@ -216,6 +235,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
         MapController *map = [MapController new];
         [weakSelf.navigationController pushViewController:map animated:YES];
       };
+      ibiCell.model = self.hotelModel;
       return ibiCell;
     }
     if (row == 1) {
@@ -232,24 +252,33 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
       return cell;
     }
   }
-  if (section > 0 && section < self.roomList.count + 1) {
+  if (section > 0 && section < self.hotelRoomTypeList.count + 1) {
     RoomCell *rcell =
     [tableView dequeueReusableCellWithIdentifier:ROOMTCELL forIndexPath:indexPath];
+    NSString *key = self.hotelRoomTypeList[section - 1];
+    HotelRoomModel *model = self.hotelRoomDict[key][indexPath.row];
+    rcell.model = model;
     return rcell;
   }
-  if (section == self.roomList.count + 1) {
-    FacilityCell *cell = [FacilityCell testCellWithTableView:tableView];
-    if (row == 1) { [cell loadData]; }
+  if (section == self.hotelRoomTypeList.count + 1) {
+    FacilityCell *cell = nil;
+    if (row == 1) {
+      cell = [FacilityCell testCellWithTableView:tableView facilityType:SINGLEINLINE];
+    } else {
+      cell = [FacilityCell testCellWithTableView:tableView facilityType:MULTINLINE];
+    }
     return cell;
   }
-  if (section == self.roomList.count + 2) {
+  if (section == self.hotelRoomTypeList.count + 2) {
     if (row == 0) {
       RemarkScoreCell *rsCell =
       [tableView dequeueReusableCellWithIdentifier:REMARKSCORECELL forIndexPath:indexPath];
+      rsCell.model = self.hotelRoomList[0];
       return rsCell;
     }
     RemarkCell *rcell =
     [tableView dequeueReusableCellWithIdentifier:REMARKCELL forIndexPath:indexPath];
+    rcell.model = self.hotelAppreaiseModelList[indexPath.row - 1];
     return rcell;
   }
   static NSString *identifier = @"cell";
@@ -268,9 +297,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
   if (section == 1) { self.segControl.selectedSegmentIndex = 0; }
-  if (section == 4) { self.segControl.selectedSegmentIndex = 1; }
-  if (section == 5) { self.segControl.selectedSegmentIndex = 2; }
-  if (section == self.roomList.count + 1) {
+  if (section == 2 + self.hotelRoomTypeList.count) { self.segControl.selectedSegmentIndex = 1; }
+  if (section == 3 + self.hotelRoomTypeList.count) { self.segControl.selectedSegmentIndex = 2; }
+  if (section == self.hotelRoomTypeList.count + 1) {
     FacilityCell *cellT = (FacilityCell *)cell;
     cellT.animateTimeAry = @[ @0.5, @0.3 ];
     if (row == 0)
@@ -279,7 +308,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
       cellT.type = MULTINLINE;
     cellT.number = indexPath.row;
     [cellT setBGColor];
-    if ([_cellHs[indexPath.row] floatValue] == [FacilityCell cellOpenH]) {
+    if ([FacilityCell cellOpenH] - [_cellHs[indexPath.row] floatValue] < 0.1) {
       [cellT startFoldAnimated:NO foldType:FoldTypeOpen];
     } else {
       [cellT startFoldAnimated:NO foldType:FoldTypeClose];
@@ -295,8 +324,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
-  if (section == self.roomList.count + 1) {
+  if (section == self.hotelRoomTypeList.count + 1) {
     FacilityCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (row == 0)
+      cell.type = SINGLEINLINE;
+    else
+      cell.type = MULTINLINE;
     if ([cell isAnimating]) { return; }
     NSTimeInterval reloadTime;
     if ([self.cellHs[indexPath.row] doubleValue] == [FacilityCell cellCloseH]) {
@@ -314,7 +347,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
       [tableView endUpdates];
     }];
   }
-  if (section > 0 && section <= self.roomList.count) {
+  if (section > 0 && section <= self.hotelRoomTypeList.count) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.modalViewController = [[QMUIModalPresentationViewController alloc] init];
     self.modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
@@ -336,7 +369,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if (section == 0) return 0;
-  if (section > 0 && section < self.roomList.count + 1) return ITEMCELLHEIGHT + 10;
+  if (section > 0 && section < self.hotelRoomTypeList.count + 1) return ITEMCELLHEIGHT + 10;
   return 0;
 }
 
@@ -516,8 +549,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _segControl.indexChangeBlock = ^(NSInteger index) {
       NSInteger section = 0;
       if (index == 0) { section = 1; }
-      if (index == 1) { section = 4; }
-      if (index == 2) { section = 5; }
+      if (index == 1) { section = 2; }
+      if (index == 2) { section = 2 + self.hotelRoomTypeList.count; }
       [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section]
                                 atScrollPosition:UITableViewScrollPositionMiddle
                                         animated:YES];
@@ -583,6 +616,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
       self.presentToolBar.clickBlock = ^{
         [weakSelf.modalViewController hideWithAnimated:YES completion:nil];
         CheckInController *ciCon = [CheckInController new];
+        ciCon.title = self.hotelModel.hotelName;
         [weakSelf.navigationController pushViewController:ciCon animated:YES];
       };
     }
@@ -671,5 +705,52 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 //转场效果
 - (NSString *)customNavigationBarTransitionKey {
   return self.navigationAnimator.progress >= 1 ? nil : @"progress";
+}
+
+- (void)findHotelById {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager]
+   RequestGetWithUrl:[NSString stringWithFormat:@"%@/%li", FindAppreaiseByHotelId,
+                      self.hotelModel.idField]
+   Object:nil
+   Success:^(NSDictionary *_Nullable dict) {
+    weakSelf.hotelAppreaiseModelList =
+    [HotelAppreaiseModelList mj_objectWithKeyValues:dict].data;
+    [weakSelf.tableView reloadData];
+  }
+   Failure:^(NSError *_Nullable err){}];
+  
+  [[RequestUtils shareManager]
+   RequestGetWithUrl:[NSString
+                      stringWithFormat:@"%@/%li", FindRoomByHotelId, self.hotelModel.idField]
+   Parameter:nil
+   Success:^(NSDictionary *_Nullable dict) {
+    //    QMUILogInfo(@"request utils", @"dict={%@}", [dict description]);
+    weakSelf.hotelRoomList = [HotelRoomModelList mj_objectWithKeyValues:dict].data;
+    
+  }
+   Failure:^(NSError *_Nullable err){}];
+}
+
+- (void)setHotelRoomList:(NSArray<HotelRoomModel *> *)hotelRoomList {
+  _hotelRoomList = hotelRoomList;
+  self.openDic = [NSMutableDictionary dictionaryWithCapacity:hotelRoomList.count];
+  for (HotelRoomModel *hotelRoom in hotelRoomList) {
+    self.openDic[hotelRoom.roomType] = [NSNumber numberWithBool:false];
+  }
+  self.hotelRoomDict = [NSMutableDictionary new];
+  self.hotelRoomTypeList = [NSMutableArray new];
+  for (HotelRoomModel *hotelRoom in hotelRoomList) {
+    NSMutableArray *list = self.hotelRoomDict[hotelRoom.roomType];
+    if (list == nil || list.count == 0) {
+      list = [NSMutableArray new];
+      self.hotelRoomDict[hotelRoom.roomType] = list;
+      [self.hotelRoomTypeList addObject:hotelRoom.roomType];
+    }
+    [list addObject:hotelRoom];
+  }
+  
+  [self.tableView reloadData];
+  [self hideEmptyView];
 }
 @end

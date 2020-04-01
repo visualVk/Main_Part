@@ -10,6 +10,7 @@
 #import "MapController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "RemarkListController.h"
 
 @interface ItemBasicInfoCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) UILabel *itemNameLB;
@@ -130,7 +131,10 @@
   [self.addressLB mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(self.addressView).offset(0.5 * SPACE);
     make.width.equalTo(self.addressView).multipliedBy(4.0 / 5);
-    make.top.equalTo(self.addressImg);
+    //    make.top.equalTo(self.addressImg);
+    //    make.bottom.equalTo(self.addressImg);
+    make.center.equalTo(self.addressView);
+    make.height.lessThanOrEqualTo(self.addressView);
   }];
   
   [self.addressImg mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -195,8 +199,18 @@
   if (!_remarkBtn) {
     _remarkBtn = [ItemBasicInfoCell generateCommonBtn];
     [_remarkBtn setTitle:@"更多点评" forState:UIControlStateNormal];
+    [_remarkBtn addTarget:self
+                   action:@selector(remarkMoreClick)
+         forControlEvents:UIControlEventTouchUpInside];
   }
   return _remarkBtn;
+}
+
+- (void)remarkMoreClick {
+  RemarkListController *rlCon = [RemarkListController new];
+  rlCon.hotelId = 1;
+  rlCon.model = self.model;
+  [self.qmui_viewController.navigationController pushViewController:rlCon animated:YES];
 }
 
 - (UILabel *)addressLB {
@@ -266,10 +280,18 @@
 
 + (QMUIButton *)generateCommonBtn {
   QMUIButton *btn = [QMUIButton new];
-  btn.titleLabel.textColor = UIColor.qd_tintColor;
+  btn.titleLabel.textColor = UIColor.qd_customBackgroundColor;
   btn.titleLabel.font = UIFontMake(15);
   [btn setImage:UIImageMake(@"detail_more") forState:UIControlStateNormal];
   btn.imagePosition = QMUIButtonImagePositionRight;
   return btn;
+}
+
+- (void)setModel:(HotelModel *)model {
+  _model = model;
+  self.addressLB.text = model.hotelLocation;
+  self.itemNameLB.text = model.hotelName;
+  self.foundTimeLB.text = model.hotelDetail;
+  self.scoreAndRemarkLB.text = [NSString stringWithFormat:@"%.1f分 好 很棒", model.hotelSource];
 }
 @end

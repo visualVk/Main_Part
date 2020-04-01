@@ -7,8 +7,10 @@
 //
 
 #import "CustomSectionCell.h"
+#import "ListController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "SearchListController.h"
 
 /// Round Card Cell
 @interface RoundCardCell : UICollectionViewCell
@@ -20,9 +22,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    self.layer.shadowColor   = UIColor.qd_mainTextColor.CGColor;
-    self.layer.shadowOffset  = CGSizeMake(0, 1);
-    self.layer.shadowRadius  = 2;
+    self.layer.shadowColor = UIColor.qd_mainTextColor.CGColor;
+    self.layer.shadowOffset = CGSizeMake(0, 1);
+    self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = 0.25;
     [self generateRootView];
   }
@@ -34,17 +36,17 @@
 }
 
 - (void)generateRootView {
-  UIView *superview              = self.contentView;
-  UIView *container              = [UIView new];
-  self.imageview                 = [UIImageView new];
+  UIView *superview = self.contentView;
+  UIView *container = [UIView new];
+  self.imageview = [UIImageView new];
   self.imageview.backgroundColor = UIColor.qmui_randomColor;
-  self.imageview.image           = UIImageMake(@"right_arrow_small");
-  self.imageview.contentMode     = QMUIImageResizingModeScaleAspectFill;
-  self.label                     = [UILabel new];
-  self.label.backgroundColor     = UIColor.qd_backgroundColor;
-  self.label.text                = @"label";
-  self.label.textAlignment       = NSTextAlignmentCenter;
-  self.label.font                = UIFontBoldMake(16);
+  self.imageview.image = UIImageMake(@"right_arrow_small");
+  self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
+  self.label = [UILabel new];
+  self.label.backgroundColor = UIColor.qd_backgroundColor;
+  self.label.text = @"label";
+  self.label.textAlignment = NSTextAlignmentCenter;
+  self.label.font = UIFontBoldMake(16);
   
   addView(self.contentView, container);
   addView(container, self.imageview);
@@ -53,12 +55,12 @@
   [container mas_makeConstraints:^(MASConstraintMaker *make) { make.edges.equalTo(superview); }];
   
   [self.imageview mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.left.right.equalTo(container);
-    make.height.equalTo(container.mas_width).multipliedBy(0.7);
+    make.top.left.right.height.equalTo(container);
   }];
   
   [self.label mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.imageview.mas_bottom);
+    //    make.top.equalTo(self.imageview.mas_bottom);
+    make.height.equalTo(container).multipliedBy(0.3);
     make.bottom.equalTo(container);
     make.centerX.offset(0);
     make.left.right.equalTo(self.imageview);
@@ -66,9 +68,9 @@
   
   [self layoutIfNeeded];
   
-  container.layer.cornerRadius  = DEVICE_HEIGHT / 100;
+  container.layer.cornerRadius = DEVICE_HEIGHT / 100;
   container.layer.masksToBounds = true;
-  container.clipsToBounds       = true;
+  container.clipsToBounds = true;
 }
 
 @end
@@ -101,12 +103,12 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 - (void)generateRootView {
   // top bar view
   self.backgroundColor = UIColor.clearColor;
-  UIView *topBarView   = [UIView new];
-  UIView *superview    = self.contentView;
-  self.selectionStyle  = UITableViewCellSelectionStyleNone;
-  self.leftLabel       = [UILabel new];
-  self.leftLabel.font  = UIFontBoldMake(16);
-  self.leftLabel.text  = @"left";
+  UIView *topBarView = [UIView new];
+  UIView *superview = self.contentView;
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
+  self.leftLabel = [UILabel new];
+  self.leftLabel.font = UIFontBoldMake(16);
+  self.leftLabel.text = @"周边游";
   
   addView(self.contentView, topBarView);
   addView(topBarView, self.leftLabel);
@@ -135,29 +137,29 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
     make.centerY.equalTo(self.imageview);
   }];
   
-  topBarView.qmui_borderColor    = UIColor.qd_separatorColor;
+  topBarView.qmui_borderColor = UIColor.qd_separatorColor;
   topBarView.qmui_borderPosition = QMUIViewBorderPositionBottom;
   
   //  // collection view
-  UIView *bottomBarView                  = [UIView new];
-  bottomBarView.backgroundColor          = UIColor.qmui_randomColor;
+  UIView *bottomBarView = [UIView new];
+  bottomBarView.backgroundColor = UIColor.qmui_randomColor;
   QMUICollectionViewPagingLayout *layout = [[QMUICollectionViewPagingLayout alloc]
                                             initWithStyle:QMUICollectionViewPagingLayoutStyleDefault];
   layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
   layout.itemSize = CGSizeMake((CGRectGetWidth(UIScreen.mainScreen.bounds) - SPACE * 2) / 2 * 0.8,
                                (CGRectGetWidth(UIScreen.mainScreen.bounds) - SPACE * 2) / 2 * 0.8);
   layout.minimumInteritemSpacing = 0;
-  layout.minimumLineSpacing      = (DEVICE_WIDTH - SPACE * 2) * 0.2;
-  layout.sectionInset            = UIEdgeInsetsMake(0, 0, 0, 0);
+  layout.minimumLineSpacing = (DEVICE_WIDTH - SPACE * 2) * 0.2;
+  layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
   self.collectionview =
   [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-  self.collectionview.layer.cornerRadius  = CGRectGetWidth(superview.bounds) / 5;
-  self.collectionview.backgroundColor     = UIColor.clearColor;
-  self.collectionview.clipsToBounds       = false;
+  self.collectionview.layer.cornerRadius = CGRectGetWidth(superview.bounds) / 5;
+  self.collectionview.backgroundColor = UIColor.clearColor;
+  self.collectionview.clipsToBounds = false;
   self.collectionview.layer.masksToBounds = false;
   [self.collectionview registerClass:[RoundCardCell class]
           forCellWithReuseIdentifier:@"roundcardcell"];
-  self.collectionview.delegate   = self;
+  self.collectionview.delegate = self;
   self.collectionview.dataSource = self;
   
   addView(self.contentView, self.collectionview);
@@ -175,8 +177,8 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 - (UIImageView *)imageview {
   if (!_imageview) {
-    _imageview             = [UIImageView new];
-    _imageview.image       = UIImageMake(@"right_arrow_small");
+    _imageview = [UIImageView new];
+    _imageview.image = UIImageMake(@"right_arrow_small");
     _imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
   }
   return _imageview;
@@ -186,7 +188,8 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
   if (!_rightLabel) {
     _rightLabel = [QMUIButton new];
     [_rightLabel setTitle:@"更多" forState:UIControlStateNormal];
-    _rightLabel.titleLabel.font = UIFontMake(16);
+    _rightLabel.titleLabel.font = UIFontMake(14);
+    [_rightLabel setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
     [_rightLabel addTarget:self
                     action:[self selectorBlock:^(id _Nonnull args) { NSLog(@"click!!!"); }]
           forControlEvents:UIControlEventTouchUpInside];
@@ -208,11 +211,36 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   RoundCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"roundcardcell"
                                                                   forIndexPath:indexPath];
+  if (indexPath.row == 0) {
+    [cell.imageview
+     sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/"
+                         @"timg?image&quality=80&size=b9999_10000&sec="
+                         @"1585720935225&di="
+                         @"3bf67f23f8be6202afce7472802d1978&imgtype=0&src="
+                         @"http%3A%2F%2Fimg01.taopic.com%2F160730%2F234555-"
+                         @"160I022154150.jpg"]
+     placeholderImage:UIImageMake(@"launch_background")];
+    cell.label.text = @"去旅行";
+  } else {
+    [cell.imageview
+     sd_setImageWithURL:[NSURL URLWithString:@"https://ss3.bdstatic.com/"
+                         @"70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/"
+                         @"u=3850155039,3638657152&fm=26&gp=0.jpg"]
+     placeholderImage:UIImageMake(@"launch_background")];
+    cell.label.text = @"去住宿";
+  }
   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   QMUILogInfo(@"round collection", @"click(section:%li,row:%li)", indexPath.section, indexPath.row);
+  if (indexPath.row == 0) {
+    [self.qmui_viewController.navigationController pushViewController:[ListController new]
+                                                             animated:YES];
+  } else {
+    [self.qmui_viewController.navigationController pushViewController:[SearchListController new]
+                                                             animated:YES];
+  }
 }
 @end

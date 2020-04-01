@@ -29,7 +29,8 @@ QiCardViewDataSource> {
   [super didInitialize];
   // init 时做的事情请写在这里
   self.tagList = @[ @"价格实惠", @"交通方便", @"服务好", @"待人友善", @"环境舒适" ];
-  self.view.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.45];
+  //  self.view.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.45];
+  self.view.backgroundColor = UIColor.qd_customBackgroundColor;
 }
 
 - (void)initSubviews {
@@ -65,7 +66,7 @@ QiCardViewDataSource> {
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"";
+  self.title = @"卡包管理";
 }
 
 #pragma mark - GenerateRoowView Delegate
@@ -73,8 +74,8 @@ QiCardViewDataSource> {
   [self.cardView mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.right.equalTo(self.view).with.inset(20);
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).with.inset(20);
-    //    make.height.mas_equalTo(DEVICE_HEIGHT * 3 / 5);
-    make.bottom.equalTo(self.recToolBar.mas_top);
+    make.height.mas_equalTo(DEVICE_HEIGHT * 3 / 5);
+    //    make.bottom.equalTo(self.recToolBar.mas_top);
   }];
   
   [self.recToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,7 +89,7 @@ QiCardViewDataSource> {
 - (QiCardView *)cardView {
   if (!_cardView) {
     _cardView =
-    [[QiCardView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH - 40, DEVICE_HEIGHT / 2)];
+    [[QiCardView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH - 40, DEVICE_HEIGHT / 3)];
     _cardView.center = CGPointMake(DEVICE_WIDTH / 2, DEVICE_HEIGHT / 2);
     _cardView.dataSource = self;
     _cardView.delegate = self;
@@ -165,6 +166,19 @@ didRemoveLastCell:(QiCardViewCell *)cell
   NSLog(@"currentFirstIndex = %ld", cardView.currentFirstIndex);
   NSLog(@"%ld", index);
   curIndex = index;
+  if (index & 1) {
+    [self.recToolBar.favorBtn setTitleColor:UIColor.systemYellowColor
+                                   forState:UIControlStateNormal];
+    self.recToolBar.favorBtn.backgroundColor = UIColor.systemYellowColor;
+    self.recToolBar.favorBtn.tintColor = UIColor.whiteColor;
+    [self.recToolBar.favorBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [self.recToolBar changeColorWithSelected:true];
+  } else {
+    [self.recToolBar.favorBtn setTitleColor:UIColorGrayLighten forState:UIControlStateNormal];
+    self.recToolBar.favorBtn.tintColor = UIColorGrayLighten;
+    self.recToolBar.favorBtn.backgroundColor = UIColor.whiteColor;
+    [self.recToolBar changeColorWithSelected:false];
+  }
 }
 
 - (void)cardView:(QiCardView *)cardView

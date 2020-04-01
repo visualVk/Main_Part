@@ -7,6 +7,7 @@
 //
 
 #import "MineProfileController.h"
+#import "AppDelegate.h"
 #import "MarkUtils.h"
 #import "MineAvatarPickerController.h"
 #import "MineInfoSetController.h"
@@ -94,11 +95,13 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
 - (void)setupNavigationItems {
   [super setupNavigationItems];
   self.title = @"个人信息";
+#ifdef Test_Hotel
   self.navigationItem.rightBarButtonItem =
   [[UIBarButtonItem alloc] initWithTitle:@"切换"
                                    style:UIBarButtonItemStylePlain
                                   target:self
                                   action:@selector(changePhone)];
+#endif
 }
 - (void)changePhone {
   self.profileList = @[
@@ -301,6 +304,10 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
     [self.avatarPickerController
      authorizationPresentAlbumViewControllerWithTitle:@"选"
      @"择头像图片"];
+  } else if ([@"退出登录" isEqualToString:title]) {
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES
+                                                                               completion:nil];
+    //    [self.navigationController popoverPresentationController];
   }
 }
 

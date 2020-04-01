@@ -45,8 +45,8 @@
     addView(_container, self.recImg);
     addView(_container, self.recName);
     addView(_container, self.recScore);
-    addView(_container, self.recAddress);
-    addView(_container, self.tagView);
+    //    addView(_container, self.recAddress);
+    //    addView(_container, self.tagView);
     addView(_container, self.recDescription);
     
     [self.recImg mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,34 +61,34 @@
     }];
     
     [self.recScore mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(self.recImg.mas_bottom).with.inset(5);
+      make.bottom.equalTo(self.recName.mas_bottom);
       make.right.equalTo(self.recImg).with.inset(10);
     }];
-    
-    //    [self.recAddress mas_makeConstraints:^(MASConstraintMaker *make) {
-    //      make.top.equalTo(self.recName.mas_bottom).with.inset(10);
-    //      make.left.equalTo(self.recName).with.inset(10);
-    //    }];
-    
+    //
+    //    //    [self.recAddress mas_makeConstraints:^(MASConstraintMaker *make) {
+    //    //      make.top.equalTo(self.recName.mas_bottom).with.inset(10);
+    //    //      make.left.equalTo(self.recName).with.inset(10);
+    //    //    }];
+    //
     [self.recDescription mas_makeConstraints:^(MASConstraintMaker *make) {
       //      make.top.equalTo(self.recAddress.mas_bottom).with.inset(5);
-      make.top.equalTo(self.tagView.mas_bottom).with.inset(5);
+      make.top.equalTo(self.recName.mas_bottom).with.inset(10);
       make.left.right.equalTo(_container).with.inset(10);
       //      make.bottom.equalTo(_container).with.inset(5);
-      make.bottom.equalTo(self.recAddress.mas_top).with.inset(5);
+      make.bottom.lessThanOrEqualTo(_container).with.inset(5);
     }];
-    
-    CGSize tagSize = [self.tagView sizeThatFits:CGSizeMake(DEVICE_WIDTH - 60, MAXFLOAT)];
-    [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.height.mas_equalTo(tagSize.height);
-      make.left.right.equalTo(_container).with.inset(10);
-      make.top.equalTo(self.recName.mas_bottom).with.inset(5);
-    }];
-    
-    [self.recAddress mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.right.left.equalTo(_container).with.inset(10);
-      make.bottom.equalTo(_container).with.inset(5);
-    }];
+    //
+    //    CGSize tagSize = [self.tagView sizeThatFits:CGSizeMake(DEVICE_WIDTH - 60, MAXFLOAT)];
+    //    [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //      make.height.mas_equalTo(tagSize.height);
+    //      make.left.right.equalTo(_container).with.inset(10);
+    //      make.top.equalTo(self.recName.mas_bottom).with.inset(5);
+    //    }];
+    //
+    //    [self.recAddress mas_makeConstraints:^(MASConstraintMaker *make) {
+    //      make.right.left.equalTo(_container).with.inset(10);
+    //      make.bottom.equalTo(_container).with.inset(5);
+    //    }];
   }
   return _container;
 }
@@ -107,7 +107,7 @@
     _recName = [UILabel new];
     _recName.textColor = UIColor.qd_mainTextColor;
     _recName.font = UIFontBoldMake(35);
-    _recName.text = @"万达";
+    _recName.text = @"星级住宿会员";
   }
   return _recName;
 }
@@ -115,9 +115,9 @@
 - (UILabel *)recScore {
   if (!_recScore) {
     _recScore = [UILabel new];
-    _recScore.textColor = UIColor.qd_tintColor;
-    _recScore.font = UIFontLightMake(30);
-    _recScore.text = @"9.7";
+    _recScore.textColor = UIColor.qd_placeholderColor;
+    _recScore.font = UIFontLightMake(13);
+    _recScore.text = @"阿库娅系列专属";
   }
   return _recScore;
 }
@@ -127,7 +127,7 @@
     _recAddress = [UILabel new];
     _recAddress.textColor = UIColor.qd_separatorColor;
     _recAddress.text = @"xxxfasfasdasdads";
-    _recAddress.font = UIFontLightMake(20);
+    _recAddress.font = UIFontLightMake(13);
   }
   return _recAddress;
 }
@@ -136,7 +136,7 @@
   if (!_recDescription) {
     _recDescription = [UILabel new];
     _recDescription.numberOfLines = 0;
-    _recDescription.text = @"safdasfasfdafdasfasfdasfdsafadsfadsfadsfasdfdasfdsaf";
+    _recDescription.text = @"3-4星级酒店享受7.5折优惠，并附送夜宵、水果";
     _recDescription.textColor = UIColor.qd_mainTextColor;
     _recDescription.font = UIFontMake(18);
   }

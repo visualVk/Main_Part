@@ -126,17 +126,17 @@ const NSInteger TOOLTAG = 10002;
     case 2:
       desCon = [[FaceController alloc] initWithFaceType:RegisterFace];
       break;
-    case 4:
+    case 3:
       desCon = [VIPQRCodeController new];
       break;
-    case 6:
+    case 5:
       desCon = [MineTouristController new];
       desCon.hidesBottomBarWhenPushed = true;
       break;
     default:
       break;
   }
-  if (view.tag - TOOLTAG == 7) {
+  if (view.tag - TOOLTAG == 6) {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"ARMain" bundle:nil];
     desCon = [sb instantiateInitialViewController];
   }

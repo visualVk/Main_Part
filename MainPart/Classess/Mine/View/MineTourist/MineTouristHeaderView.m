@@ -82,7 +82,10 @@
 - (UIImageView *)bgImage {
   if (!_bgImage) {
     _bgImage = [UIImageView new];
-    _bgImage.image = UIImageMake(@"pink_gradient");
+    [_bgImage sd_setImageWithURL:[NSURL URLWithString:@"https://ss1.bdstatic.com/"
+                                  @"70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/"
+                                  @"u=3141609041,395643134&fm=15&gp=0.jpg"]
+                placeholderImage:UIImageMake(@"launch_background")];
     _bgImage.contentMode = QMUIImageResizingModeScaleAspectFill;
     _bgImage.frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT / 7);
     _bgImage.clipsToBounds = YES;
@@ -104,7 +107,7 @@
     _nickName.userInteractionEnabled = YES;
     NSAttributedString *str =
     [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
-      make.append(@"昵称").textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(22));
+      make.append(@"shadowburn").textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(22));
       make.appendImage(
                        ^(id<SJUTImageAttachment> _Nonnull make) { make.image = UIImageMake(@"edit"); })
       .baseLineOffset(-5);
@@ -118,11 +121,9 @@
   if (!_abstract) {
     _abstract = [UILabel new];
     _abstract.userInteractionEnabled = YES;
-    NSAttributedString *str =
-    [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
-      make.append(@"写点什么？？？？？？？？～")
-      .textColor(UIColor.qd_mainTextColor)
-      .font(UIFontBoldMake(15));
+    NSAttributedString *str = [NSAttributedString sj_UIKitText:^(
+                                                                 id<SJUIKitTextMakerProtocol> _Nonnull make) {
+      make.append(@"i'm coming back!").textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(15));
       make.appendImage(
                        ^(id<SJUTImageAttachment> _Nonnull make) { make.image = UIImageMake(@"edit"); })
       .baseLineOffset(-5);
@@ -135,7 +136,18 @@
 - (UIView *)tourPathContainer {
   if (!_tourPathContainer) {
     _tourPathContainer = [UIView new];
-    _tourPathContainer.backgroundColor = UIColor.qmui_randomColor;
+    _tourPathContainer.backgroundColor = UIColor.clearColor;
+    UIImageView *image = [UIImageView new];
+    image.contentMode = QMUIImageResizingModeScaleAspectFill;
+    [image sd_setImageWithURL:[NSURL URLWithString:@"https://ss1.bdstatic.com/"
+                               @"70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/"
+                               @"u=3141609041,395643134&fm=15&gp=0.jpg"]
+             placeholderImage:UIImageMake(@"launch_background")];
+    addView(_tourPathContainer, image);
+    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.edges.equalTo(_tourPathContainer);
+    }];
+    
     _tourPathContainer.layer.cornerRadius = 10;
     _tourPathContainer.layer.masksToBounds = YES;
   }

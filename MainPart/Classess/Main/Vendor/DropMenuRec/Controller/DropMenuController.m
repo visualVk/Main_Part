@@ -30,6 +30,8 @@
   // init 时做的事情请写在这里
   //初始化查询对象
   self.hotelQueryModel = [[HotelQueryModel alloc] init];
+  self.hotelQueryModel.lowPrice = 0.0;
+  self.hotelQueryModel.highPrice = MAXFLOAT;
   
   //加载town数据
   NSString *path = [[NSBundle mainBundle] pathForResource:@"TownListJSON" ofType:@"json"];
@@ -161,7 +163,7 @@ dataForRowAtDropIndexPath:(WMZDropIndexPath *)dropIndexPath {
       return self.cityDict.allKeys;
     if (dropIndexPath.row == 1) return @[];
   } else if (dropIndexPath.section == 2) {
-    return @[ @"一星", @"二星", @"三星", @"四星", @"五星" ];
+    return @[ @"一星级", @"二星级", @"三星级", @"四星级", @"五星级" ];
   } else if (dropIndexPath.section == 3) {
     if (dropIndexPath.row == 0)
       return @[ @{ @"config" : @{@"lowPlaceholder" : @"起步价", @"highPlaceholder" : @"最高价"} } ];
@@ -276,6 +278,7 @@ dataIndexPath:(NSIndexPath *)indexpath
     if (dropIndexPath.row == 0) {
       //      [menu updateData:self.dataDic[data.name] ForRowAtDropIndexPath:dropIndexPath];
       [menu updateData:self.cityDict[data.name] ForRowAtDropIndexPath:dropIndexPath];
+      return;
     } else {
       QMUILogInfo(@"drop menu controller", @"select:%@", data.name);
       self.hotelQueryModel.hotelDistance = data.name;

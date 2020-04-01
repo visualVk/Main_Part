@@ -109,12 +109,15 @@
 #define SEC 2
 #define ITEMWIDTH (DEVICE_WIDTH - 2 * SPACE) / 4
 #define BOTTOMNOTIFICATION @"bottomnotification"
+#import "NSDictionary+LoadJson.h"
+#import "RecModelList.h"
 @interface HotCell () <UICollectionViewDelegate, UICollectionViewDataSource,
-WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
+WSLWaterFlowLayoutDelegate, GenerateEntityDelegate, HotHeaderClickDelegate> {
   double speed;
   double y;
 }
 @property (nonatomic, assign) NSInteger tot;
+@property (nonatomic, strong) RecModelList *modelList;
 @end
 
 @implementation HotCell
@@ -208,7 +211,7 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
      numberOfItemsInSection:(NSInteger)section {
   switch (section) {
     case 0:
-      return self.tot;
+      return self.datas.count;
   }
   return 0;
 }
@@ -221,6 +224,13 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
     HotContentCell *hcCell = [collectionView dequeueReusableCellWithReuseIdentifier:HOTCONTENTCELL
                                                                        forIndexPath:indexPath];
     hcCell.imageview.image = UIImageMake(@"launch_background");
+    if (self.modelList != nil && self.modelList.recList.count) {
+      RecList *model = self.datas[row];
+      hcCell.title.text = model.titleName;
+      hcCell.placeholder.text = model.subTitle;
+      [hcCell.imageview sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]
+                          placeholderImage:UIImageMake(@"launch_background")];
+    }
     
     hcCell.contentView.layer.cornerRadius = BORDERRADIUS;
     hcCell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
@@ -250,6 +260,7 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate> {
                                     dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                                     withReuseIdentifier:HEADERVIEW
                                     forIndexPath:indexPath];
+      titleHeader.delegate = self;
       return titleHeader;
     } else {
       FooterEmptyView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind
@@ -329,18 +340,18 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  @weakify(self);
-  [self.collectionview performBatchUpdates:^{
-    @strongify(self);
-    QMUILogInfo(@"hot collection view", @"click:{%li,%li}", indexPath.section, indexPath.row);
-    self.tot++;
-    [self.collectionview reloadItemsAtIndexPaths:@[ indexPath ]];
-  }
-                                completion:^(BOOL finished) {
-    [self.collectionview selectItemAtIndexPath:indexPath
-                                      animated:YES
-                                scrollPosition:UICollectionViewScrollPositionBottom];
-  }];
+  //  @weakify(self);
+  //  [self.collectionview performBatchUpdates:^{
+  //    @strongify(self);
+  //    QMUILogInfo(@"hot collection view", @"click:{%li,%li}", indexPath.section, indexPath.row);
+  //    self.tot++;
+  //    [self.collectionview reloadItemsAtIndexPaths:@[ indexPath ]];
+  //  }
+  //                                completion:^(BOOL finished) {
+  //    [self.collectionview selectItemAtIndexPath:indexPath
+  //                                      animated:YES
+  //                                scrollPosition:UICollectionViewScrollPositionBottom];
+  //  }];
 }
 
 - (void)acceptMsgOfBottomView:(NSNotification *)notification {
@@ -356,5 +367,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                                                         @"flag" : @(1)
                                                       }];
   }
+}
+
+- (void)reloadDataWithIndex:(NSInteger)index {
+  NSDictionary *dict = [NSDictionary readLocalFileWithName:@"HotRecModelListJSON"];
+  self.modelList = [[RecModelList alloc] initWithDictionary:dict];
+  self.datas = self.modelList.recList;
+  [self.collectionview reloadData];
 }
 @end

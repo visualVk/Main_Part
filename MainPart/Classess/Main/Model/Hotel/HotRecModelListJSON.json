@@ -1,0 +1,46 @@
+{
+  "recList" : [
+    {
+      "recId" : 0,
+      "titleName" : "阿库娅",
+      "subTitle" : "阿库娅系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 1,
+      "titleName" : "厄里斯",
+      "subTitle" : "厄里斯系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 2,
+      "titleName" : "鬼畜和真",
+      "subTitle" : "鬼畜和真系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 3,
+      "titleName" : "鬼畜和真",
+      "subTitle" : "鬼畜和真系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 4,
+      "titleName" : "鬼畜和真",
+      "subTitle" : "鬼畜和真系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 5,
+      "titleName" : "阿库娅",
+      "subTitle" : "阿库娅系列",
+      "imgUrl" : "lanuch_background"
+    },
+    {
+      "recId" : 6,
+      "titleName" : "鬼畜和真",
+      "subTitle" : "鬼畜和真系列",
+      "imgUrl" : "lanuch_background"
+    }
+  ]
+}

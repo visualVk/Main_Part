@@ -19,6 +19,7 @@
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
+  self.selectionStyle = UITableViewCellSelectionStyleNone;
   [self generateRootView];
 }
 

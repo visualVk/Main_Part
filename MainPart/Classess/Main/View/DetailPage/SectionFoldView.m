@@ -252,6 +252,25 @@
   return label;
 }
 
+- (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
+  QMUILabel *label = [QMUILabel new];
+  label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
+  label.font = UIFontMake(13);
+  label.textColor = UIColor.qmui_randomColor;
+  label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
+  label.layer.borderWidth = 1.0f;
+  label.layer.masksToBounds = YES;
+  label.backgroundColor = UIColor.clearColor;
+  label.highlightedBackgroundColor = nil;
+  label.text = content;
+  return label;
+}
+
+- (void)generateTagFlowWithContent:(NSString *)content {
+  [self.tagFlow qmui_removeAllSubviews];
+  [self.tagFlow addSubview:[self generateTagLabelWithContent:content]];
+}
+
 + (QMUILabel *)generateNoBorderTag {
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
@@ -268,5 +287,32 @@
   label.font = UIFontBoldMake(20);
   label.textColor = UIColor.qd_mainTextColor;
   return label;
+}
+
+- (QMUILabel *)generateNoBorderTagWithContent:(NSString *)content {
+  QMUILabel *label = [QMUILabel new];
+  label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
+  label.font = UIFontMake(13);
+  label.textColor = UIColor.qmui_randomColor;
+  label.backgroundColor = UIColor.clearColor;
+  label.highlightedBackgroundColor = nil;
+  label.text = content;
+  return label;
+}
+
+- (void)generatebriefFlow:(NSString *)area {
+  [self.briefFlow qmui_removeAllSubviews];
+  [self.briefFlow addSubview:[self generateNoBorderTagWithContent:area]];
+}
+
+- (void)setModel:(HotelRoomModel *)model {
+  _model = model;
+  self.title.text = model.roomType;
+  [self generatebriefFlow:model.roomArea];
+  [self generateTagFlowWithContent:model.roomName];
+  self.originPriceLB.text = [NSString stringWithFormat:@"¥%li", model.roomOrgprice];
+  self.discountPrice.text = [NSString stringWithFormat:@"¥%li", model.roomPrice];
+  self.desPriceLB.text =
+  [NSString stringWithFormat:@"已减¥%li", model.roomOrgprice - model.roomPrice];
 }
 @end

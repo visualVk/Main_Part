@@ -31,29 +31,34 @@
   if (!self.imageview) {
     self.imageview = [UIImageView new];
     self.imageview.image = UIImageMake(@"icon_grid_toast");
+    
     self.imageview.contentMode = QMUIImageResizingModeScaleAspectFill;
   }
   if (!self.label) {
     self.label = [UILabel new];
-    self.label.font = UIFontBoldMake(16);
+    self.label.font = UIFontMake(12);
     self.label.text = @"all";
-    self.label.textColor = UIColor.qmui_randomColor;
+    self.label.textColor = UIColorBlack;
   }
   
   addView(self.contentView, self.imageview);
   addView(self.contentView, self.label);
   
   [self.imageview mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(superview);
+    make.top.equalTo(superview).with.inset(5);
     make.centerX.offset(0);
-    make.height.greaterThanOrEqualTo(superview.mas_height).multipliedBy(0.4);
-    make.bottom.equalTo(self.label).offset(-10);
+    //    make.size.lessThanOrEqualTo(superview);
     make.width.equalTo(self.imageview.mas_height);
+    make.bottom.equalTo(self.label.mas_top).with.inset(5);
+    //    make.height.greaterThanOrEqualTo(superview.mas_height).multipliedBy(0.4);
+    //    make.bottom.equalTo(self.label).offset(-10);
+    //    make.width.equalTo(self.imageview.mas_height);
   }];
-  
+  CGSize size = [self.label sizeThatFits:CGSizeMake(DEVICE_WIDTH / 4, MAXFLOAT)];
   [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.height.lessThanOrEqualTo(superview.mas_height).multipliedBy(0.4);
-    make.bottom.equalTo(superview.mas_bottom).offset(-5);
+    //    make.height.lessThanOrEqualTo(superview.mas_height).multipliedBy(0.4);
+    make.bottom.equalTo(superview.mas_bottom).with.inset(5);
+    make.height.mas_equalTo(size.height);
     make.centerX.offset(0);
   }];
 }

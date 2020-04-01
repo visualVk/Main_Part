@@ -6,8 +6,8 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "Info.h"
 #import "QMUICommonViewController.h"
-
 @interface MineInfoEditController : QMUICommonViewController
-
+@property (nonatomic, strong) Info *info;
 @end

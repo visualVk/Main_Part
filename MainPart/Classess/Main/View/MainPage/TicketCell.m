@@ -40,6 +40,8 @@
   self.title.textColor = UIColor.qd_backgroundColor;
   self.title.font = UIFontMake(14);
   self.title.text = @"xxx";
+  self.title.layer.backgroundColor = UIColor.blackColor.CGColor;
+  self.title.layer.opacity = 0.45;
   
   addView(superview, self.imageview);
   addView(superview, self.title);
@@ -49,6 +51,7 @@
   
   [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(superview);
+    make.right.equalTo(superview);
     make.bottom.equalTo(superview);
   }];
   
@@ -132,10 +135,13 @@
 #define TOPCELLWIDTH3 (DEVICE_WIDTH - SPACE * 2.0 - 2 * (TOP1NUM - 1)) * 0.3
 #define BOTTOMCELLHEIGHT (DEVICE_WIDTH - SPACE * 2.0) / 6
 #define BOTTOMCELLWIDTH (DEVICE_WIDTH - SPACE * 2.0 - 2 * (BOTTOMNUM - 1)) / BOTTOMNUM
+#import "NSDictionary+LoadJson.h"
+#import "SeasonSceneModelList.h"
 @interface TicketCell () <UICollectionViewDelegate, UICollectionViewDataSource,
 JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
 //@property (nonatomic, strong) UILabel *title;
 //@property (nonatomic, strong) QMUIButton *moreBtn;
+@property (nonatomic, strong) SeasonSceneModelList *seasonSceneModelList;
 @property (nonatomic, strong) UICollectionView *collectionview;
 @property (nonatomic, strong) UIViewController *parentController;
 @end
@@ -145,6 +151,9 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
+  NSDictionary *dict = [NSDictionary readLocalFileWithName:@"SeasonSceneModelJSON"];
+  self.seasonSceneModelList = [[SeasonSceneModelList alloc] initWithDictionary:dict];
+  //  [self.collectionview reloadData];
 }
 
 - (void)updateCellAppearanceWithIndexPath:(NSIndexPath *)indexPath {
@@ -234,21 +243,51 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
   if (indexPath.section == 0) {
     TitleCell *ttCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:TITLECELL forIndexPath:indexPath];
+    ttCell.title.text = @"当季景点";
     return ttCell;
   }
   if (indexPath.section == 1) {
     TicketContentCell *tCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:TICKETCELL forIndexPath:indexPath];
+    tCell.imageview.backgroundColor = UIColor.clearColor;
+    [tCell.imageview
+     sd_setImageWithURL:[NSURL URLWithString:self.seasonSceneModelList.imgList[indexPath.row]
+                         .imgUrl]
+     placeholderImage:UIImageMake(@"launch_background")];
+    tCell.title.text = self.seasonSceneModelList.imgList[indexPath.row].imgName;
     return tCell;
   }
   if (indexPath.section == 2) {
     TicketContentCell *tCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:TICKETCELL forIndexPath:indexPath];
+    tCell.imageview.backgroundColor = UIColor.clearColor;
+    [tCell.imageview
+     sd_setImageWithURL:[NSURL URLWithString:self.seasonSceneModelList.imgList[2 + indexPath.row]
+                         .imgUrl]
+     placeholderImage:UIImageMake(@"launch_background")];
+    tCell.title.text = self.seasonSceneModelList.imgList[indexPath.row].imgName;
     return tCell;
   }
   if (indexPath.section == 3) {
     TextTopBottom *ttbCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:TEXTCELL forIndexPath:indexPath];
+    switch (indexPath.row) {
+      case 0:
+        ttbCell.topLB.text = @"山青";
+        ttbCell.bottomLB.text = @"水秀";
+        break;
+      case 1:
+        ttbCell.topLB.text = @"金山";
+        ttbCell.bottomLB.text = @"银山";
+        break;
+      case 2:
+        ttbCell.topLB.text = @"鱼米";
+        ttbCell.bottomLB.text = @"水乡";
+        break;
+        
+      default:
+        break;
+    }
     return ttbCell;
   }
   return nil;

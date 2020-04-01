@@ -22,6 +22,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat lowPrice;
 @property (nonatomic, assign) CGFloat highPrice;
 @property (nonatomic, strong) NSMutableArray *hotelRankList;
+@property(nonatomic, strong) NSString *hotelRank;
 @property (nonatomic, assign) HotelQueryOrder hotelQueryOrder;
 @property (nonatomic, strong) NSString *hotelDistance;
 @property (nonatomic, assign) NSInteger hotelComment;

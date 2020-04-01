@@ -9,8 +9,8 @@
 #import "EditInfoCell.h"
 #import "MarkUtils.h"
 
-@interface EditInfoCell () <GenerateEntityDelegate>
-
+@interface EditInfoCell () <GenerateEntityDelegate, QMUITextFieldDelegate>
+//@property(nonatomic, strong) RACSignal *text;
 @end
 
 @implementation EditInfoCell
@@ -30,6 +30,19 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  __weak __typeof(self) weakSelf = self;
+  [self.content.rac_textSignal subscribeNext:^(NSString *_Nullable x) {
+    if ([weakSelf.editDelegate respondsToSelector:@selector(contentValueChange:content:)]) {
+      [weakSelf.editDelegate contentValueChange:weakSelf.title.text content:weakSelf.content.text];
+    }
+  }];
+  [RACObserve(self.title, text) subscribeNext:^(NSString *x) {
+    if ([x isEqualToString:@"证件号"]) {
+      weakSelf.content.maximumTextLength = 18;
+    } else {
+      weakSelf.content.maximumTextLength = 11;
+    }
+  }];
 }
 
 - (void)generateRootView {
@@ -64,6 +77,7 @@
     _content = [QMUITextField new];
     _content.placeholder = @"请输入";
     _content.clearButtonMode = UITextFieldViewModeAlways;
+    _content.maximumTextLength = 18;
   }
   return _content;
 }

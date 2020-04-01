@@ -43,9 +43,11 @@
   if (!_addInfo) {
     _addInfo = [QDUIHelper generateLightBorderedButton];
     _addInfo.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+    _addInfo.titleLabel.font = UIFontMake(20);
     [_addInfo setBackgroundColor:UIColor.clearColor];
     [_addInfo setTitle:@"新增常用旅客信息" forState:UIControlStateNormal];
-    [_addInfo setImage:UIImageMake(@"add") forState:UIControlStateNormal];
+    [_addInfo setImage:[UIImageMake(@"add") qmui_imageWithTintColor:UIColor.qd_tintColor]
+              forState:UIControlStateNormal];
     _addInfo.imagePosition = QMUIButtonImagePositionLeft;
     [_addInfo addTarget:self
                  action:@selector(addClick)

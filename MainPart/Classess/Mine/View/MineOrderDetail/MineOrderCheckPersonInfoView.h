@@ -21,4 +21,7 @@
 @property (nonatomic, strong) UIImageView *nameImage;
 @property (nonatomic, strong) UIImageView *collapseImage;
 @property (nonatomic, weak) id<MineOrderCollaspeDelegate> delegate;
+@property (nonatomic, assign) BOOL isEdit;
+- (void)checkSet:(BOOL)selected;
+- (BOOL)getCheckSelected;
 @end

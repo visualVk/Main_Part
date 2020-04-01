@@ -82,7 +82,7 @@
   return str;
 }
 
-+ (NSAttributedString *)generateIdInfoWithInfo:(Info *)info {
+- (NSAttributedString *)generateIdInfoWithInfo:(Info *)info {
   NSAttributedString *str =
   [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
     make.append(info.name).textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(16));
@@ -90,14 +90,15 @@
     NSString *cardNum = info.idCard;
     make.append([NSString stringWithFormat:@"\n身份证\t%@**********%@",
                  [cardNum substringWithRange:NSMakeRange(0, 6)],
-                 [cardNum substringWithRange:NSMakeRange(15, 2)]])
+                 [cardNum substringWithRange:NSMakeRange(16, 2)]])
     .textColor(UIColor.qd_placeholderColor)
     .font(UIFontMake(15));
   }];
   return str;
 }
 
-- (void)loadData:(Info *)info {
-  self.infoAttr.attributedText = [IDCardInfoCell generateIdInfoWithInfo:info];
+- (void)setModel:(Info *)model {
+  _model = model;
+  self.infoAttr.attributedText = [self generateIdInfoWithInfo:model];
 }
 @end

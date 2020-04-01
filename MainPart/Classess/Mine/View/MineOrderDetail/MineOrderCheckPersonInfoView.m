@@ -8,9 +8,11 @@
 
 #import "MineOrderCheckPersonInfoView.h"
 #import "MarkUtils.h"
+#import <BEMCheckBox.h>
 
 @interface MineOrderCheckPersonInfoView () <GenerateEntityDelegate>
 @property (nonatomic, strong) UIView *checkContainer;
+@property (nonatomic, strong) BEMCheckBox *checkBox;
 @end
 
 @implementation MineOrderCheckPersonInfoView
@@ -26,6 +28,10 @@
   return self;
 }
 
+- (void)prepareForReuse {
+  [self.checkBox setOn:false];
+}
+
 - (void)layoutSubviews {
   [super layoutSubviews];
 }
@@ -35,9 +41,17 @@
   addView(superview, self.checkContainer);
   addView(superview, self.nameImage);
   addView(superview, self.collapseImage);
+  addView(superview, self.checkBox);
+  
+  [self.checkBox mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.equalTo(superview);
+    make.left.equalTo(superview).with.inset(0.5 * SPACE);
+    make.height.mas_equalTo(20);
+    make.width.mas_equalTo(0);
+  }];
   
   [self.nameImage mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(superview).with.inset(0.5 * SPACE);
+    make.left.equalTo(self.checkBox.mas_right).with.inset(0.25 * SPACE);
     make.centerY.equalTo(superview);
   }];
   
@@ -114,14 +128,29 @@
   return _nameImage;
 }
 
+- (BEMCheckBox *)checkBox {
+  if (!_checkBox) {
+    _checkBox = [[BEMCheckBox alloc] init];
+    //    [_checkBox setOn:false];
+    _checkBox.onAnimationType = BEMAnimationTypeFill;
+    _checkBox.offAnimationType = BEMAnimationTypeFill;
+    _checkBox.onTintColor = UIColor.orangeColor;
+    _checkBox.onCheckColor = UIColor.whiteColor;
+    _checkBox.onFillColor = UIColor.orangeColor;
+    _checkBox.userInteractionEnabled = false;
+    //    _checkBox.clipsToBounds = YES;
+  }
+  return _checkBox;
+}
+
 - (UIImageView *)collapseImage {
   if (!_collapseImage) {
     _collapseImage = [UIImageView new];
-    //    _collapseImage.userInteractionEnabled = YES;
+    _collapseImage.userInteractionEnabled = YES;
     _collapseImage.image = UIImageMake(@"collapse");
-    UITapGestureRecognizer *tap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collaspClick:)];
-    [_collapseImage addGestureRecognizer:tap];
+    //    UITapGestureRecognizer *tap =
+    //    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(collaspClick:)];
+    //    [_collapseImage addGestureRecognizer:tap];
   }
   return _collapseImage;
 }
@@ -137,4 +166,28 @@
   }
 }
 
+- (void)setIsEdit:(BOOL)isEdit {
+  _isEdit = isEdit;
+  if (isEdit) {
+    [self.checkBox
+     mas_updateConstraints:^(MASConstraintMaker *make) { make.width.mas_equalTo(20); }];
+    self.checkBox.hidden = false;
+  } else {
+    [self.checkBox
+     mas_updateConstraints:^(MASConstraintMaker *make) { make.width.mas_equalTo(0); }];
+    self.checkBox.hidden = YES;
+  }
+  [self.checkBox setNeedsLayout];
+  [self.checkBox layoutIfNeeded];
+  [self.checkContainer setNeedsLayout];
+  [self.checkContainer layoutIfNeeded];
+}
+
+- (void)checkSet:(BOOL)selected {
+  [self.checkBox setOn:selected animated:YES];
+}
+
+- (BOOL)getCheckSelected {
+  return self.checkBox.on;
+}
 @end

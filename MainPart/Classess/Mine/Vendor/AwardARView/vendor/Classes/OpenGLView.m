@@ -80,19 +80,18 @@
     scale = [[UIScreen mainScreen] scale];
   }
   
+  //    [NSThread sleepForTimeInterval:2];
   BOOL result = render(rect.size.width * scale, rect.size.height * scale, _screenRotation);
   if (result) {
     [self stop];
-    if (!self.isFirst) {
-      self.isFirst = true;
-      __weak __typeof(self) weakSelf = self;
-      AwardView *awardView = [[AwardView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-      awardView.closeClickBlock = ^{
-        weakSelf.isFirst = false;
-        [weakSelf start];
-      };
-      [awardView showView];
-    }
+    __weak __typeof(self) weakSelf = self;
+    AwardView *awardView = [[AwardView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    awardView.closeClickBlock = ^{
+      [weakSelf deleteDrawable];
+      [weakSelf initialize];
+      [weakSelf start];
+    };
+    [awardView showView];
   }
 }
 

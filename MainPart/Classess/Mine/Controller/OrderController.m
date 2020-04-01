@@ -11,6 +11,7 @@
 #import "MineOrderCell.h"
 #import "NSDictionary+LoadJson.h"
 #import "OrderCheckInfo.h"
+#import "OrderCheckInfoModelList.h"
 #import "OrderDetailController.h"
 #import <HMSegmentedControl.h>
 #define MINEORDERCELL @"mineordercell"
@@ -20,7 +21,7 @@ GenerateEntityDelegate>
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) HMSegmentedControl *segCon;
 @property (nonatomic, assign) NSInteger *selectedIndex;
-@property (nonatomic, strong) NSArray<OrderCheckInfo *> *orderCheckInfoList;
+@property (nonatomic, strong) NSMutableArray<OrderCheckInfo *> *orderCheckInfoList;
 @end
 
 @implementation OrderController
@@ -47,10 +48,10 @@ GenerateEntityDelegate>
     
 #ifdef Test_Hotel
     NSDictionary *dict = [NSDictionary readLocalFileWithName:@"MineOrderListJSON"];
-    OrderCheckInfo *modelOne = [[OrderCheckInfo alloc] initWithDictionary:dict];
-    OrderCheckInfo *modelTwo = [[OrderCheckInfo alloc] initWithDictionary:dict];
-    OrderCheckInfo *modelThree = [[OrderCheckInfo alloc] initWithDictionary:dict];
-    self.orderCheckInfoList = @[ modelOne, modelTwo, modelThree ];
+    //    OrderCheckInfo *modelOne = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    //    OrderCheckInfo *modelTwo = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    //    OrderCheckInfo *modelThree = [[OrderCheckInfo alloc] initWithDictionary:dict];
+    self.orderCheckInfoList = [OrderCheckInfoModelList mj_objectWithKeyValues:dict].data;
 #endif
   }
   return self;

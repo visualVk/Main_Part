@@ -48,7 +48,7 @@ easyar_OutputFrameBuffer *outputFrameBuffer;
 easyar_InputFrameToFeedbackFrameAdapter *i2FAdapter;
 easyar_OutputFrameFork *outputFrameFork;
 int previousInputFrameIndex = -1;
-BOOL isFirst;
+BOOL isOnly;
 void createScheduler() {
   scheduler = [easyar_DelayedCallbackScheduler create];
 }
@@ -227,9 +227,17 @@ BOOL render(int width, int height, int screenRotation) {
     if (result != nil) {
       for (easyar_TargetInstance *targetInstance in [result targetInstances]) {
         easyar_TargetStatus status = [targetInstance status];
-        if (status == easyar_TargetStatus_Tracked) { return true; }
+        if (status == easyar_TargetStatus_Tracked) {
+//          if (isOnly) return false;
+//          isOnly = true;
+          return true;
+        }
       }
     }
   }
   return false;
+}
+
+void changOnly() {
+  isOnly = !isOnly;
 }

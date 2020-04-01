@@ -2,8 +2,7 @@
   {
     "title" : "景点",
     "imageList" : [
-      "pink_gradient",
-      "pink_gradient"
+      "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3313838802,2768404782&fm=26&gp=0.jpg", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585720563914&di=ca9bdacb8462e33075a401d93ce963aa&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F58c1474c4562f.jpg"
     ],
     "hintList" : [
       "滑雪圣地",
@@ -19,8 +18,8 @@
   {
     "title" : "美食",
     "imageList" : [
-      "pink_gradient",
-      "pink_gradient"
+      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585720711640&di=63a399a85d198726e5ac964f840edd63&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180703%2F056354d7d1e7459c87e766ffab876c89.jpeg",
+      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585720711640&di=73074a1d4da89f113a56ac503bc88ac5&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171230%2F515be052ef0c46b2b09943d5e1950f23.jpeg"
     ],
     "hintList" : [
       "美食林精选",
@@ -36,8 +35,8 @@
   {
     "title" : "小众推荐",
     "imageList" : [
-      "pink_gradient",
-      "pink_gradient"
+      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585720769981&di=9952baa3c5d9cae1cc55d93404ee550d&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn%2Fw600h450%2F20180301%2Ff324-fwnpcns5714952.jpg",
+      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585720795577&di=99a38ad6ef634c14b49b4cfdc59264a8&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170402%2Fdc454f62f9c24b7ab1451b13d5e4a01c_th.jpeg"
     ],
     "hintList" : [
       "玻璃栈道",

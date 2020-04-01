@@ -7,9 +7,10 @@
 //
 
 #import "QMUITableViewCell.h"
-#import <ZZCircleProgress.h>
 #define CIRCLEHEIGHT DEVICE_HEIGHT / 4
+#import "MileageCircleProgressView.h"
 
 @interface MineMeliedgeCell : QMUITableViewCell
-@property(nonatomic, strong) ZZCircleProgress *mileageCircle;
+@property (nonatomic, strong) MileageCircleProgressView *mileageView;
+@property (nonatomic, strong) UILabel *mileTx;
 @end

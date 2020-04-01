@@ -14,6 +14,11 @@
   static RequestUtils *utils = nil;
   dispatch_once(&onceToken, ^{
     utils = [[RequestUtils alloc] initWithBaseURL:[NSURL URLWithString:MAINDOMAIN]];
+    if (Bearer == nil || Bearer.length == 0 || [Bearer isEqualToString:@""]) {
+      [NSThread sleepForTimeInterval:1.5];
+    }
+    [utils.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", Bearer]
+                   forHTTPHeaderField:@"Authorization"];
   });
   return utils;
 }
@@ -26,11 +31,13 @@
   self = [super initWithBaseURL:url];
   if (self) {
     self.requestSerializer.timeoutInterval = 3;
-    self.requestSerializer.cachePolicy     = NSURLRequestReloadIgnoringLocalCacheData;
-    self.requestSerializer                 = [AFHTTPRequestSerializer serializer];
-    AFJSONResponseSerializer *response     = [AFJSONResponseSerializer serializer];
-    response.removesKeysWithNullValues     = YES;
-    self.responseSerializer                = response;
+    self.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    //    self.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    AFJSONResponseSerializer *response = [AFJSONResponseSerializer serializer];
+    response.removesKeysWithNullValues = YES;
+    self.responseSerializer = response;
     [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [self.responseSerializer
      setAcceptableContentTypes:[NSSet setWithObjects:@"text/plain", @"application/json",
@@ -50,6 +57,7 @@
                 Parameter:(NSDictionary *)params
                   Success:(SuccessBlock)success
                   Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
   [[RequestUtils shareManager] GET:urlStr
                         parameters:params
                           progress:nil
@@ -69,6 +77,7 @@
                    Object:(__autoreleasing id)object
                   Success:(SuccessBlock)success
                   Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
   [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
   NSDictionary *dict = [DictUtils Object2Dict:object];
   [self GET:urlStr
@@ -77,7 +86,10 @@
     success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
     success(responseObject);
   }
-    failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) { failure(error); }];
+    failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+    NSLog(@"request utils error------{%@}", [error description]);
+    failure(error);
+  }];
 }
 
 #pragma mark - post with www-form-urlencoded
@@ -90,8 +102,8 @@
                  Parameter:(NSDictionary *)params
                    Success:(SuccessBlock)success
                    Failure:(FailureBlock)failure {
-  [self.requestSerializer setValue:@"application/x-www-form-urlencoded"
-                forHTTPHeaderField:@"Content-Type"];
+  urlStr = [self urlConCatWithApi:urlStr];
+  [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
   NSLog(@"dict:{%@}", [params description]);
   [[RequestUtils shareManager] POST:urlStr
                          parameters:params
@@ -99,25 +111,36 @@
                             success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
     success(responseObject);
   }
-                            failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) { failure(error); }];
+                            failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+    NSLog(@"request utils error------{%@}", [error description]);
+    failure(error);
+  }];
 }
 
 - (void)RequestPostWithUrl:(NSString *)urlStr
                     Object:(_Nullable id)object
                    Success:(SuccessBlock)success
                    Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
   NSDictionary *dict = [DictUtils Object2Dict:object];
-  [self.requestSerializer setValue:@"application/x-www-form-urlencoded"
-                forHTTPHeaderField:@"Content-Type"];
+  [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
   [[RequestUtils shareManager] POST:urlStr
                          parameters:dict
                            progress:nil
                             success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
     success(responseObject);
   }
-                            failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) { failure(error); }];
+                            failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+    NSLog(@"request utils error------{%@}", [error description]);
+    failure(error);
+  }];
 }
 
+- (void)RequestPostJSONWithUrl:(NSString *)urlStr
+                        Object:(_Nullable id)object
+                       Success:(SuccessBlock)success
+                       Failure:(FailureBlock)failure {
+}
 #pragma mark - post binary with application/octet-stream
 /// post binary file with application/octet-stream
 /// @param urlStr api
@@ -128,6 +151,7 @@
                        Parameter:(NSData *)binaryData
                          Success:(SuccessBlock)success
                          Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
   [self.requestSerializer setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
   [self POST:urlStr
   parameters:@{
@@ -137,13 +161,17 @@
      success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
     success(responseObject);
   }
-     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) { failure(error); }];
+     failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+    NSLog(@"request utils error------{%@}", [error description]);
+    failure(error);
+  }];
 }
 #pragma mark - delete
 - (void)RequestDeleteWithUrl:(NSString *)urlStr
                       Object:(id)object
                      Success:(SuccessBlock)success
                      Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
 }
 
 #pragma mark - put
@@ -151,6 +179,7 @@
                    Object:(id)object
                   Success:(SuccessBlock)success
                   Failure:(FailureBlock)failure {
+  urlStr = [self urlConCatWithApi:urlStr];
 }
 
 @end

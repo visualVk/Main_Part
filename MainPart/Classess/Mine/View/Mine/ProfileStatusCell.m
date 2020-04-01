@@ -11,6 +11,7 @@
 #import "CreditView.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "RecommondController.h"
 
 @interface ProfileStatusCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) QMUIGridView *statusGridView;
@@ -55,9 +56,17 @@
     CreditView *cv = [CreditView new];
     addView(_statusGridView, cv);
     CardBagView *cbv = [CardBagView new];
+    cbv.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(go2CardBag:)];
+    [cbv addGestureRecognizer:tap];
     addView(_statusGridView, cbv);
   }
   return _statusGridView;
 }
 
+- (void)go2CardBag:(UITapGestureRecognizer *)tap {
+  [self.qmui_viewController.navigationController pushViewController:[RecommondController new]
+                                                           animated:YES];
+}
 @end

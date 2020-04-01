@@ -66,4 +66,5 @@ target 'MainPart' do
   pod 'CRBoxInputView', '1.1.7'
   pod 'JVFloatLabeledTextField'
   pod 'HQImageEditViewController'
+  pod 'AvoidCrash', '~> 2.5.2'
 end

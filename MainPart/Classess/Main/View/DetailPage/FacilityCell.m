@@ -21,11 +21,11 @@
 @implementation FacilityCell
 
 + (CGFloat)cellOpenH {
-  return 3 * DEVICE_HEIGHT / 7;
+  return 3 * DEVICE_HEIGHT / 15;
 }
 
 + (CGFloat)cellCloseH {
-  return DEVICE_HEIGHT / 10;
+  return DEVICE_HEIGHT / 15;
 }
 
 + (CGFloat)foldNum {
@@ -43,21 +43,6 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  UIView *superview = [self viewWithIndex:1];
-  [superview qmui_removeAllSubviews];
-  UIEdgeInsets padding = UIEdgeInsetsMake(0.5 * SPACE, 0.5 * SPACE, 0, 0.5 * SPACE);
-  if (self.type == SINGLEINLINE) {
-    addView(superview, self.label);
-    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.edges.equalTo(superview).with.insets(padding);
-    }];
-  } else {
-    addView(superview, self.gridTag);
-    [self.gridTag mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.right.top.equalTo(superview).width.inset(0.5 * SPACE);
-      make.height.equalTo(@((DEVICE_HEIGHT / 20) * 4));
-    }];
-  }
 }
 
 #pragma mark - GenerateForeView
@@ -96,8 +81,10 @@
   return _show;
 }
 
-+ (FacilityCell *)testCellWithTableView:(UITableView *)tableView {
++ (FacilityCell *)testCellWithTableView:(UITableView *)tableView
+                           facilityType:(FacilityCellType)type {
   FacilityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FacilityCell"];
+  cell.type = type;
   if (cell == nil) {
     CGFloat subHeight;
     if ([FacilityCell foldNum] == 1) {
@@ -107,7 +94,7 @@
       ([FacilityCell foldNum] - 1);
     }
     cell = [[FacilityCell alloc] initWithStyle:UITableViewCellStyleDefault
-                               reuseIdentifier:@"FacilityCell"
+                               reuseIdentifier:[NSString stringWithFormat:@"FacilityCell"]
                              forwardViewHeight:[FacilityCell cellCloseH] - 20
                                  subFlipHeight:subHeight
                                      foldCount:[FacilityCell foldNum]
@@ -134,7 +121,28 @@
 
 - (void)setNumber:(NSInteger)number {
   _number = number;
-  if (self.foreView) { QMUILogInfo(@"spot fold cell", @"fold cell create successfully!"); }
+  if (self.foreView) {
+    QMUILogInfo(@"spot fold cell", @"fold cell create successfully!");
+    
+    UIView *superview = [self viewWithIndex:1];
+    //    [superview qmui_removeAllSubviews];
+    UIEdgeInsets padding = UIEdgeInsetsMake(0.5 * SPACE, 0.5 * SPACE, 0, 0.5 * SPACE);
+    if (self.type == SINGLEINLINE) {
+      self.title.text = @"酒店政策";
+      addView(superview, self.label);
+      CGSize size = [self.label sizeThatFits:CGSizeMake(DEVICE_WIDTH - SPACE, MAXFLOAT)];
+      [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).with.insets(padding);
+      }];
+    } else {
+      addView(superview, self.gridTag);
+      self.title.text = @"酒店设施";
+      [self.gridTag mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(superview).width.inset(0.5 * SPACE);
+        make.height.equalTo(@((DEVICE_HEIGHT / 20) * 4));
+      }];
+    }
+  }
   //  if (!self.facilityBack) {
   //    self.facilityBack = [UIView new]; UIView *superview = [self viewWithIndex:1];
   //    addView(superview, self.facilityBack);

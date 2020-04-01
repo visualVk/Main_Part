@@ -179,7 +179,7 @@ QMUINavigationControllerDelegate> {
       SelectionCell *scell =
       [tableView dequeueReusableCellWithIdentifier:@"selectioncell" forIndexPath:indexPath];
       return scell;
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3) { //空白行
       QMUITableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -190,6 +190,7 @@ QMUINavigationControllerDelegate> {
       [tableView dequeueReusableCellWithIdentifier:@"hotcell" forIndexPath:indexPath];
       hCell.tableview = self.tableview;
       self.hotCollectionview = hCell.collectionview;
+      hCell.datas = @[ @"", @"", @"", @"", @"", @"", @"" ];
       return hCell;
     }
   } else {

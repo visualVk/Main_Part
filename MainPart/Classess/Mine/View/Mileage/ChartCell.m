@@ -57,13 +57,13 @@
       @3.9, @4.2, @5.7, @8.5, @11.9, @15.2, @17.0, @16.6, @14.2, @10.3, @6.6, @4.8, @200
     ]),
   ]);
-  aaChartModel.zoomType = AAChartZoomTypeX;
+  //  aaChartModel.zoomType = AAChartZoomTypeX;
   [self.chartView aa_drawChartWithChartModel:aaChartModel];
 }
 
 - (void)addPieChart {
   AASeriesElement *element =
-  AASeriesElement.new.nameSet(@"酒店星级占比")
+  AASeriesElement.new.nameSet(@"占比")
   .innerSizeSet(@"20%") //内部圆环半径大小占比
   //    .sizeSet(@300)//尺寸大小
   .borderWidthSet(@0) //描边的宽度
@@ -88,7 +88,7 @@
   .chartTypeSet(AAChartTypePie)
   .colorsThemeSet(
                   @[ @"#0c9674", @"#7dffc0", @"#ff3333", @"#facd32", @"#ffffa0", @"#EA007B" ])
-  .titleSet(@"")
+  .titleSet(@"入住酒店星级情况")
   .subtitleSet(@"")
   .dataLabelsEnabledSet(true) //是否直接显示扇形图数据
   .yAxisTitleSet(@"摄氏度")
@@ -99,6 +99,7 @@
 - (AAChartView *)chartView {
   if (!_chartView) {
     _chartView = [[AAChartView alloc] init];
+    _chartView.scrollEnabled = false;
     addView(self.contentView, _chartView);
     [_chartView mas_makeConstraints:^(MASConstraintMaker *make) {
       make.left.right.equalTo(self.contentView);

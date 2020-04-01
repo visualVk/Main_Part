@@ -6,9 +6,10 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
-#import "QMUITableViewCell.h"
 #import "OrderCheckInfo.h"
+#import "QMUITableViewCell.h"
 typedef enum { NonPayment, Paid, Remark } OrderType;
+typedef void (^DeleteOneOrder)(OrderCheckInfo *orderCheckInfo);
 @interface MineOrderCell : QMUITableViewCell
 @property (nonatomic, strong) UILabel *hotelName;
 @property (nonatomic, strong) UILabel *state;
@@ -20,6 +21,7 @@ typedef enum { NonPayment, Paid, Remark } OrderType;
 @property (nonatomic, strong) QMUIGhostButton *payBtn;
 @property (nonatomic, strong) QMUIGhostButton *deleteBtn;
 @property (nonatomic, strong) NSDictionary *infoDict;
-@property(nonatomic, strong) OrderCheckInfo *model;
--(void)loadData;
+@property (nonatomic, strong) OrderCheckInfo *model;
+@property (nonatomic, strong) DeleteOneOrder deleteOneOrder;
+- (void)loadData;
 @end

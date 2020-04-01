@@ -13,7 +13,7 @@
                          message:(NSString *)message
                   preferredStyle:(QMUIAlertControllerStyle)preferredStyle
                       chooseList:(NSArray<NSString *> *)chooseList
-                     chooseBlock:(ChooseBlock)chooseBlock {
+                     chooseBlock:(_Nullable ChooseBlock)chooseBlock {
   QMUIAlertController *alertCon =
   [[QMUIAlertController alloc] initWithTitle:title
                                      message:message

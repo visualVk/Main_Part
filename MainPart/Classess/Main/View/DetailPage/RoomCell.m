@@ -63,6 +63,7 @@
   [self.notationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.tagFloatView.mas_bottom).with.inset(0.25 * SPACE);
     make.left.equalTo(self.title);
+    make.width.equalTo(superview).multipliedBy(3.0 / 5);
     make.bottom.lessThanOrEqualTo(superview).with.inset(0.5 * SPACE);
   }];
   
@@ -74,6 +75,7 @@
   [self.desPrice mas_makeConstraints:^(MASConstraintMaker *make) {
     make.bottom.equalTo(self.payImg);
     make.trailing.equalTo(self.payImg.mas_leading).with.inset(0.25 * SPACE);
+    make.size.equalTo(self.desPrice);
   }];
   
   [self.discountPrice mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -111,7 +113,7 @@
     _tagFloatView = [[QMUIFloatLayoutView alloc] init];
     _tagFloatView.itemMargins = UIEdgeInsetsMake(5, 5, 5, 5);
     for (int i = 0; i < 3; i++) {
-      [_tagFloatView addSubview:[RoomCell generateTagLabelWithContent:@"便宜"]];
+      [_tagFloatView addSubview:[self generateTagLabelWithContent:@"便宜"]];
     }
   }
   return _tagFloatView;
@@ -120,6 +122,8 @@
 - (UILabel *)notationLabel {
   if (!_notationLabel) {
     _notationLabel = [UILabel new];
+    _notationLabel.numberOfLines = 0;
+    _notationLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _notationLabel.text = @"暂无说明信息";
     _notationLabel.textColor = UIColor.qmui_randomColor;
   }
@@ -178,7 +182,7 @@
   return _payImg;
 }
 
-+ (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
+- (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
   label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
@@ -187,5 +191,22 @@
   label.font = UIFontMake(14);
   label.textColor = UIColor.qmui_randomColor;
   return label;
+}
+
+- (void)generateTagFlowWithList:(NSArray *)list {
+  [self.tagFloatView qmui_removeAllSubviews];
+  for (NSString *str in list) {
+    [self.tagFloatView addSubview:[self generateTagLabelWithContent:str]];
+  }
+}
+
+- (void)setModel:(HotelRoomModel *)model {
+  _model = model;
+  self.oldPrice.text = [NSString stringWithFormat:@"¥%li", model.roomOrgprice];
+  self.discountPrice.text = [NSString stringWithFormat:@"¥%li", model.roomPrice];
+  self.desPrice.text =
+  [NSString stringWithFormat:@"已减¥%li", model.roomOrgprice - model.roomPrice];
+  [self generateTagFlowWithList:@[ model.windows, model.wifiInfo, model.breakfast ]];
+  self.notationLabel.text = self.model.roomDetails;
 }
 @end

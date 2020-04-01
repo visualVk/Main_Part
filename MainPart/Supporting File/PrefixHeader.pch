@@ -36,6 +36,7 @@
 #import <ArcSoftFaceEngine/ArcSoftFaceEngine.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <Masonry.h>
+#import <SDWebImage/SDWebImage.h>
 #import "QDCommonUI.h"
 #import "QDUIHelper.h"
 #import "QDThemeManager.h"

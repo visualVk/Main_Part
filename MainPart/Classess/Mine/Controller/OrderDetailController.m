@@ -10,11 +10,13 @@
 #import "DetailController.h"
 #import "MarkUtils.h"
 #import "MineOrderCheckPersonInfoView.h"
+#import "MineOrderDetailDeleteToolBar.h"
 #import "MineOrderHotelView.h"
 #import "MineOrderInfoCell.h"
 #import "MineOrderQuestionToolBar.h"
 #import "MineOrderRoomInfoView.h"
 #import "MineOrderServiceCell.h"
+#import "QDAlertHelper.h"
 #import <JQCollectionViewAlignLayout.h>
 #define MINEORDERROOMINFOCELL @"mineorderroominfoview"
 #define MINEORDERCHECKPERSONINFOVIEW @"mineordercheckpersoninfoview"
@@ -22,14 +24,18 @@
 #define MINEORDERINFOCELL @"mineorderinfocell"
 #define MINEORDERSERVICECELL @"mineorderservicecell"
 
-@interface OrderDetailController () <GenerateEntityDelegate, UICollectionViewDelegate,
-UICollectionViewDataSource,
-JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
+@interface OrderDetailController () <
+GenerateEntityDelegate, UICollectionViewDelegate, UICollectionViewDataSource,
+JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate> {
+  BOOL _isEdit;
+}
 @property (nonatomic, strong) MineOrderQuestionToolBar *queToolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collaspeList;
-@property (nonatomic, strong) NSArray<CheckInfo *> *checkList;
+@property (nonatomic, strong) NSMutableArray<CheckInfo *> *checkList;
 @property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) NSMutableArray *deleteList;
+@property (nonatomic, strong) MineOrderDetailDeleteToolBar *deleteToolBar;
 @end
 
 @implementation OrderDetailController
@@ -39,6 +45,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
   // init 时做的事情请写在这里
   self.collaspeList = [NSMutableArray new];
   //  self.datas = @[ @"", @"", @"" ];
+  self.deleteList = [NSMutableArray new];
 }
 
 - (void)initSubviews {
@@ -55,7 +62,10 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   self.checkList = self.orderCheckInfo.checkInfo;
-  for (CheckInfo *checkInfo in self.checkList) { [self.collaspeList addObject:@"0"]; }
+  for (CheckInfo *checkInfo in self.checkList) {
+    [self.collaspeList addObject:@"0"];
+    [self.deleteList addObject:[NSNumber numberWithBool:false]];
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,6 +87,24 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
 - (void)setupNavigationItems {
   [super setupNavigationItems];
   self.title = @"订单详情";
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithTitle:@"编辑"
+                                   style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(orderEditClick:)];
+}
+
+- (void)orderEditClick:(UIBarButtonItem *)item {
+  if (!_isEdit) {
+    _isEdit = true;
+    [item setTitle:@"完成"];
+    [self showDeleteToolBar];
+  } else {
+    _isEdit = false;
+    [item setTitle:@"编辑"];
+    [self hideDeleteToolBar];
+  }
+  [UIView performWithoutAnimation:^{ [self.collectionView reloadData]; }];
 }
 
 #pragma mark - GenerateEntityDelegate
@@ -131,6 +159,54 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
   return _queToolBar;
 }
 
+- (MineOrderDetailDeleteToolBar *)deleteToolBar {
+  if (!_deleteToolBar) {
+    _deleteToolBar = [MineOrderDetailDeleteToolBar new];
+    __weak __typeof(self) weakSelf = self;
+    _deleteToolBar.allSelectBlock = ^(BOOL on) {
+      for (int i = 0; i < self.checkList.count; i++) {
+        if (on) {
+          weakSelf.deleteList[i] = [NSNumber numberWithBool:true];
+        } else {
+          weakSelf.deleteList[i] = [NSNumber numberWithBool:false];
+        }
+      }
+      [UIView performWithoutAnimation:^{ [weakSelf.collectionView reloadData]; }];
+    };
+    _deleteToolBar.deleteBlock = ^{
+      [QDAlertHelper showChooseAlertWithTitle:@""
+                                      message:@"确定将选中房间退房吗？"
+                               preferredStyle:QMUIAlertControllerStyleAlert
+                                   chooseList:@[ @"是", @"否" ]
+                                  chooseBlock:^(NSInteger selectedIndex) {
+        if (selectedIndex == 0) {
+          NSMutableIndexSet *indexSet =
+          [[NSMutableIndexSet alloc] init];
+          for (int i = 0; i < weakSelf.checkList.count; i++) {
+            if ([weakSelf.deleteList[i] boolValue])
+              [indexSet addIndex:i];
+          }
+          [weakSelf.checkList removeObjectsAtIndexes:indexSet];
+        }
+      }];
+    };
+  }
+  return _deleteToolBar;
+}
+
+- (void)showDeleteToolBar {
+  addView(self.view, self.deleteToolBar);
+  [self.deleteToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.right.equalTo(self.view);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 15);
+    make.bottom.equalTo(self.queToolBar.mas_top);
+  }];
+}
+
+- (void)hideDeleteToolBar {
+  [self.deleteToolBar removeFromSuperview];
+}
+
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
   return 3 + self.checkList.count;
@@ -146,13 +222,13 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   if (section == 0 || section == 1) return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 10);
-  if (section > 1 && section < self.checkList.count + 2) {
+  if (self.checkList && self.checkList.count && section > 1 && section < self.checkList.count + 2) {
     if ([@"0" isEqualToString:self.collaspeList[section - 2]]) {
       return CGSizeMake(DEVICE_WIDTH, 0);
     }
     return CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT / 4);
   }
-  if (section == 5) return CGSizeMake(DEVICE_WIDTH, 1.25 * SPACE + 85);
+  if (section == 2 + self.checkList.count) return CGSizeMake(DEVICE_WIDTH, 1.25 * SPACE + 85);
   return CGSizeZero;
 }
 
@@ -172,11 +248,18 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate>
                                      withReuseIdentifier:MINEORDERCHECKPERSONINFOVIEW
                                             forIndexPath:indexPath];
   if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-    header.tag = indexPath.section;
+    header.isEdit = _isEdit;
+    header.collapseImage.tag = indexPath.section;
+    [header checkSet:[self.deleteList[indexPath.section - 2] boolValue]];
     UITapGestureRecognizer *tap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(collapseSectionHeader:)];
-    [header addGestureRecognizer:tap];
+    [header.collapseImage addGestureRecognizer:tap];
+    
+    header.tag = indexPath.section;
+    UITapGestureRecognizer *editTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editClick:)];
+    [header addGestureRecognizer:editTap];
   }
   return header;
 }
@@ -266,5 +349,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - MineOrderCollaspeDelegate
 - (void)collaspView:(UIView *)clickView {
+}
+
+- (void)editClick:(UITapGestureRecognizer *)tap {
+  if (_isEdit) {
+    MineOrderCheckPersonInfoView *header = (MineOrderCheckPersonInfoView *)(tap.qmui_targetView);
+    self.deleteList[tap.qmui_targetView.tag - 2] =
+    [NSNumber numberWithBool:![header getCheckSelected]];
+    [header checkSet:![header getCheckSelected]];
+  }
 }
 @end

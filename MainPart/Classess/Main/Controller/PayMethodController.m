@@ -17,7 +17,9 @@
 #define PAYDEADLINECELL @"paydeadlinecell"
 #define PAYMETHODCELL @"paymethodcell"
 @interface PayMethodController () <GenerateEntityDelegate, QMUITableViewDelegate,
-QMUITableViewDataSource, PayPasswordDelegate>
+QMUITableViewDataSource, PayPasswordDelegate> {
+  NSInteger methodIndex;
+}
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) QMUIButton *subBtn;
 @property (nonatomic, strong) PayPasswordController *ppCon;
@@ -28,6 +30,7 @@ QMUITableViewDataSource, PayPasswordDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  methodIndex = 0;
 }
 
 - (void)initSubviews {
@@ -43,6 +46,9 @@ QMUITableViewDataSource, PayPasswordDelegate>
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
+                              animated:YES
+                        scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -90,9 +96,9 @@ QMUITableViewDataSource, PayPasswordDelegate>
     _tableView = [[QMUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [_tableView registerClass:PayMethodCell.class forCellReuseIdentifier:PAYMETHODCELL];
     [_tableView registerClass:PayDeadlineCell.class forCellReuseIdentifier:PAYDEADLINECELL];
-    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
-                            animated:YES
-                      scrollPosition:UITableViewScrollPositionNone];
+    //    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
+    //                            animated:YES
+    //                      scrollPosition:UITableViewScrollPositionNone];
     _tableView.delegate = self;
     _tableView.dataSource = self;
   }
@@ -172,6 +178,7 @@ QMUITableViewDataSource, PayPasswordDelegate>
   [tableView selectRowAtIndexPath:indexPath
                          animated:YES
                    scrollPosition:UITableViewScrollPositionNone];
+  methodIndex = indexPath.row;
 }
 
 - (void)confirmPayment {

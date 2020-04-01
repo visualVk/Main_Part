@@ -1,35 +1,109 @@
 {
-  "orderStatus" : 0,
-  "orderDate" : "2020-03-03 18:19:39",
-  "orderId" : "87578949848948489489",
-  "hotelId" : 0,
-  "hotelName" : "温州荣欣大酒店",
-  "hotelAddress" : "aaa省bbb市ccc区ddd街ccc号",
-  "edDate" : "2018-02-04",
-  "stDate" : "2018-02-02",
-  "roomCombo" : "·两张大床\n·包早中晚餐(入住当天不包早中餐)\n·享有免费车位，wifi",
-  "roomPrice" : "199",
-  "roomTypeId" : 0,
-  "roomTypeName" : "豪华大床",
-  "dinnerAddress" : "aaa楼bbb层ccc号",
-  "checkInfo" : [
+  "data":[
     {
-      "personName" : "wwx",
-      "personCard" : "454545454545454545",
-      "roomAddress" : "aaa楼bbb层ccc1号",
-      "roomStatus" : false
+      "orderStatus" : 0,
+      "orderDate" : "2020-03-03 18:19:39",
+      "orderId" : "87578949848948489489",
+      "hotelId" : 0,
+      "hotelName" : "温州荣欣大酒店",
+      "hotelAddress" : "aaa省bbb市ccc区ddd街ccc号",
+      "edDate" : "2018-02-04",
+      "stDate" : "2018-02-02",
+      "roomCombo" : "·两张大床\n·包早中晚餐(入住当天不包早中餐)\n·享有免费车位，wifi",
+      "roomPrice" : "199",
+      "roomTypeId" : 0,
+      "roomTypeName" : "豪华大床",
+      "dinnerAddress" : "aaa楼bbb层ccc号",
+      "checkInfo" : [
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454545",
+          "roomAddress" : "aaa楼bbb层ccc1号",
+          "roomStatus" : false
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454541",
+          "roomAddress" : "aaa楼bbb层ccc2号",
+          "roomStatus" : true
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454542",
+          "roomAddress" : "aaa楼bbb层ccc3号",
+          "roomStatus" : false
+        }
+      ]
     },
     {
-      "personName" : "wwx",
-      "personCard" : "454545454545454541",
-      "roomAddress" : "aaa楼bbb层ccc2号",
-      "roomStatus" : false
+      "orderStatus" : 1,
+      "orderDate" : "2020-03-03 18:19:39",
+      "orderId" : "87578949848948489489",
+      "hotelId" : 0,
+      "hotelName" : "温州荣欣大酒店",
+      "hotelAddress" : "aaa省bbb市ccc区ddd街ccc号",
+      "edDate" : "2018-02-04",
+      "stDate" : "2018-02-02",
+      "roomCombo" : "·两张大床\n·包早中晚餐(入住当天不包早中餐)\n·享有免费车位，wifi",
+      "roomPrice" : "199",
+      "roomTypeId" : 0,
+      "roomTypeName" : "豪华大床",
+      "dinnerAddress" : "aaa楼bbb层ccc号",
+      "checkInfo" : [
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454545",
+          "roomAddress" : "aaa楼bbb层ccc1号",
+          "roomStatus" : false
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454541",
+          "roomAddress" : "aaa楼bbb层ccc2号",
+          "roomStatus" : true
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454542",
+          "roomAddress" : "aaa楼bbb层ccc3号",
+          "roomStatus" : false
+        }
+      ]
     },
     {
-      "personName" : "wwx",
-      "personCard" : "454545454545454542",
-      "roomAddress" : "aaa楼bbb层ccc3号",
-      "roomStatus" : false
+      "orderStatus" : 2,
+      "orderDate" : "2020-03-03 18:19:39",
+      "orderId" : "87578949848948489489",
+      "hotelId" : 0,
+      "hotelName" : "温州荣欣大酒店",
+      "hotelAddress" : "aaa省bbb市ccc区ddd街ccc号",
+      "edDate" : "2018-02-04",
+      "stDate" : "2018-02-02",
+      "roomCombo" : "·两张大床\n·包早中晚餐(入住当天不包早中餐)\n·享有免费车位，wifi",
+      "roomPrice" : "199",
+      "roomTypeId" : 0,
+      "roomTypeName" : "豪华大床",
+      "dinnerAddress" : "aaa楼bbb层ccc号",
+      "checkInfo" : [
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454545",
+          "roomAddress" : "aaa楼bbb层ccc1号",
+          "roomStatus" : false
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454541",
+          "roomAddress" : "aaa楼bbb层ccc2号",
+          "roomStatus" : true
+        },
+        {
+          "personName" : "wwx",
+          "personCard" : "454545454545454542",
+          "roomAddress" : "aaa楼bbb层ccc3号",
+          "roomStatus" : false
+        }
+      ]
     }
   ]
 }

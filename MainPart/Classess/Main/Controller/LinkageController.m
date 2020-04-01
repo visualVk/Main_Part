@@ -57,7 +57,7 @@
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"<##>";
+  //  self.title = @"<##>";
 }
 
 - (void)generateRootView {

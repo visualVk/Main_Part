@@ -11,16 +11,17 @@
 #import "MarkUtils.h"
 #import "MineInfoButtonCell.h"
 #import "MineInfoEditController.h"
+#import "QMUIConfigurationTemplate.h"
 #import <HMSegmentedControl.h>
 #define IDCARDINFOCELL @"idcardinfocell"
 #define MINEINFOBUTTONCELL @"mineinfobuttoncell"
-#import "InfoList.h"
+#import "CheckInPeopleInfoList.h"
 #import "NSDictionary+LoadJson.h"
 
 @interface MineInfoController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
 @property (nonatomic, strong) QMUITableView *touristTableView;
-@property (nonatomic, strong) NSMutableArray *infoList;
+@property (nonatomic, strong) NSMutableArray<Info *> *infoList;
 @end
 
 @implementation MineInfoController
@@ -29,8 +30,9 @@ QMUITableViewDataSource>
   [super didInitialize];
   // init 时做的事情请写在这里
 #ifdef Test_Hotel
-  NSDictionary *dict = [NSDictionary readLocalFileWithName:@"ProfileInfoListModelJSON"];
-  self.infoList = [[[InfoList alloc] initWithDictionary:dict].info mutableCopy];
+  NSDictionary *dict = [NSDictionary readLocalFileWithName:@"HotelCheckInPeopleInfoModelJSON"];
+  CheckInPeopleInfoList *list = [[CheckInPeopleInfoList alloc] initWithDictionary:dict];
+  self.infoList = [list.info mutableCopy];
 #endif
 }
 
@@ -42,7 +44,7 @@ QMUITableViewDataSource>
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
-  self.view.backgroundColor = UIColor.qd_separatorColor;
+  self.view.backgroundColor = UIColor.qd_customBackgroundColor;
   [self generateRootView];
 }
 
@@ -64,6 +66,28 @@ QMUITableViewDataSource>
 
 - (void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
+  for (UIView *subview in self.touristTableView.subviews) {
+    if ([subview isKindOfClass:NSClassFromString(@"UISwipeActionPullView")]) {
+      //修改背景颜色
+      subview.backgroundColor = [UIColor clearColor];
+      //修改按钮-颜色
+      UIButton *swipeActionStandardBtn = subview.subviews[0];
+      if ([swipeActionStandardBtn
+           isKindOfClass:NSClassFromString(@"UISwipeActionStandardButton")]) {
+        //        CGFloat swipeActionStandardBtnOX = swipeActionStandardBtn.frame.origin.x;
+        //        CGFloat swipeActionStandardBtnW = swipeActionStandardBtn.frame.size.width;
+        //        swipeActionStandardBtn.frame = CGRectMake(swipeActionStandardBtnOX, 0,
+        //                                                  swipeActionStandardBtnW,
+        //                                                  self.cellHeightRef - 10);
+        
+        [swipeActionStandardBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+        //        [swipeActionStandardBtn setTitleColor:[UIColor whiteColor]
+        //                                     forState:UIControlStateHighlighted];
+        //        [swipeActionStandardBtn setTitleColor:[UIColor whiteColor]
+        //        forState:UIControlStateSelected];
+      }
+    }
+  }
 }
 
 - (void)setupNavigationItems {
@@ -76,10 +100,10 @@ QMUITableViewDataSource>
   addView(self.view, self.touristTableView);
   
   [self.touristTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.equalTo(self.view);
+    make.left.right.equalTo(self.view);
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-    make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
-    make.width.mas_equalTo(DEVICE_WIDTH);
+    make.bottom.equalTo(self.view);
+    //    make.width.mas_equalTo(DEVICE_WIDTH);
   }];
 }
 
@@ -91,6 +115,7 @@ QMUITableViewDataSource>
     [_touristTableView registerClass:MineInfoButtonCell.class
               forCellReuseIdentifier:MINEINFOBUTTONCELL];
     [_touristTableView registerClass:IDCardInfoCell.class forCellReuseIdentifier:IDCARDINFOCELL];
+    _touristTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _touristTableView.delegate = self;
     _touristTableView.dataSource = self;
   }
@@ -115,7 +140,7 @@ QMUITableViewDataSource>
   if (tableView == self.touristTableView) {
     switch (section) {
       case 0:
-        return DEVICE_HEIGHT / 15;
+        return UITableViewAutomaticDimension;
       case 1:
         return DEVICE_HEIGHT / 9;
       default:
@@ -145,7 +170,7 @@ QMUITableViewDataSource>
     if (section == 1) {
       IDCardInfoCell *inCell =
       [tableView dequeueReusableCellWithIdentifier:IDCARDINFOCELL forIndexPath:indexPath];
-      [inCell loadData:self.infoList[indexPath.row]];
+      inCell.model = self.infoList[indexPath.row];
       return inCell;
     }
   }
@@ -161,6 +186,7 @@ QMUITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   MineInfoEditController *editCon = [MineInfoEditController new];
+  editCon.info = self.infoList[indexPath.row];
   [self.navigationController pushViewController:editCon animated:YES];
 }
 
@@ -168,7 +194,7 @@ QMUITableViewDataSource>
 trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
   UIContextualAction *deleteRowAction =
   [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive
-                                          title:@"删除"
+                                          title:@""
                                         handler:^(UIContextualAction *_Nonnull action,
                                                   __kindof UIView *_Nonnull sourceView,
                                                   void (^_Nonnull completionHandler)(BOOL)) {
@@ -176,11 +202,16 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     completionHandler(YES);
     [self.touristTableView reloadData];
   }];
-  deleteRowAction.backgroundColor = UIColor.qd_separatorColor;
-  deleteRowAction.image = UIImageMake(@"delete");
+  deleteRowAction.backgroundColor = UIColor.qd_customBackgroundColor;
+  deleteRowAction.image = UIImageMake(@"mine_tourist_delete");
   
   UISwipeActionsConfiguration *config =
   [UISwipeActionsConfiguration configurationWithActions:@[ deleteRowAction ]];
   return config;
+}
+
+- (void)setInfoList:(NSMutableArray<Info *> *)infoList {
+  _infoList = infoList;
+  [self.touristTableView reloadData];
 }
 @end

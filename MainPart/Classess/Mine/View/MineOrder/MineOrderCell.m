@@ -8,6 +8,7 @@
 
 #import "MineOrderCell.h"
 #import "MarkUtils.h"
+#import "PayMethodController.h"
 #import <SJAttributesFactory.h>
 
 @interface MineOrderCell () <GenerateEntityDelegate>
@@ -243,9 +244,12 @@
 - (QMUIGhostButton *)payBtn {
   if (!_payBtn) {
     _payBtn = [[QMUIGhostButton alloc] initWithGhostType:QMUIGhostButtonColorGray];
-    [_payBtn setTitle:@"未出行" forState:UIControlStateNormal];
+    [_payBtn setTitle:@"取消预定" forState:UIControlStateNormal];
     _payBtn.titleLabel.font = UIFontMake(16);
     _payBtn.contentEdgeInsets = UIEdgeInsetsMake(3, 10, 3, 10);
+    [_payBtn addTarget:self
+                action:@selector(labelTap:)
+      forControlEvents:UIControlEventTouchUpInside];
   }
   return _payBtn;
 }
@@ -256,8 +260,22 @@
     [_deleteBtn setTitle:@"待付款" forState:UIControlStateNormal];
     _deleteBtn.contentEdgeInsets = UIEdgeInsetsMake(3, 10, 3, 10);
     _deleteBtn.titleLabel.font = UIFontMake(16);
+    [_deleteBtn addTarget:self
+                   action:@selector(labelTap:)
+         forControlEvents:UIControlEventTouchUpInside];
   }
   return _deleteBtn;
+}
+
+- (void)labelTap:(QMUIGhostButton *)btn {
+  if ([@"取消预定" isEqualToString:btn.titleLabel.text]) {
+    if (self.deleteOneOrder) self.deleteOneOrder(self.model);
+  } else if ([@"待付款" isEqualToString:btn.titleLabel.text]) {
+    PayMethodController *pmCon = [PayMethodController new];
+    [self.qmui_viewController.navigationController pushViewController:pmCon animated:YES];
+  } else if ([@"待评价" isEqualToString:btn.titleLabel.text]) {
+    //    [self.qmui_viewController.navigationController push]
+  }
 }
 
 //- (void)loadData {
@@ -286,7 +304,7 @@
   
   switch (model.orderStatus) {
     case 0:
-      self.state.text = @"未出行";
+      self.state.text = @"取消预定";
       [self.payBtn setTitle:self.state.text forState:UIControlStateNormal];
       self.payBtn.hidden = false;
       self.deleteBtn.hidden = YES;

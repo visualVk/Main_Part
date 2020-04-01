@@ -1,0 +1,25 @@
+{
+  "info" : [
+    {
+      "idCard" : "333333333333333333",
+      "name" : "aaaa",
+      "gender" : false,
+      "phoneNum" : "11111111111",
+      "birthday" : "1999-06-15"
+    },
+    {
+      "idCard" : "333333333333333331",
+      "name" : "bbbb",
+      "gender" : false,
+      "phoneNum" : "11111111111",
+      "birthday" : "1999-06-15"
+    },
+    {
+      "idCard" : "333333333333333332",
+      "name" : "cccc",
+      "gender" : false,
+      "phoneNum" : "11111111111",
+      "birthday" : "1999-06-15"
+    }
+  ]
+}

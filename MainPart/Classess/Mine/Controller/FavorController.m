@@ -7,16 +7,13 @@
 //
 
 #import "FavorController.h"
-#import "GHDropMenu.h"
-#import "GHDropMenuModel.h"
 #import "MarkUtils.h"
 #import "MineFavorCell.h"
 #define FAVORCELL @"favorcell"
 #define CELLHEIGHT DEVICE_HEIGHT / 8
 @interface FavorController () <GenerateEntityDelegate, QMUITableViewDelegate,
-QMUITableViewDataSource, GHDropMenuDelegate>
+QMUITableViewDataSource>
 @property (nonatomic, strong) QMUITableView *tableView;
-@property (nonatomic, strong) GHDropMenu *dropMenu;
 @end
 
 @implementation FavorController
@@ -63,16 +60,14 @@ QMUITableViewDataSource, GHDropMenuDelegate>
 }
 
 - (void)dealloc {
-  [self.dropMenu closeMenu];
 }
 
 #pragma mark - GenerateEntityDelegate
 - (void)generateRootView {
   addView(self.view, self.tableView);
-  addView(self.view, self.dropMenu);
   
   [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.dropMenu.mas_bottom);
+    make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
     make.left.right.equalTo(self.view);
     make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
   }];
@@ -87,27 +82,6 @@ QMUITableViewDataSource, GHDropMenuDelegate>
     _tableView.dataSource = self;
   }
   return _tableView;
-}
-
-- (GHDropMenu *)dropMenu {
-  if (!_dropMenu) {
-    GHDropMenuModel *configuration = [[GHDropMenuModel alloc] init];
-    configuration.recordSeleted = NO;
-    configuration.titles = [configuration creaDropMenuData];
-    
-    __weak __typeof(self) weakSelf = self;
-    _dropMenu = [GHDropMenu creatDropMenuWithConfiguration:configuration
-                                                     frame:CGRectMake(0, kGHSafeAreaTopHeight, kGHScreenWidth, 44)
-                                        dropMenuTitleBlock:^(GHDropMenuModel *_Nonnull dropMenuModel) {
-      
-    }
-                                     dropMenuTagArrayBlock:^(NSArray *_Nonnull tagArray) { [weakSelf getStrWith:tagArray]; }];
-    _dropMenu.titleSeletedImageName = @"up_normal";
-    _dropMenu.titleNormalImageName = @"down_normal";
-    _dropMenu.delegate = self;
-    _dropMenu.durationTime = 0.5;
-  }
-  return _dropMenu;
 }
 
 #pragma mark - QMUITableViewDelegate,QMUITableViewDataSource
@@ -152,33 +126,4 @@ QMUITableViewDataSource, GHDropMenuDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
-#pragma mark - DropMenuDelegate
-- (void)dropMenu:(GHDropMenu *)dropMenu dropMenuTitleModel:(GHDropMenuModel *)dropMenuTitleModel {
-  self.navigationItem.title = [NSString stringWithFormat:@"筛选结果: %@", dropMenuTitleModel.title];
-}
-- (void)dropMenu:(GHDropMenu *)dropMenu tagArray:(NSArray *)tagArray {
-  [self getStrWith:tagArray];
-}
-- (void)getStrWith:(NSArray *)tagArray {
-  NSMutableString *string = [NSMutableString string];
-  if (tagArray.count) {
-    for (GHDropMenuModel *dropMenuTagModel in tagArray) {
-      if (dropMenuTagModel.tagSeleted) {
-        if (dropMenuTagModel.tagName.length) {
-          [string appendFormat:@"%@", dropMenuTagModel.tagName];
-        }
-      }
-      if (dropMenuTagModel.maxPrice.length) {
-        [string appendFormat:@"最大价格%@", dropMenuTagModel.maxPrice];
-      }
-      if (dropMenuTagModel.minPrice.length) {
-        [string appendFormat:@"最小价格%@", dropMenuTagModel.minPrice];
-      }
-      if (dropMenuTagModel.singleInput.length) {
-        [string appendFormat:@"%@", dropMenuTagModel.singleInput];
-      }
-    }
-  }
-  //  self.navigationItem.title = [NSString stringWithFormat:@"筛选结果: %@", string];
-}
 @end

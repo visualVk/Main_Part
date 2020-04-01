@@ -42,7 +42,7 @@
   
   self.favorBtn.layer.cornerRadius = self.favorBtn.frame.size.height / 2;
   self.favorBtn.layer.borderWidth = 1;
-  self.favorBtn.layer.borderColor = UIColor.whiteColor.CGColor;
+  self.favorBtn.layer.borderColor = UIColor.clearColor.CGColor;
   self.favorBtn.layer.masksToBounds = YES;
 }
 
@@ -76,7 +76,7 @@
     _discoutBtn = [QMUIButton new];
     [_discoutBtn setTintColorAdjustsTitleAndImage:UIColor.whiteColor];
     [_discoutBtn setBackgroundColor:UIColorMakeWithHex(@"#DE4313")];
-    [_discoutBtn setTitle:@"优惠" forState:UIControlStateNormal];
+    [_discoutBtn setTitle:@"开通" forState:UIControlStateNormal];
     [_discoutBtn setImage:UIImageMake(@"discount_unselected") forState:UIControlStateNormal];
     _discoutBtn.imagePosition = QMUIButtonImagePositionTop;
     _discoutBtn.tag = 1;
@@ -94,15 +94,18 @@
   if (!_favorBtn) {
     _favorBtn = [QMUIButton new];
     _favorBtn.tag = 2;
-    [_favorBtn setTitle:@"收藏" forState:UIControlStateNormal];
+    [_favorBtn setTitle:@"未拥有" forState:UIControlStateNormal];
+    
+    [_favorBtn setAdjustsImageTintColorAutomatically:YES];
+    [_favorBtn setTintColor:UIColorGrayLighten];
     [_favorBtn setImage:UIImageMake(@"favor_unselected") forState:UIControlStateNormal];
     _favorBtn.imagePosition = QMUIButtonImagePositionTop;
     _favorBtn.titleLabel.font = UIFontMake(16);
     _favorBtn.titleEdgeInsets = UIEdgeInsetsMake(2, 0, 0, 0);
-    [_favorBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    [_favorBtn addTarget:self
-                  action:@selector(btnClick:)
-        forControlEvents:UIControlEventTouchUpInside];
+    [_favorBtn setTitleColor:UIColorGrayLighten forState:UIControlStateNormal];
+    //    [_favorBtn addTarget:self
+    //                  action:@selector(btnClick:)
+    //        forControlEvents:UIControlEventTouchUpInside];
   }
   return _favorBtn;
 }
@@ -146,10 +149,14 @@
     if (self.favorBtn) self.favorBlock(tag);
     if (!detailSelected) {
       [self.favorBtn setBackgroundColor:UIColorMakeWithHex(@"#F8D800")];
+      self.favorBtn.titleLabel.text = @"未拥有";
+      [self.favorBtn setTitle:self.favorBtn.titleLabel.text forState:UIControlStateNormal];
       [self.favorBtn setTintColorAdjustsTitleAndImage:UIColor.whiteColor];
       self.favorBtn.layer.borderColor = UIColor.clearColor.CGColor;
     } else {
       [self.favorBtn setBackgroundColor:UIColor.clearColor];
+      self.favorBtn.titleLabel.text = @"已拥有";
+      [self.favorBtn setTitle:self.favorBtn.titleLabel.text forState:UIControlStateNormal];
       [self.favorBtn setTintColorAdjustsTitleAndImage:UIColor.whiteColor];
       self.favorBtn.layer.borderColor = UIColor.whiteColor.CGColor;
     }
@@ -157,5 +164,13 @@
     QMUILogInfo(@"rec tool bar", @"tag 3");
   }
   detailSelected = !detailSelected;
+}
+- (void)changeColorWithSelected:(BOOL)selected {
+  if (selected) {
+    self.favorBtn.titleLabel.text = @"已拥有";
+  } else {
+    self.favorBtn.titleLabel.text = @"未拥有";
+  }
+  [self.favorBtn setTitle:self.favorBtn.titleLabel.text forState:UIControlStateNormal];
 }
 @end

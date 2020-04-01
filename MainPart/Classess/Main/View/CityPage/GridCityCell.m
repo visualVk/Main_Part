@@ -43,7 +43,7 @@
     _labelBtn.font                = UIFontMake(18);
     _labelBtn.textAlignment       = NSTextAlignmentCenter;
     _labelBtn.contentEdgeInsets   = UIEdgeInsetsMake(10, 10, 10, 10);
-    _labelBtn.backgroundColor     = UIColor.qd_separatorColor;
+    _labelBtn.backgroundColor     = UIColor.qd_customBackgroundColor;
     _labelBtn.layer.cornerRadius  = 5;
     _labelBtn.layer.masksToBounds = YES;
     _labelBtn.highlightedBackgroundColor = nil;

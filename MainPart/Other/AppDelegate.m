@@ -29,25 +29,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   NSArray *noneSelClassStrings =
   @[ @"NSNull", @"NSNumber", @"NSString", @"NSDictionary", @"NSArray" ];
   [AvoidCrash setupNoneSelClassStringsArr:noneSelClassStrings];
+  
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(dealwithCrashMessage:)
                                                name:AvoidCrashNotification
                                              object:nil];
   [self configurateQmuiTheme];
   //  [AMLocationUtils sharedInstance];
-  
-#ifdef Test_Hotel
-  //  [[RequestUtils shareManager] RequestPostWithUrl:@"/api/user/login/pas"
-  //                                        Parameter:@{
-  //                                          @"logincode" : @"a463806017",
-  //                                          @"password" : @"123456"
-  //                                        }
-  //                                          Success:^(NSDictionary *_Nullable dict) {
-  //    Bearer = dict[@"data"][@"token"];
-  //    QMUILogInfo(@"Bearer", @"jwt token:{%@}", Bearer);
-  //  }
-  //                                          Failure:nil];
-#endif
   
   [AMapServices sharedServices].apiKey = AMLOCATIONAPPID;
   self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
@@ -59,6 +47,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   if (!users || !users.username || !users.password || [@"" isEqualToString:users.username] ||
       [@"" isEqualToString:users.password]) {
     con = [LoginMainController new];
+    isLogined = true;
   } else {
     con = [MainTabController new];
   }

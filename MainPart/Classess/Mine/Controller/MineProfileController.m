@@ -8,6 +8,7 @@
 
 #import "MineProfileController.h"
 #import "AppDelegate.h"
+#import "LoginMainController.h"
 #import "MarkUtils.h"
 #import "MineAvatarPickerController.h"
 #import "MineInfoSetController.h"
@@ -305,8 +306,17 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
      authorizationPresentAlbumViewControllerWithTitle:@"选"
      @"择头像图片"];
   } else if ([@"退出登录" isEqualToString:title]) {
-    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES
-                                                                               completion:nil];
+    if (isLogined) {
+      [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES
+                                                                                 completion:nil];
+    } else {
+      [self dismissViewControllerAnimated:YES
+                               completion:^{
+        AppDelegate *delegate =
+        (AppDelegate *)UIApplication.sharedApplication.delegate;
+        delegate.window.rootViewController = [LoginMainController new];
+      }];
+    }
     //    [self.navigationController popoverPresentationController];
   }
 }

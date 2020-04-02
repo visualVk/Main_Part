@@ -9,5 +9,6 @@
 #ifndef UserDefine_h
 #define UserDefine_h
 #import <UIKit/UIKit.h>
+static BOOL isLogined = false;
 static NSString *const USERIDENTIFY = @"com.feifeiyue.login";
 #endif /* UserDefine_h */

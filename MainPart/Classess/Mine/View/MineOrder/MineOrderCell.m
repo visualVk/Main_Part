@@ -8,6 +8,7 @@
 
 #import "MineOrderCell.h"
 #import "MarkUtils.h"
+#import "OrderReviewController.h"
 #import "PayMethodController.h"
 #import <SJAttributesFactory.h>
 
@@ -275,6 +276,8 @@
     [self.qmui_viewController.navigationController pushViewController:pmCon animated:YES];
   } else if ([@"待评价" isEqualToString:btn.titleLabel.text]) {
     //    [self.qmui_viewController.navigationController push]
+    OrderReviewController *orCon = [OrderReviewController new];
+    [self.qmui_viewController.navigationController pushViewController:orCon animated:YES];
   }
 }
 

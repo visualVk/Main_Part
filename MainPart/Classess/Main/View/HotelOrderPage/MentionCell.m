@@ -123,7 +123,8 @@
     _content = [UILabel new];
     _content.numberOfLines = 0;
     _content.attributedText = [self generateContent:@{
-      @"content" : @"asdasdsa\ndasdadasd\nadsadsad\n"
+      @"content" :
+        @"住房二维码不准外漏\n停车位不能倒卖\n折扣券不能重复使用\n"
     }];
   }
   return _content;
@@ -132,7 +133,10 @@
 - (NSAttributedString *)generateContent:(NSDictionary *)infoDict {
   NSAttributedString *str = [NSAttributedString sj_UIKitText:^(
                                                                id<SJUIKitTextMakerProtocol> _Nonnull make) {
-    make.append(@"服务提供方:\n").textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(13));
+    make.append(@"服务提供方:\n")
+    .textColor(UIColor.qd_mainTextColor)
+    .font(UIFontBoldMake(13))
+    .lineSpacing(2.5);
     make.append(infoDict[@"content"]).textColor(UIColor.qd_placeholderColor).font(UIFontMake(13));
   }];
   return str;

@@ -29,6 +29,7 @@ QMUITableViewDataSource> {
 - (void)didInitializeWithStyle:(UITableViewCellStyle)style {
   [super didInitializeWithStyle:style];
   // init 时做的事情请写在这里
+  _roomNum = 1;
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   self.backgroundColor = UIColor.clearColor;
   [self generateRootView];
@@ -115,7 +116,7 @@ QMUITableViewDataSource> {
     CheckInInfoCell *ciCell =
     [tableView dequeueReusableCellWithIdentifier:CHECKININFOCELL forIndexPath:indexPath];
     ciCell.title.text = @"住客信息";
-    ciCell.content.text = @"小a";
+    ciCell.content.text = @"blacksky";
     return ciCell;
   }
   if (row == 3) {

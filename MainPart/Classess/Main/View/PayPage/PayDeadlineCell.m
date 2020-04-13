@@ -92,4 +92,8 @@
   }];
   return str;
 }
+
+- (void)reloadShouldPay:(NSString *)price {
+  self.shouldPay.attributedText = [self generateShouldPay:price];
+}
 @end

@@ -9,5 +9,5 @@
 #import "QMUICommonViewController.h"
 
 @interface PayMethodController : QMUICommonViewController
-
+@property (nonatomic, strong) NSString *price;
 @end

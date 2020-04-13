@@ -158,11 +158,22 @@ QMUITableViewDataSource, PayPasswordDelegate> {
   if (section == 0) {
     PayDeadlineCell *pdCell =
     [tableView dequeueReusableCellWithIdentifier:PAYDEADLINECELL forIndexPath:indexPath];
+    [pdCell reloadShouldPay:self.price];
     return pdCell;
   }
   if (section == 1) {
     PayMethodCell *pmCell =
     [tableView dequeueReusableCellWithIdentifier:PAYMETHODCELL forIndexPath:indexPath];
+    switch (indexPath.row) {
+      case 0:
+        pmCell.method.text = @"支付宝";
+        break;
+      case 1:
+        pmCell.method.text = @"微信";
+        break;
+      default:
+        pmCell.method.text = @"银行卡";
+    }
     return pmCell;
   }
   static NSString *identifier = @"cell";

@@ -136,11 +136,18 @@ QMUITableViewDataSource, PPNumberButtonDelegate> {
   HotelNumberCell *hnCell;
   if (indexPath.row == 0) {
     hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL1 forIndexPath:indexPath];
+    hnCell.title.text = @"普通间";
+    hnCell.stepBtn.currentNumber = 1.0;
   } else if (indexPath.row == 1) {
     hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL2 forIndexPath:indexPath];
+    hnCell.stepBtn.currentNumber = 0;
+    hnCell.title.text = @"儿童间";
   } else {
     hnCell = [tableView dequeueReusableCellWithIdentifier:HOTELNUMBERCELL3 forIndexPath:indexPath];
+    hnCell.stepBtn.currentNumber = 0;
+    hnCell.title.text = @"无障碍";
   }
+  hnCell.stepBtn.minValue = 0;
   hnCell.stepBtn.tag = indexPath.row;
   hnCell.stepBtn.delegate = self;
   switch (indexPath.row) {

@@ -18,4 +18,5 @@ typedef void (^PushPay)(void);
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) PopOrderDetail popOrderDetail;
 @property (nonatomic, strong) PushPay pushPay;
+- (void)reloadPriceLabel:(NSDictionary *)infoDict;
 @end

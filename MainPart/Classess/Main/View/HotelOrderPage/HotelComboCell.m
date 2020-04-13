@@ -77,7 +77,7 @@
     addView(_container, self.stDate);
     addView(_container, self.days);
     addView(_container, self.edDate);
-//    addView(_container, self.showHotel);
+    //    addView(_container, self.showHotel);
     addView(_container, self.hotelTitle);
     addView(_container, self.tags);
     addView(_container, self.configuration);
@@ -118,7 +118,7 @@
     _days = [self generateCommonLabel];
     _days.highlightedBackgroundColor = nil;
     _days.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
-    _days.layer.borderColor = UIColor.qmui_randomColor.CGColor;
+    _days.layer.borderColor = UIColor.blackColor.CGColor;
     _days.layer.borderWidth = 0.5;
     _days.layer.masksToBounds = YES;
   }
@@ -128,7 +128,7 @@
 - (UILabel *)hotelTitle {
   if (!_hotelTitle) {
     _hotelTitle = [UILabel new];
-    _hotelTitle.text = @"xxx";
+    _hotelTitle.text = @"标准间";
     _hotelTitle.textColor = UIColor.qd_mainTextColor;
     _hotelTitle.font = UIFontBoldMake(18);
   }
@@ -148,7 +148,7 @@
 - (UILabel *)tags {
   if (!_tags) {
     _tags = [UILabel new];
-    _tags.attributedText = [self generateTags:@[ @"xaxaxa", @"asdasda", @"sadfasda" ]];
+    _tags.attributedText = [self generateTags:@[ @"含早餐", @"大床", @"酒水服务" ]];
   }
   return _tags;
 }

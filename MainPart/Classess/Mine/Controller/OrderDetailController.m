@@ -187,6 +187,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate> {
               [indexSet addIndex:i];
           }
           [weakSelf.checkList removeObjectsAtIndexes:indexSet];
+          [weakSelf.collectionView reloadData];
         }
       }];
     };

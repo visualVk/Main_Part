@@ -9,5 +9,6 @@
 #import "QMUITableViewCell.h"
 
 @interface OrderInfoCell : QMUITableViewCell
-@property(nonatomic, strong) QMUITableView *tableView;
+@property (nonatomic, strong) QMUITableView *tableView;
+@property (nonatomic, strong) UIImage *imageRight;
 @end

@@ -65,8 +65,8 @@
   if (!_stepBtn) {
     _stepBtn = [[PPNumberButton alloc] init];
     _stepBtn.shakeAnimation = YES;
-    _stepBtn.currentNumber = 1;
-    _stepBtn.minValue = 1;
+    _stepBtn.currentNumber = 0;
+    _stepBtn.minValue = 0;
     _stepBtn.maxValue = 20;
     _stepBtn.inputFieldFont = 18;
     //    _stepBtn.increaseTitle = @"+";

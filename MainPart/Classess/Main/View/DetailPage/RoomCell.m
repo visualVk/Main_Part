@@ -95,9 +95,9 @@
     NSAttributedString *str =
     [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
       make.font(UIFontMake(16));
-      make.append(@"2份早餐\t").textColor(UIColor.qmui_randomColor);
+      make.append(@"2份早餐\t").textColor(UIColor.blackColor).font(UIFontBoldMake(16));
       make.append(@"大床\t2人入住\t").textColor(UIColor.qd_mainTextColor);
-      make.append(@"详情").textColor(UIColor.qd_mainTextColor);
+      make.append(@"详情").textColor(UIColor.qd_tintColor);
       make.appendImage(^(id<SJUTImageAttachment> _Nonnull make) {
         make.image = UIImageMake(@"right_arrow_small");
       })
@@ -125,7 +125,7 @@
     _notationLabel.numberOfLines = 0;
     _notationLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _notationLabel.text = @"暂无说明信息";
-    _notationLabel.textColor = UIColor.qmui_randomColor;
+    _notationLabel.textColor = UIColor.qd_mainTextColor;
   }
   return _notationLabel;
 }
@@ -150,7 +150,7 @@
     _discountPrice = [UILabel new];
     NSAttributedString *str =
     [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
-      make.font(UIFontMake(16)).textColor(UIColor.qmui_randomColor);
+      make.font(UIFontMake(16)).textColor(UIColorMakeWithHex(@"#00882C"));
       make.append(@"¥229");
       make.regex(@"¥").update(
                               ^(id<SJUTAttributesProtocol> _Nonnull make) { make.font(UIFontMake(13)); });
@@ -164,7 +164,7 @@
   if (!_desPrice) {
     _desPrice = [QMUILabel new];
     _desPrice.textColor = UIColor.qd_backgroundColor;
-    _desPrice.backgroundColor = UIColor.qmui_randomColor;
+    _desPrice.backgroundColor = UIColorMakeWithHex(@"#DC0000");
     _desPrice.text = @"已减¥99";
     _desPrice.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
     _desPrice.layer.borderColor = UIColor.clearColor.CGColor;
@@ -185,11 +185,11 @@
 - (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5);
-  label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
+  label.layer.borderColor = UIColorMakeWithHex(@"#F99B6B").CGColor;
   label.layer.borderWidth = 1.0f;
   label.text = content;
   label.font = UIFontMake(14);
-  label.textColor = UIColor.qmui_randomColor;
+  label.textColor = UIColorMakeWithHex(@"#F45908");
   return label;
 }
 
@@ -207,6 +207,17 @@
   self.desPrice.text =
   [NSString stringWithFormat:@"已减¥%li", model.roomOrgprice - model.roomPrice];
   [self generateTagFlowWithList:@[ model.windows, model.wifiInfo, model.breakfast ]];
-  self.notationLabel.text = self.model.roomDetails;
+  self.notationLabel.attributedText =
+  [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.lineSpacing(2.5).textColor(UIColorMakeWithHex(@"#11A603"));
+    make.append(@"在线预订");
+    make.appendImage(^(id<SJUTImageAttachment> _Nonnull make) {
+      make.image =
+      [UIImageMake(@"light") qmui_imageWithTintColor:UIColorMakeWithHex(@"#11A603")];
+    })
+    .baseLineOffset(-2.5);
+    make.append(@"支持快速取消\n");
+    make.append(@"健康守护");
+  }];
 }
 @end

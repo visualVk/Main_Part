@@ -165,7 +165,7 @@
 - (UILabel *)discountPrice {
   if (!_discountPrice) {
     _discountPrice = [SectionFoldView generateCommonLabel];
-    _discountPrice.textColor = UIColor.qmui_randomColor;
+    _discountPrice.textColor = UIColorMakeWithHex(@"#067904");
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"¥229"];
     [str addAttribute:NSFontAttributeName value:UIFontMake(14) range:NSMakeRange(0, 1)];
     [str addAttribute:NSFontAttributeName
@@ -183,7 +183,7 @@
     _desPriceLB.layer.cornerRadius = 5;
     _desPriceLB.layer.masksToBounds = YES;
     _desPriceLB.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
-    _desPriceLB.backgroundColor = UIColor.qmui_randomColor;
+    _desPriceLB.backgroundColor = UIColorMakeWithHex(@"#DC0000");
     _desPriceLB.textColor = UIColor.qd_backgroundColor;
     _desPriceLB.highlightedBackgroundColor = nil;
     _desPriceLB.text = @"已减¥99";
@@ -256,8 +256,8 @@
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
   label.font = UIFontMake(13);
-  label.textColor = UIColor.qmui_randomColor;
-  label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
+  label.textColor = UIColorMakeWithHex(@"#64B05D");
+  label.layer.borderColor = UIColorMakeWithHex(@"#8AED81").CGColor;
   label.layer.borderWidth = 1.0f;
   label.layer.masksToBounds = YES;
   label.backgroundColor = UIColor.clearColor;
@@ -268,7 +268,8 @@
 
 - (void)generateTagFlowWithContent:(NSString *)content {
   [self.tagFlow qmui_removeAllSubviews];
-  [self.tagFlow addSubview:[self generateTagLabelWithContent:content]];
+  [self.tagFlow addSubview:[self generateTagLabelWithContent:@"20㎡"]];
+  [self.tagFlow addSubview:[self generateTagLabelWithContent:@"可快速退订"]];
 }
 
 + (QMUILabel *)generateNoBorderTag {
@@ -302,7 +303,10 @@
 
 - (void)generatebriefFlow:(NSString *)area {
   [self.briefFlow qmui_removeAllSubviews];
-  [self.briefFlow addSubview:[self generateNoBorderTagWithContent:area]];
+  [self.briefFlow
+   addSubview:[self
+               generateNoBorderTagWithContent:[NSString stringWithFormat:@"%@-40㎡", area]]];
+  //  [self.briefFlow addSubview:[self generateNoBorderTagWithContent:area]];
 }
 
 - (void)setModel:(HotelRoomModel *)model {

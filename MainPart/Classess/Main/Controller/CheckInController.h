@@ -9,5 +9,6 @@
 #import "QMUICommonViewController.h"
 
 @interface CheckInController : QMUICommonViewController
-
+@property (nonatomic, strong) NSDictionary *infoDict;
+@property (nonatomic, assign) NSInteger roomNum;
 @end

@@ -65,10 +65,22 @@
   if (!_sloganGridView) {
     _sloganGridView = [[QMUIGridView alloc] initWithColumn:3 rowHeight:DEVICE_HEIGHT / 12];
     for (int i = 0; i < 3; i++) {
-      [_sloganGridView addSubview:[self generateGrid:@{
-        @"title" : @"xxxx",
-        @"placeholder" : @"xafsda"
-      }]];
+      if (i == 0) {
+        [_sloganGridView addSubview:[self generateGrid:@{
+          @"title" : @"品质联盟",
+          @"placeholder" : @"保障房间质量"
+        }]];
+      } else if (i == 1) {
+        [_sloganGridView addSubview:[self generateGrid:@{
+          @"title" : @"客户礼遇",
+          @"placeholder" : @"客户福利"
+        }]];
+      } else {
+        [_sloganGridView addSubview:[self generateGrid:@{
+          @"title" : @"信息保密",
+          @"placeholder" : @"权力维护客户信息"
+        }]];
+      }
     }
   }
   return _sloganGridView;
@@ -79,6 +91,7 @@
   label.numberOfLines = 0;
   label.attributedText = [NSAttributedString sj_UIKitText:^(
                                                             id<SJUIKitTextMakerProtocol> _Nonnull make) {
+    make.lineSpacing(2.5);
     make.append(infoDict[@"title"]).textColor(UIColor.qd_mainTextColor).font(UIFontBoldMake(16));
     make.append(@"\n");
     make.append(infoDict[@"placeholder"])
@@ -100,7 +113,7 @@
   
   [label mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.right.bottom.equalTo(container);
-    make.top.greaterThanOrEqualTo(imageview.mas_bottom);
+    make.top.greaterThanOrEqualTo(imageview.mas_bottom).with.inset(2.5);
   }];
   
   return container;

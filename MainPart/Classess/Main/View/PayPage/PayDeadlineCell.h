@@ -9,7 +9,7 @@
 #import "QMUITableViewCell.h"
 
 @interface PayDeadlineCell : QMUITableViewCell
-@property(nonatomic, strong) UILabel *shouldPay;
-@property(nonatomic, strong) UILabel *deadlineTime;
-
+@property (nonatomic, strong) UILabel *shouldPay;
+@property (nonatomic, strong) UILabel *deadlineTime;
+- (void)reloadShouldPay:(NSString *)price;
 @end

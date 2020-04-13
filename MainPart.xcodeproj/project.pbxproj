@@ -343,6 +343,18 @@
 		A7FD2B6D241B74FF006B3CC1 /* MineOrderServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B6C241B74FF006B3CC1 /* MineOrderServiceCell.m */; };
 		A7FD2B70241B812B006B3CC1 /* MineFoodOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */; };
 		A7FD2B73241BAFFC006B3CC1 /* MineFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */; };
+		A7FDCBDD2443F22000660E9E /* TggStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FDCBD42443F22000660E9E /* TggStarEvaluationView.m */; };
+		A7FDCBDE2443F22000660E9E /* star_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBD72443F22000660E9E /* star_nor@3x.png */; };
+		A7FDCBDF2443F22000660E9E /* star_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBD82443F22000660E9E /* star_sel.png */; };
+		A7FDCBE02443F22000660E9E /* star_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBD92443F22000660E9E /* star_nor@2x.png */; };
+		A7FDCBE12443F22000660E9E /* star_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBDA2443F22000660E9E /* star_nor.png */; };
+		A7FDCBE22443F22000660E9E /* star_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBDB2443F22000660E9E /* star_sel@3x.png */; };
+		A7FDCBE32443F22000660E9E /* star_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBDC2443F22000660E9E /* star_sel@2x.png */; };
+		A7FDCBE62443F49400660E9E /* OrderReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FDCBE52443F49400660E9E /* OrderReviewController.m */; };
+		A7FDCBF02443F6F000660E9E /* star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBEC2443F6F000660E9E /* star_gray.png */; };
+		A7FDCBF12443F6F000660E9E /* star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = A7FDCBEE2443F6F000660E9E /* star_yellow.png */; };
+		A7FDCBF22443F6F000660E9E /* FMLStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FDCBEF2443F6F000660E9E /* FMLStarView.m */; };
+		A7FDCBF52443F96A00660E9E /* MineReviewTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FDCBF42443F96A00660E9E /* MineReviewTextView.m */; };
 		A7FE9A6224177DEB00A8D259 /* ARAwardController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A6124177DEB00A8D259 /* ARAwardController.m */; };
 		A7FE9A8624177E1E00A8D259 /* AwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A6524177E1D00A8D259 /* AwardView.m */; };
 		A7FE9A8924177E1E00A8D259 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE9A7124177E1D00A8D259 /* ViewController.m */; };
@@ -1046,6 +1058,22 @@
 		A7FD2B6F241B812B006B3CC1 /* MineFoodOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodOrderController.m; sourceTree = "<group>"; };
 		A7FD2B71241BAFFC006B3CC1 /* MineFoodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineFoodCell.h; sourceTree = "<group>"; };
 		A7FD2B72241BAFFC006B3CC1 /* MineFoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineFoodCell.m; sourceTree = "<group>"; };
+		A7FDCBD42443F22000660E9E /* TggStarEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TggStarEvaluationView.m; sourceTree = "<group>"; };
+		A7FDCBD52443F22000660E9E /* TggStarEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TggStarEvaluationView.h; sourceTree = "<group>"; };
+		A7FDCBD72443F22000660E9E /* star_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_nor@3x.png"; sourceTree = "<group>"; };
+		A7FDCBD82443F22000660E9E /* star_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_sel.png; sourceTree = "<group>"; };
+		A7FDCBD92443F22000660E9E /* star_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_nor@2x.png"; sourceTree = "<group>"; };
+		A7FDCBDA2443F22000660E9E /* star_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_nor.png; sourceTree = "<group>"; };
+		A7FDCBDB2443F22000660E9E /* star_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_sel@3x.png"; sourceTree = "<group>"; };
+		A7FDCBDC2443F22000660E9E /* star_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_sel@2x.png"; sourceTree = "<group>"; };
+		A7FDCBE42443F49400660E9E /* OrderReviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderReviewController.h; sourceTree = "<group>"; };
+		A7FDCBE52443F49400660E9E /* OrderReviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderReviewController.m; sourceTree = "<group>"; };
+		A7FDCBEC2443F6F000660E9E /* star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_gray.png; sourceTree = "<group>"; };
+		A7FDCBED2443F6F000660E9E /* FMLStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLStarView.h; sourceTree = "<group>"; };
+		A7FDCBEE2443F6F000660E9E /* star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_yellow.png; sourceTree = "<group>"; };
+		A7FDCBEF2443F6F000660E9E /* FMLStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLStarView.m; sourceTree = "<group>"; };
+		A7FDCBF32443F96A00660E9E /* MineReviewTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineReviewTextView.h; sourceTree = "<group>"; };
+		A7FDCBF42443F96A00660E9E /* MineReviewTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineReviewTextView.m; sourceTree = "<group>"; };
 		A7FE9A6024177DEB00A8D259 /* ARAwardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARAwardController.h; sourceTree = "<group>"; };
 		A7FE9A6124177DEB00A8D259 /* ARAwardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARAwardController.m; sourceTree = "<group>"; };
 		A7FE9A6524177E1D00A8D259 /* AwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwardView.m; sourceTree = "<group>"; };
@@ -1755,6 +1783,8 @@
 				A703A74F241E2AC700ABC74A /* MineRoomChooseController.m */,
 				A703A764241E51CD00ABC74A /* MineSportController.h */,
 				A703A765241E51CD00ABC74A /* MineSportController.m */,
+				A7FDCBE42443F49400660E9E /* OrderReviewController.h */,
+				A7FDCBE52443F49400660E9E /* OrderReviewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1778,6 +1808,7 @@
 		A772A9862407859900B8FC52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7FDCBE72443F4A700660E9E /* MineOrderReview */,
 				A703A752241E3DEA00ABC74A /* MineSport */,
 				A703A751241E3DD800ABC74A /* MineFood */,
 				A7FBA08B2419BA500000287A /* MineProfile */,
@@ -1797,6 +1828,8 @@
 		A772A9872407859900B8FC52 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A7FDCBEB2443F6F000660E9E /* FMLStarView */,
+				A7FDCBD32443F22000660E9E /* TggStarEvaluationView */,
 				A70A159424221E3600777232 /* MileageCircleProgressView.h */,
 				A70A159324221E3600777232 /* MileageCircleProgressView.m */,
 				A75DB927241CCFCD0037C0BA /* PopListController */,
@@ -2817,6 +2850,49 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		A7FDCBD32443F22000660E9E /* TggStarEvaluationView */ = {
+			isa = PBXGroup;
+			children = (
+				A7FDCBD42443F22000660E9E /* TggStarEvaluationView.m */,
+				A7FDCBD52443F22000660E9E /* TggStarEvaluationView.h */,
+				A7FDCBD62443F22000660E9E /* SupportingFile */,
+			);
+			path = TggStarEvaluationView;
+			sourceTree = "<group>";
+		};
+		A7FDCBD62443F22000660E9E /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				A7FDCBD72443F22000660E9E /* star_nor@3x.png */,
+				A7FDCBD82443F22000660E9E /* star_sel.png */,
+				A7FDCBD92443F22000660E9E /* star_nor@2x.png */,
+				A7FDCBDA2443F22000660E9E /* star_nor.png */,
+				A7FDCBDB2443F22000660E9E /* star_sel@3x.png */,
+				A7FDCBDC2443F22000660E9E /* star_sel@2x.png */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
+		A7FDCBE72443F4A700660E9E /* MineOrderReview */ = {
+			isa = PBXGroup;
+			children = (
+				A7FDCBF32443F96A00660E9E /* MineReviewTextView.h */,
+				A7FDCBF42443F96A00660E9E /* MineReviewTextView.m */,
+			);
+			path = MineOrderReview;
+			sourceTree = "<group>";
+		};
+		A7FDCBEB2443F6F000660E9E /* FMLStarView */ = {
+			isa = PBXGroup;
+			children = (
+				A7FDCBEC2443F6F000660E9E /* star_gray.png */,
+				A7FDCBED2443F6F000660E9E /* FMLStarView.h */,
+				A7FDCBEE2443F6F000660E9E /* star_yellow.png */,
+				A7FDCBEF2443F6F000660E9E /* FMLStarView.m */,
+			);
+			path = FMLStarView;
+			sourceTree = "<group>";
+		};
 		A7FE9A6324177E1D00A8D259 /* AwardARView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3002,24 +3078,32 @@
 			files = (
 				A7084C912406C23700FF5CAE /* LinkageTestJson.json in Resources */,
 				A73D658B240BE60E00F94792 /* LogModelListJSON.json in Resources */,
+				A7FDCBF02443F6F000660E9E /* star_gray.png in Resources */,
 				A761DAE9241F4BA6002121A9 /* HotelCheckInPeopleInfoModelJSON.json in Resources */,
 				A711C444243434BF003E24FE /* SeasonSceneModelJSON.json in Resources */,
+				A7FDCBE22443F22000660E9E /* star_sel@3x.png in Resources */,
 				A793DC452419275C00CB49BB /* TownListJSON.json in Resources */,
 				A7866AA92434AFB9001E6A0D /* IDInfoViewController.xib in Resources */,
 				A711C44F243459B8003E24FE /* HotRecModelListJSON.json in Resources */,
 				A7866AAD2434AFB9001E6A0D /* IDAuthViewController.xib in Resources */,
 				A7FA6D8F240C95E3003982DA /* OrderModelListJSON.json in Resources */,
 				A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */,
+				A7FDCBDE2443F22000660E9E /* star_nor@3x.png in Resources */,
 				A7C778682402515B003EBCE0 /* LaunchScreen.storyboard in Resources */,
 				A793DC462419275C00CB49BB /* HotelParamListJSON.json in Resources */,
 				A703A749241E1D5200ABC74A /* MineOrderListJSON.json in Resources */,
 				A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */,
 				A7C778652402515B003EBCE0 /* Assets.xcassets in Resources */,
+				A7FDCBE32443F22000660E9E /* star_sel@2x.png in Resources */,
 				A793DC442419275C00CB49BB /* RankModelListJSON.json in Resources */,
 				A703A759241E456500ABC74A /* MineSportModelListJSON.json in Resources */,
+				A7FDCBF12443F6F000660E9E /* star_yellow.png in Resources */,
 				A75DB926241CBCAD0037C0BA /* MineFoodModelListJSON.json in Resources */,
 				A793DC4C2419275C00CB49BB /* WMZDropMenu.bundle in Resources */,
+				A7FDCBDF2443F22000660E9E /* star_sel.png in Resources */,
+				A7FDCBE12443F22000660E9E /* star_nor.png in Resources */,
 				A73D656D240B7E2100F94792 /* ProfileInfoListModelJSON.json in Resources */,
+				A7FDCBE02443F22000660E9E /* star_nor@2x.png in Resources */,
 				A7866AAF2434AFB9001E6A0D /* zocr0.lib in Resources */,
 				A7FE9A9224177E1E00A8D259 /* ARMain.storyboard in Resources */,
 			);
@@ -3114,6 +3198,7 @@
 				A73D6573240B8AD500F94792 /* EditPickerCell.m in Sources */,
 				A7C779212402562E003EBCE0 /* SearchView.m in Sources */,
 				A7FC12BE2425DCD7005C4796 /* RemarkScoreView.m in Sources */,
+				A7FDCBF22443F6F000660E9E /* FMLStarView.m in Sources */,
 				A7866A9E2434AFB9001E6A0D /* ProtocalController.m in Sources */,
 				A73AEC442412792900AD6880 /* MineOrderCheckPersonInfoView.m in Sources */,
 				A793DC4A2419275C00CB49BB /* WMZDropDownMenu+DealDelegate.m in Sources */,
@@ -3204,6 +3289,7 @@
 				A72479602420C48D00619D38 /* HotelAppreaiseModelList.m in Sources */,
 				A7FD2B70241B812B006B3CC1 /* MineFoodOrderController.m in Sources */,
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
+				A7FDCBF52443F96A00660E9E /* MineReviewTextView.m in Sources */,
 				A7866A9F2434AFB9001E6A0D /* PrefixPhoneController.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A793DC4D2419275C00CB49BB /* WMZDropMenuTool.m in Sources */,
@@ -3379,6 +3465,7 @@
 				A7C7791A2402562E003EBCE0 /* TitleCell.m in Sources */,
 				A793DC4E2419275C00CB49BB /* WMZDropCustomView.m in Sources */,
 				A761DAED241F75AF002121A9 /* MineInfoCheckBoxCell.m in Sources */,
+				A7FDCBDD2443F22000660E9E /* TggStarEvaluationView.m in Sources */,
 				A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */,
 				A703A766241E51CD00ABC74A /* MineSportController.m in Sources */,
 				A7FD2B6A241B4603006B3CC1 /* MineAvatarPickerController.m in Sources */,
@@ -3388,6 +3475,7 @@
 				A703A763241E4CE900ABC74A /* MineSportDeviceHeaderView.m in Sources */,
 				A7C779332402562E003EBCE0 /* QDThemeManager.m in Sources */,
 				A73FACFD240E718A008BA2D9 /* OrderToolBarView.m in Sources */,
+				A7FDCBE62443F49400660E9E /* OrderReviewController.m in Sources */,
 				A7FBA08E2419BA8E0000287A /* MineProfileAvatarCell.m in Sources */,
 				A7C341CC24139D2100BAEF70 /* MineOrderInfoTBCell.m in Sources */,
 				A703A777241E73C500ABC74A /* QiCardViewCell.m in Sources */,

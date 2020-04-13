@@ -46,6 +46,8 @@ QMUITableViewDataSource, SDCycleScrollViewDelegate,
 BannerZoomDelegate, UICollectionViewDelegate,
 UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
   BOOL _didScolled;
+  NSInteger curSection;
+  NSInteger curRow;
 }
 @property (nonatomic, strong) HotelOrderDatePickerView *orderDatePickerView;
 @property (nonatomic, strong) HMSegmentedControl *segControl;
@@ -252,7 +254,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
       return cell;
     }
   }
-  if (section > 0 && section < self.hotelRoomTypeList.count + 1) {
+  if (section > 0 && section < self.hotelRoomTypeList.count + 1) { //房间类型
     RoomCell *rcell =
     [tableView dequeueReusableCellWithIdentifier:ROOMTCELL forIndexPath:indexPath];
     NSString *key = self.hotelRoomTypeList[section - 1];
@@ -349,10 +351,20 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
   }
   if (section > 0 && section <= self.hotelRoomTypeList.count) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    curRow = row;
+    curSection = section - 1;
     self.modalViewController = [[QMUIModalPresentationViewController alloc] init];
     self.modalViewController.animationStyle = QMUIModalPresentationAnimationStyleSlide;
     //    modalViewController.contentView = self.collectionview;
     self.modalViewController.contentView = self.presentView;
+    NSArray<HotelRoomModel *> *tmpRoomModel =
+    self.hotelRoomDict[self.hotelRoomTypeList[section - 1]];
+    HotelRoomModel *room = tmpRoomModel[row];
+    self.presentNavBar.title.text = room.roomName;
+    [self.presentToolBar loadData:@{
+      @"oldPrice" : [NSString stringWithFormat:@"%li", room.roomOrgprice],
+      @"discountPrice" : [NSString stringWithFormat:@"%li", room.roomPrice]
+    }];
     self.modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     __weak __typeof(self) weakSelf = self;
     self.modalViewController.layoutBlock =
@@ -616,7 +628,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
       self.presentToolBar.clickBlock = ^{
         [weakSelf.modalViewController hideWithAnimated:YES completion:nil];
         CheckInController *ciCon = [CheckInController new];
-        ciCon.title = self.hotelModel.hotelName;
+        ciCon.roomNum = 1;
+        NSString *key = weakSelf.hotelRoomTypeList[curSection];
+        HotelRoomModel *model = weakSelf.hotelRoomDict[key][curRow];
+        ciCon.infoDict = @{
+          @"sum" : [NSString stringWithFormat:@"%li", model.roomOrgprice],
+          @"reduce" : [NSString stringWithFormat:@"%li", model.roomOrgprice - model.roomPrice]
+        };
+        ciCon.title = weakSelf.hotelModel.hotelName;
         [weakSelf.navigationController pushViewController:ciCon animated:YES];
       };
     }

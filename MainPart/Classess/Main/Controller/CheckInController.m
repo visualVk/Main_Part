@@ -115,6 +115,10 @@ QMUITableViewDataSource>
 - (OrderToolBarView *)orderToolBar {
   if (!_orderToolBar) {
     _orderToolBar = [OrderToolBarView new];
+    [_orderToolBar reloadPriceLabel:@{
+      @"sum" : self.infoDict[@"sum"],
+      @"reduce" : self.infoDict[@"reduce"]
+    }];
     __weak __typeof(self) weakSelf = self;
     //    addView(self.dmingView, _orderToolBar.tableView);
     _orderToolBar.popOrderDetail = ^{
@@ -129,6 +133,7 @@ QMUITableViewDataSource>
     _orderToolBar.pushPay = ^{
       PayMethodController *pCon = [PayMethodController new];
       //      [weakSelf popDimingView];
+      pCon.price = weakSelf.infoDict[@"sum"];
       [weakSelf removeDimingContainer];
       [weakSelf.navigationController pushViewController:pCon animated:YES];
     };
@@ -235,6 +240,7 @@ QMUITableViewDataSource>
   if (row == 2) {
     OrderInfoCell *oiCell =
     [tableView dequeueReusableCellWithIdentifier:ORDERINFOCELL forIndexPath:indexPath];
+    oiCell.imageRight = UIImageMake(@"right-arrow-fill");
     return oiCell;
   }
   if (row == 3) {

@@ -133,7 +133,7 @@ QMUITableViewDataSource>
   if (!_subBtn) {
     _subBtn = [QDUIHelper generateDarkFilledButton];
     _subBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    _subBtn.backgroundColor = UIColor.qmui_randomColor;
+    _subBtn.backgroundColor = UIColorMakeWithHex(@"#0D8FE5");
     [_subBtn setTitle:@"提交订单" forState:UIControlStateNormal];
     [_subBtn setTitleColor:UIColor.qd_backgroundColor forState:UIControlStateNormal];
     [_subBtn addTarget:self
@@ -173,6 +173,10 @@ QMUITableViewDataSource>
     .font(UIFontMake(13));
   }];
   return str;
+}
+
+- (void)reloadPriceLabel:(NSDictionary *)infoDict {
+  self.price.attributedText = [self generatePrice:infoDict];
 }
 
 #pragma mark - QMUITableViewDelegate,QMUITableViewDataSource

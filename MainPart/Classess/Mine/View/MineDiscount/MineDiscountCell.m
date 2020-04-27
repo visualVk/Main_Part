@@ -124,7 +124,7 @@
 - (UIView *)discountView {
   if (!_discountView) {
     _discountView = [UIView new];
-    _discountView.backgroundColor = UIColor.qmui_randomColor;
+    _discountView.backgroundColor = UIColorMakeWithHex(@"#FF4747");
     self.discountNum = [UILabel new];
     self.discountNum.attributedText = [MineDiscountCell generateDiscountNum:@"6.0"];
     addView(_discountView, self.discountNum);
@@ -163,9 +163,9 @@
     _useBtn.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     [_useBtn setBackgroundColor:UIColor.qd_backgroundColor];
     [_useBtn setTitle:@"去使用" forState:UIControlStateNormal];
-    [_useBtn setTitleColor:UIColor.qmui_randomColor forState:UIControlStateNormal];
-    [_useBtn setTitleColor:UIColor.qmui_randomColor forState:UIControlStateHighlighted];
-    [_useBtn setTintColor:UIColor.qmui_randomColor];
+    [_useBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    [_useBtn setTitleColor:UIColor.blackColor forState:UIControlStateHighlighted];
+    //    [_useBtn setTintColor:UIColor.qmui_randomColor];
     [_useBtn addTarget:self
                 action:@selector(useClick)
       forControlEvents:UIControlEventTouchUpInside];
@@ -195,7 +195,7 @@
 - (UILabel *)detailContent {
   if (!_detailContent) {
     _detailContent = [UILabel new];
-    _detailContent.text = @"content";
+    _detailContent.text = @"部分商品可以打折，酒水一律参与打折";
   }
   return _detailContent;
 }
@@ -240,5 +240,17 @@
     make.append(@"折").font(UIFontMake(20));
   }];
   return str;
+}
+
+- (void)reloadData:(NSDictionary *)dict {
+  self.title.text = dict[@"title"];
+  //  self.brief.attributedText = [MineDiscountCell generateBreif:@{
+  //    @"content" : dict[@"content"],
+  //    @"st" : dict[@"st"],
+  //    @"ed" : dict[@"ed"]
+  //  }];
+  self.brief.attributedText = [MineDiscountCell generateBreif:dict];
+  self.discountNum.attributedText = [MineDiscountCell generateDiscountNum:dict[@"discount"]];
+  //  self.detailContent.text = dict[@"detailContent"];
 }
 @end

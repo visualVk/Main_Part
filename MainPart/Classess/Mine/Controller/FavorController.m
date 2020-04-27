@@ -106,7 +106,18 @@ QMUITableViewDataSource>
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  return @"test";
+  switch (section) {
+    case 0:
+      return @"一周内";
+      break;
+    case 1:
+      return @"一个月内";
+    case 2:
+      return @"一年内";
+    default:
+      return @"很久以前";
+      break;
+  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

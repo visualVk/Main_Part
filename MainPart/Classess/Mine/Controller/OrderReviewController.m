@@ -197,6 +197,13 @@ QMUITextViewDelegate>
 }
 
 - (void)submitTap {
+  [QMUITips showLoadingInView:self.view];
+  dispatch_after(
+                 dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [QMUITips hideAllTips];
+    [QMUITips showSucceed:@"评论成功" detailText:@"" inView:self.view hideAfterDelay:1];
+    [self.navigationController popViewControllerAnimated:YES];
+  });
 }
 
 - (void)fml_didClickStarViewByScore:(CGFloat)score atIndex:(NSInteger)index {

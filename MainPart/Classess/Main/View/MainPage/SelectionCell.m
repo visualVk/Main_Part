@@ -7,6 +7,7 @@
 //
 
 #import "SelectionCell.h"
+#import "MainTicketController.h"
 #import "MarkUtils.h"
 #import "TitleCell.h"
 #pragma mark - selection content cell
@@ -220,6 +221,10 @@ UICollectionViewDelegate, JQCollectionViewAlignLayoutDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    MainTicketController *mtCon = [MainTicketController new];
+    [self.qmui_viewController.navigationController pushViewController:mtCon animated:YES];
+  }
   QMUILogInfo(@"selection cell click", @"click:(sec:%li,row:%li)", indexPath.section,
               indexPath.row);
 }

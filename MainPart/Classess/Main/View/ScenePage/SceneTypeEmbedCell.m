@@ -51,7 +51,7 @@ QMUITableViewDataSource> {
     make.left.right.equalTo(superview);
     make.top.equalTo(superview).with.inset(0.5 * SPACE);
     //    make.bottom.equalTo(self.tableview).with.inset(0.5 * SPACE);
-    make.height.mas_equalTo(DEVICE_HEIGHT/20);
+    make.height.mas_equalTo(DEVICE_HEIGHT / 20);
   }];
   
   [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,9 +92,29 @@ QMUITableViewDataSource> {
   if (!_typeFloatView) {
     _typeFloatView = [[QMUIFloatLayoutView alloc] initWithFrame:CGRectZero];
     _typeFloatView.itemMargins = UIEdgeInsetsMake(0, 5, 0, 5);
-    for (int i = 0; i < 4; i++) { addView(_typeFloatView, [self generateCustomBtn:@"一日游"]); }
+    for (int i = 0; i < 4; i++) {
+      addView(_typeFloatView, [self generateCustomBtn:[self testTitle:i]]);
+    }
   }
   return _typeFloatView;
+}
+
+- (NSString *)testTitle:(NSInteger)index {
+  switch (index) {
+    case 0:
+      return @"一日游";
+      break;
+    case 1:
+      return @"高端游";
+      break;
+    case 2:
+      return @"跟团游";
+      break;
+      
+    default:
+      return @"自助游";
+      break;
+  }
 }
 
 - (QMUIGhostButton *)generateCustomBtn:(NSString *)title {
@@ -143,6 +163,24 @@ QMUITableViewDataSource> {
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   SceneSpotCell *ssCell =
   [tableView dequeueReusableCellWithIdentifier:SCENESPOTCELL forIndexPath:indexPath];
+  //  @property(nonatomic, strong) UIImageView *sceneImg;
+  //  @property(nonatomic, strong) UILabel *title;
+  //  @property(nonatomic, strong) UILabel *score;
+  //  @property(nonatomic, strong) QMUILabel *special;
+  //  @property(nonatomic, strong) QMUILabel *stars;
+  switch (indexPath.row) {
+    case 0:
+      ssCell.title.text = @"四川";
+      break;
+    case 1:
+      ssCell.title.text = @"草原";
+      break;
+    case 2:
+      ssCell.title.text = @"瀑布";
+      break;
+    default:
+      break;
+  }
   return ssCell;
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -155,4 +193,5 @@ QMUITableViewDataSource> {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
+
 @end

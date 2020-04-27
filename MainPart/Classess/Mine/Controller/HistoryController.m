@@ -61,7 +61,7 @@ QMUITableViewDataSource>
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
-  self.title = @"<##>";
+  self.title = @"浏览历史";
 }
 
 - (void)generateRootView {

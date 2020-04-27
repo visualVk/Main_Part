@@ -10,10 +10,11 @@
 #import <CSXMarkView.h>
 
 @interface MineDiscountCell : QMUITableViewCell
-@property(nonatomic, strong) UILabel *discountNum;
-@property(nonatomic, strong) UILabel *title;
-@property(nonatomic, strong) UILabel *brief;
-@property(nonatomic, strong) UILabel *detail;
-@property(nonatomic, strong) QMUIButton *useBtn;
+@property (nonatomic, strong) UILabel *discountNum;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UILabel *brief;
+@property (nonatomic, strong) UILabel *detail;
+@property (nonatomic, strong) QMUIButton *useBtn;
 @property (nonatomic, strong) UIView *detailView;
+- (void)reloadData:(NSDictionary *)dict;
 @end

@@ -306,10 +306,13 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
      authorizationPresentAlbumViewControllerWithTitle:@"选"
      @"择头像图片"];
   } else if ([@"退出登录" isEqualToString:title]) {
-    if (isLogined) {
+    BOOL islogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"islogin"];
+    if (!islogin) {
+      [[NSUserDefaults standardUserDefaults] setValue:@(false) forKey:@"islogin"];
       [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES
                                                                                  completion:nil];
     } else {
+      [[NSUserDefaults standardUserDefaults] setValue:@(false) forKey:@"islogin"];
       [self dismissViewControllerAnimated:YES
                                completion:^{
         AppDelegate *delegate =

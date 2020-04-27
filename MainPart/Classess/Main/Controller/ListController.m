@@ -31,6 +31,7 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 @property (nonatomic, strong) NSMutableArray *cellHs;
 @property (nonatomic, strong) QMUISearchController *mySearchController;
 @property (nonatomic, strong) NSArray *searchResultList;
+@property (nonatomic, strong) NSArray *spotList;
 @end
 
 @implementation ListController
@@ -39,6 +40,9 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
   [super didInitialize];
   self.bannerImageList = @[ @"navigationbar_background", @"navigationbar_background" ];
   self.searchResultList = @[ @"xxx", @"bbb", @"ccc" ];
+#ifdef Test_Hotel
+  [self generateSpotList];
+#endif
   curAlpha = 0;
 }
 
@@ -82,7 +86,7 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if (self.tableView == tableView) {
-    return 100;
+    return self.spotList.count;
   } else {
     return self.searchResultList.count;
   }
@@ -95,6 +99,8 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
     if (section == 0) {
       SpotCell *sCell =
       [tableView dequeueReusableCellWithIdentifier:SPOTCELL forIndexPath:indexPath];
+      NSDictionary *dict = self.spotList[indexPath.row];
+      [sCell reloadData:dict];
       return sCell;
     }
   } else {
@@ -291,5 +297,56 @@ QMUITableViewDataSource, QMUISearchControllerDelegate> {
 //转场效果
 - (NSString *)customNavigationBarTransitionKey {
   return self.navigationAnimator.progress >= 1 ? nil : @"List";
+}
+
+- (void)generateSpotList {
+  self.spotList = @[
+    @{
+      @"title" : @"九寨沟",
+      @"favor" : @"99",
+      @"recommond" : @"you can you up",
+      @"numRank" : @"1"
+    },
+    @{
+      @"title" : @"新气息",
+      @"favor" : @"99",
+      @"recommond" : @"you can you up1",
+      @"numRank" : @"2"
+    },
+    @{ @"title" : @"九龙",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up2",
+       @"numRank" : @"3" },
+    @{ @"title" : @"黄山",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up3",
+       @"numRank" : @"4" },
+    @{ @"title" : @"仙山",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up4",
+       @"numRank" : @"5" },
+    @{ @"title" : @"海沟",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up5",
+       @"numRank" : @"6" },
+    @{ @"title" : @"仙台",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up6",
+       @"numRank" : @"7" },
+    @{ @"title" : @"天台",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up7",
+       @"numRank" : @"8" },
+    @{ @"title" : @"巨擎",
+       @"favor" : @"99",
+       @"recommond" : @"you can you up8",
+       @"numRank" : @"9" },
+    @{
+      @"title" : @"预料",
+      @"favor" : @"99",
+      @"recommond" : @"you can you up9",
+      @"numRank" : @"10"
+    }
+  ];
 }
 @end

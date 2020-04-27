@@ -43,12 +43,30 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window.rootViewController.modalPresentationStyle = UIModalPresentationFullScreen;
   //  self.window.rootViewController = [[MainTabController alloc] init];
   UIViewController *con = nil;
+  
   Users *users = [Users new];
-  if (!users || !users.username || !users.password || [@"" isEqualToString:users.username] ||
-      [@"" isEqualToString:users.password]) {
+  BOOL isLogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"islogin"];
+  //  if (!users || !users.username || !users.password || [@"" isEqualToString:users.username] ||
+  //      [@"" isEqualToString:users.password]) {
+  //    con = [LoginMainController new];
+  //    isLogined = true;
+  //  }
+  if (!isLogin) {
     con = [LoginMainController new];
-    isLogined = true;
   } else {
+    [[RequestUtils shareManager] RequestPostWithUrl:UserLogin
+                                          Parameter:@{
+                                            @"logincode" : users.username,
+                                            @"password" : users.password
+                                          }
+                                            Success:^(NSDictionary *_Nullable dict) {
+      [[NSUserDefaults standardUserDefaults] setValue:@(true) forKey:@"islogin"];
+      NSString *datas = dict[@"data"][@"token"];
+      QMUILogInfo(@"login", @"%@", datas);
+      dispatch_async(dispatch_get_main_queue(), ^{ Bearer = datas; });
+      QMUILogInfo(@"login", @"login success,return value:{%@}", [dict description]);
+    }
+                                            Failure:^(NSError *_Nullable err){}];
     con = [MainTabController new];
   }
   self.window.rootViewController = con;

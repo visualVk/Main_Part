@@ -199,4 +199,15 @@
   }];
   return str;
 }
+
+- (void)reloadData:(NSDictionary *)dict {
+  self.spotTitle.attributedText = [SpotCell generateSpotTitle:@{
+    @"title" : dict[@"title"],
+    @"country" : @"九龙",
+    @"city" : @"一山"
+  }];
+  self.numRank.text = ([dict[@"numRank"] integerValue] < 4) ? dict[@"numRank"] : @"";
+  self.favorNum.text = dict[@"favor"];
+  self.recommond.attributedText = [SpotCell generateRecommond:@{ @"advice" : dict[@"recommond"] }];
+}
 @end

@@ -85,6 +85,7 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
     _banner = [SDCycleScrollView
                cycleScrollViewWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT / 3)
                imageNamesGroup:@[ @"pink_gradient", @"pink_gradient", @"pink_gradient" ]];
+//    _banner.imageURLStringsGroup = @[@""]
     _banner.showPageControl = false;
   }
   return _banner;
@@ -117,7 +118,7 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
     _remarkOne = [self generateCommonLabel];
     _remarkOne.textColor = UIColor.qd_backgroundColor;
     _remarkOne.font = UIFontMake(13);
-    _remarkOne.text = @"瀑布之景更为神奇秀丽";
+    _remarkOne.text = @"山清水秀";
   }
   return _remarkOne;
 }
@@ -183,6 +184,7 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
     [collectionView dequeueReusableCellWithReuseIdentifier:SCENESINGLELINECELL
                                               forIndexPath:indexPath];
     ssCell.container.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.45];
+    ssCell.content.text = @"该地区排名第3";
     ssCell.qmui_borderLocation = QMUIViewBorderPositionNone;
     return ssCell;
   }
@@ -193,6 +195,8 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
     ssCell.container.backgroundColor = UIColor.qd_backgroundColor;
     //    ssCell.container.qmui_borderColor = UIColor.qd_separatorColor;
     //    ssCell.container.qmui_borderLocation = QMUIToastViewPositionBottom;
+    ssCell.imageview.image = UIImageMake(@"spot_locate");
+    ssCell.content.text = @"四川阿坝藏族自治区";
     ssCell.qmui_borderColor = UIColor.qd_separatorColor;
     ssCell.qmui_borderPosition = QMUIViewBorderPositionBottom;
     return ssCell;
@@ -201,6 +205,8 @@ JQCollectionViewAlignLayoutDelegate, GenerateEntityDelegate>
     SceneMultiLineCell *smCell =
     [collectionView dequeueReusableCellWithReuseIdentifier:SCENEMULTILINECELL
                                               forIndexPath:indexPath];
+    smCell.imageview.image = UIImageMake(@"edit");
+    smCell.content.text = @"四川阿坝藏族自治区";
     return smCell;
   }
   

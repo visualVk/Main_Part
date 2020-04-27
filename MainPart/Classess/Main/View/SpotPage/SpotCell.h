@@ -9,5 +9,6 @@
 #import <QMUIKit/QMUIKit.h>
 
 @interface SpotCell : QMUITableViewCell
-@property(nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) NSArray *datas;
+- (void)reloadData:(NSDictionary *)dict;
 @end

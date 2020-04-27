@@ -268,11 +268,17 @@ typedef void (^clickBlock)(void);
                     forService:USERIDENTIFY
                        account:weakSelf.users.username];
       
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSUserDefaults standardUserDefaults] setValue:@(true) forKey:@"islogin"];
+        BOOL flg = [NSUserDefaults qmui_getBoundBOOLForKey:@"islogin"];
+        QMUILogInfo(@"login", @"login flag:%d", flg ? 1 : 0);
+      });
       [weakSelf presentViewController:main animated:YES completion:^{}];
     } else {
       [QMUITips showError:@"密码错误" inView:self.view hideAfterDelay:1.5];
     }
-    QMUILogInfo(@"login", @"login success,return value:{%@}", [dict description]);
+    QMUILogInfo(@"login", @"login success,return value:{%@,%d}", [dict description],
+                [NSUserDefaults qmui_getBoundBOOLForKey:@"islogin"]);
   }
                                           Failure:^(NSError *_Nullable err) {
     QMUILogWarn(@"login", @"login error:%@", [err description]);

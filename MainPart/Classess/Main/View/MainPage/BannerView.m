@@ -9,6 +9,7 @@
 #import "BannerView.h"
 #import "ImageAndLabelCell.h"
 #import "ListController.h"
+#import "MainFoodController.h"
 #import "SearchListController.h"
 
 @interface BannerView () <UICollectionViewDelegate, UICollectionViewDataSource,
@@ -117,6 +118,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   QMUILogInfo(@"banner cell", @"click:(section:%li,row:%li)", indexPath.section, indexPath.row);
   if (indexPath.row == 3) {
     [self.qmui_viewController.navigationController pushViewController:[SearchListController new]
+                                                             animated:YES];
+  } else if (indexPath.row == 1) {
+    [self.qmui_viewController.navigationController pushViewController:[MainFoodController new]
                                                              animated:YES];
   } else {
     [self.qmui_viewController.navigationController pushViewController:[ListController new]

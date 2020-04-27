@@ -56,6 +56,9 @@
 		A7084C942406C23700FF5CAE /* LinkageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C872406C23700FF5CAE /* LinkageListModel.m */; };
 		A7084C952406C23700FF5CAE /* LinkageMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C892406C23700FF5CAE /* LinkageMenuView.m */; };
 		A7084C982406C27900FF5CAE /* LinkageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C972406C27900FF5CAE /* LinkageController.m */; };
+		A708C8EC2455AB37007B02A4 /* MainFoodController.m in Sources */ = {isa = PBXBuildFile; fileRef = A708C8EB2455AB37007B02A4 /* MainFoodController.m */; };
+		A708C8F52455ACCD007B02A4 /* MainFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A708C8F42455ACCD007B02A4 /* MainFoodCell.m */; };
+		A708C8F92455B619007B02A4 /* MainFoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A708C8F82455B619007B02A4 /* MainFoodModel.m */; };
 		A70A159524221E3700777232 /* MileageCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A70A159324221E3600777232 /* MileageCircleProgressView.m */; };
 		A70A1599242271D600777232 /* HWWaveRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = A70A1598242271D600777232 /* HWWaveRectView.m */; };
 		A711C443243434BF003E24FE /* SeasonSceneModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = A711C440243434BE003E24FE /* SeasonSceneModelList.m */; };
@@ -96,6 +99,7 @@
 		A73AEC412412736800AD6880 /* MineOrderHotelView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73AEC402412736800AD6880 /* MineOrderHotelView.m */; };
 		A73AEC442412792900AD6880 /* MineOrderCheckPersonInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73AEC432412792900AD6880 /* MineOrderCheckPersonInfoView.m */; };
 		A73AEC472412802800AD6880 /* MineOrderRoomInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73AEC462412802800AD6880 /* MineOrderRoomInfoView.m */; };
+		A73BF6A824566A8200F5EBB7 /* MainTicketController.m in Sources */ = {isa = PBXBuildFile; fileRef = A73BF6A724566A8200F5EBB7 /* MainTicketController.m */; };
 		A73D6557240B645800F94792 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6554240B645800F94792 /* Tool.m */; };
 		A73D6558240B645800F94792 /* ToolList.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D6556240B645800F94792 /* ToolList.m */; };
 		A73D655B240B658E00F94792 /* MineToolModelJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A73D655A240B658E00F94792 /* MineToolModelJSON.json */; };
@@ -487,6 +491,12 @@
 		A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageMenuView.h; sourceTree = "<group>"; };
 		A7084C962406C27900FF5CAE /* LinkageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkageController.h; sourceTree = "<group>"; };
 		A7084C972406C27900FF5CAE /* LinkageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkageController.m; sourceTree = "<group>"; };
+		A708C8EA2455AB37007B02A4 /* MainFoodController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFoodController.h; sourceTree = "<group>"; };
+		A708C8EB2455AB37007B02A4 /* MainFoodController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFoodController.m; sourceTree = "<group>"; };
+		A708C8F32455ACCD007B02A4 /* MainFoodCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFoodCell.h; sourceTree = "<group>"; };
+		A708C8F42455ACCD007B02A4 /* MainFoodCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFoodCell.m; sourceTree = "<group>"; };
+		A708C8F72455B619007B02A4 /* MainFoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFoodModel.h; sourceTree = "<group>"; };
+		A708C8F82455B619007B02A4 /* MainFoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFoodModel.m; sourceTree = "<group>"; };
 		A70A159324221E3600777232 /* MileageCircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MileageCircleProgressView.m; sourceTree = "<group>"; };
 		A70A159424221E3600777232 /* MileageCircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MileageCircleProgressView.h; sourceTree = "<group>"; };
 		A70A1597242271D600777232 /* HWWaveRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWWaveRectView.h; sourceTree = "<group>"; };
@@ -565,6 +575,8 @@
 		A73AEC432412792900AD6880 /* MineOrderCheckPersonInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineOrderCheckPersonInfoView.m; sourceTree = "<group>"; };
 		A73AEC452412802800AD6880 /* MineOrderRoomInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineOrderRoomInfoView.h; sourceTree = "<group>"; };
 		A73AEC462412802800AD6880 /* MineOrderRoomInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineOrderRoomInfoView.m; sourceTree = "<group>"; };
+		A73BF6A624566A8200F5EBB7 /* MainTicketController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTicketController.h; sourceTree = "<group>"; };
+		A73BF6A724566A8200F5EBB7 /* MainTicketController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTicketController.m; sourceTree = "<group>"; };
 		A73D6553240B645800F94792 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		A73D6554240B645800F94792 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		A73D6555240B645800F94792 /* ToolList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolList.h; sourceTree = "<group>"; };
@@ -1376,6 +1388,24 @@
 				A7084C8A2406C23700FF5CAE /* LinkageMenuView.h */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A708C8ED2455AB4F007B02A4 /* FoodPage */ = {
+			isa = PBXGroup;
+			children = (
+				A708C8F32455ACCD007B02A4 /* MainFoodCell.h */,
+				A708C8F42455ACCD007B02A4 /* MainFoodCell.m */,
+			);
+			path = FoodPage;
+			sourceTree = "<group>";
+		};
+		A708C8F62455B5CE007B02A4 /* FoodPage */ = {
+			isa = PBXGroup;
+			children = (
+				A708C8F72455B619007B02A4 /* MainFoodModel.h */,
+				A708C8F82455B619007B02A4 /* MainFoodModel.m */,
+			);
+			path = FoodPage;
 			sourceTree = "<group>";
 		};
 		A711C43C2434344D003E24FE /* SeasonScene */ = {
@@ -2396,6 +2426,10 @@
 				A73AEC2D24123BE600AD6880 /* PayFinishController.m */,
 				A7FC12B22425BD54005C4796 /* RemarkListController.h */,
 				A7FC12B32425BD54005C4796 /* RemarkListController.m */,
+				A708C8EA2455AB37007B02A4 /* MainFoodController.h */,
+				A708C8EB2455AB37007B02A4 /* MainFoodController.m */,
+				A73BF6A624566A8200F5EBB7 /* MainTicketController.h */,
+				A73BF6A724566A8200F5EBB7 /* MainTicketController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2420,6 +2454,7 @@
 		A7C7788D2402562D003EBCE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A708C8F62455B5CE007B02A4 /* FoodPage */,
 				A711C43C2434344D003E24FE /* SeasonScene */,
 				A761DAEF241FB8B6002121A9 /* Hotel */,
 				A7C7794524027BFC003EBCE0 /* MapModel */,
@@ -2430,6 +2465,7 @@
 		A7C7788E2402562D003EBCE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A708C8ED2455AB4F007B02A4 /* FoodPage */,
 				A7D6549B2416262500AECF5E /* RecommondPage */,
 				A7990F2A2410A32300238B33 /* PayPage */,
 				A72D3AF6240F779A009720AD /* ScenePage */,
@@ -3231,6 +3267,7 @@
 				A7FBA08A2419BA480000287A /* MineProfileController.m in Sources */,
 				A70A159524221E3700777232 /* MileageCircleProgressView.m in Sources */,
 				A7C7792D2402562E003EBCE0 /* SceneDelegate.m in Sources */,
+				A708C8F52455ACCD007B02A4 /* MainFoodCell.m in Sources */,
 				A7FD2B6D241B74FF006B3CC1 /* MineOrderServiceCell.m in Sources */,
 				A7C779342402562E003EBCE0 /* QMUIConfigurationTemplate.m in Sources */,
 				A7C779032402562E003EBCE0 /* DetailController.m in Sources */,
@@ -3369,6 +3406,7 @@
 				A7C779282402562E003EBCE0 /* ItemBasicInfoCell.m in Sources */,
 				A793DC412419275C00CB49BB /* RankList.m in Sources */,
 				A7866ABB2434AFB9001E6A0D /* TextFieldAndButtonCell.m in Sources */,
+				A708C8F92455B619007B02A4 /* MainFoodModel.m in Sources */,
 				A75DB948241D045A0037C0BA /* FSDKFR.xcdatamodeld in Sources */,
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
 				A793DC402419275C00CB49BB /* TownList.m in Sources */,
@@ -3423,6 +3461,7 @@
 				A738B09E240A3E8200705AF2 /* MineDiscountCell.m in Sources */,
 				A7FC12BB2425CE5F005C4796 /* RemarkStaticCell.m in Sources */,
 				A73D6580240BB6CE00F94792 /* MineTouristController.m in Sources */,
+				A73BF6A824566A8200F5EBB7 /* MainTicketController.m in Sources */,
 				A7C7795424027D10003EBCE0 /* LineDashPolyline.m in Sources */,
 				A703A747241E1D5200ABC74A /* CheckInfo.m in Sources */,
 				A703A74D241E1FAC00ABC74A /* CustomUrlUtil.m in Sources */,
@@ -3446,6 +3485,7 @@
 				A7C779252402562E003EBCE0 /* ItemSectionView.m in Sources */,
 				A7FBA09B241A1C2B0000287A /* MineNewPhoneController.m in Sources */,
 				A7C341D72413D5B000BAEF70 /* HWCircleView.m in Sources */,
+				A708C8EC2455AB37007B02A4 /* MainFoodController.m in Sources */,
 				A7C779312402562E003EBCE0 /* ImageUtils.m in Sources */,
 				A7C7797824027E17003EBCE0 /* ErrorInfoUtility.m in Sources */,
 				A7C779152402562E003EBCE0 /* RotationImageCell.m in Sources */,

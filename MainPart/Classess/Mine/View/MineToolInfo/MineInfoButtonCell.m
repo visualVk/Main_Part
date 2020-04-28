@@ -49,9 +49,10 @@
     [_addInfo setImage:[UIImageMake(@"add") qmui_imageWithTintColor:UIColor.qd_tintColor]
               forState:UIControlStateNormal];
     _addInfo.imagePosition = QMUIButtonImagePositionLeft;
-    [_addInfo addTarget:self
-                 action:@selector(addClick)
-       forControlEvents:UIControlEventTouchUpInside];
+    _addInfo.userInteractionEnabled = false;
+    //    [_addInfo addTarget:self
+    //                 action:@selector(addClick)
+    //       forControlEvents:UIControlEventTouchUpInside];
   }
   return _addInfo;
 }

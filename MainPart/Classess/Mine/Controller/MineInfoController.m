@@ -186,7 +186,7 @@ QMUITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   MineInfoEditController *editCon = [MineInfoEditController new];
-  editCon.info = self.infoList[indexPath.row];
+  if (indexPath.section != 0) { editCon.info = self.infoList[indexPath.row]; }
   [self.navigationController pushViewController:editCon animated:YES];
 }
 

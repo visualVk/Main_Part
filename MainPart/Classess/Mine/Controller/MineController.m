@@ -44,25 +44,25 @@ QMUITableViewDataSource> {
   [super didInitialize];
   // init 时做的事情请写在这里
   self.powerList = @[
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_flash",
        @"title" : @"快速入住" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_send",
        @"title" : @"免费寄送行李" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_discount",
        @"title" : @"享受9折优惠" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_free",
        @"title" : @"免收中介费" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_super",
        @"title" : @"享受会员活动" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_travel_any",
        @"title" : @"旅行分析" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_travel",
        @"title" : @"年度旅行总结" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_live_any",
        @"title" : @"住宿分析" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_home",
        @"title" : @"年度住宿总结" },
-    @{ @"image" : @"power",
+    @{ @"image" : @"mine_id_scan",
        @"title" : @"身份免检" }
   ];
 }

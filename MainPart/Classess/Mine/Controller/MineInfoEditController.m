@@ -9,6 +9,7 @@
 #import "MineInfoEditController.h"
 #import "EditInfoCell.h"
 #import "EditPickerCell.h"
+#import "IDAuthViewController.h"
 #import "MarkUtils.h"
 #import "MineInfoButtonCell.h"
 #import "MineInfoCheckBoxCell.h"
@@ -195,6 +196,10 @@ QMUITableViewDataSource, EditInfoCellDelegate>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    IDAuthViewController *idaCon = [IDAuthViewController new];
+    [self.navigationController pushViewController:idaCon animated:YES];
+  }
 }
 
 - (void)setInfo:(Info *)info {

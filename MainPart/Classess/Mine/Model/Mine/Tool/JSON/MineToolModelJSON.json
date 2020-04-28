@@ -2,31 +2,31 @@
   "tool" : [
     {
       "title" : "常用信息",
-      "image" : "emotion_04"
+      "image" : "mine_tool_profile"
     },
     {
       "title" : "扫一扫",
-      "image" : "emotion_04"
+      "image" : "mine_tool_scan"
     },
     {
       "title" : "人脸认证",
-      "image" : "emotion_04"
+      "image" : "mine_tool_face"
     },
     {
       "title" : "会员权益码",
-      "image" : "emotion_04"
+      "image" : "mine_tool_priviliage"
     },
     {
       "title" : "信息反馈",
-      "image" : "emotion_04"
+      "image" : "mine_tool_message"
     },
     {
       "title" : "出行清单",
-      "image" : "emotion_04"
+      "image" : "mine_tool_list"
     },
     {
       "title" : "AR扫奖",
-      "image" : "emotion_04"
+      "image" : "mine_tool_ar"
     }
   ]
 }

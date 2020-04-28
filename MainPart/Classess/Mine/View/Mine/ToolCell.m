@@ -19,6 +19,7 @@
 #import "VIPQRCodeController.h"
 #import "ViewController.h"
 #import <easyar/engine.oc.h>
+#define picList @[@"mine_tool_profile",@"mine_tool_scan",@"mine_tool_face",@"mine_tool_priviliage",@"mine_tool_message",@"mine_tool_list",@"mine_tool_ar"]
 const NSInteger TOOLTAG = 10002;
 @interface ToolCell () <GenerateEntityDelegate>
 @property (nonatomic, strong) SimpleTitleView *titleView;

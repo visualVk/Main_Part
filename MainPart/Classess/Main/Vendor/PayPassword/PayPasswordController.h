@@ -18,6 +18,7 @@
 
 typedef void (^PasswordDidChangeBlock)(NSString *password);
 @interface PayPasswordController : QMUICommonViewController
+@property (nonatomic, weak) NSString *price;
 @property (nonatomic, strong) UIView *container;
 @property (nonatomic, strong) UITextField *pswTextField;
 @property (nonatomic, strong) NSMutableArray *dotArr;

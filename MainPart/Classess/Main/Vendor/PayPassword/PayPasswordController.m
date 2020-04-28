@@ -328,4 +328,8 @@ replacementString:(NSString *)string {
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)setPrice:(NSString *)price {
+  _price = price;
+  self.payMoney.text = [NSString stringWithFormat:@"%@元", price];
+}
 @end

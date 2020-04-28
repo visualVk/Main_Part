@@ -194,6 +194,7 @@ QMUITableViewDataSource, PayPasswordDelegate> {
 
 - (void)confirmPayment {
   self.ppCon = [PayPasswordController new];
+  self.ppCon.price = self.price;
   self.ppCon.payDelegate = self;
   UIWindow *window = UIApplication.sharedApplication.keyWindow;
   [self presentPayAnimate:self.ppCon.container];

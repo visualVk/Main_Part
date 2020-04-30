@@ -16,7 +16,9 @@
 @implementation CityHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) { self.backgroundColor = UIColor.qd_backgroundColor; }
+  if (self = [super initWithFrame:frame]) {
+    self.backgroundColor = UIColor.qd_customBackgroundColor;
+  }
   return self;
 }
 
@@ -31,10 +33,10 @@
 #pragma mark - Lazy init Title Label
 - (UILabel *)title {
   if (!_title) {
-    _title               = [UILabel new];
-    _title.text          = @"title";
-    _title.font          = UIFontBoldMake(18);
-    _title.textColor     = UIColor.qd_mainTextColor;
+    _title = [UILabel new];
+    _title.text = @"title";
+    _title.font = UIFontBoldMake(18);
+    _title.textColor = UIColor.qd_mainTextColor;
     _title.textAlignment = NSTextAlignmentLeft;
     addView(self, _title);
     [_title mas_makeConstraints:^(MASConstraintMaker *make) {

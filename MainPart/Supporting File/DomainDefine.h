@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #define MAINDOMAIN @"http://120.26.235.201:8799"
 #define UserLogin @"/api/user/login/pas"
+#define UserRegister @"/api/register/userinsert"
 #define FindAllHotel @"/api/hotel/findhotel"
 #define FindRoomByHotelId @"/api/hotel/findroombyhotelid"
 #define FindAppreaiseByHotelId @"/api/hotel/findAllappreaise"

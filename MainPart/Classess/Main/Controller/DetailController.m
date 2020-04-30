@@ -19,6 +19,7 @@
 #import "HotelOrderDatePickerView.h"
 #import "HotelRoomModelList.h"
 #import "ItemBasicInfoCell.h"
+#import "MainDetailQuestionCell.h"
 #import "MapController.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
@@ -35,6 +36,7 @@
 #define DETAILINFOPARTCELL @"detailinfopartcell"
 #define REMARKSCORECELL @"remarkscorecell"
 #define DETAILHEADERCELL @"detailheadercell"
+#define MAINDETAILQUESTIONCELL @"MainDetailQuestionCell"
 #define SEGHEIGHT DEVICE_HEIGHT / 20
 #define ITEMCELLHEIGHT DEVICE_HEIGHT / 8 + 10
 #define BannerHeight DEVICE_HEIGHT / 3
@@ -153,7 +155,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
     return tmp.count;
   }
   if (section == self.hotelRoomTypeList.count + 1) { return 2; }
-  return 3;
+  return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -277,6 +279,11 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
       [tableView dequeueReusableCellWithIdentifier:REMARKSCORECELL forIndexPath:indexPath];
       rsCell.model = self.hotelRoomList[0];
       return rsCell;
+    } else if (row == 1) {
+      MainDetailQuestionCell *mdqCell =
+      [tableView dequeueReusableCellWithIdentifier:MAINDETAILQUESTIONCELL
+                                      forIndexPath:indexPath];
+      return mdqCell;
     }
     RemarkCell *rcell =
     [tableView dequeueReusableCellWithIdentifier:REMARKCELL forIndexPath:indexPath];
@@ -607,6 +614,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [_tableView registerClass:RemarkCell.class forCellReuseIdentifier:REMARKCELL];
     [_tableView registerClass:RemarkScoreCell.class forCellReuseIdentifier:REMARKSCORECELL];
     [_tableView registerClass:RoomCell.class forCellReuseIdentifier:ROOMTCELL];
+    [_tableView registerClass:MainDetailQuestionCell.class
+       forCellReuseIdentifier:MAINDETAILQUESTIONCELL];
     _tableView.qmui_cacheCellHeightByKeyAutomatically = YES;
     _banner = [[BannerZoomView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, BannerHeight)];
     _banner.datas = self.imageList;

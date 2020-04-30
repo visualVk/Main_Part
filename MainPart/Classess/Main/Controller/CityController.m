@@ -12,6 +12,7 @@
 #import "CommonCell.h"
 #import "GridCityCell.h"
 #import "MarkUtils.h"
+#import "NSDictionary+LoadJson.h"
 #import "NSObject+BlockSEL.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
@@ -31,6 +32,7 @@ AMapLocationManagerDelegate>
 @property (nonatomic, strong) NSArray *searchResultList;
 @property (nonatomic, strong) NSArray *cityList;
 @property (nonatomic, strong) NSArray *cityNameList;
+@property (nonatomic, strong) NSString *localCityName;
 @property (nonatomic, strong) CollectionIndexView *indexView;
 @property (nonatomic, strong) QMUIEmptyView *tagView;
 @property (nonatomic, strong) AMapLocationManager *locationManager;
@@ -41,7 +43,10 @@ AMapLocationManagerDelegate>
 
 @implementation CityController
 - (void)didInitialize {
-  self.cityList = @[ @"温州", @"xxx", @"bbb" ];
+  //  self.cityList = @[ @"温州", @"xxx", @"bbb" ];
+  //  self.localCityName = @"温州";
+  [self locationCity];
+  [self generateCityList];
   NSMutableArray *arr = [NSMutableArray arrayWithArray:@[ @"定位", @"热门", @"必玩" ]];
   for (int i = 0; i < 26; ++i) {
     [arr addObject:[NSString stringWithFormat:@"%c", (char)('a' + i)]];
@@ -160,7 +165,9 @@ updateResultsForSearchString:(NSString *)searchString {
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-  return 10;
+  if (section == 0) return 1;
+  NSArray *arr = self.cityList[section];
+  return arr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -169,12 +176,19 @@ updateResultsForSearchString:(NSString *)searchString {
   if (section > 2) {
     CommonCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:CITYCELL forIndexPath:indexPath];
+    NSArray *arr = self.cityList[section];
+    cell.label.text = arr[indexPath.row];
     cell.clipsToBounds = YES;
     return cell;
   }
   GridCityCell *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:EVERCITYCELL forIndexPath:indexPath];
-  cell.labelBtn.text = @"温州";
+  if (section == 0) {
+    cell.labelBtn.text = self.localCityName;
+  } else {
+    NSArray *arr = self.cityList[section];
+    cell.labelBtn.text = arr[indexPath.row];
+  }
   cell.clipsToBounds = YES;
   return cell;
 }
@@ -211,7 +225,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = arc4random() % 3;
   NSInteger row;
-  if (self.cityBlock) { self.cityBlock(self.cityList[section]); }
+  if (self.cityBlock) { self.cityBlock(self.cityList[indexPath.section][indexPath.row]); }
   [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -308,5 +322,71 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 
 - (NSString *)customNavigationBarTransitionKey {
   return @"CityController";
+}
+
+#pragma mark - AMAPLocation
+- (void)locationCity {
+  @weakify(self);
+  AMLocationUtils.sharedInstance.GeoCode = ^(AMapLocationReGeocode *_Nonnull reGeoCode) {
+    @strongify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      NSString *cityReg = reGeoCode.city;
+      NSString *regex = @"^.*市$";
+      NSPredicate *cityValidate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+      if ([cityValidate evaluateWithObject:cityReg]) {
+        cityReg = [cityReg substringWithRange:NSMakeRange(0, cityReg.length - 1)];
+      }
+      self.localCityName = cityReg;
+      [self generateCityList];
+      [self.collectionview reloadData];
+      [AMLocationUtils stopReGeo];
+    });
+  };
+  [AMLocationUtils startReGeo];
+}
+- (void)dealloc {
+  [AMLocationUtils stopReGeo];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)generateCityList {
+  self.cityList = @[
+    @[ self.localCityName ],
+    @[ @"浙江", @"北京", @"上海", @"江苏" ],
+    @[ @"黑龙江", @"安徽", @"北京" ],
+    @[ @"北京市" ],
+    @[ @"天津市" ],
+    @[ @"河北省" ],
+    @[ @"山西省" ],
+    @[ @"内蒙古自治区" ],
+    @[ @"辽宁省" ],
+    @[ @"江苏省" ],
+    @[ @"上海市" ],
+    @[ @"吉林省", @"黑龙江省" ],
+    @[ @"浙江省" ],
+    @[ @"安徽省", @"福建省" ],
+    @[ @"江西省", @"山东省" ],
+    @[
+      @"河南省",
+      @"广东省",
+    ],
+    @[ @"湖北省", @"湖南省" ],
+    @[ @"广西壮族自治区" ],
+    @[
+      @"海南省",
+    ],
+    @[ @"重庆市" ],
+    @[ @"四川省" ],
+    @[ @"贵州省", @"云南省" ],
+    @[ @"陕西省", @"甘肃省" ],
+    @[ @"自治区" ],
+    @[
+      @"青海省",
+    ],
+    @[ @"宁夏回族自治区" ],
+    @[ @"澳门特别行政区" ],
+    @[ @"新疆维吾尔自治区" ],
+    @[ @"台灣", @"香港特别行>政区" ],
+  ];
 }
 @end

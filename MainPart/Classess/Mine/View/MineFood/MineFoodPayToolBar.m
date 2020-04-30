@@ -91,6 +91,7 @@
 
 - (void)payClick {
   PayMethodController *pmCon = [PayMethodController new];
+  pmCon.price = self.payPrice.text;
   [[self qmui_viewController].navigationController pushViewController:pmCon animated:YES];
 }
 @end

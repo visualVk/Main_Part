@@ -8,6 +8,7 @@
 
 #import "MineRoomChooseController.h"
 #import "MarkUtils.h"
+#define roomList @[ @"aaa楼bbb层ccc1号", @"aaa楼ddd层ttt2号", @"aaa楼eee层zzz3号" ]
 
 @interface MineRoomChooseController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
@@ -109,7 +110,7 @@ QMUITableViewDataSource>
     cell = [[QMUITableViewCell alloc] initForTableView:tableView withReuseIdentifier:identifier];
     cell.textLabel.numberOfLines = 0;
   }
-  cell.textLabel.text = @"阿伟死了";
+  cell.textLabel.text = roomList[indexPath.row];
   return cell;
 }
 

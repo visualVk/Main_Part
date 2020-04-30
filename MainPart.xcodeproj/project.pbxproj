@@ -44,6 +44,10 @@
 		A703A777241E73C500ABC74A /* QiCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A772241E73C500ABC74A /* QiCardViewCell.m */; };
 		A703A778241E73C500ABC74A /* QiCardItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A775241E73C500ABC74A /* QiCardItemCell.m */; };
 		A703A77C241E743400ABC74A /* QiDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A77B241E743400ABC74A /* QiDataModel.m */; };
+		A707EF18245A7D02007B9817 /* MainDetailQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF17245A7D02007B9817 /* MainDetailQuestionCell.m */; };
+		A707EF1B245A89F5007B9817 /* MainQuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1A245A89F5007B9817 /* MainQuestionController.m */; };
+		A707EF1F245A8A40007B9817 /* MoreQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */; };
+		A707EF22245A934A007B9817 /* QuestionToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF21245A934A007B9817 /* QuestionToolBar.m */; };
 		A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */; };
 		A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */; };
 		A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C792406C23700FF5CAE /* LeftCell.m */; };
@@ -469,6 +473,14 @@
 		A703A775241E73C500ABC74A /* QiCardItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardItemCell.m; sourceTree = "<group>"; };
 		A703A77A241E743400ABC74A /* QiDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiDataModel.h; sourceTree = "<group>"; };
 		A703A77B241E743400ABC74A /* QiDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiDataModel.m; sourceTree = "<group>"; };
+		A707EF16245A7D02007B9817 /* MainDetailQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainDetailQuestionCell.h; sourceTree = "<group>"; };
+		A707EF17245A7D02007B9817 /* MainDetailQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainDetailQuestionCell.m; sourceTree = "<group>"; };
+		A707EF19245A89F5007B9817 /* MainQuestionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainQuestionController.h; sourceTree = "<group>"; };
+		A707EF1A245A89F5007B9817 /* MainQuestionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainQuestionController.m; sourceTree = "<group>"; };
+		A707EF1D245A8A40007B9817 /* MoreQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreQuestionCell.h; sourceTree = "<group>"; };
+		A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreQuestionCell.m; sourceTree = "<group>"; };
+		A707EF20245A934A007B9817 /* QuestionToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionToolBar.h; sourceTree = "<group>"; };
+		A707EF21245A934A007B9817 /* QuestionToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionToolBar.m; sourceTree = "<group>"; };
 		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
 		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
 		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
@@ -1319,6 +1331,17 @@
 				A703A77B241E743400ABC74A /* QiDataModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A707EF1C245A8A20007B9817 /* QuestoinPage */ = {
+			isa = PBXGroup;
+			children = (
+				A707EF1D245A8A40007B9817 /* MoreQuestionCell.h */,
+				A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */,
+				A707EF20245A934A007B9817 /* QuestionToolBar.h */,
+				A707EF21245A934A007B9817 /* QuestionToolBar.m */,
+			);
+			path = QuestoinPage;
 			sourceTree = "<group>";
 		};
 		A7084C6F2406C23700FF5CAE /* LinkageMenuVIew */ = {
@@ -2430,6 +2453,8 @@
 				A708C8EB2455AB37007B02A4 /* MainFoodController.m */,
 				A73BF6A624566A8200F5EBB7 /* MainTicketController.h */,
 				A73BF6A724566A8200F5EBB7 /* MainTicketController.m */,
+				A707EF19245A89F5007B9817 /* MainQuestionController.h */,
+				A707EF1A245A89F5007B9817 /* MainQuestionController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2465,6 +2490,7 @@
 		A7C7788E2402562D003EBCE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A707EF1C245A8A20007B9817 /* QuestoinPage */,
 				A708C8ED2455AB4F007B02A4 /* FoodPage */,
 				A7D6549B2416262500AECF5E /* RecommondPage */,
 				A7990F2A2410A32300238B33 /* PayPage */,
@@ -2595,6 +2621,8 @@
 				A7FC12BA2425CE5F005C4796 /* RemarkStaticCell.m */,
 				A7FC12BC2425DCD7005C4796 /* RemarkScoreView.h */,
 				A7FC12BD2425DCD7005C4796 /* RemarkScoreView.m */,
+				A707EF16245A7D02007B9817 /* MainDetailQuestionCell.h */,
+				A707EF17245A7D02007B9817 /* MainDetailQuestionCell.m */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -3351,6 +3379,7 @@
 				A7FE9A9024177E1E00A8D259 /* PopView.m in Sources */,
 				A772A9932407A99700B8FC52 /* OrderCell.m in Sources */,
 				A7FE9A8C24177E1E00A8D259 /* helloar.m in Sources */,
+				A707EF22245A934A007B9817 /* QuestionToolBar.m in Sources */,
 				A7FA6DE5240CF6D6003982DA /* HotelOrderDatePickerView.m in Sources */,
 				A7866AAC2434AFB9001E6A0D /* IDAuthViewController.m in Sources */,
 				A7866AB92434AFB9001E6A0D /* TextFieldCell.m in Sources */,
@@ -3364,6 +3393,7 @@
 				A73D6589240BE60E00F94792 /* Log.m in Sources */,
 				A7C7795F24027D49003EBCE0 /* TraceReplayOverlayViewController.m in Sources */,
 				A7866AAB2434AFB9001E6A0D /* AVCaptureViewController.m in Sources */,
+				A707EF1B245A89F5007B9817 /* MainQuestionController.m in Sources */,
 				A772A9A52407E12300B8FC52 /* WOPageControl.m in Sources */,
 				A7C779112402562E003EBCE0 /* YXFlipCell.m in Sources */,
 				A7247957242076BF00619D38 /* HotelRoomModel.m in Sources */,
@@ -3409,6 +3439,7 @@
 				A708C8F92455B619007B02A4 /* MainFoodModel.m in Sources */,
 				A75DB948241D045A0037C0BA /* FSDKFR.xcdatamodeld in Sources */,
 				A7C7792E2402562E003EBCE0 /* AppDelegate.m in Sources */,
+				A707EF1F245A8A40007B9817 /* MoreQuestionCell.m in Sources */,
 				A793DC402419275C00CB49BB /* TownList.m in Sources */,
 				A703A750241E2AC700ABC74A /* MineRoomChooseController.m in Sources */,
 				A7C779042402562E003EBCE0 /* MainController.m in Sources */,
@@ -3457,6 +3488,7 @@
 				A724795A242076D700619D38 /* HotelRoomModelList.m in Sources */,
 				A7C7794B24027CF4003EBCE0 /* MANaviAnnotation.m in Sources */,
 				A7739FBC2405531600EF7664 /* ReMenuView.m in Sources */,
+				A707EF18245A7D02007B9817 /* MainDetailQuestionCell.m in Sources */,
 				A7C779232402562E003EBCE0 /* FooterEmptyView.m in Sources */,
 				A738B09E240A3E8200705AF2 /* MineDiscountCell.m in Sources */,
 				A7FC12BB2425CE5F005C4796 /* RemarkStaticCell.m in Sources */,

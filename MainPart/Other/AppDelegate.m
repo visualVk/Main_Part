@@ -45,7 +45,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   UIViewController *con = nil;
   
   Users *users = [Users new];
-  BOOL isLogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"islogin"];
+  BOOL isLogin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"islogin"] boolValue];
   //  if (!users || !users.username || !users.password || [@"" isEqualToString:users.username] ||
   //      [@"" isEqualToString:users.password]) {
   //    con = [LoginMainController new];
@@ -60,7 +60,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                                             @"password" : users.password
                                           }
                                             Success:^(NSDictionary *_Nullable dict) {
-      [[NSUserDefaults standardUserDefaults] setValue:@(true) forKey:@"islogin"];
+      [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"islogin"];
       NSString *datas = dict[@"data"][@"token"];
       QMUILogInfo(@"login", @"%@", datas);
       dispatch_async(dispatch_get_main_queue(), ^{ Bearer = datas; });

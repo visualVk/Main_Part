@@ -273,6 +273,8 @@
     if (self.deleteOneOrder) self.deleteOneOrder(self.model);
   } else if ([@"待付款" isEqualToString:btn.titleLabel.text]) {
     PayMethodController *pmCon = [PayMethodController new];
+    NSInteger price = [self.model.roomPrice integerValue];
+    pmCon.price = [NSString stringWithFormat:@"%li", price * self.model.checkInfo.count];
     [self.qmui_viewController.navigationController pushViewController:pmCon animated:YES];
   } else if ([@"待评价" isEqualToString:btn.titleLabel.text]) {
     //    [self.qmui_viewController.navigationController push]

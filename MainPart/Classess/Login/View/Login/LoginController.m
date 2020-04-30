@@ -269,9 +269,7 @@ typedef void (^clickBlock)(void);
                        account:weakSelf.users.username];
       
       dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSUserDefaults standardUserDefaults] setValue:@(true) forKey:@"islogin"];
-        BOOL flg = [NSUserDefaults qmui_getBoundBOOLForKey:@"islogin"];
-        QMUILogInfo(@"login", @"login flag:%d", flg ? 1 : 0);
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"islogin"];
       });
       [weakSelf presentViewController:main animated:YES completion:^{}];
     } else {

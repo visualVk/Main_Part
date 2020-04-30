@@ -5,12 +5,13 @@
 //  Created by blacksky on 2020/2/5.
 //  Copyright © 2020 blacksky. All rights reserved.
 //
-
 #import "ProfileController.h"
+#import "AppDelegate.h"
 #import "IDAuthViewController.h"
 #import "IDInfo.h"
 #import "LogoImageCell.h"
 #import "LogoView.h"
+#import "MainTabController.h"
 #import "NSObject+BlockSEL.h"
 #import "TextFieldAndButtonCell.h"
 #import "TextFieldCell.h"
@@ -375,9 +376,20 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)postProfileAndAccountMsg {
-  [[RequestUtils shareManager] RequestPostWithUrl:@"findUser"
+  __weak __typeof(self) weakSelf = self;
+  self.users.logincode = self.users.username;
+  [[RequestUtils shareManager] RequestPostWithUrl:UserRegister
                                            Object:self.users
-                                          Success:^(NSDictionary *_Nullable dict) { QMUILogInfo(@"success", @"success"); }
+                                          Success:^(NSDictionary *_Nullable dict) {
+    QMUILogInfo(@"success", @"success{%@}", [dict description]);
+    if ([dict[@"code"] integerValue] == 20055) {
+      [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"islogin"];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.window.rootViewController = [MainTabController new];
+      });
+    }
+  }
                                           Failure:^(NSError *_Nullable err) { QMUILogWarn(@"warn", @"failed"); }];
 }
 @end

@@ -276,7 +276,7 @@
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
   label.font = UIFontMake(13);
-  label.textColor = UIColor.qmui_randomColor;
+  label.textColor = UIColor.lightGrayColor;
   label.backgroundColor = UIColor.clearColor;
   label.highlightedBackgroundColor = nil;
   label.text = @"16 m™";

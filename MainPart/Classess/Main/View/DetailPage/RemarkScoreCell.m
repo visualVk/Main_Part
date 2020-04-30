@@ -9,6 +9,7 @@
 #import "RemarkScoreCell.h"
 #import "MarkUtils.h"
 #import "NSObject+BlockSEL.h"
+#import "RemarkListController.h"
 #import <SJAttributesFactory.h>
 
 @interface RemarkScoreCell () <GenerateEntityDelegate>
@@ -16,8 +17,10 @@
 @property (nonatomic, strong) UILabel *score;
 @property (nonatomic, strong) QMUIFloatLayoutView *liteTag;
 @property (nonatomic, strong) QMUIFloatLayoutView *bigTag;
+@property (nonatomic, strong) QMUIButton *moreRemark;
 @property (nonatomic, strong) UIView *container;
 @property (nonatomic, assign) CGFloat labelHeight;
+@property (nonatomic, weak) UIViewController *paCon;
 @end
 
 @implementation RemarkScoreCell
@@ -46,6 +49,7 @@
   addView(superview, self.title);
   addView(superview, self.score);
   addView(superview, self.liteTag);
+  addView(superview, self.moreRemark);
   
   //  UIEdgeInsets padding = UIEdgeInsetsMake(0.5*SPACE, 0.5*SPACE, <#CGFloat bottom#>, <#CGFloat
   //  right#>)
@@ -69,6 +73,11 @@
     make.left.equalTo(self.score.mas_right).with.inset(0.5 * SPACE);
     make.right.equalTo(superview).with.inset(0.5 * SPACE);
     make.height.mas_equalTo(size.height);
+  }];
+  
+  [self.moreRemark mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerX.equalTo(_container);
+    make.bottom.equalTo(_container).with.inset(10);
   }];
 }
 
@@ -118,6 +127,27 @@
 - (UIView *)container {
   if (!_container) { _container = [UIView new]; }
   return _container;
+}
+
+- (QMUIButton *)moreRemark {
+  if (!_moreRemark) {
+    _moreRemark = [QDUIHelper generateLightBorderedButton];
+    _moreRemark.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+    _moreRemark.backgroundColor = UIColor.clearColor;
+    _moreRemark.titleLabel.font = UIFontMake(18);
+    [_moreRemark setTitle:@"更多评论" forState:UIControlStateNormal];
+    [_moreRemark addTarget:self
+                    action:@selector(moreRemarkJump)
+          forControlEvents:UIControlEventTouchUpInside];
+  }
+  return _moreRemark;
+}
+
+- (void)moreRemarkJump {
+  if (!self.paCon) { self.paCon = self.qmui_viewController; }
+  RemarkListController *rlCon = [RemarkListController new];
+  rlCon.hotelId = 1;
+  [self.paCon.navigationController pushViewController:rlCon animated:YES];
 }
 
 - (UILabel *)generateTagLabel {

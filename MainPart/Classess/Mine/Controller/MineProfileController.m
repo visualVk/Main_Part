@@ -308,11 +308,11 @@ GenerateEntityDelegate, MineAvatraPickerDelegate> {
   } else if ([@"退出登录" isEqualToString:title]) {
     BOOL islogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"islogin"];
     if (!islogin) {
-      [[NSUserDefaults standardUserDefaults] setValue:@(false) forKey:@"islogin"];
+      [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"islogin"];
       [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES
                                                                                  completion:nil];
     } else {
-      [[NSUserDefaults standardUserDefaults] setValue:@(false) forKey:@"islogin"];
+      [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"islogin"];
       [self dismissViewControllerAnimated:YES
                                completion:^{
         AppDelegate *delegate =

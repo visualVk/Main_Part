@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^QuestionClick)(void);
 @interface QuestionToolBar : UIView
-
+@property (nonatomic, strong, readonly) QMUIButton *questionBtn;
+@property (nonatomic, weak) QuestionClick questionBlock;
 @end

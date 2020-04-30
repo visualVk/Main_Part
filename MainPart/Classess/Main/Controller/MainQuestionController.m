@@ -8,14 +8,19 @@
 //
 
 #import "MainQuestionController.h"
+#import "AskQuestionView.h"
 #import "MarkUtils.h"
 #import "MoreQuestionCell.h"
+#import "QuestionDetailController.h"
+#import "QuestionToolBar.h"
 #define MOREQUESTIONCELL @"MoreQuestionCell"
 
 @interface MainQuestionController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
 @property (nonatomic, strong) QMUITableView *tableview;
+@property (nonatomic, strong) AskQuestionView *askView;
 @property (nonatomic, strong) QMUISearchController *searchBar;
+@property (nonatomic, strong) QuestionToolBar *questionToolBar;
 @end
 
 @implementation MainQuestionController
@@ -58,15 +63,24 @@ QMUITableViewDataSource>
 
 - (void)setupNavigationItems {
   [super setupNavigationItems];
+  //  self.navigationItem.leftItemsSupplementBackButton = YES;
+  self.navigationItem.leftBarButtonItem = NavLeftItemMake(self.searchBar.searchBar);
   self.navigationItem.leftItemsSupplementBackButton = YES;
   //    self.title = @"<##>";
 }
 
 - (void)generateRootView {
   addView(self.view, self.tableview);
+  addView(self.view, self.questionToolBar);
   [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-    make.left.right.bottom.equalTo(self.view);
+    make.left.right.equalTo(self.view);
+    make.bottom.equalTo(self.questionToolBar.mas_top);
+  }];
+  [self.questionToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(self.view);
+    make.height.mas_equalTo(88);
+    make.left.right.equalTo(self.view);
   }];
 }
 
@@ -80,6 +94,44 @@ QMUITableViewDataSource>
     _tableview.dataSource = self;
   }
   return _tableview;
+}
+
+- (QuestionToolBar *)questionToolBar {
+  if (!_questionToolBar) {
+    _questionToolBar = [QuestionToolBar new];
+    __weak __typeof(self) weakSelf = self;
+    _questionToolBar.questionBlock = ^{
+      /// todo:
+      QMUIModalPresentationViewController *con = [[QMUIModalPresentationViewController alloc] init];
+      con.animationStyle = QMUIModalPresentationAnimationStyleSlide;
+      AskQuestionView *view = [[AskQuestionView alloc] initWithFrame:CGRectMake(0, 0, 300, 360)];
+      [[view.submitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]
+       subscribeNext:^(__kindof UIControl *_Nullable x){
+        /// todo:post question
+      }];
+      con.contentView = view;
+      con.contentViewMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+      con.layoutBlock =
+      ^(CGRect containerBounds, CGFloat keyboardHeight, CGRect contentViewDefaultFrame) {
+        view.qmui_frameApplyTransform = CGRectSetXY(
+                                                    view.frame,
+                                                    CGFloatGetCenter(CGRectGetWidth(containerBounds), CGRectGetWidth(view.frame)),
+                                                    CGRectGetHeight(containerBounds) - CGRectGetHeight(view.bounds) - 250 -
+                                                    keyboardHeight / 3);
+      };
+      [con showWithAnimated:YES completion:^(BOOL finished){}];
+    };
+  }
+  return _questionToolBar;
+}
+
+- (QMUISearchController *)searchBar {
+  if (!_searchBar) {
+    _searchBar = [[QMUISearchController alloc] initWithContentsViewController:self];
+    _searchBar.searchBar.qmui_usedAsTableHeaderView = YES;
+    _searchBar.active = NO;
+  }
+  return _searchBar;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -116,5 +168,7 @@ QMUITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  QuestionDetailController *qdCon = [QuestionDetailController new];
+  [self.navigationController pushViewController:qdCon animated:YES];
 }
 @end

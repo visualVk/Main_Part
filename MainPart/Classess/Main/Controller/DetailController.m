@@ -287,7 +287,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
     }
     RemarkCell *rcell =
     [tableView dequeueReusableCellWithIdentifier:REMARKCELL forIndexPath:indexPath];
-    rcell.model = self.hotelAppreaiseModelList[indexPath.row - 1];
+    rcell.model = self.hotelAppreaiseModelList[indexPath.row - 2];
     return rcell;
   }
   static NSString *identifier = @"cell";

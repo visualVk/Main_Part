@@ -48,6 +48,11 @@
 		A707EF1B245A89F5007B9817 /* MainQuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1A245A89F5007B9817 /* MainQuestionController.m */; };
 		A707EF1F245A8A40007B9817 /* MoreQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */; };
 		A707EF22245A934A007B9817 /* QuestionToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF21245A934A007B9817 /* QuestionToolBar.m */; };
+		A707EF25245A9F25007B9817 /* AskQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF24245A9F25007B9817 /* AskQuestionView.m */; };
+		A707EF28245AA58C007B9817 /* QuestionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF27245AA58C007B9817 /* QuestionDetailController.m */; };
+		A707EF2B245AA621007B9817 /* QuestionAnsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF2A245AA621007B9817 /* QuestionAnsDetailCell.m */; };
+		A707EF2E245AA938007B9817 /* QuestionAnsTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF2D245AA938007B9817 /* QuestionAnsTitleCell.m */; };
+		A707EF31245AAAF2007B9817 /* QuestionDetailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF30245AAAF2007B9817 /* QuestionDetailTitleView.m */; };
 		A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */; };
 		A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */; };
 		A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7084C792406C23700FF5CAE /* LeftCell.m */; };
@@ -481,6 +486,16 @@
 		A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreQuestionCell.m; sourceTree = "<group>"; };
 		A707EF20245A934A007B9817 /* QuestionToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionToolBar.h; sourceTree = "<group>"; };
 		A707EF21245A934A007B9817 /* QuestionToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionToolBar.m; sourceTree = "<group>"; };
+		A707EF23245A9F25007B9817 /* AskQuestionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AskQuestionView.h; sourceTree = "<group>"; };
+		A707EF24245A9F25007B9817 /* AskQuestionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AskQuestionView.m; sourceTree = "<group>"; };
+		A707EF26245AA58C007B9817 /* QuestionDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDetailController.h; sourceTree = "<group>"; };
+		A707EF27245AA58C007B9817 /* QuestionDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailController.m; sourceTree = "<group>"; };
+		A707EF29245AA621007B9817 /* QuestionAnsDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionAnsDetailCell.h; sourceTree = "<group>"; };
+		A707EF2A245AA621007B9817 /* QuestionAnsDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionAnsDetailCell.m; sourceTree = "<group>"; };
+		A707EF2C245AA938007B9817 /* QuestionAnsTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionAnsTitleCell.h; sourceTree = "<group>"; };
+		A707EF2D245AA938007B9817 /* QuestionAnsTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionAnsTitleCell.m; sourceTree = "<group>"; };
+		A707EF2F245AAAF2007B9817 /* QuestionDetailTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDetailTitleView.h; sourceTree = "<group>"; };
+		A707EF30245AAAF2007B9817 /* QuestionDetailTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailTitleView.m; sourceTree = "<group>"; };
 		A7084C712406C23700FF5CAE /* NSDictionary+LoadJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LoadJson.m"; sourceTree = "<group>"; };
 		A7084C722406C23700FF5CAE /* NSDictionary+LoadJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LoadJson.h"; sourceTree = "<group>"; };
 		A7084C762406C23700FF5CAE /* LinkageTitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageTitleHeader.m; sourceTree = "<group>"; };
@@ -1340,6 +1355,14 @@
 				A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */,
 				A707EF20245A934A007B9817 /* QuestionToolBar.h */,
 				A707EF21245A934A007B9817 /* QuestionToolBar.m */,
+				A707EF23245A9F25007B9817 /* AskQuestionView.h */,
+				A707EF24245A9F25007B9817 /* AskQuestionView.m */,
+				A707EF29245AA621007B9817 /* QuestionAnsDetailCell.h */,
+				A707EF2A245AA621007B9817 /* QuestionAnsDetailCell.m */,
+				A707EF2C245AA938007B9817 /* QuestionAnsTitleCell.h */,
+				A707EF2D245AA938007B9817 /* QuestionAnsTitleCell.m */,
+				A707EF2F245AAAF2007B9817 /* QuestionDetailTitleView.h */,
+				A707EF30245AAAF2007B9817 /* QuestionDetailTitleView.m */,
 			);
 			path = QuestoinPage;
 			sourceTree = "<group>";
@@ -2455,6 +2478,8 @@
 				A73BF6A724566A8200F5EBB7 /* MainTicketController.m */,
 				A707EF19245A89F5007B9817 /* MainQuestionController.h */,
 				A707EF1A245A89F5007B9817 /* MainQuestionController.m */,
+				A707EF26245AA58C007B9817 /* QuestionDetailController.h */,
+				A707EF27245AA58C007B9817 /* QuestionDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3228,6 +3253,7 @@
 				A703A75B241E456500ABC74A /* Device.m in Sources */,
 				A7866AA02434AFB9001E6A0D /* LoginMainController.m in Sources */,
 				A793DC492419275C00CB49BB /* Rank.m in Sources */,
+				A707EF28245AA58C007B9817 /* QuestionDetailController.m in Sources */,
 				A703A77C241E743400ABC74A /* QiDataModel.m in Sources */,
 				A7FA6DED240D121D003982DA /* LVCalendarCell.m in Sources */,
 				A73AEC412412736800AD6880 /* MineOrderHotelView.m in Sources */,
@@ -3256,6 +3282,7 @@
 				A7C7796124027D49003EBCE0 /* CustomMAMultiPolyline.m in Sources */,
 				A738B0A1240A63AB00705AF2 /* MileageController.m in Sources */,
 				A793DC422419275C00CB49BB /* HotelQueryModel.m in Sources */,
+				A707EF2E245AA938007B9817 /* QuestionAnsTitleCell.m in Sources */,
 				A738B286240A932300705AF2 /* ChartCell.m in Sources */,
 				A7C779072402562E003EBCE0 /* RecommondController.m in Sources */,
 				A73D6557240B645800F94792 /* Tool.m in Sources */,
@@ -3356,6 +3383,7 @@
 				A7C4F0BF2403D59F008E740A /* DetailHeaderPartCell.m in Sources */,
 				A7FDCBF52443F96A00660E9E /* MineReviewTextView.m in Sources */,
 				A7866A9F2434AFB9001E6A0D /* PrefixPhoneController.m in Sources */,
+				A707EF31245AAAF2007B9817 /* QuestionDetailTitleView.m in Sources */,
 				A7C779082402562E003EBCE0 /* CityController.m in Sources */,
 				A793DC4D2419275C00CB49BB /* WMZDropMenuTool.m in Sources */,
 				A7866AC22434AFB9001E6A0D /* LogoView.m in Sources */,
@@ -3528,6 +3556,7 @@
 				A7084C8C2406C23700FF5CAE /* LinkageTitleHeader.m in Sources */,
 				A702E0102408E38D00A9646C /* QDSingleImagePickerPreviewViewController.m in Sources */,
 				A73D658A240BE60E00F94792 /* LogList.m in Sources */,
+				A707EF2B245AA621007B9817 /* QuestionAnsDetailCell.m in Sources */,
 				A772A98D2407877C00B8FC52 /* MineHeaderView.m in Sources */,
 				A7C341C924139B2700BAEF70 /* MineOrderInfoCell.m in Sources */,
 				A7C7790C2402562E003EBCE0 /* CityHeaderView.m in Sources */,
@@ -3540,6 +3569,7 @@
 				A7FDCBDD2443F22000660E9E /* TggStarEvaluationView.m in Sources */,
 				A7FA6DF2240D3DA6003982DA /* PeopleNumController.m in Sources */,
 				A703A766241E51CD00ABC74A /* MineSportController.m in Sources */,
+				A707EF25245A9F25007B9817 /* AskQuestionView.m in Sources */,
 				A7FD2B6A241B4603006B3CC1 /* MineAvatarPickerController.m in Sources */,
 				A7FBA09E241A31C60000287A /* MineCodeController.m in Sources */,
 				A7FC12B42425BD54005C4796 /* RemarkListController.m in Sources */,

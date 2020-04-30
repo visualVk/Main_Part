@@ -258,7 +258,7 @@ static UIImage *disclosureIndicatorImageDark;
   // QMUISearchBar
   // 里的文本框的背景图，图片高度会决定输入框的高度
   QMUICMI.searchBarTextFieldBorderColor =
-  UIColorGray; // SearchBarTextFieldBorderColor : QMUISearchBar 里的文本框的边框颜色
+  UIColor.clearColor; // SearchBarTextFieldBorderColor : QMUISearchBar 里的文本框的边框颜色
   QMUICMI.searchBarBackgroundImage =
   UIImage.qd_searchBarBackgroundImage; // SearchBarBackgroundImage :
   // 搜索框的背景图，如果需要设置底部分隔线的颜色也请绘制到图片里

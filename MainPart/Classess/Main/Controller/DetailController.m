@@ -42,6 +42,15 @@
 #define BannerHeight DEVICE_HEIGHT / 3
 #define REMARKSCOREHEIGHT DEVICE_HEIGHT / 6
 #define COLLECTIONHEIGHT DEVICE_HEIGHT * 4 / 6
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588774467241&di="                                \
+@"fb358dc0537c255c00aa2559bbd9197c&imgtype=0&src=http%3A%2F%2Fhotels.buytrip.cn%2Fhotelimg%"   \
+@"2F2012922135236429.jpg",                                                                     \
+@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=775827514,337286644&fm=26&gp=0.jpg"                                                        \
+]
 
 @interface DetailController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource, SDCycleScrollViewDelegate,
@@ -75,10 +84,14 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
-  self.imageList = @[
-    @"pink_gradient", @"navigationbar_background", @"pink_gradient", @"navigationbar_background",
-    @"pink_gradient", @"navigationbar_background"
-  ];
+#ifdef Test_Hotel
+  //  self.imageList = @[
+  //    @"pink_gradient", @"navigationbar_background", @"pink_gradient",
+  //    @"navigationbar_background",
+  //    @"pink_gradient", @"navigationbar_background"
+  //  ];
+  [self generateTmpImgList];
+#endif
   self.openDic = [NSMutableDictionary dictionaryWithCapacity:self.hotelRoomList.count];
   for (HotelRoomModel *hotelRoom in self.hotelRoomList) {
     self.openDic[hotelRoom.roomType] = [NSNumber numberWithBool:false];
@@ -187,6 +200,7 @@ UICollectionViewDataSource, JQCollectionViewAlignLayoutDelegate> {
       fold.parentTableView = tableView;
       NSArray *tmp = self.hotelRoomDict[self.hotelRoomTypeList[section - 1]];
       fold.model = tmp[0];
+      fold.imgUrl = imgList[section & 1];
       fold.type = QMUITableViewHeaderFooterViewTypeHeader;
       fold.qmui_borderColor = UIColor.qd_separatorColor;
       fold.qmui_borderPosition = QMUIViewBorderPositionTop;
@@ -642,7 +656,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         HotelRoomModel *model = weakSelf.hotelRoomDict[key][curRow];
         ciCon.infoDict = @{
           @"sum" : [NSString stringWithFormat:@"%li", model.roomOrgprice],
-          @"reduce" : [NSString stringWithFormat:@"%li", model.roomOrgprice - model.roomPrice]
+          @"reduce" : [NSString stringWithFormat:@"%li", model.roomOrgprice - model.roomPrice],
+          @"hotelId" : @(model.hotelId),
+          @"roomtType" : model.roomType
         };
         ciCon.title = weakSelf.hotelModel.hotelName;
         [weakSelf.navigationController pushViewController:ciCon animated:YES];
@@ -780,5 +796,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
   [self.tableView reloadData];
   [self hideEmptyView];
+}
+
+- (void)generateTmpImgList {
+  self.imageList = @[
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775258888&di="
+    @"ec83bbe6bed68fd3f9bda5a4cebe1e52&imgtype=0&src=http%3A%2F%2Fimages4.c-ctrip.com%2Ftarget%"
+    @"2Ftuangou%2F647%2F338%2F809%2F72ee8ddadd01407d98f99b9a8bc15421_720_480_s.jpg",
+    @"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/"
+    @"u=3577314033,2497540672&fm=26&gp=0.jpg",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775304102&di="
+    @"a39bc2de4ed8367b44e2b7f68c8575cf&imgtype=0&src=http%3A%2F%2Fwww.ddyjdzx.com%2Fuploads%"
+    @"2Fallimg%2F170710%2F1-1FG009562XR.jpg",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775304102&di="
+    @"c291f780068cc441c4b99f211f1b49d8&imgtype=0&src=http%3A%2F%2Fstatic-xiaoguotu.17house.com%"
+    @"2Fxgt%2Fm%2F00%2F1462725685112.jpg"
+  ];
 }
 @end

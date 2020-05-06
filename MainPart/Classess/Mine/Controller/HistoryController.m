@@ -7,14 +7,25 @@
 //
 
 #import "HistoryController.h"
+#import "HotelModelList.h"
 #import "MarkUtils.h"
 #import "MineHistoryCell.h"
 #define HISTORYCELL @"historycell"
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588774467241&di="                                \
+@"fb358dc0537c255c00aa2559bbd9197c&imgtype=0&src=http%3A%2F%2Fhotels.buytrip.cn%2Fhotelimg%"   \
+@"2F2012922135236429.jpg",                                                                     \
+@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=775827514,337286644&fm=26&gp=0.jpg"                                                        \
+]
 #define HISOTRYHEGITH DEVICE_HEIGHT / 8
 @interface HistoryController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *historyList;
+@property (nonatomic, strong) NSMutableArray *hotelName;
 @end
 
 @implementation HistoryController
@@ -26,6 +37,11 @@ QMUITableViewDataSource>
   self.historyList[0] = [NSMutableArray arrayWithArray:@[ @"", @"", @"" ]];
   self.historyList[1] = [NSMutableArray arrayWithArray:@[ @"", @"", @"" ]];
   self.historyList[2] = [NSMutableArray arrayWithArray:@[ @"", @"", @"" ]];
+  self.hotelName = [NSMutableArray new];
+  [self.hotelName addObject:@"1"];
+  [self.hotelName addObject:@"1"];
+  [self.hotelName addObject:@"1"];
+  [self findAllHotel];
 }
 
 - (void)initSubviews {
@@ -41,6 +57,8 @@ QMUITableViewDataSource>
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  self.emptyView.backgroundColor = UIColor.whiteColor;
+  [self showEmptyViewWithLoading];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,6 +130,9 @@ QMUITableViewDataSource>
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   MineHistoryCell *mhCell =
   [tableView dequeueReusableCellWithIdentifier:HISTORYCELL forIndexPath:indexPath];
+  [mhCell.imageview sd_setImageWithURL:[NSURL URLWithString:imgList[arc4random() % imgList.count]]
+                      placeholderImage:UIImageMake(@"pink_gradient")];
+  mhCell.title.text = self.hotelName[indexPath.row];
   if (indexPath.section == 0) { [mhCell remark]; }
   return mhCell;
   //  static NSString *identifier = @"cell";
@@ -144,5 +165,25 @@ trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
   UISwipeActionsConfiguration *config =
   [UISwipeActionsConfiguration configurationWithActions:@[ deleteRowAction ]];
   return config;
+}
+
+- (void)findAllHotel {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager] RequestPostWithUrl:FindAllHotel
+                                           Object:nil
+                                          Success:^(NSDictionary *_Nullable dict) {
+    HotelModelList *list =
+    [HotelModelList mj_objectWithKeyValues:dict];
+    NSArray<HotelModel *> *arr = list.data;
+    [weakSelf.hotelName removeAllObjects];
+    for (HotelModel *md in arr) {
+      [weakSelf.hotelName addObject:md.hotelName];
+    }
+    [weakSelf.tableView reloadData];
+    [weakSelf hideEmptyView];
+  }
+                                          Failure:^(NSError *_Nullable err){
+    
+  }];
 }
 @end

@@ -15,6 +15,9 @@
 #define FindAllHotel @"/api/hotel/findhotel"
 #define FindRoomByHotelId @"/api/hotel/findroombyhotelid"
 #define FindAppreaiseByHotelId @"/api/hotel/findAllappreaise"
+#define FindDiscussByHotelId @"/api/hotel/selectAllDiscuss"
+#define PostDiscuss @"/api/hotel/disscuss"
+#define PostPay @"/api/hotel/bookroom"
 //#define Bearer                                                                                     \
 //@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."                                                         \
 //@"eyJhdWQiOlsicmVzMSJdLCJleHAiOjE1ODQzNzU2NDgsInVzZXJfbmFtZSI6IntcImlkXCI6XCIyNVwiLFwibG9naW5j"  \

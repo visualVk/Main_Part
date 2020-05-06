@@ -12,6 +12,19 @@
 #import "WefareCell.h"
 #import <ZZCircleProgress.h>
 #define WELFARECELL @"welfarecell"
+#define bannerImgList                                                                              \
+@[                                                                                               \
+@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=1669922660,2071035521&fm=26&gp=0.jpg",                                                    \
+@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/"                                       \
+@"itu=2584136612,1594654554&fm=26&gp=0.jpg",                                                  \
+@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=1286432589,1236551050&fm=26&gp=0.jpg",                                                    \
+@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=1606080203,4034711022&fm=26&gp=0.jpg",                                                    \
+@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=4071776101,1885458026&fm=26&gp=0.jpg"                                                      \
+]
 
 @interface MineActivityBannerCell () <GenerateEntityDelegate, UICollectionViewDelegate,
 UICollectionViewDataSource,
@@ -107,6 +120,8 @@ UICollectionViewDelegateFlowLayout>
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   WefareCell *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:WELFARECELL forIndexPath:indexPath];
+  [cell.image sd_setImageWithURL:[NSURL URLWithString:bannerImgList[indexPath.row]]
+                placeholderImage:UIImageMake(@"pink_gradient")];
   return cell;
 }
 

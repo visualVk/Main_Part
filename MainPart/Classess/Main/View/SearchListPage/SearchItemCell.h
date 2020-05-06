@@ -10,4 +10,5 @@
 #import "QMUITableViewCell.h"
 @interface SearchItemCell : QMUITableViewCell
 @property (nonatomic, strong) HotelModel *model;
+@property (nonatomic, strong) NSString *imgUrl;
 @end

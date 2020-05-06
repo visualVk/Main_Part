@@ -11,6 +11,7 @@
 #import "MarkUtils.h"
 #import "RemarkListCell.h"
 #import "RemarkStaticCell.h"
+#import <MJRefresh.h>
 #import <SJAttributesFactory.h>
 #define REMARKSTATICCELL @"remarkstaticcell"
 #define REMARKLISTCELL @"remarklistcell"
@@ -69,7 +70,10 @@ QMUITableViewDataSource>
 #pragma mark - Lazy Init
 - (QMUITableView *)tableView {
   if (!_tableView) {
+    __weak __typeof(self) weakSelf = self;
     _tableView = [QMUITableView new];
+    _tableView.mj_header =
+    [MJRefreshNormalHeader headerWithRefreshingBlock:^{ weakSelf.hotelId = weakSelf.hotelId; }];
     _tableView.estimatedRowHeight = 300;
     [_tableView registerClass:RemarkListCell.class forCellReuseIdentifier:REMARKLISTCELL];
     [_tableView registerClass:RemarkStaticCell.class forCellReuseIdentifier:REMARKSTATICCELL];
@@ -143,14 +147,16 @@ QMUITableViewDataSource>
 
 - (void)setHotelId:(NSInteger)hotelId {
   _hotelId = hotelId;
+  __weak __typeof(self) weakSelf = self;
   [[RequestUtils shareManager]
    RequestGetWithUrl:[NSString stringWithFormat:@"%@/%li", FindAppreaiseByHotelId, hotelId]
    Object:nil
    Success:^(NSDictionary *_Nullable dict) {
-    self.appreaiseModelList =
+    weakSelf.appreaiseModelList =
     [[HotelAppreaiseModelList mj_objectWithKeyValues:dict].data mutableCopy];
-    [self.tableView reloadData];
-    [self hideEmptyView];
+    [weakSelf.tableView reloadData];
+    [weakSelf hideEmptyView];
+    [weakSelf.tableView.mj_header endRefreshing];
   }
    Failure:^(NSError *_Nullable err) { QMUILogInfo(@"remark list controller", @"failure"); }];
 }

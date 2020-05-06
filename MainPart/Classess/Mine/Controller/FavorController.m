@@ -7,13 +7,24 @@
 //
 
 #import "FavorController.h"
+#import "HotelModelList.h"
 #import "MarkUtils.h"
 #import "MineFavorCell.h"
 #define FAVORCELL @"favorcell"
 #define CELLHEIGHT DEVICE_HEIGHT / 8
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588774467241&di="                                \
+@"fb358dc0537c255c00aa2559bbd9197c&imgtype=0&src=http%3A%2F%2Fhotels.buytrip.cn%2Fhotelimg%"   \
+@"2F2012922135236429.jpg",                                                                     \
+@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=775827514,337286644&fm=26&gp=0.jpg"                                                        \
+]
 @interface FavorController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource>
 @property (nonatomic, strong) QMUITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *hotelName;
 @end
 
 @implementation FavorController
@@ -21,6 +32,11 @@ QMUITableViewDataSource>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  self.hotelName = [NSMutableArray new];
+  [self.hotelName addObject:@"1"];
+  [self.hotelName addObject:@"1"];
+  [self.hotelName addObject:@"1"];
+  [self findAllHotel];
 }
 
 - (void)initSubviews {
@@ -36,6 +52,8 @@ QMUITableViewDataSource>
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  self.emptyView.backgroundColor = UIColor.whiteColor;
+  [self showEmptyViewWithLoading];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -124,6 +142,10 @@ QMUITableViewDataSource>
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   MineFavorCell *hotelCell =
   [tableView dequeueReusableCellWithIdentifier:FAVORCELL forIndexPath:indexPath];
+  [hotelCell.imageview
+   sd_setImageWithURL:[NSURL URLWithString:imgList[arc4random() % imgList.count]]
+   placeholderImage:UIImageMake(@"pink_gradient")];
+  hotelCell.title.text = self.hotelName[indexPath.section];
   return hotelCell;
   //  static NSString *identifier = @"cell";
   //  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -137,4 +159,23 @@ QMUITableViewDataSource>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+- (void)findAllHotel {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager] RequestPostWithUrl:FindAllHotel
+                                           Object:nil
+                                          Success:^(NSDictionary *_Nullable dict) {
+    HotelModelList *list =
+    [HotelModelList mj_objectWithKeyValues:dict];
+    NSArray<HotelModel *> *arr = list.data;
+    [weakSelf.hotelName removeAllObjects];
+    for (HotelModel *md in arr) {
+      [weakSelf.hotelName addObject:md.hotelName];
+    }
+    [weakSelf.tableView reloadData];
+    [weakSelf hideEmptyView];
+  }
+                                          Failure:^(NSError *_Nullable err){
+    
+  }];
+}
 @end

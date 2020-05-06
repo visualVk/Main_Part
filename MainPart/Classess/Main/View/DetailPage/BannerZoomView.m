@@ -89,7 +89,10 @@
      renderZoomImageView:(QMUIZoomImageView *)zoomImageView
                  atIndex:(NSUInteger)index {
   zoomImageView.reusedIdentifier = @(index);
-  zoomImageView.image = UIImageMake(self.datas[index]);
+  UIImageView *imagev = [UIImageView new];
+  [imagev sd_setImageWithURL:[NSURL URLWithString:self.datas[index]]
+            placeholderImage:UIImageMake(@"pink_gradient")];
+  zoomImageView.image = imagev.image;
   [zoomImageView hideEmptyView];
 }
 

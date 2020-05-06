@@ -296,6 +296,8 @@
   _model = model;
   self.hotelName.text = model.hotelName;
   self.itemName.text = model.roomTypeName;
+  [self.itemImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]
+                    placeholderImage:UIImageMake(@"pink_gradient")];
   self.itemCombo.attributedText =
   [NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol> _Nonnull make) {
     make.font(UIFontMake(15)).textColor(UIColor.qd_placeholderColor);

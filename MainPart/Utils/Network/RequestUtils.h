@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shareManager;
 
+- (void)reloadBearer:(NSString *)bearer;
+
 - (void)RequestGetWithUrl:(NSString *)urlStr
                 Parameter:(NSDictionary *_Nullable)params
                   Success:(SuccessBlock)success
@@ -50,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
                       Object:(_Nullable id)object
                      Success:(SuccessBlock)success
                      Failure:(FailureBlock)failure;
+
+- (void)RequestPostWithURLManage:(NSString *)urlStr
+                          Params:(NSDictionary*)params
+                         Success:(SuccessBlock)success
+                         Failure:(FailureBlock)failure;
 @end
 
 NS_ASSUME_NONNULL_END

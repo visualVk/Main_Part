@@ -22,6 +22,7 @@
 
 @interface SearchListController () <GenerateEntityDelegate, QMUITableViewDelegate,
 QMUITableViewDataSource, DropMenuDelegate>
+@property (nonatomic, strong) NSArray *imageList;
 @property (nonatomic, strong) QMUISearchController *mySearchController;
 @property (nonatomic, strong) HMSegmentedControl *segController;
 @property (nonatomic, strong) DropMenuController *dropController;
@@ -37,6 +38,9 @@ QMUITableViewDataSource, DropMenuDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+#ifdef Test_Hotel
+  [self generateImgList];
+#endif
   //  self.hotelList = @[ @"", @"", @"", @"" ];
 }
 
@@ -128,6 +132,7 @@ QMUITableViewDataSource, DropMenuDelegate>
   if (section == 0) {
     SearchItemCell *siCell =
     [tableView dequeueReusableCellWithIdentifier:ITEMSERACHCELL forIndexPath:indexPath];
+    siCell.imgUrl = [self randomImage];
     siCell.model = self.hotelList[indexPath.row];
     return siCell;
   }
@@ -220,5 +225,35 @@ QMUITableViewDataSource, DropMenuDelegate>
     weakSelf.hotelList = list.data;
   }
                                           Failure:^(NSError *_Nullable err){}];
+}
+
+- (void)generateImgList {
+  self.imageList = @[
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775747639&di="
+    @"06e5f2376f3ba86d7a3770dd61af4bf3&imgtype=0&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%"
+    @"3D1654501700%2C2947179645%26fm%3D214%26gp%3D0.jpg",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775766817&di="
+    @"44b41411380b65851c0d3f11ac389fe9&imgtype=0&src=http%3A%2F%2Fm.traveldaily.cn%2Fimages%"
+    @"2F201705%2F7699a94520cf624f.jpg",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775770063&di="
+    @"eee18221b67a8c1d35490785dd19071e&imgtype=0&src=http%3A%2F%2Fstatic-news.17house.com%2Fweb%"
+    @"2Ftoutiao%2F201704%2F26%2F1493171703700191891.png",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775796910&di="
+    @"d56868e886769b01434b16e64c6dc9f2&imgtype=0&src=http%3A%2F%2Fm.tuniucdn.com%2Ffilebroker%"
+    @"2Fcdn%2Ffilebroker%2Fcdn%2Fprd%2Fa8%2F7a%2Fa87a80d66ededff68f3cd95a5a786973_w0_h600_c0_t0."
+    @"jpeg",
+    @"https://timgsa.baidu.com/"
+    @"timg?image&quality=80&size=b9999_10000&sec=1588775793528&di="
+    @"77dd7c5bcbcc37ca00b1b1963f2baaa4&imgtype=0&src=http%3A%2F%2Fs1.lvjs.com.cn%2Fuploads%2Fpc%"
+    @"2Fplace2%2F2016-03-01%2Fa3a65e73-5de4-4067-b71f-4bfd5de54992.jpg"
+  ];
+}
+
+- (NSString *)randomImage {
+  return self.imageList[arc4random() % self.imageList.count];
 }
 @end

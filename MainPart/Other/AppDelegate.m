@@ -63,7 +63,11 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
       [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"islogin"];
       NSString *datas = dict[@"data"][@"token"];
       QMUILogInfo(@"login", @"%@", datas);
-      dispatch_async(dispatch_get_main_queue(), ^{ Bearer = datas; });
+      dispatch_async(dispatch_get_main_queue(), ^{
+        Bearer = datas;
+        [[NSUserDefaults standardUserDefaults] setValue:datas forKey:@"Bearer"];
+        [[RequestUtils shareManager] reloadBearer:datas];
+      });
       QMUILogInfo(@"login", @"login success,return value:{%@}", [dict description]);
     }
                                             Failure:^(NSError *_Nullable err){}];

@@ -294,7 +294,7 @@
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
   label.font = UIFontMake(13);
-  label.textColor = UIColor.qmui_randomColor;
+  label.textColor = UIColor.blackColor;
   label.backgroundColor = UIColor.clearColor;
   label.highlightedBackgroundColor = nil;
   label.text = content;
@@ -318,5 +318,11 @@
   self.discountPrice.text = [NSString stringWithFormat:@"¥%li", model.roomPrice];
   self.desPriceLB.text =
   [NSString stringWithFormat:@"已减¥%li", model.roomOrgprice - model.roomPrice];
+}
+
+- (void)setImgUrl:(NSString *)imgUrl {
+  _imgUrl = imgUrl;
+  [self.imageview sd_setImageWithURL:[NSURL URLWithString:imgUrl]
+                    placeholderImage:UIImageMake(@"pink_gradient")];
 }
 @end

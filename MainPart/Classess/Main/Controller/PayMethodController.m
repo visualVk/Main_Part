@@ -205,6 +205,10 @@ QMUITableViewDataSource, PayPasswordDelegate> {
   QMUILogInfo(@"pay method controller", @"password:%@", password);
   [QMUITips showLoading:@"支付中" inView:UIApplication.sharedApplication.keyWindow];
   __weak __typeof(self) weakSelf = self;
+#ifndef Test_Hotel
+  [weakSelf postPay];
+#endif
+#ifdef Test_Hotel
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)),
                  dispatch_get_main_queue(), ^{
     [QMUITips hideAllTips];
@@ -220,6 +224,7 @@ QMUITableViewDataSource, PayPasswordDelegate> {
       weakSelf.navigationController.viewControllers = cons;
     }
   });
+#endif
 }
 
 - (void)closePayPassword {
@@ -234,5 +239,31 @@ QMUITableViewDataSource, PayPasswordDelegate> {
   spring.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
   spring.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
   [view.layer pop_addAnimation:spring forKey:@"scale"];
+}
+
+- (void)postPay {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager]
+   RequestPostWithUrl:PostPay
+   Object:self.model
+   Success:^(NSDictionary *_Nullable dict) {
+    [QMUITips hideAllTips];
+    [QMUITips showInfo:dict[@"message"] inView:self.view hideAfterDelay:2];
+    QMUILogInfo(@"method info controller", @"success");
+    [weakSelf.ppCon.view removeFromSuperview];
+    BOOL result = ([dict[@"code"] integerValue] == 200);
+    if (result) { //支付成功
+      NSMutableArray<UIViewController *> *cons =
+      weakSelf.navigationController.viewControllers.mutableCopy;
+      [cons removeObjectsInRange:NSMakeRange(cons.count - 2, 2)];
+      PayFinishController *pfCon = [PayFinishController new];
+      pfCon.title = @"支付成功";
+      [cons addObject:pfCon];
+      weakSelf.navigationController.viewControllers = cons;
+    }
+  }
+   Failure:^(NSError *_Nullable err){
+    
+  }];
 }
 @end

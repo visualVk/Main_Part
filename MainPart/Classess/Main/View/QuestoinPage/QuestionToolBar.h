@@ -10,5 +10,5 @@
 typedef void (^QuestionClick)(void);
 @interface QuestionToolBar : UIView
 @property (nonatomic, strong, readonly) QMUIButton *questionBtn;
-@property (nonatomic, weak) QuestionClick questionBlock;
+@property (nonatomic, strong) QuestionClick questionBlock;
 @end

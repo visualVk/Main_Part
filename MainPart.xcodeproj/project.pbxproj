@@ -77,6 +77,10 @@
 		A711C44E243459B8003E24FE /* RecList.m in Sources */ = {isa = PBXBuildFile; fileRef = A711C44B243459B8003E24FE /* RecList.m */; };
 		A711C44F243459B8003E24FE /* HotRecModelListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = A711C44C243459B8003E24FE /* HotRecModelListJSON.json */; };
 		A711C4562434770F003E24FE /* QMUIConfigurationTemplateDark.m in Sources */ = {isa = PBXBuildFile; fileRef = A711C4542434770F003E24FE /* QMUIConfigurationTemplateDark.m */; };
+		A723D1BB245DC20F00F534FB /* ReplyEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A723D1B9245DC20E00F534FB /* ReplyEntity.m */; };
+		A723D1BC245DC20F00F534FB /* HotelDisscussList.m in Sources */ = {isa = PBXBuildFile; fileRef = A723D1BA245DC20F00F534FB /* HotelDisscussList.m */; };
+		A723D1BF245DC2BE00F534FB /* HotelDiscussModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A723D1BE245DC2BE00F534FB /* HotelDiscussModel.m */; };
+		A723D1C2245DD17100F534FB /* TPaysEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A723D1C1245DD17100F534FB /* TPaysEntity.m */; };
 		A7247957242076BF00619D38 /* HotelRoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7247956242076BE00619D38 /* HotelRoomModel.m */; };
 		A724795A242076D700619D38 /* HotelRoomModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = A7247959242076D700619D38 /* HotelRoomModelList.m */; };
 		A724795D2420C47000619D38 /* HotelAppreaiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A724795C2420C46E00619D38 /* HotelAppreaiseModel.m */; };
@@ -540,6 +544,14 @@
 		A711C44C243459B8003E24FE /* HotRecModelListJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HotRecModelListJSON.json; sourceTree = "<group>"; };
 		A711C4542434770F003E24FE /* QMUIConfigurationTemplateDark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplateDark.m; sourceTree = "<group>"; };
 		A711C4552434770F003E24FE /* QMUIConfigurationTemplateDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplateDark.h; sourceTree = "<group>"; };
+		A723D1B7245DC20D00F534FB /* ReplyEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyEntity.h; sourceTree = "<group>"; };
+		A723D1B8245DC20E00F534FB /* HotelDisscussList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDisscussList.h; sourceTree = "<group>"; };
+		A723D1B9245DC20E00F534FB /* ReplyEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyEntity.m; sourceTree = "<group>"; };
+		A723D1BA245DC20F00F534FB /* HotelDisscussList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDisscussList.m; sourceTree = "<group>"; };
+		A723D1BD245DC2BE00F534FB /* HotelDiscussModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelDiscussModel.h; sourceTree = "<group>"; };
+		A723D1BE245DC2BE00F534FB /* HotelDiscussModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelDiscussModel.m; sourceTree = "<group>"; };
+		A723D1C0245DD17100F534FB /* TPaysEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPaysEntity.h; sourceTree = "<group>"; };
+		A723D1C1245DD17100F534FB /* TPaysEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPaysEntity.m; sourceTree = "<group>"; };
 		A7247955242076BD00619D38 /* HotelRoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelRoomModel.h; sourceTree = "<group>"; };
 		A7247956242076BE00619D38 /* HotelRoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelRoomModel.m; sourceTree = "<group>"; };
 		A7247958242076D700619D38 /* HotelRoomModelList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelRoomModelList.h; sourceTree = "<group>"; };
@@ -1466,6 +1478,19 @@
 			path = SeasonScene;
 			sourceTree = "<group>";
 		};
+		A723D1B0245DC1D600F534FB /* QuestionPage */ = {
+			isa = PBXGroup;
+			children = (
+				A723D1B8245DC20E00F534FB /* HotelDisscussList.h */,
+				A723D1BA245DC20F00F534FB /* HotelDisscussList.m */,
+				A723D1B7245DC20D00F534FB /* ReplyEntity.h */,
+				A723D1B9245DC20E00F534FB /* ReplyEntity.m */,
+				A723D1BD245DC2BE00F534FB /* HotelDiscussModel.h */,
+				A723D1BE245DC2BE00F534FB /* HotelDiscussModel.m */,
+			);
+			path = QuestionPage;
+			sourceTree = "<group>";
+		};
 		A72D3AF6240F779A009720AD /* ScenePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1767,6 +1792,8 @@
 				A7247959242076D700619D38 /* HotelRoomModelList.m */,
 				A724795E2420C48D00619D38 /* HotelAppreaiseModelList.h */,
 				A724795F2420C48D00619D38 /* HotelAppreaiseModelList.m */,
+				A723D1C0245DD17100F534FB /* TPaysEntity.h */,
+				A723D1C1245DD17100F534FB /* TPaysEntity.m */,
 			);
 			path = Hotel;
 			sourceTree = "<group>";
@@ -2504,6 +2531,7 @@
 		A7C7788D2402562D003EBCE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A723D1B0245DC1D600F534FB /* QuestionPage */,
 				A708C8F62455B5CE007B02A4 /* FoodPage */,
 				A711C43C2434344D003E24FE /* SeasonScene */,
 				A761DAEF241FB8B6002121A9 /* Hotel */,
@@ -3251,6 +3279,7 @@
 				A7084C8D2406C23700FF5CAE /* LeftCell.m in Sources */,
 				A73FACF1240E1065008BA2D9 /* CheckInTextFieldCell.m in Sources */,
 				A703A75B241E456500ABC74A /* Device.m in Sources */,
+				A723D1BB245DC20F00F534FB /* ReplyEntity.m in Sources */,
 				A7866AA02434AFB9001E6A0D /* LoginMainController.m in Sources */,
 				A793DC492419275C00CB49BB /* Rank.m in Sources */,
 				A707EF28245AA58C007B9817 /* QuestionDetailController.m in Sources */,
@@ -3291,6 +3320,8 @@
 				A7FC12BE2425DCD7005C4796 /* RemarkScoreView.m in Sources */,
 				A7FDCBF22443F6F000660E9E /* FMLStarView.m in Sources */,
 				A7866A9E2434AFB9001E6A0D /* ProtocalController.m in Sources */,
+				A723D1BF245DC2BE00F534FB /* HotelDiscussModel.m in Sources */,
+				A723D1C2245DD17100F534FB /* TPaysEntity.m in Sources */,
 				A73AEC442412792900AD6880 /* MineOrderCheckPersonInfoView.m in Sources */,
 				A793DC4A2419275C00CB49BB /* WMZDropDownMenu+DealDelegate.m in Sources */,
 				A7866AB62434AFB9001E6A0D /* ResetPasswordController.m in Sources */,
@@ -3509,6 +3540,7 @@
 				A75DB92B241CCFFB0037C0BA /* PopListController.m in Sources */,
 				A7866ABC2434AFB9001E6A0D /* PhoneVertifyController.m in Sources */,
 				A7084C8B2406C23700FF5CAE /* NSDictionary+LoadJson.m in Sources */,
+				A723D1BC245DC20F00F534FB /* HotelDisscussList.m in Sources */,
 				A702DFFD2408BF4400A9646C /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				A75DB953241D04930037C0BA /* ColorFormatUtil.m in Sources */,
 				A7C779362402562E003EBCE0 /* UIImageEffects.m in Sources */,

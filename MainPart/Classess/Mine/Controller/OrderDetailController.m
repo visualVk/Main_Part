@@ -8,6 +8,8 @@
 
 #import "OrderDetailController.h"
 #import "DetailController.h"
+#import "HotelModel.h"
+#import "HotelModelList.h"
 #import "MarkUtils.h"
 #import "MineOrderCheckPersonInfoView.h"
 #import "MineOrderDetailDeleteToolBar.h"
@@ -35,6 +37,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate> {
 @property (nonatomic, strong) NSMutableArray<CheckInfo *> *checkList;
 @property (nonatomic, strong) NSArray *datas;
 @property (nonatomic, strong) NSMutableArray *deleteList;
+@property (nonatomic, strong) HotelModel *hotelModel;
 @property (nonatomic, strong) MineOrderDetailDeleteToolBar *deleteToolBar;
 @end
 
@@ -45,6 +48,7 @@ JQCollectionViewAlignLayoutDelegate, MineOrderCollaspeDelegate> {
   // init 时做的事情请写在这里
   self.collaspeList = [NSMutableArray new];
   //  self.datas = @[ @"", @"", @"" ];
+  [self findAllHotel];
   self.deleteList = [NSMutableArray new];
 }
 
@@ -288,6 +292,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
                                               forIndexPath:indexPath];
     morhCell.hotelName.text = self.orderCheckInfo.hotelName;
     morhCell.hotelAddress.text = self.orderCheckInfo.hotelAddress;
+    morhCell.hotelId = 1;
     return morhCell;
   }
   if (section == 1) { //订餐 健身
@@ -319,6 +324,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == 0) {
     DetailController *dCon = [DetailController new];
+    dCon.hotelModel = self.hotelModel;
     [self.navigationController pushViewController:dCon animated:YES];
   }
 }
@@ -359,5 +365,18 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [NSNumber numberWithBool:![header getCheckSelected]];
     [header checkSet:![header getCheckSelected]];
   }
+}
+
+- (void)findAllHotel {
+  __weak __typeof(self) weakSelf = self;
+  [[RequestUtils shareManager]
+   RequestPostWithUrl:FindAllHotel
+   Object:nil
+   Success:^(NSDictionary *_Nullable dict) {
+    weakSelf.hotelModel = [HotelModelList mj_objectWithKeyValues:dict].data[0];
+  }
+   Failure:^(NSError *_Nullable err){
+    
+  }];
 }
 @end

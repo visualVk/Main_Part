@@ -6,8 +6,9 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "HotelDisscussList.h"
 #import "QMUICommonViewController.h"
 
 @interface QuestionDetailController : QMUICommonViewController
-
+@property (nonatomic, strong) HotelDisscussList *model;
 @end

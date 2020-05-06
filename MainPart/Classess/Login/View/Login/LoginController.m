@@ -262,7 +262,10 @@ typedef void (^clickBlock)(void);
                                           Success:^(NSDictionary *_Nullable dict) {
     NSString *datas = dict[@"data"][@"token"];
     QMUILogInfo(@"login", @"%@", datas);
-    dispatch_async(dispatch_get_main_queue(), ^{ Bearer = datas; });
+    dispatch_async(dispatch_get_main_queue(), ^{
+      Bearer = datas;
+      [[NSUserDefaults standardUserDefaults] setValue:datas forKey:@"Bearer"];
+    });
     if (datas && ![@"" isEqualToString:datas]) {
       [SAMKeychain setPassword:weakSelf.users.password
                     forService:USERIDENTIFY

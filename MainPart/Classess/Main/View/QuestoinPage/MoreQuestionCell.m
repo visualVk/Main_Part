@@ -157,4 +157,12 @@
   label.layer.masksToBounds = true;
   return label;
 }
+
+- (void)setModel:(HotelDisscussList *)model {
+  _model = model;
+  self.question.text = model.content;
+  self.ans.text = model.replyEntities[0].content;
+  self.questionDate.text =
+  [NSString stringWithFormat:@"%@ 提问", [model.createTime substringToIndex:10]];
+}
 @end

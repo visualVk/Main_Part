@@ -101,6 +101,8 @@ QMUITableViewDataSource>
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   MineDiscountCell *cell = [tableView dequeueReusableCellWithIdentifier:MINEDISCOUNTCELL];
   [cell reloadData:self.ticketList[indexPath.row]];
+  cell.useBtn.titleLabel.text = @"立即领取";
+  [cell.useBtn setTitle:@"立刻领取" forState:UIControlStateNormal];
   return cell;
 }
 

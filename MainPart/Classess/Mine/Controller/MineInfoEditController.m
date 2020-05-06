@@ -22,6 +22,7 @@
 QMUITableViewDataSource, EditInfoCellDelegate>
 @property (nonatomic, strong) QMUITableView *tableView;
 @property (nonatomic, strong) Info *cpInfo;
+@property (nonatomic, strong) IDInfo *idInfo;
 @end
 
 @implementation MineInfoEditController
@@ -29,6 +30,7 @@ QMUITableViewDataSource, EditInfoCellDelegate>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  self.cpInfo = [Info new];
 }
 
 - (void)initSubviews {
@@ -197,7 +199,15 @@ QMUITableViewDataSource, EditInfoCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == 0) {
+    __weak __typeof(self) weakSelf = self;
     IDAuthViewController *idaCon = [IDAuthViewController new];
+    idaCon.IDCardBlock = ^(IDInfo *idInfo) {
+      weakSelf.idInfo = idInfo;
+      weakSelf.cpInfo.name = idInfo.name;
+      weakSelf.cpInfo.gender = ![idInfo.gender isEqualToString:@"男"];
+      weakSelf.cpInfo.idCard = idInfo.num;
+      [weakSelf.tableView reloadData];
+    };
     [self.navigationController pushViewController:idaCon animated:YES];
   }
 }

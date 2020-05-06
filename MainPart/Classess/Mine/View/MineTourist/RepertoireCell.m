@@ -123,7 +123,7 @@ const NSInteger IMAGEINDEX = 20000;
 - (UILabel *)title {
   if (!_title) {
     _title = [UILabel new];
-    _title.text = @"未知";
+    _title.text = @"点点滴滴";
     _title.textColor = UIColor.qd_mainTextColor;
     _title.font = UIFontBoldMake(18);
   }
@@ -136,7 +136,8 @@ const NSInteger IMAGEINDEX = 20000;
   for (NSString *imageName in self.datas) {
     image = [UIImageView new];
     image.userInteractionEnabled = YES;
-    image.image = UIImageMake(imageName);
+    [image sd_setImageWithURL:[NSURL URLWithString:imageName]
+             placeholderImage:UIImageMake(imageName)];
     image.contentMode = QMUIImageResizingModeScaleAspectFill;
     image.tag = IMAGEINDEX + i;
     i++;
@@ -197,7 +198,10 @@ const NSInteger IMAGEINDEX = 20000;
      renderZoomImageView:(QMUIZoomImageView *)zoomImageView
                  atIndex:(NSUInteger)index {
   zoomImageView.reusedIdentifier = @(index);
-  zoomImageView.image = UIImageMake(self.datas[index]);
+  UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 75, 75)];
+  [imageview sd_setImageWithURL:[NSURL URLWithString:self.datas[index]]
+               placeholderImage:UIImageMake(@"pink_gradient")];
+  zoomImageView.image = imageview.image;
   [zoomImageView hideEmptyView];
 }
 

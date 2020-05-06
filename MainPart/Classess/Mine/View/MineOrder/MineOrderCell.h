@@ -14,6 +14,7 @@ typedef void (^DeleteOneOrder)(OrderCheckInfo *orderCheckInfo);
 @property (nonatomic, strong) UILabel *hotelName;
 @property (nonatomic, strong) UILabel *state;
 @property (nonatomic, strong) UIImageView *itemImage;
+@property (nonatomic, strong) NSString *imgUrl;
 @property (nonatomic, strong) UILabel *itemName;
 @property (nonatomic, strong) UILabel *itemCombo;
 @property (nonatomic, strong) UILabel *buyInfo;

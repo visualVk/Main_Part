@@ -16,7 +16,23 @@
 #import "NSDictionary+LoadJson.h"
 #import <SDCycleScrollView.h>
 #define MINEFOODCELL @"minefoodcell"
-
+#define randomImgList                                                                              \
+@[                                                                                               \
+@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=3963619659,1814194753&fm=26&gp=0.jpg",                                                     \
+@"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=2039777899,4116198060&fm=26&gp=0.jpg",                                                     \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588778407002&di="                                \
+@"823a8b6a45cc7592d48d819ca0328cf0&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_"       \
+@"origin_min_pic%2F16%2F08%2F06%2F2257a5ef7ec05be.jpg",                                        \
+@"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=287446828,2560688508&fm=26&gp=0.jpg",                                                      \
+@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=466837911,2726145998&fm=11&gp=0.jpg",                                                      \
+@"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=1803026233,2465005581&fm=26&gp=0.jpg"                                                      \
+]
 @interface MineFoodOrderController () <GenerateEntityDelegate, LinkageMenuProtocol,
 UIScrollViewDelegate> {
   CGPoint _contentOffset;
@@ -45,6 +61,7 @@ UIScrollViewDelegate> {
   self.foodDict = [NSMutableDictionary new];
   self.foodTypeList = [NSMutableArray new];
   for (Food *food in foodList.food) {
+    food.imgUrl = randomImgList[arc4random() % randomImgList.count];
     if (!self.foodDict[food.typeName]) {
       self.foodDict[food.typeName] = [NSMutableArray new];
       LinkageModel *linkageModel = [LinkageModel new];
@@ -172,7 +189,21 @@ UIScrollViewDelegate> {
   if (!_bannerView) {
     _bannerView = [SDCycleScrollView
                    cycleScrollViewWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT / 5)
-                   imageNamesGroup:@[ @"pink_gradient", @"launch_background" ]];
+                   imageNamesGroup:@[
+                     @"https://timgsa.baidu.com/"
+                     @"timg?image&quality=80&size=b9999_10000&sec=1588775770063&di="
+                     @"eee18221b67a8c1d35490785dd19071e&imgtype=0&src=http%3A%2F%2Fstatic-news."
+                     @"17house.com%2Fweb%2Ftoutiao%2F201704%2F26%2F1493171703700191891.png",
+                     @"https://timgsa.baidu.com/"
+                     @"timg?image&quality=80&size=b9999_10000&sec=1588775793528&di="
+                     @"77dd7c5bcbcc37ca00b1b1963f2baaa4&imgtype=0&src=http%3A%2F%2Fs1.lvjs.com.cn%"
+                     @"2Fuploads%2Fpc%2Fplace2%2F2016-03-01%2Fa3a65e73-5de4-4067-b71f-4bfd5de54992."
+                     @"jpg",
+                     @"https://timgsa.baidu.com/"
+                     @"timg?image&quality=80&size=b9999_10000&sec=1588775766817&di="
+                     @"44b41411380b65851c0d3f11ac389fe9&imgtype=0&src=http%3A%2F%2Fm.traveldaily.cn%"
+                     @"2Fimages%2F201705%2F7699a94520cf624f.jpg"
+                   ]];
     _bannerView.showPageControl = YES;
     _bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
   }

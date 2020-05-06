@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString *washroomCollocation;
 @property (nonatomic, strong) NSString *wifiInfo;
 @property (nonatomic, strong) NSString *windows;
+@property (nonatomic, strong) NSString *imageUrl;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

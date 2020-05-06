@@ -6,8 +6,8 @@
 //  Copyright © 2020 blacksky. All rights reserved.
 //
 
+#import "HotelDisscussList.h"
 #import "QMUITableViewCell.h"
-
 @interface MoreQuestionCell : QMUITableViewCell
-
+@property (nonatomic, weak) HotelDisscussList *model;
 @end

@@ -271,6 +271,8 @@ const NSInteger FoodImageIndex = 10000;
   self.foodNum.text = [NSString stringWithFormat:@"%li", model.foodNum];
   self.foodDescription.text = model.foodDescription;
   self.foodPrice.text = [NSString stringWithFormat:@"¥%@", model.foodPrice];
+  [self.foodImg sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]
+                  placeholderImage:UIImageMake(@"pink_gradient")];
 }
 
 - (void)loadData:(Food *)model {

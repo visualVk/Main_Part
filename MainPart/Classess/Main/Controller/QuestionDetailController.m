@@ -98,6 +98,7 @@ GenerateEntityDelegate>
   if (!_questionTitleView) {
     _questionTitleView = [QuestionDetailTitleView new];
     _questionTitleView.backgroundColor = UIColorWhite;
+    _questionTitleView.model = self.model;
   }
   return _questionTitleView;
 }
@@ -113,7 +114,7 @@ GenerateEntityDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if (section == 0) return 1;
-  return 10;
+  return self.model.replyEntities.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -137,6 +138,7 @@ GenerateEntityDelegate>
   }
   QuestionAnsDetailCell *qadCell =
   [tableView dequeueReusableCellWithIdentifier:QUESTIONANSDETAILCELL forIndexPath:indexPath];
+  qadCell.model = self.model.replyEntities[indexPath.row];
   return qadCell;
 }
 

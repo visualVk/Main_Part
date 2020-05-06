@@ -15,6 +15,15 @@
 #import "OrderDetailController.h"
 #import <HMSegmentedControl.h>
 #define MINEORDERCELL @"mineordercell"
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588774467241&di="                                \
+@"fb358dc0537c255c00aa2559bbd9197c&imgtype=0&src=http%3A%2F%2Fhotels.buytrip.cn%2Fhotelimg%"   \
+@"2F2012922135236429.jpg",                                                                     \
+@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=775827514,337286644&fm=26&gp=0.jpg"                                                        \
+]
 
 @interface OrderController () <QMUITableViewDelegate, QMUITableViewDataSource,
 GenerateEntityDelegate>
@@ -22,25 +31,31 @@ GenerateEntityDelegate>
 @property (nonatomic, strong) HMSegmentedControl *segCon;
 @property (nonatomic, assign) NSInteger *selectedIndex;
 @property (nonatomic, strong) NSMutableArray<OrderCheckInfo *> *orderCheckInfoList;
+@property (nonatomic, strong) NSMutableArray<OrderCheckInfo *> *cancelInfoList;
+@property (nonatomic, strong) NSMutableArray<OrderCheckInfo *> *waitPayInfoList;
+@property (nonatomic, strong) NSMutableArray<OrderCheckInfo *> *waitReviewInfoList;
 @end
 
 @implementation OrderController
 
 - (instancetype)initWithOrderType:(OrderControllerType)type {
   if (self = [super init]) {
+    self.cancelInfoList = [NSMutableArray new];
+    self.waitPayInfoList = [NSMutableArray new];
+    self.waitReviewInfoList = [NSMutableArray new];
     [self didInitialize];
     switch (type) {
       case AllOrder:
         self.selectedIndex = 0;
         break;
       case NonPaymentOrder:
-        self.selectedIndex = 1;
+        self.selectedIndex = 1l;
         break;
       case FutureOrder:
-        self.selectedIndex = 2;
+        self.selectedIndex = 2l;
         break;
       case RemarkOrder:
-        self.selectedIndex = 3;
+        self.selectedIndex = 3l;
         break;
       default:
         break;
@@ -52,6 +67,21 @@ GenerateEntityDelegate>
     //    OrderCheckInfo *modelTwo = [[OrderCheckInfo alloc] initWithDictionary:dict];
     //    OrderCheckInfo *modelThree = [[OrderCheckInfo alloc] initWithDictionary:dict];
     self.orderCheckInfoList = [OrderCheckInfoModelList mj_objectWithKeyValues:dict].data;
+    for (OrderCheckInfo *obj in self.orderCheckInfoList) {
+      obj.imgUrl = imgList[arc4random() % imgList.count];
+      switch (obj.orderStatus) {
+        case 0:
+          [self.cancelInfoList addObject:obj];
+          break;
+        case 1:
+          [self.waitReviewInfoList addObject:obj];
+          break;
+        case 2:
+          [self.waitPayInfoList addObject:obj];
+        default:
+          break;
+      }
+    }
 #endif
   }
   return self;
@@ -149,8 +179,12 @@ GenerateEntityDelegate>
       NSForegroundColorAttributeName : UIColor.qd_titleTextColor,
       NSFontAttributeName : UIFontMake(14)
     };
-    _segCon.indexChangeBlock =
-    ^(NSInteger index) { QMUILogInfo(@"order controller", @"change:%li", index); };
+    __weak __typeof(self) weakSelf = self;
+    _segCon.indexChangeBlock = ^(NSInteger index) {
+      QMUILogInfo(@"order controller", @"change:%li", index);
+      weakSelf.selectedIndex = index;
+      [weakSelf.tableView reloadData];
+    };
   }
   return _segCon;
 }
@@ -162,6 +196,18 @@ GenerateEntityDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   //  return 4;
+  int i = self.selectedIndex;
+  switch (i) {
+    case 0:
+      return self.orderCheckInfoList.count;
+    case 1:
+      return self.waitPayInfoList.count;
+    case 2:
+      return self.cancelInfoList.count;
+    default:
+      return self.waitReviewInfoList.count;
+      break;
+  }
   return self.orderCheckInfoList.count;
 }
 
@@ -181,7 +227,22 @@ GenerateEntityDelegate>
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   MineOrderCell *moCell =
   [tableView dequeueReusableCellWithIdentifier:MINEORDERCELL forIndexPath:indexPath];
-  moCell.model = self.orderCheckInfoList[indexPath.row];
+  int i = self.selectedIndex;
+  switch (i) {
+    case 0:
+      moCell.model = self.orderCheckInfoList[indexPath.row];
+      break;
+    case 1:
+      moCell.model = self.waitReviewInfoList[indexPath.row];
+      break;
+    case 2:
+      moCell.model = self.cancelInfoList[indexPath.row];
+      break;
+    default:
+      moCell.model = self.waitPayInfoList[indexPath.row];
+      break;
+  }
+  //  moCell.model = self.orderCheckInfoList[indexPath.row];
   return moCell;
   static NSString *identifier = @"cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

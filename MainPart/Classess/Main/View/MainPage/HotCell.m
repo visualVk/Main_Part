@@ -111,6 +111,25 @@
 #define BOTTOMNOTIFICATION @"bottomnotification"
 #import "NSDictionary+LoadJson.h"
 #import "RecModelList.h"
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588776355194&di="                                \
+@"3a142f696b216bc3e8702a0c6f8b7c0f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F04%2F33%"    \
+@"2F01300533988875133905331294017.jpg",                                                        \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588776358494&di="                                \
+@"14e2a0bc73029b424043b8d5ccdd5dff&imgtype=0&src=http%3A%2F%2Fimage.cnpp.cn%2Fupload%"         \
+@"2Fimages%2F20160520%2F1463729160_10819_6.jpg",                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588776360797&di="                                \
+@"99b5b8e6e882b864b448be3a3543e34c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%"   \
+@"2Fimages%2F20180110%2F46f202e36892412ea13f245ca10e0476.jpeg",                                \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588776362639&di="                                \
+@"c6a28c6e714c586ebcf140fa9e7df26f&imgtype=0&src=http%3A%2F%2Fi4.qhimg.com%"                   \
+@"2Ft0165d5f96adbfac81f.jpg"                                                                   \
+]
 @interface HotCell () <UICollectionViewDelegate, UICollectionViewDataSource,
 WSLWaterFlowLayoutDelegate, GenerateEntityDelegate, HotHeaderClickDelegate> {
   double speed;
@@ -226,6 +245,7 @@ WSLWaterFlowLayoutDelegate, GenerateEntityDelegate, HotHeaderClickDelegate> {
     hcCell.imageview.image = UIImageMake(@"launch_background");
     if (self.modelList != nil && self.modelList.recList.count) {
       RecList *model = self.datas[row];
+      model.imgUrl = imgList[arc4random() % imgList.count];
       hcCell.title.text = model.titleName;
       hcCell.placeholder.text = model.subTitle;
       [hcCell.imageview sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]

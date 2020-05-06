@@ -7,7 +7,8 @@
 //
 
 #import "QMUITableViewCell.h"
+#import "ReplyEntity.h"
 
 @interface QuestionAnsDetailCell : QMUITableViewCell
-
+@property (nonatomic, strong) ReplyEntity *model;
 @end

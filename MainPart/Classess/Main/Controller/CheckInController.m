@@ -16,6 +16,7 @@
 #import "OrderToolBarView.h"
 #import "PayMethodController.h"
 #import "SloganCell.h"
+#import "TPaysEntity.h"
 #define MENTIONCELL @"mentioncell"
 #define SLOGANCELL @"slogancell"
 #define HOTELCOMBOCELL @"hotelcombocell"
@@ -29,6 +30,7 @@ QMUITableViewDataSource>
 @property (nonatomic, strong) OrderToolBarView *orderToolBar;
 @property (nonatomic, strong) UIView *dmingView;
 @property (nonatomic, strong) POPSpringAnimation *anim;
+@property (nonatomic, strong) TPaysEntity *payEntity;
 @end
 
 @implementation CheckInController
@@ -36,6 +38,7 @@ QMUITableViewDataSource>
 - (void)didInitialize {
   [super didInitialize];
   // init 时做的事情请写在这里
+  self.payEntity = [TPaysEntity new];
 }
 
 - (void)initSubviews {
@@ -46,6 +49,9 @@ QMUITableViewDataSource>
 - (void)viewDidLoad {
   [super viewDidLoad];
   // 对 self.view 的操作写在这里
+  self.payEntity.roomtypeId = [self.infoDict[@"roomType"] integerValue];
+  self.payEntity.hotelId = [self.infoDict[@"hotelId"] integerValue];
+  self.payEntity.pay = [self.infoDict[@"sum"] qmui_CGFloatValue];
   [self generateRootView];
 }
 
@@ -130,10 +136,12 @@ QMUITableViewDataSource>
       [weakSelf.orderToolBar.tableView.layer pop_addAnimation:weakSelf.anim
                                                        forKey:@"springanimate"];
     };
+    
     _orderToolBar.pushPay = ^{
       PayMethodController *pCon = [PayMethodController new];
       //      [weakSelf popDimingView];
       pCon.price = weakSelf.infoDict[@"sum"];
+      pCon.model = weakSelf.payEntity;
       [weakSelf removeDimingContainer];
       [weakSelf.navigationController pushViewController:pCon animated:YES];
     };
@@ -269,4 +277,5 @@ QMUITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
+
 @end

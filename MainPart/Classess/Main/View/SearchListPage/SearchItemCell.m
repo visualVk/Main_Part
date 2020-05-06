@@ -131,7 +131,7 @@
   if (!_desPrice) {
     _desPrice = [QMUILabel new];
     _desPrice.textColor = UIColor.qd_backgroundColor;
-    _desPrice.backgroundColor = UIColor.qmui_randomColor;
+    _desPrice.backgroundColor = UIColor.systemOrangeColor;
     _desPrice.font = UIFontMake(16);
     _desPrice.text = @"已减¥99";
     _desPrice.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
@@ -154,7 +154,7 @@
         make.style = NSUnderlineStyleSingle | NSUnderlineStylePatternSolid;
         make.color = UIColor.qd_placeholderColor;
       });
-      make.append(@"¥229 ").textColor(UIColor.qmui_randomColor).font(UIFontMake(18));
+      make.append(@"¥229 ").textColor(UIColor.systemRedColor).font(UIFontMake(18));
       make.append(@"起");
       make.regex(@"¥").update(
                               ^(id<SJUTAttributesProtocol> _Nonnull make) { make.font(UIFontMake(14)); });
@@ -167,11 +167,11 @@
 - (QMUILabel *)generateTagLabelWithContent:(NSString *)content {
   QMUILabel *label = [QMUILabel new];
   label.contentEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 5);
-  label.layer.borderColor = UIColor.qmui_randomColor.CGColor;
+  label.layer.borderColor = UIColor.systemGreenColor.CGColor;
   label.layer.borderWidth = 1.0f;
   label.text = content;
   label.font = UIFontMake(12);
-  label.textColor = UIColor.qmui_randomColor;
+  label.textColor = UIColor.systemGreenColor;
   label.highlightedTextColor = nil;
   label.highlightedBackgroundColor = nil;
   return label;
@@ -217,7 +217,7 @@
       make.color = UIColor.qd_placeholderColor;
     });
     make.append([NSString stringWithFormat:@"¥%g ", prices.lowPrice])
-    .textColor(UIColor.qmui_randomColor)
+    .textColor(UIColor.systemRedColor)
     .font(UIFontMake(18));
     make.append(@"起");
     make.regex(@"¥").update(
@@ -243,5 +243,11 @@
     [self generateTagLabelList:tmp];
   }
   [self generateTagLabelList:model.logoList];
+}
+
+- (void)setImgUrl:(NSString *)imgUrl {
+  _imgUrl = imgUrl;
+  [self.searchImg sd_setImageWithURL:[NSURL URLWithString:imgUrl]
+                    placeholderImage:UIImageMake(@"pink_gradient")];
 }
 @end

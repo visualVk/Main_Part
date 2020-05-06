@@ -138,4 +138,11 @@
   }
   return _ansDate;
 }
+
+- (void)setModel:(ReplyEntity *)model {
+  _model = model;
+  self.username.text = model.username;
+  self.ans.text = model.content;
+  self.ansDate.text = [[model.createTime substringToIndex:10] stringByAppendingString:@" 回答"];
+}
 @end

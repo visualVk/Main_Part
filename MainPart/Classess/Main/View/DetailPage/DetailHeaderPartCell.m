@@ -106,4 +106,9 @@
   label.attributedText = text;
   return label;
 }
+
+- (void)setDatas:(NSArray *)datas {
+  _datas = datas;
+  self.banner.imageURLStringsGroup = datas;
+}
 @end

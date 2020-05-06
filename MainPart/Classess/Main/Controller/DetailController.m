@@ -511,9 +511,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   NSInteger section = indexPath.section;
   if (section == 0) {
-    UICollectionViewCell *cell =
+    DetailHeaderPartCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:DETAILHEADERCELL
                                               forIndexPath:indexPath];
+    cell.datas = self.imageList;
     
     return cell;
   }

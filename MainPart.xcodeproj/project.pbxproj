@@ -44,6 +44,7 @@
 		A703A777241E73C500ABC74A /* QiCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A772241E73C500ABC74A /* QiCardViewCell.m */; };
 		A703A778241E73C500ABC74A /* QiCardItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A775241E73C500ABC74A /* QiCardItemCell.m */; };
 		A703A77C241E743400ABC74A /* QiDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A703A77B241E743400ABC74A /* QiDataModel.m */; };
+		A70506A624639647008543CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70506A524639647008543CD /* LaunchScreen.xib */; };
 		A707EF18245A7D02007B9817 /* MainDetailQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF17245A7D02007B9817 /* MainDetailQuestionCell.m */; };
 		A707EF1B245A89F5007B9817 /* MainQuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1A245A89F5007B9817 /* MainQuestionController.m */; };
 		A707EF1F245A8A40007B9817 /* MoreQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A707EF1E245A8A40007B9817 /* MoreQuestionCell.m */; };
@@ -482,6 +483,7 @@
 		A703A775241E73C500ABC74A /* QiCardItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiCardItemCell.m; sourceTree = "<group>"; };
 		A703A77A241E743400ABC74A /* QiDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiDataModel.h; sourceTree = "<group>"; };
 		A703A77B241E743400ABC74A /* QiDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiDataModel.m; sourceTree = "<group>"; };
+		A70506A524639647008543CD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A707EF16245A7D02007B9817 /* MainDetailQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainDetailQuestionCell.h; sourceTree = "<group>"; };
 		A707EF17245A7D02007B9817 /* MainDetailQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainDetailQuestionCell.m; sourceTree = "<group>"; };
 		A707EF19245A89F5007B9817 /* MainQuestionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainQuestionController.h; sourceTree = "<group>"; };
@@ -1358,6 +1360,14 @@
 				A703A77B241E743400ABC74A /* QiDataModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A70506A424639647008543CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70506A524639647008543CD /* LaunchScreen.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A707EF1C245A8A20007B9817 /* QuestoinPage */ = {
@@ -2706,6 +2716,7 @@
 		A7C778DE2402562E003EBCE0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A70506A424639647008543CD /* View */,
 				A7C778DF2402562E003EBCE0 /* AppDelegate.h */,
 				A7C778E22402562E003EBCE0 /* AppDelegate.m */,
 				A7C778E42402562E003EBCE0 /* SceneDelegate.h */,
@@ -3203,6 +3214,7 @@
 				A7866AA92434AFB9001E6A0D /* IDInfoViewController.xib in Resources */,
 				A711C44F243459B8003E24FE /* HotRecModelListJSON.json in Resources */,
 				A7866AAD2434AFB9001E6A0D /* IDAuthViewController.xib in Resources */,
+				A70506A624639647008543CD /* LaunchScreen.xib in Resources */,
 				A7FA6D8F240C95E3003982DA /* OrderModelListJSON.json in Resources */,
 				A7084C922406C23700FF5CAE /* LinkageListJSON.json in Resources */,
 				A7FDCBDE2443F22000660E9E /* star_nor@3x.png in Resources */,

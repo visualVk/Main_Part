@@ -10,4 +10,5 @@
 
 @interface RecCell : QiCardViewCell
 
+@property (nonatomic, strong, readonly) UIImageView *recImg;
 @end

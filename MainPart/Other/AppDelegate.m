@@ -75,6 +75,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   }
   self.window.rootViewController = con;
   [self.window makeKeyAndVisible];
+  [self startLaunchingAnimation];
   return YES;
 }
 
@@ -160,5 +161,63 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   //注意:所有的信息都在userInfo中
   //你可以在这里收集相应的崩溃信息进行相应的处理(比如传到自己服务器)
   NSLog(@"%@", note.userInfo);
+}
+
+#pragma mark - set launch screen
+- (void)startLaunchingAnimation {
+  UIWindow *window = self.window;
+  UIView *launchScreenView =
+  [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil].firstObject;
+  launchScreenView.frame = window.bounds;
+  [window addSubview:launchScreenView];
+  
+  UIImageView *backgroundImageView = launchScreenView.subviews[0];
+  backgroundImageView.clipsToBounds = YES;
+  
+  // UIImageView *logoImageView = launchScreenView.subviews[1];
+  UILabel *copyrightLabel = launchScreenView.subviews.lastObject;
+  UILabel *sentence2 = launchScreenView.subviews[1];
+  
+  UIView *maskView = [[UIView alloc] initWithFrame:launchScreenView.bounds];
+  maskView.backgroundColor = UIColorWhite;
+  [launchScreenView insertSubview:maskView belowSubview:backgroundImageView];
+  
+  [launchScreenView layoutIfNeeded];
+  
+  [launchScreenView.constraints
+   enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint *_Nonnull obj, NSUInteger idx,
+                                BOOL *_Nonnull stop) {
+    if ([obj.identifier isEqualToString:@"bottomAlign"]) {
+      obj.active = NO;
+      [NSLayoutConstraint constraintWithItem:backgroundImageView
+                                   attribute:NSLayoutAttributeBottom
+                                   relatedBy:NSLayoutRelationEqual
+                                      toItem:launchScreenView
+                                   attribute:NSLayoutAttributeTop
+                                  multiplier:1
+                                    constant:NavigationContentTop]
+      .active = YES;
+      *stop = YES;
+    }
+  }];
+  
+  [UIView animateWithDuration:.15
+                        delay:0.9
+                      options:QMUIViewAnimationOptionsCurveOut
+                   animations:^{
+    [launchScreenView layoutIfNeeded];
+    // logoImageView.alpha = 0.0;
+    copyrightLabel.alpha = 0;
+    sentence2.alpha = 0;
+  }
+                   completion:nil];
+  [UIView animateWithDuration:1.2
+                        delay:0.9
+                      options:UIViewAnimationOptionCurveEaseOut
+                   animations:^{
+    maskView.alpha = 0;
+    backgroundImageView.alpha = 0;
+  }
+                   completion:^(BOOL finished) { [launchScreenView removeFromSuperview]; }];
 }
 @end

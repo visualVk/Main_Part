@@ -12,6 +12,19 @@
 #import "RecCell.h"
 #import "RecToolBar.h"
 #define RECCELL @"reccell"
+#define imgList                                                                                    \
+@[                                                                                               \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588820559669&di="                                \
+@"f010cc8d2155869819efcf0315b2b833&imgtype=0&src=http%3A%2F%2Fpic44.nipic.com%2F20140717%"     \
+@"2F12084034_200610824000_2.jpg",                                                              \
+@"https://timgsa.baidu.com/"                                                                   \
+@"timg?image&quality=80&size=b9999_10000&sec=1588822805244&di="                                \
+@"69859955cb93e231a540945440b7fb33&imgtype=0&src=http%3A%2F%2Fpic29.nipic.com%2F20130521%"     \
+@"2F5826064_160852393126_2.jpg",                                                               \
+@"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/"                                    \
+@"u=2448713099,1435421207&fm=26&gp=0.jpg"                                                      \
+]
 
 @interface RecommondController () <GenerateEntityDelegate, QiCardViewDelegate,
 QiCardViewDataSource> {
@@ -128,6 +141,8 @@ QiCardViewDataSource> {
 - (RecCell *)cardView:(QiCardView *)cardView cellForRowAtIndex:(NSInteger)index {
   
   RecCell *cell = [cardView dequeueReusableCellWithIdentifier:RECCELL];
+  [cell.recImg sd_setImageWithURL:[NSURL URLWithString:[self randomPic]]
+                 placeholderImage:UIImageMake(@"pink_gradient")];
   //    cell.cellData = _cellItems[index];
   cell.layer.cornerRadius = 10.0;
   cell.layer.masksToBounds = YES;
@@ -185,5 +200,9 @@ didRemoveLastCell:(QiCardViewCell *)cell
      didMoveCell:(QiCardViewCell *)cell
     forMovePoint:(CGPoint)point {
   //    NSLog(@"move point = %@", NSStringFromCGPoint(point));
+}
+
+- (NSString *)randomPic {
+  return imgList[arc4random() % imgList.count];
 }
 @end
